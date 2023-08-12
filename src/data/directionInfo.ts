@@ -1,4 +1,4 @@
-const directionInfo = [
+export const directionInfo = [
     {
         country: 'Marocco',
         info: "Morocco enchants with its proximity to the ocean, impressive mountain ranges, and deserts. It's an ideal solution for a vacation for those who love sun and exoticism! What should you know about Morocco and why choosing this place for a vacation will be a perfect shot?",

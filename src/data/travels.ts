@@ -1,4 +1,4 @@
-const travels = [
+export const travels = [
     {
         county: 'Türkiye',
         city: 'Antalya',
