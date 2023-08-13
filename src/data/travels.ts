@@ -1,5 +1,6 @@
 export const travels = [
     {
+        id: 1,
         county: 'Türkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
@@ -11,6 +12,7 @@ export const travels = [
         img: '../img/turkiye1.jpg'
 },
     {
+        id: 2,
         county: 'Türkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
@@ -21,7 +23,8 @@ export const travels = [
         lastMinute: false,
         img: '../img/turkiye2.jpg'
 },
-    {
+    {   
+        id: 3,
         county: 'Türkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
@@ -32,7 +35,8 @@ export const travels = [
         lastMinute: false,
         img: '../img/turkiye3.jpg'
 },
-    {
+    {   
+        id: 4,
         county: 'Türkiye',
         city: 'Bodrum',
         airPort: 'Warszawa',
@@ -44,6 +48,7 @@ export const travels = [
         img: '../img/turkiye4.jpg'
 },
     {
+        id: 5,
         county: 'Türkiye',
         city: 'Bodrum',
         airPort: 'Poznań',
@@ -55,6 +60,7 @@ export const travels = [
         img: '../img/turkiye5.jpg'
 },
     {
+        id: 6,
         county: 'Greece',
         city: 'Corfu',
         airPort: 'Warszawa',
@@ -66,6 +72,7 @@ export const travels = [
         img: '../img/greece1.jpg'
 },
     {
+        id: 7,
         county: 'Greece',
         city: 'Rodos',
         airPort: 'Poznań',
@@ -76,7 +83,8 @@ export const travels = [
         lastMinute: false,
         img: '../img/greece2.jpg'
 },
-    {
+    {   
+        id: 8,
         county: 'Greece',
         city: 'Rodos',
         airPort: 'Poznań',
@@ -87,7 +95,8 @@ export const travels = [
         lastMinute: false,
         img: '../img/greece3.jpg'
 },
-    {
+    {   
+        id: 9,
         county: 'Greece',
         city: 'Zakynthos',
         airPort: 'Poznań',
@@ -99,6 +108,7 @@ export const travels = [
         img: '../img/greece4.jpg'
 },
     {
+        id: 10,
         county: 'Greece',
         city: 'Crete',
         airPort: 'Poznań',
@@ -108,7 +118,8 @@ export const travels = [
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
         img: '../img/greece5.jpg'
-}, {
+    }, {
+        id:11,
         county: 'Thailand',
         city: 'Bangkok',
         airPort: 'Warszawa',
@@ -120,6 +131,7 @@ export const travels = [
         img: '../img/thailand1.jpg'
     },
     {
+        id: 12,
         county: 'Thailand',
         city: 'Phuket',
         airPort: 'Kraków',
@@ -131,6 +143,7 @@ export const travels = [
         img: '../img/thailand2.jpg'
     },
     {
+        id: 13,
         county: 'Thailand',
         city: 'Chiang Mai',
         airPort: 'Gdańsk',
@@ -142,6 +155,7 @@ export const travels = [
         img: '../img/thailand3.jpg'
     },
     {
+        id: 14,
         county: 'Thailand',
         city: 'Krabi',
         airPort: 'Warszawa',
@@ -153,6 +167,7 @@ export const travels = [
         img: '../img/thaiand4.jpg'
     },
     {
+        id: 15,
         county: 'Thailand',
         city: 'Koh Samui',
         airPort: 'Kraków',
@@ -162,7 +177,9 @@ export const travels = [
         date: '12.12.2024 - 19.12.2024',
         lastMinute: false,
         img: '../img/thailand5.jpg'
-    },   {
+    },
+    {
+        id: 16,
         country: 'Spain',
         city: 'Barcelona',
         airPort: 'Warszawa',
@@ -174,6 +191,7 @@ export const travels = [
         img: '../img/spain1.jpg'
     },
     {
+        id: 17,
         country: 'Spain',
         city: 'Madrid',
         airPort: 'Kraków',
@@ -185,6 +203,7 @@ export const travels = [
         img: '../img/spain2.jpg'
     },
     {
+        id: 18,
         country: 'Spain',
         city: 'Valencia',
         airPort: 'Gdańsk',
@@ -196,6 +215,7 @@ export const travels = [
         img: '../img/spain3.jpg'
     },
     {
+        id: 19,
         country: 'Spain',
         city: 'Malaga',
         airPort: 'Warszawa',
@@ -207,6 +227,7 @@ export const travels = [
         img: '../img/spain4.jpg'
     },
     {
+        id: 20,
         country: 'Spain',
         city: 'Palma de Mallorca',
         airPort: 'Krakow',
@@ -216,7 +237,9 @@ export const travels = [
         date: '12.08.2024 - 19.08.2024',
         lastMinute: false,
         img: '../img/spain5.jpg'
-    },  {
+    },
+    {
+        id: 21,
         country: 'Dominican Republic',
         city: 'Punta Cana',
         airPort: 'Warsaw',
@@ -228,6 +251,7 @@ export const travels = [
         img: '../img/dominican1.jpg'
     },
     {
+        id: 22,
         country: 'Dominican Republic',
         city: 'Puerto Plata',
         airPort: 'Krakow',
@@ -239,6 +263,7 @@ export const travels = [
         img: '../img/dominican2.jpg'
     },
     {
+        id: 23,
         country: 'Dominican Republic',
         city: 'La Romana',
         airPort: 'Gdansk',
@@ -248,7 +273,9 @@ export const travels = [
         date: '05.08.2024 - 12.08.2024',
         lastMinute: false,
         img: '../img/dominican3.jpg'
-    },{
+    },
+    {
+        id: 24,
         country: 'Cyprus',
         city: 'Limassol',
         airPort: 'Warsaw',
@@ -260,6 +287,7 @@ export const travels = [
         img: '../img/cyprus1.jpg'
     },
     {
+        id: 25,
         country: 'Cyprus',
         city: 'Paphos',
         airPort: 'Krakow',
@@ -271,6 +299,7 @@ export const travels = [
         img: '../img/cyprus2.jpg'
     },
     {
+        id: 26,
         country: 'Cyprus',
         city: 'Larnaca',
         airPort: 'Gdansk',
@@ -281,7 +310,8 @@ export const travels = [
         lastMinute: false,
         img: '../img/cyprus3.jpg'
     },
-        {
+    {
+        id: 27,
         country: 'Zanzibar',
         city: 'Stone Town',
         airPort: 'Warsaw',
@@ -293,6 +323,7 @@ export const travels = [
         img: '../img/zanzibar1.jpg'
     },
     {
+        id: 28,
         country: 'Zanzibar',
         city: 'Nungwi',
         airPort: 'Krakow',
@@ -304,6 +335,7 @@ export const travels = [
         img: '../img/zanzibar2.jpg'
     },
     {
+        id: 29,
         country: 'Zanzibar',
         city: 'Paje',
         airPort: 'Gdansk',
@@ -315,6 +347,7 @@ export const travels = [
         img: '../img/zanzibar3.jpg'
     },
     {
+        id: 30,
         country: 'Morocco',
         city: 'Marrakech',
         airPort: 'Warsaw',
@@ -326,6 +359,7 @@ export const travels = [
         img: '../img/morocco1.jpg'
     },
     {
+        id: 31,
         country: 'Morocco',
         city: 'Casablanca',
         airPort: 'Krakow',
@@ -337,6 +371,7 @@ export const travels = [
         img: '../img/morocco2.jpg'
     },
     {
+        id: 32,
         country: 'Morocco',
         city: 'Fez',
         airPort: 'Gdansk',

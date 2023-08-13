@@ -1,14 +1,14 @@
 import MainView from '../views/MainView';
-import { Routes, Route } from 'react-router-dom'
-type RoutesType = {
-    children: React.ReactNode
-}
+import { SignIn } from '../components';
+import { Routes, Route } from 'react-router-dom';
 
-const AppRoutes = ({children}: RoutesType) => {
+const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route path='/' element={<MainView />} />
-			<Route path='/signIn' /> 
+			<Route path='/signIn' element={<SignIn />} />
 		</Routes>
 	);
 };
+
+export default AppRoutes
