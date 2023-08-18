@@ -1,19 +1,53 @@
+import { tomorrowDate, nextWeekDate } from "../container/Hooks/tomorrowDate"
+import turkiye1 from '../img/turkiye1.jpg'
+import turkiye2 from '../img/turkiye2.jpg'
+import turkiye3 from '../img/turkiye3.jpg'
+import turkiye4 from '../img/turkiye4.jpg'
+import turkiye5 from '../img/turkiye5.jpg'
+import cyprus1 from '../img/cyprus1.jpg'
+import cyprus2 from '../img/cyprus2.jpg'
+import cyprus3 from '../img/cyprus3.jpg'
+import dominican1 from '../img/dominican1.jpg'
+import dominican2 from '../img/dominican2.jpg'
+import dominican3 from '../img/dominican3.jpg'
+import greece1 from '../img/greece1.jpg'
+import greece2 from '../img/greece2.jpg'
+import greece3 from '../img/greece3.jpg'
+import greece4 from '../img/greece4.jpg'
+import greece5 from '../img/greece5.jpg'
+import marocco1 from '../img/marocco1.jpg'
+import marocco2 from '../img/marocco2.jpg'
+import marocco3 from '../img/marocco3.jpg'
+import spain1 from '../img/spain1.jpg'
+import spain2 from '../img/spain2.jpg'
+import spain3 from '../img/spain3.jpg'
+import spain4 from '../img/spain4.jpg'
+import spain5 from '../img/spain5.jpg'
+import thailand1 from '../img/thailand1.jpg'
+import thailand2 from '../img/thailand2.jpg'
+import thailand3 from '../img/thailand3.jpg'
+import thailand4 from '../img/thailand4.jpg'
+import thailand5 from '../img/thailand5.jpg'
+import zanzibar1 from '../img/zanzibar1.jpg'
+import zanzibar2 from '../img/zanzibar2.jpg'
+import zanzibar3 from '../img/zanzibar3.jpg'
+
 export const travels = [
     {
         id: 1,
-        county: 'Türkiye',
+        country: 'Turkey',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Orient Express',
         price: 2500,
         stars: 4,
-        date: '10.07.2024 - 17.07.2024',
-        lastMinute: false,
-        img: '../img/turkiye1.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: turkiye1
 },
     {
         id: 2,
-        county: 'Türkiye',
+        country: 'Turkey',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Club Boran Mare Beach',
@@ -21,11 +55,11 @@ export const travels = [
         stars: 3,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/turkiye2.jpg'
+        img: turkiye2
 },
     {   
         id: 3,
-        county: 'Türkiye',
+        country: 'Turkey',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Marmaris Bay Resort ',
@@ -33,11 +67,11 @@ export const travels = [
         stars: 3,
         date: '15.07.2024 - 22.07.2024',
         lastMinute: false,
-        img: '../img/turkiye3.jpg'
+        img: turkiye3
 },
     {   
         id: 4,
-        county: 'Türkiye',
+        country: 'Turkey',
         city: 'Bodrum',
         airPort: 'Warszawa',
         hotel: 'Aquasis Deluxe Resort & Spa',
@@ -45,11 +79,11 @@ export const travels = [
         stars: 5,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/turkiye4.jpg'
+        img: turkiye4
 },
     {
         id: 5,
-        county: 'Türkiye',
+        country: 'Turkey',
         city: 'Bodrum',
         airPort: 'Poznań',
         hotel: 'Black pearl',
@@ -57,11 +91,11 @@ export const travels = [
         stars: 5,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/turkiye5.jpg'
+        img: turkiye5
 },
     {
         id: 6,
-        county: 'Greece',
+        country: 'Greece',
         city: 'Corfu',
         airPort: 'Warszawa',
         hotel: 'Maris Bellos',
@@ -69,11 +103,11 @@ export const travels = [
         stars: 5,
         date: '05.08.2024 - 12.08.2024',
         lastMinute: false,
-        img: '../img/greece1.jpg'
+        img: greece1
 },
     {
         id: 7,
-        county: 'Greece',
+        country: 'Greece',
         city: 'Rodos',
         airPort: 'Poznań',
         hotel: 'Meliton',
@@ -81,11 +115,11 @@ export const travels = [
         stars: 3,
         date: '20.07.2024 - 27.07.2024',
         lastMinute: false,
-        img: '../img/greece2.jpg'
+        img: greece2
 },
     {   
         id: 8,
-        county: 'Greece',
+        country: 'Greece',
         city: 'Rodos',
         airPort: 'Poznań',
         hotel: 'Zeus',
@@ -93,11 +127,11 @@ export const travels = [
         stars: 4,
         date: '20.07.2024 - 27.07.2024',
         lastMinute: false,
-        img: '../img/greece3.jpg'
+        img: greece3
 },
     {   
         id: 9,
-        county: 'Greece',
+        country: 'Greece',
         city: 'Zakynthos',
         airPort: 'Poznań',
         hotel: 'Lesante Cape Resort & Villas',
@@ -105,22 +139,22 @@ export const travels = [
         stars: 5,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/greece4.jpg'
+        img: greece4
 },
     {
         id: 10,
-        county: 'Greece',
+        country: 'Greece',
         city: 'Crete',
         airPort: 'Poznań',
         hotel: 'Nana Princess',
         price: 3700,
         stars: 5,
-        date: '10.07.2024 - 17.07.2024',
-        lastMinute: false,
-        img: '../img/greece5.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: greece5
     }, {
         id:11,
-        county: 'Thailand',
+        country: 'Thailand',
         city: 'Bangkok',
         airPort: 'Warszawa',
         hotel: 'Grand Palace Hotel',
@@ -128,11 +162,11 @@ export const travels = [
         stars: 4,
         date: '15.06.2024 - 23.06.2024',
         lastMinute: false,
-        img: '../img/thailand1.jpg'
+        img: thailand1
     },
     {
         id: 12,
-        county: 'Thailand',
+        country: 'Thailand',
         city: 'Phuket',
         airPort: 'Kraków',
         hotel: 'Palm Beach Resort',
@@ -140,11 +174,11 @@ export const travels = [
         stars: 3,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/thailand2.jpg'
+        img: thailand2
     },
     {
         id: 13,
-        county: 'Thailand',
+        country: 'Thailand',
         city: 'Chiang Mai',
         airPort: 'Gdańsk',
         hotel: 'Mountain View Lodge',
@@ -152,19 +186,19 @@ export const travels = [
         stars: 2,
         date: '05.08.2024 - 12.08.2024',
         lastMinute: false,
-        img: '../img/thailand3.jpg'
+        img: thailand3
     },
     {
         id: 14,
-        county: 'Thailand',
+        country: 'Thailand',
         city: 'Krabi',
         airPort: 'Warszawa',
         hotel: 'Coconut Paradise Resort',
         price: 2900,
         stars: 4,
-        date: '20.09.2024 - 27.09.2024',
-        lastMinute: false,
-        img: '../img/thaiand4.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: thailand4
     },
     {
         id: 15,
@@ -174,9 +208,9 @@ export const travels = [
         hotel: 'Beachfront Bungalows',
         price: 2600,
         stars: 3,
-        date: '12.12.2024 - 19.12.2024',
-        lastMinute: false,
-        img: '../img/thailand5.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: thailand5
     },
     {
         id: 16,
@@ -186,9 +220,9 @@ export const travels = [
         hotel: 'Hotel Costa del Sol',
         price: 3200,
         stars: 4,
-        date: '15.06.2024 - 23.06.2024',
-        lastMinute: false,
-        img: '../img/spain1.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: spain1
     },
     {
         id: 17,
@@ -200,7 +234,7 @@ export const travels = [
         stars: 3,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/spain2.jpg'
+        img: spain2
     },
     {
         id: 18,
@@ -212,7 +246,7 @@ export const travels = [
         stars: 3,
         date: '05.08.2024 - 12.08.2024',
         lastMinute: false,
-        img: '../img/spain3.jpg'
+        img: spain3
     },
     {
         id: 19,
@@ -224,7 +258,7 @@ export const travels = [
         stars: 4,
         date: '20.06.2024 - 27.06.2024',
         lastMinute: false,
-        img: '../img/spain4.jpg'
+        img: spain4
     },
     {
         id: 20,
@@ -236,7 +270,7 @@ export const travels = [
         stars: 3,
         date: '12.08.2024 - 19.08.2024',
         lastMinute: false,
-        img: '../img/spain5.jpg'
+        img: spain5
     },
     {
         id: 21,
@@ -246,9 +280,9 @@ export const travels = [
         hotel: 'Tropical Paradise Resort',
         price: 4500,
         stars: 5,
-        date: '15.06.2024 - 23.06.2024',
-        lastMinute: false,
-        img: '../img/dominican1.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: dominican1
     },
     {
         id: 22,
@@ -260,7 +294,7 @@ export const travels = [
         stars: 4,
         date: '10.07.2024 - 17.07.2024',
         lastMinute: false,
-        img: '../img/dominican2.jpg'
+        img: dominican2
     },
     {
         id: 23,
@@ -272,7 +306,7 @@ export const travels = [
         stars: 5,
         date: '05.08.2024 - 12.08.2024',
         lastMinute: false,
-        img: '../img/dominican3.jpg'
+        img: dominican3
     },
     {
         id: 24,
@@ -284,7 +318,7 @@ export const travels = [
         stars: 4,
         date: '18.06.2024 - 25.06.2024',
         lastMinute: false,
-        img: '../img/cyprus1.jpg'
+        img: cyprus1
     },
     {
         id: 25,
@@ -296,7 +330,7 @@ export const travels = [
         stars: 3,
         date: '12.07.2024 - 19.07.2024',
         lastMinute: false,
-        img: '../img/cyprus2.jpg'
+        img: cyprus2
     },
     {
         id: 26,
@@ -306,9 +340,9 @@ export const travels = [
         hotel: 'Sunset Beach Hotel',
         price: 2700,
         stars: 3,
-        date: '28.08.2024 - 04.09.2024',
-        lastMinute: false,
-        img: '../img/cyprus3.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: cyprus3
     },
     {
         id: 27,
@@ -320,7 +354,7 @@ export const travels = [
         stars: 4,
         date: '15.07.2024 - 23.07.2024',
         lastMinute: false,
-        img: '../img/zanzibar1.jpg'
+        img: zanzibar1
     },
     {
         id: 28,
@@ -332,7 +366,7 @@ export const travels = [
         stars: 3,
         date: '10.08.2024 - 17.08.2024',
         lastMinute: false,
-        img: '../img/zanzibar2.jpg'
+        img: zanzibar2
     },
     {
         id: 29,
@@ -342,9 +376,9 @@ export const travels = [
         hotel: 'Paje Sands Resort',
         price: 4200,
         stars: 5,
-        date: '05.09.2024 - 12.09.2024',
-        lastMinute: false,
-        img: '../img/zanzibar3.jpg'
+        date: tomorrowDate()+ '-' + nextWeekDate(),
+        lastMinute: true,
+        img: zanzibar3
     },
     {
         id: 30,
@@ -356,7 +390,7 @@ export const travels = [
         stars: 4,
         date: '15.07.2024 - 23.07.2024',
         lastMinute: false,
-        img: '../img/morocco1.jpg'
+        img: marocco1
     },
     {
         id: 31,
@@ -368,7 +402,7 @@ export const travels = [
         stars: 5,
         date: '10.08.2024 - 17.08.2024',
         lastMinute: false,
-        img: '../img/morocco2.jpg'
+        img: marocco2
     },
     {
         id: 32,
@@ -380,7 +414,7 @@ export const travels = [
         stars: 5,
         date: '05.09.2024 - 12.09.2024',
         lastMinute: false,
-        img: '../img/morocco3.jpg'
+        img: marocco3
     }
 
 ]

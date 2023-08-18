@@ -1,4 +1,5 @@
 import './Header.scss';
+// import video from '../../video/video.mp4';
 
 function Header() {
 	return (
@@ -8,9 +9,9 @@ function Header() {
 					<h1>YourTravel Welcome!</h1>
 					<p>Search your Holiday!</p>
 				</div>
-				<video src='' className='header__video'>
-					video
-				</video>
+				{/* <video src={video} muted autoPlay loop className='header__video'>
+					video<div className='header__shadow'></div>
+				</video> */}
 				<div className='header__search-panel'></div>
 			</div>
 		</header>

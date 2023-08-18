@@ -10,17 +10,15 @@ function Destinations() {
 			</div>
 			<div className='destinations__cards-container'>
 				{directionInfo.map((direction) => {
-					return <DestinationCard
-						key={direction.id}
-						text={direction.info}
-						country={direction.country}
-						img={direction.img}
-					/>;
+					return (
+						<DestinationCard
+							key={direction.id}
+							text={direction.info}
+							country={direction.country}
+							img={direction.img}
+						/>
+					);
 				})}
-
-				{/* <DestinationCard />
-				<DestinationCard />
-				<DestinationCard /> */}
 			</div>
 		</div>
 	);

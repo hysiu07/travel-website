@@ -39,7 +39,7 @@ function Nav() {
 						<div>
 							<ul className='nav__links'>
 								<li>
-									<a href='#' className='nav__link'>
+									<a href='#destinations' className='nav__link'>
 										Destinations
 									</a>
 								</li>
