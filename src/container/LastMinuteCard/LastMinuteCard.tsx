@@ -23,7 +23,7 @@ function LastMinuteCard({
 	price,
 	date,
 }: LastMinuteCardPropsType) {
-	
+
 	return (
 		<div className='last-minute__card'>
 			<div className='container'>
@@ -36,7 +36,7 @@ function LastMinuteCard({
 					<h3 className='title'>{hotel}</h3>
 					<ReactStars count={stars} size={24} inactiveColor='gold' />
 					<h4 className='city'>
-						{country}/{city}
+						{country}/d{city}
 					</h4>
 					<p>
 						<span>
