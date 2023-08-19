@@ -2,11 +2,25 @@ import { LastMinuteCard } from '../../container/LastMinuteCard';
 import { travels } from '../../data/travels';
 import './LastMinute.scss';
 import Slider from 'react-slick';
-
+import useWindowWidth from '../../container/Hooks/useWindowWidth';
+import { useEffect, useState } from 'react';
 function LastMinute() {
+	const [countCard, setCountCard] = useState<number>(3);
+	const { width } = useWindowWidth();
+
+	useEffect(() => {
+		if (width < 1200) {
+			setCountCard(2)
+		} else if (width < 700) {
+			setCountCard(1)
+		} else {
+			setCountCard(3)
+		}
+	}, [width]);
+
 	const settings = {
 		infinite: true,
-		slidesToShow: 3,
+		slidesToShow: countCard,
 		slidesToScroll: 1,
 		autoplay: true,
 		speed: 6000,

@@ -36,7 +36,7 @@ function LastMinuteCard({
 					<h3 className='title'>{hotel}</h3>
 					<ReactStars count={stars} size={24} inactiveColor='gold' />
 					<h4 className='city'>
-						{country}/d{city}
+						{country}/{city}
 					</h4>
 					<p>
 						<span>

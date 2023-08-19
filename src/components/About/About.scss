@@ -1,0 +1,29 @@
+.about {
+	margin: 0 auto;
+	padding: 3%;
+	width: 100%;
+	max-width: 1400px;
+	&__title {
+		text-align: center;
+		font-size: 3rem;
+	}
+	&__items-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		padding: 2%;
+		width: 100%;
+	}
+	&__item {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-basis: 30%;
+		margin-bottom: 30px;
+		p {
+			margin-top: 5px;
+			font-size: 1.8rem;
+		}
+	}
+}
