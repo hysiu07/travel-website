@@ -1,25 +1,25 @@
-import './Reviews.scss'
+
+import './Reviews.scss';
+import dataReviews from '../../data/reviews.json';
+import { ReviewCard } from '../../container/ReviewCard';
 
 function Reviews() {
 	return (
 		<div className='reviews'>
-            <div className='reviews__container'>
-                <div className="reviews__card">
-                    <img src="" alt="" />
-                    <p className="name">Jan kowalski</p>
-                    <p className="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quod voluptatem, magnam aut qui quasi officia neque aliquid a amet?</p>
-                </div>
-                <div className="reviews__card">
-                    <img src="" alt="" />
-                    <p className="name">Jan kowalski</p>
-                    <p className="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quod voluptatem, magnam aut qui quasi officia neque aliquid a amet?</p>
-                </div>
-                <div className="reviews__card">
-                    <img src="" alt="" />
-                    <p className="name">Jan kowalski</p>
-                    <p className="review">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quod voluptatem, magnam aut qui quasi officia neque aliquid a amet?</p>
-                </div>
-            </div>
+			<div className='reviews__container'>
+				{dataReviews.map((review) => {
+					return (
+						<ReviewCard
+							id={review.id}
+							review={review.review}
+							rating={review.rating}
+							img={review.img}
+							name={review.name}
+							
+						/>
+					);
+				})}
+			</div>
 		</div>
 	);
 }

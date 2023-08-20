@@ -1,4 +1,8 @@
 .nav {
+	position: fixed;
+	z-index: 200;
+	top: 0;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -43,25 +47,25 @@
 			font-size: 2rem;
 		}
 	}
-    &__menu{
-        cursor: pointer;
-    }
-    &__menu-btn{
-        border: 1px solid black;
-        border-radius: 5px;
-    }
+	&__menu {
+		cursor: pointer;
+	}
+	&__menu-btn {
+		border: 1px solid black;
+		border-radius: 5px;
+	}
 }
 
 @media (min-width: 992px) {
 	.nav {
-		&__menu-btn{
+		&__menu-btn {
 			display: none;
 		}
 	}
 }
 @media (max-width: 992px) {
 	.nav {
-		&__links{
+		&__links {
 			display: none;
 		}
 	}

@@ -1,0 +1,28 @@
+.reviews {
+	&__card {
+		position: relative;
+		padding: 10px;
+		padding-left: 40px;
+		margin: 20px;
+		margin-bottom: 40px;
+		width: 400px;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		.img {
+			position: absolute;
+			top: -50px;
+			left: -60px;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 1px solid black;
+			background-position: center;
+			background-size: cover;
+		}
+		.name {
+			font-size: 2.5rem;
+		}
+		.review {
+			font-size: 2rem;
+		}
+	}
+}

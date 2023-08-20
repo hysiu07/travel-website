@@ -1,0 +1,23 @@
+[
+	{
+		"id": 1,
+		"name": "Monica Dolores",
+		"review": "Incredible journey! The travel agency took care of all the details. Professional approach and beautiful destinations. Highly recommended!",
+		"rating": 5,
+		"img": "https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_1280.jpg"
+	},
+	{
+		"id": 2,
+		"name": "John Smith",
+		"review": "My trip with this travel agency exceeded my expectations. They designed a flawless itinerary, and the guides were knowledgeable. I had an amazing experience!",
+		"rating": 5,
+		"img": "https://cdn.pixabay.com/photo/2016/03/24/09/10/man-1276384_1280.jpg"
+	},
+	{
+		"id": 3,
+		"name": "Elisabeth Ardee",
+		"review": "Truly excellent service. Everything was perfectly organized. Thanks for the wonderful vacation!",
+		"rating": 4.5,
+		"img": "https://cdn.pixabay.com/photo/2018/04/05/09/32/portrait-3292287_1280.jpg"
+	}
+]

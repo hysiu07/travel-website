@@ -1,4 +1,4 @@
-import { Nav, Header, Destinations, LastMinute, About, Insurance, Reviews } from '../components';
+import { Nav, Header, Destinations, LastMinute, About, Insurance, Reviews, Contact } from '../components';
 function MainView() {
 	return (
 		<div>
@@ -9,7 +9,7 @@ function MainView() {
 			<About />
 			<Insurance />
 			<Reviews />
-			<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+			<Contact />
 		</div>
 	);
 }
