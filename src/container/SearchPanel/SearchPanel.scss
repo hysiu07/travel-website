@@ -1,0 +1,29 @@
+.search-panel {
+			margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		align-items: center;
+		padding: 5%;
+		width: 100%;
+
+		max-width: 1200px;
+		border-radius: 10px;
+		background-color: white;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		&__box-item {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			flex-basis: 30%;
+		}
+		&__label {
+			font-size: 1.8rem;
+		}
+		&__input {
+			margin-top: 10px;
+			padding: 10px 20px;
+			font-size: 1.6rem;
+			border-radius: 20px;
+		}
+	}

@@ -57,7 +57,7 @@ function Nav() {
 								</a>
 							</li>
 							<li>
-								<a href='#' className='nav__link'>
+								<a href='#contact' className='nav__link'>
 									Contact
 								</a>
 							</li>

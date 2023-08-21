@@ -1,5 +1,6 @@
 import './Header.scss';
 import video from '../../video/video.mp4';
+import { SearchPanel } from '../../container/SearchPanel';
 
 function Header() {
 	return (
@@ -19,7 +20,7 @@ function Header() {
 					<h1>YourTravel Welcome!</h1>
 					<p>Search your Holiday!</p>
 				</div>
-				<div className='header__search-panel'></div>
+				<SearchPanel />
 			</div>
 		</header>
 	);

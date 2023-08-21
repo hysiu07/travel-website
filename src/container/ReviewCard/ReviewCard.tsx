@@ -1,5 +1,5 @@
 import './ReviewCard.scss';
-
+import ReactStars from 'react-rating-star-with-type';
 type ReviewsType = {
 	id: number;
 	name: string;
@@ -18,7 +18,9 @@ function ReviewCard({ id, img, name, review, rating }: ReviewsType) {
 				}}
 			></div>
 			<span className='name'>{name}</span>
-			<span className='rating'>{rating}</span>
+			<span className='rating'>
+				<ReactStars count={rating} size={24} inactiveColor='gold' />
+			</span>
 			<p className='review'>{review}</p>
 		</div>
 	);
