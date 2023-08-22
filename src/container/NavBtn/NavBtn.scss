@@ -1,0 +1,13 @@
+.menu-btn {
+	position: absolute;
+    z-index: 600;
+    right: 30px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+@media (min-width: 992px) {
+	.menu-btn {
+		display: none;
+	}
+}

@@ -1,28 +1,42 @@
 .contact {
 	position: relative;
 	width: 100%;
-	height: 300px;
-
-	video {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
+	
+	background-image: url('../../img/thailand-boats.jpg');
+	background-position: center;
+	background-size: cover;
 	&__container {
 		display: flex;
-		flex-direction: row;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		padding: 3%;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.4);
 
 		.litle-title {
 			font-size: 2rem;
+			color: white;
 		}
 		.big-title {
 			font-size: 3rem;
+			color: white;
 		}
+	}
+	&__box-first {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+	&__box-second {
+		width: 80%;
+		height: 400px;
+		background-color: rgba(255, 255, 255, 0.6);
+		border-radius: 20px;
 	}
 	&__form {
 		input {

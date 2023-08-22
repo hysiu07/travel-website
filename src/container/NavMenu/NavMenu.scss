@@ -1,0 +1,37 @@
+.nav-menu {
+	&__links {
+		display: flex;
+		li {
+			list-style: none;
+			margin: 0 20px;
+		}
+		a {
+			text-decoration: none;
+			font-size: 2rem;
+		}
+	}
+	&__menu {
+		cursor: pointer;
+	}
+}
+
+@media (max-width: 992px) {
+	.nav-menu {
+		&__links {
+			position: fixed;
+			z-index: 500;
+			top: 0;
+			right: -150%;
+			flex-direction: column;
+			justify-content: space-evenly;
+			align-items: center;
+			width: 100vw;
+			height: 100vh;
+			background-color: aqua;
+			transition: 0.5s;
+			.link {
+				font-size: 3rem;
+			}
+		}
+	}
+}

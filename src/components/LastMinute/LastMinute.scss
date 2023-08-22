@@ -1,15 +1,15 @@
 .last-minute {
-	padding: 5%;
 	display: flex;
 	justify-content: center;
+	padding: 5%;
 	width: 100%;
+	overflow: hidden;
 
 	&__title {
 		text-align: center;
 	}
 
 	&__carousel {
-		width: 100%;
-
+		width: 80%;
 	}
 }

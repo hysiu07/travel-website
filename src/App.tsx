@@ -9,13 +9,8 @@ import AppRoutes from './routes/AppRoutes';
 //   body: string
 // }
 
-
 function App() {
 	// axios.get<AxiosType[]>('https://jsonplaceholder.typicode.com/posts').then(res => console.log(res.data))
-	return (
-		<div>
-			<AppRoutes />
-		</div>
-	);
+	return <AppRoutes />;
 }
 export default App;
