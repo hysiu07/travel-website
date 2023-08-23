@@ -5,7 +5,11 @@
 	align-items: center;
 	padding: 5% 2%;
 	width: 100%;
-
+	&__text-container {
+		h2 {
+			margin-bottom: 40px;
+		}
+	}
 	&__cards-container {
 		display: flex;
 		justify-content: center;

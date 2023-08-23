@@ -9,27 +9,27 @@ function About() {
 			<h2 className='about__title'>About</h2>
 			<div className='about__items-container'>
 				<div className='about__item'>
-					<BiSolidPlane size={40} />
+					<BiSolidPlane size={35} />
 					<p className='title'>Experience and Knowledge</p>
 				</div>
 				<div className='about__item'>
-					<BsMap size={40} />
+					<BsMap size={35} />
 					<p className='title'>Wide Range of Destinations</p>
 				</div>
 				<div className='about__item'>
-					<BsFillTelephoneFill size={40} />
+					<BsFillTelephoneFill size={35} />
 					<p className='title'>24/7 Support</p>
 				</div>
 				<div className='about__item'>
-					<MdOutlineReviews size={40} />
+					<MdOutlineReviews size={35} />
 					<p className='title'>Reviews and Recommendations</p>
 				</div>
 				<div className='about__item'>
-					<BiSolidCheckShield size={40} />
+					<BiSolidCheckShield size={35} />
 					<p className='title'>Comprehensive Travel Insurance</p>
 				</div>
 				<div className='about__item'>
-					<ImCoinDollar size={40} />
+					<ImCoinDollar size={35} />
 					<p className='title'>Competitive Pricing</p>
 				</div>
 			</div>

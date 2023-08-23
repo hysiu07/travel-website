@@ -17,7 +17,7 @@ function Header() {
 			</video>
 			<div className='header__container'>
 				<div className='header__content-text'>
-					<h1>YourTravel Welcome!</h1>
+					<h1>YourTrip Welcome!</h1>
 					<p>Search your Holiday!</p>
 				</div>
 				<SearchPanel />

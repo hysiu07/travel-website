@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kalam&family=Montserrat&family=Ubuntu&display=swap');
+
 .nav {
 	position: fixed;
 	z-index: 400;
@@ -15,9 +17,11 @@
 		align-items: center;
 	}
 	&__logo-link {
-		font-size: 2.5rem;
+		font-size: 3rem;
 		margin-left: 5px;
 		text-decoration: none;
+		font-family: 'Kalam', cursive;
+	
 	}
 	&__logo-dot {
 		position: relative;
