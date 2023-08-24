@@ -11,16 +11,18 @@
 	width: 100vw;
 	height: 10vh;
 	padding: 10px;
-	background-color: rgba(250, 250, 250, 0.6);
+	background-color: #EEEEEE;
 	&__logo-box {
 		display: flex;
 		align-items: center;
+	
 	}
 	&__logo-link {
 		font-size: 3rem;
 		margin-left: 5px;
 		text-decoration: none;
 		font-family: 'Kalam', cursive;
+		color: #398AB9;
 	
 	}
 	&__logo-dot {

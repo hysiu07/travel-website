@@ -6,7 +6,6 @@
 	&__title {
 		text-align: center;
 		margin-bottom: 40px;
-		
 	}
 	&__items-container {
 		display: flex;
@@ -22,9 +21,25 @@
 		align-items: center;
 		flex-basis: 30%;
 		margin-bottom: 30px;
+		padding: 10px;
 		p {
 			margin-top: 5px;
 			font-size: 1.8rem;
+			text-align: center;
+		}
+	}
+}
+@media (min-width: 577px) and (max-width: 768px) {
+	.about {
+		&__item {
+			flex-basis: 40%;
+		}
+	}
+}
+@media (max-width: 576px) {
+	.about {
+		&__item {
+			flex-basis: 60%;
 		}
 	}
 }

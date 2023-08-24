@@ -1,16 +1,16 @@
 import './ReviewCard.scss';
 import ReactStars from 'react-rating-star-with-type';
 type ReviewsType = {
-	id: number;
+	id?: number;
 	name: string;
 	review: string;
 	rating: number;
 	img: string;
 };
 
-function ReviewCard({ id, img, name, review, rating }: ReviewsType) {
+function ReviewCard({ img, name, review, rating }: ReviewsType) {
 	return (
-		<div className='reviews__card' key={id}>
+		<div className='card-review' >
 			<div
 				className='img'
 				style={{

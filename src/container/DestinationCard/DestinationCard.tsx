@@ -8,7 +8,7 @@ type DestinationProps = {
 	img: string;
 };
 function DestinationCard({ text, country, img }: DestinationProps) {
-	console.log(tomorrowDate());
+	
 
 	return (
 		<div className='card'>

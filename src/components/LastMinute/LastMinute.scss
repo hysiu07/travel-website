@@ -15,11 +15,11 @@
 		width: 80%;
 	}
 }
-// @media (max-width: 992px){
-// 	.last-minute{
-// 		&__carousel{
-// 			width: 200%;
-// 		}
-// 	}
-// }
+@media (max-width: 576px){
+	.last-minute{
+		&__carousel{
+			width: 130%;
+		}
+	}
+}
 

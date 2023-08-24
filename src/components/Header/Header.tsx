@@ -5,6 +5,7 @@ import { SearchPanel } from '../../container/SearchPanel';
 function Header() {
 	return (
 		<header className='header'>
+			<div className="header__shadow"></div>
 			<video
 				src={video}
 				muted
