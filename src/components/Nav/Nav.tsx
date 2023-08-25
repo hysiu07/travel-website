@@ -7,10 +7,15 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import { NavMenu } from '../../container/NavMenu';
 import NavBtn from '../../container/NavBtn/NavBtn';
+import { useLocation } from 'react-router-dom';
+
+
 
 function Nav() {
-	const [showMenu, setShowMenu] = useState<boolean>(false)
-
+	const [showMenu, setShowMenu] = useState<boolean>(false);
+	const locationObj = useLocation();
+	const location = locationObj.pathname;
+	
 	return (
 		<nav className='nav'>
 			<div className='nav__container'>
@@ -21,7 +26,7 @@ function Nav() {
 					</Link>
 					<span className='nav__logo-dot'></span>
 				</div>
-				<NavMenu showMenu={showMenu} />
+				<NavMenu showMenu={showMenu} location={location} />
 				<NavBtn showMenu={showMenu} setShowMenu={setShowMenu} />
 			</div>
 		</nav>

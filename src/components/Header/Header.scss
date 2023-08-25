@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kalam&family=Montserrat&family=Ubuntu&display=swap');
 
 .header {
@@ -10,13 +9,13 @@
 	width: 100%;
 	height: 100vh;
 	max-width: 2000px;
-&__shadow{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	background-color: rgb(57, 138, 185, .6);
-}
+	&__shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		background-color: rgb(57, 138, 185, 0.6);
+	}
 	&__video {
 		width: 100%;
 		height: 100%;
@@ -36,9 +35,8 @@
 		color: white;
 		text-shadow: 3px 3px 3px black;
 		h1 {
-			font-size: 6rem;
+			font-size: 8rem;
 			font-family: 'Kalam', cursive;
-			
 		}
 		p {
 			font-size: 3rem;
