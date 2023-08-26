@@ -32,6 +32,7 @@
 			text-align: center;
 			font-size: 3rem;
 			margin-bottom: 20px;
+			color: rgba(49, 49, 49, 0.862745098);
 		}
 		.input-email,
 		.input-pass {
@@ -53,17 +54,22 @@
 		.btn-register {
 			padding: 20px 20px;
 			width: 70%;
-            font-size: 1.6rem;
+			font-size: 1.6rem;
 			border-radius: 10px;
 			border: none;
 			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            cursor: pointer;
+			cursor: pointer;
 		}
 		.btn-login {
 			margin: 30px 0;
 			background-color: #06bcfb;
-			background-image: linear-gradient(315deg, #6dc7e6 0%, #398AB9 74%);
-            color: white;
+			background-image: linear-gradient(315deg, #6dc7e6 0%, #398ab9 74%);
+			color: white;
+		}
+
+		.btn-register{
+			display: block;
+			margin: 0 auto;
 		}
 	}
 }

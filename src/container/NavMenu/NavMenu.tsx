@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Dispatch, SetStateAction } from 'react';
 import { FaUser } from 'react-icons/fa';
+import { AiFillHome } from 'react-icons/ai';
 import './NavMenu.scss';
 
 type PropsNavType = {
+	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
 };
 
-function NavMenu({ showMenu, location }: PropsNavType) {
+function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
 	useEffect(() => {
 		if (location !== '/') {
@@ -17,7 +20,7 @@ function NavMenu({ showMenu, location }: PropsNavType) {
 			setHiddenLink(false);
 		}
 	});
-	
+
 	return (
 		<div className='nav-menu'>
 			<div>
@@ -26,29 +29,54 @@ function NavMenu({ showMenu, location }: PropsNavType) {
 						className='nav-menu__links'
 						style={showMenu ? { right: '0' } : { right: '-150%' }}
 					>
+						<div className='nav-menu__shadow'></div>
 						<li>
-							<a href='#destinations' className='link'>
+							<a
+								href='#destinations'
+								className='link'
+								onClick={() => {
+									setShowMenu(!showMenu);
+								}}
+							>
 								Destinations
 							</a>
 						</li>
 						<li>
-							<a href='#last-minute' className='link'>
+							<a
+								href='#last-minute'
+								className='link'
+								onClick={() => {
+									setShowMenu(!showMenu);
+								}}
+							>
 								Last Minute
 							</a>
 						</li>
 						<li>
-							<a href='#about' className='link'>
+							<a
+								href='#about'
+								className='link'
+								onClick={() => {
+									setShowMenu(!showMenu);
+								}}
+							>
 								About
 							</a>
 						</li>
 						<li>
-							<a href='#contact' className='link'>
+							<a
+								href='#contact'
+								className='link'
+								onClick={() => {
+									setShowMenu(!showMenu);
+								}}
+							>
 								Contact
 							</a>
 						</li>
-						<Link to='/signIn' className='logo link'>
+						<Link to='/signIn' className='logo link' onClick={() => {}}>
 							SignIn
-							<FaUser className='user-icon'/>
+							<FaUser className='user-icon' />
 						</Link>
 					</ul>
 				) : (
@@ -56,8 +84,9 @@ function NavMenu({ showMenu, location }: PropsNavType) {
 						className='nav-menu__links'
 						style={showMenu ? { right: '0' } : { right: '-150%' }}
 					>
+						<div className='nav-menu__shadow'></div>
 						<Link to='/' className='logo link'>
-							Home
+							Home <AiFillHome />
 						</Link>
 					</ul>
 				)}

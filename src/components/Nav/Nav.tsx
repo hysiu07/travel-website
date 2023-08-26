@@ -26,7 +26,7 @@ function Nav() {
 					</Link>
 					<span className='nav__logo-dot'></span>
 				</div>
-				<NavMenu showMenu={showMenu} location={location} />
+				<NavMenu showMenu={showMenu} location={location} setShowMenu={ setShowMenu} />
 				<NavBtn showMenu={showMenu} setShowMenu={setShowMenu} />
 			</div>
 		</nav>
