@@ -15,7 +15,7 @@ function SignIn() {
 		password: '',
 	});
 
-	const checkValue = (e: any) => {
+	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		const target = e.target;
 		const name = target.name;
 
