@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useContext} from 'react';
 import { Nav } from '../';
 import { Link } from 'react-router-dom';
 import './SignIn.scss';
+import { UserContext } from '../../context/UserContext';
 
 type inputValueTypes = {
 	email: string;
@@ -9,6 +10,8 @@ type inputValueTypes = {
 };
 
 function SignIn() {
+	const userContext = useContext(UserContext);
+	console.log(userContext?.user);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [inputValue, setInputValue] = useState<inputValueTypes>({
 		email: '',
@@ -29,6 +32,9 @@ function SignIn() {
 			setDisabledBtn(true);
 		}
 	};
+	const logIn = () => {
+		
+	}
 
 	return (
 		<div className='signin'>
@@ -62,7 +68,7 @@ function SignIn() {
 								: { backgroundColor: '' }
 						}
 					>
-						LOGIN
+						Login
 					</button>
 				</form>
 				<button className='btn-register'>

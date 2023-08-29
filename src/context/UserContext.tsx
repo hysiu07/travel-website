@@ -10,18 +10,18 @@ type UserContextProviderProps = {
 	children: React.ReactNode;
 };
 type UserContextType = {
-	user: UserType | null;
-	setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+	user: UserType[] | null;
+	setUser: React.Dispatch<React.SetStateAction<UserType[] | null>>;
 };
 export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
-	const [user, setUser] = useState<UserType | null>({
+	const [user, setUser] = useState<UserType[] | null>([{
 		name: '',
 		email: '',
 		password: '',
 		logIn: false,
-	});
+	}]);
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
 			{children}

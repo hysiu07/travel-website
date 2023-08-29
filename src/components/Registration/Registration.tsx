@@ -3,24 +3,18 @@ import { Nav } from '..';
 import './Registration.scss';
 import { UserContext } from '../../context/UserContext';
 import { ThreeCircles } from 'react-loader-spinner';
+import { SnackBar } from '../../container/SnackBar';
+import { Link } from 'react-router-dom';
+import { ErrorsType, UserInfoType } from '../../types';
 
-type ErrorsType = {
-	errorName: boolean | null;
-	errorEmail: boolean | null;
-	errorPass: boolean | null;
-	errorRepeatPass: boolean | null;
-};
-type UserInfoType = {
-	name: string;
-	email: string;
-	password: string;
-	repeatPassword: string;
-};
 function Registration() {
+	const userContext = useContext(UserContext);
+	console.log(userContext?.user);
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
-	const [successRegistration, setSuccessRegistration] = useState<string>('')
-	const userContext = useContext(UserContext);
+	const [successRegistration, setSuccessRegistration] =
+		useState<boolean>(false);
+	const [signInBtn, setSignInBtn] = useState<boolean>(false);
 
 	const [error, setError] = useState<ErrorsType>({
 		errorName: null,
@@ -170,7 +164,7 @@ function Registration() {
 		}
 		checkValidation();
 	};
-	const cleanInputs = () => {
+	const clearInputs = () => {
 		setInfoUser({
 			name: '',
 			email: '',
@@ -179,26 +173,38 @@ function Registration() {
 		});
 	};
 
+	const timeOut = () => {
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(clearInputs());
+			}, 3000);
+		});
+	};
+	async function asyncFuncionRegistration() {
+		userContext?.setUser(...useContext.user, infoUser);
+		await setShowLoader(true);
+		await timeOut();
+		await setShowLoader(false);
+		await setSuccessRegistration(true);
+		await setTimeout(() => {
+			setSuccessRegistration(false);
+		}, 5000);
+		await setSignInBtn(true);
+	}
 
 	const submit: React.FormEventHandler = (e) => {
 		e.preventDefault();
-		userContext?.setUser({
-			name: infoUser.name,
-			email: infoUser.email,
-			password: infoUser.password,
-			logIn: true,
-		});
-		setShowLoader(true);
-		setTimeout(() => {
-			setShowLoader(false);
-			cleanInputs();
-		}, 3000);
+		asyncFuncionRegistration();
 	};
 
 	return (
 		<div className='registration'>
 			<div className='registration__shadow'></div>
 			<Nav />
+			<SnackBar
+				text='Registration Success!'
+				position={successRegistration ? { right: '50px' } : { right: '-300px' }}
+			/>
 
 			<div className='registration__panel'>
 				<h3 className='title'>Registration</h3>
@@ -278,9 +284,21 @@ function Registration() {
 								: { backgroundColor: '' }
 						}
 					>
-						REGISTER
+						Register
 					</button>
 				</form>
+				{signInBtn && (
+					<button
+						className='btn-signIn'
+						onClick={() => {
+							setSignInBtn(false);
+						}}
+					>
+						<Link to='/signIn' className='link-signIn'>
+							SignIn
+						</Link>
+					</button>
+				)}
 			</div>
 		</div>
 	);
