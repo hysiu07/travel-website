@@ -9,7 +9,6 @@ import { ErrorsType, UserInfoType } from '../../types';
 
 function Registration() {
 	const userContext = useContext(UserContext);
-	console.log(userContext?.user);
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [successRegistration, setSuccessRegistration] =
@@ -20,20 +19,20 @@ function Registration() {
 		errorName: null,
 		errorEmail: null,
 		errorPass: null,
-		errorRepeatPass: null,
+		errorConfirmPass: null,
 	});
 
 	const [errorInfo, setErrorInfo] = useState({
 		errorInfoName: '',
 		errorInfoEmail: '',
 		errorInfoPassword: '',
-		errorInfoPasswordRepeat: '',
+		errorInfoPasswordConfirm: '',
 	});
 	const [infoUser, setInfoUser] = useState<UserInfoType>({
 		name: '',
 		email: '',
 		password: '',
-		repeatPassword: '',
+		confirmPassword: '',
 	});
 
 	const checkValidation = () => {
@@ -41,7 +40,7 @@ function Registration() {
 			error.errorName !== false ||
 			error.errorEmail !== false ||
 			error.errorPass !== false ||
-			error.errorRepeatPass !== false
+			error.errorConfirmPass !== false
 		) {
 			setDisabledBtn(true);
 		} else {
@@ -142,24 +141,24 @@ function Registration() {
 		}
 		checkValidation();
 	};
-	const handleValidationRepeatPass = () => {
-		if (infoUser.password !== infoUser.repeatPassword) {
+	const handleValidationConfirmPass = () => {
+		if (infoUser.password !== infoUser.confirmPassword) {
 			setError({
 				...error,
-				errorRepeatPass: true,
+				errorConfirmPass: true,
 			});
 			setErrorInfo({
 				...errorInfo,
-				errorInfoPasswordRepeat: 'You must enter the same passwords',
+				errorInfoPasswordConfirm: 'You must enter the same passwords',
 			});
 		} else {
 			setError({
 				...error,
-				errorRepeatPass: false,
+				errorConfirmPass: false,
 			});
 			setErrorInfo({
 				...errorInfo,
-				errorInfoPasswordRepeat: '',
+				errorInfoPasswordConfirm: '',
 			});
 		}
 		checkValidation();
@@ -169,7 +168,7 @@ function Registration() {
 			name: '',
 			email: '',
 			password: '',
-			repeatPassword: '',
+			confirmPassword: '',
 		});
 	};
 
@@ -181,11 +180,16 @@ function Registration() {
 		});
 	};
 	async function asyncFuncionRegistration() {
-		userContext?.setUser(...useContext.user, infoUser);
+		
+
 		await setShowLoader(true);
 		await timeOut();
 		await setShowLoader(false);
 		await setSuccessRegistration(true);
+		await userContext?.setUsersRegistration([
+			...userContext.usersRegistration,
+			infoUser,
+		]);
 		await setTimeout(() => {
 			setSuccessRegistration(false);
 		}, 5000);
@@ -261,18 +265,18 @@ function Registration() {
 					/>
 					<p>{errorInfo.errorInfoPassword}</p>
 					<input
-						name='repeatPassword'
+						name='confirmPassword'
 						type='password'
 						placeholder='Repeat password'
 						className='input-repeat-password'
-						value={infoUser.repeatPassword}
+						value={infoUser.confirmPassword}
 						onChange={handleInfoUser}
-						onBlur={handleValidationRepeatPass}
+						onBlur={handleValidationConfirmPass}
 						style={
 							error.errorPass ? { border: '2px solid red' } : { border: 'none' }
 						}
 					/>
-					<p>{errorInfo.errorInfoPasswordRepeat}</p>
+					<p>{errorInfo.errorInfoPasswordConfirm}</p>
 
 					<button
 						type='submit'

@@ -3,11 +3,12 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	width: 100vw;
+	height: 100vh;
 	background-image: url('../../img/thailand-direction.jpeg');
 	background-position: center;
 	background-size: cover;
-	width: 100vw;
-	height: 100vh;
+	overflow: hidden;
 	&__shadow {
 		position: absolute;
 		top: 0px;
@@ -16,6 +17,10 @@
 		background-color: rgb(57, 138, 185, 0.6);
 	}
 	&__panel {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		z-index: 200;
 		padding: 3%;
 		width: 500px;
@@ -27,6 +32,9 @@
 			flex-direction: column;
 			align-items: center;
 			width: 100%;
+			.error {
+				text-align: center;
+			}
 		}
 		.title {
 			text-align: center;
@@ -48,7 +56,7 @@
 			font-size: 1.4rem;
 		}
 		.input-email {
-			margin-bottom: 30px;
+			margin: 30px 0;
 		}
 		.btn-login,
 		.btn-register {
@@ -59,7 +67,7 @@
 			border: none;
 			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 			cursor: pointer;
-			a{
+			a {
 				text-decoration: none;
 				color: gray;
 			}
@@ -71,7 +79,7 @@
 			color: white;
 		}
 
-		.btn-register{
+		.btn-register {
 			display: block;
 			margin: 0 auto;
 		}

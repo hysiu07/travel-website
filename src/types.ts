@@ -2,11 +2,11 @@
 	errorName: boolean | null;
 	errorEmail: boolean | null;
 	errorPass: boolean | null;
-	errorRepeatPass: boolean | null;
+	errorConfirmPass: boolean | null;
 };
  export type UserInfoType = {
 	name: string;
 	email: string;
 	password: string;
-	repeatPassword: string;
+	confirmPassword: string;
 };
