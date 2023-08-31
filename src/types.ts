@@ -10,3 +10,7 @@
 	password: string;
 	confirmPassword: string;
 };
+export type inputValueTypes = {
+	email: string;
+	password: string;
+};

@@ -1,21 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kalam&family=Montserrat&family=Roboto&family=Ubuntu&display=swap');
 
 .nav-menu {
-
 	&__links {
 		display: flex;
 		li {
 			list-style: none;
 			margin: 0 20px;
 			z-index: 500;
-			
 		}
 		.link {
 			text-decoration: none;
 			font-size: 2.2rem;
 			font-family: 'Roboto', sans-serif;
 			color: #313131dc;
-			transition: .3s;
+			transition: 0.3s;
 			cursor: pointer;
 			.user-icon {
 				margin-left: 8px;
@@ -42,7 +40,7 @@
 			align-items: center;
 			width: 100vw;
 			height: 100vh;
-			background-image: url('../../img/dominican-direction.jpeg');
+			background-image: url('../../../img/dominican-direction.jpeg');
 			background-position: center;
 			background-size: cover;
 			transition: 0.5s;

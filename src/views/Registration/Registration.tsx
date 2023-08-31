@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Nav } from '..';
+import { Nav } from '../../components';
 import './Registration.scss';
 import { UserContext } from '../../context/UserContext';
 import { ThreeCircles } from 'react-loader-spinner';
@@ -180,8 +180,6 @@ function Registration() {
 		});
 	};
 	async function asyncFuncionRegistration() {
-		
-
 		await setShowLoader(true);
 		await timeOut();
 		await setShowLoader(false);

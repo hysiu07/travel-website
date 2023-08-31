@@ -1,22 +1,16 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
-import { Nav } from '../';
+import { Nav } from '../../components';
 import { Link } from 'react-router-dom';
 import './SignIn.scss';
 import { UserContext } from '../../context/UserContext';
-import { json } from 'stream/consumers';
-import { type } from 'os';
-
-type inputValueTypes = {
-	email: string;
-	password: string;
-};
+import { inputValueTypes } from '../../types';
 
 function SignIn() {
 	const userContext = useContext(UserContext);
 	const usersData = userContext?.usersRegistration;
-	console.log(userContext?.user);
+
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [successLogIn, setSuccessLogIn] = useState(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
@@ -25,6 +19,14 @@ function SignIn() {
 		password: '',
 	});
 	const [errorInfo, setErrorInfo] = useState<string>('');
+	useEffect(() => {
+		const userLocalStorage = localStorage.getItem('user');
+		if (typeof userLocalStorage === 'string') {
+			const user = JSON.parse(userLocalStorage);
+			userContext?.setUser(user);
+			console.log(user, 'tutaj user z useEffecta App');
+		}
+	}, []);
 
 	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		const target = e.target;
@@ -68,12 +70,13 @@ function SignIn() {
 	const logIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault();
 
-		usersData?.map((user) => {
+		usersData?.forEach((user) => {
 			if (
 				inputValue.email === user.email &&
 				inputValue.password === user.password
 			) {
 				setErrorInfo('');
+				asyncFuncionLogIn();
 				localStorage.setItem(
 					'user',
 					JSON.stringify({
@@ -82,17 +85,17 @@ function SignIn() {
 						logIn: true,
 					})
 				);
-				const userLocal = localStorage.getItem('user');
-				if (typeof userLocal === 'string') {
-					const pars = JSON.parse(userLocal)
-					console.log(pars);
+				const userLocalStorage = localStorage.getItem('user');
+				if (typeof userLocalStorage === 'string') {
+					const user2 = JSON.parse(userLocalStorage);
+					userContext?.setUser(user2);
+					
 				}
-				// userContext?.setUser(JSON.parse(localStorage.getItem('user')));
-				asyncFuncionLogIn();
 			} else {
 				setErrorInfo('Wrong name or password');
 			}
 		});
+		console.log(userContext?.user, 'funckja na przycisk');
 	};
 
 	return (

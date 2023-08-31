@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
 import { FaUser } from 'react-icons/fa';
@@ -9,18 +9,18 @@ type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
+	logged?: boolean;
 };
-
-function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
+function NavMenu({ showMenu, location, setShowMenu, logged }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
+
 	useEffect(() => {
 		if (location !== '/') {
 			setHiddenLink(true);
 		} else {
 			setHiddenLink(false);
 		}
-	});
-
+	}, []);
 	return (
 		<div className='nav-menu'>
 			<div>
@@ -74,10 +74,17 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 								Contact
 							</a>
 						</li>
-						<Link to='/signIn' className='logo link' onClick={() => {}}>
-							SignIn
-							<FaUser className='user-icon' />
-						</Link>
+						{logged ? (
+							<Link to='/myAccount' className='logo link' onClick={() => {}}>
+								MyAccount
+								<FaUser className='user-icon' />
+							</Link>
+						) : (
+							<Link to='/signIn' className='logo link' onClick={() => {}}>
+								SignIn
+								<FaUser className='user-icon' />
+							</Link>
+						)}
 					</ul>
 				) : (
 					<ul
