@@ -19,15 +19,6 @@ function SignIn() {
 		password: '',
 	});
 	const [errorInfo, setErrorInfo] = useState<string>('');
-	useEffect(() => {
-		const userLocalStorage = localStorage.getItem('user');
-		if (typeof userLocalStorage === 'string') {
-			const user = JSON.parse(userLocalStorage);
-			userContext?.setUser(user);
-			console.log(user, 'tutaj user z useEffecta App');
-		}
-	}, []);
-
 	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		const target = e.target;
 		const name = target.name;
@@ -89,13 +80,11 @@ function SignIn() {
 				if (typeof userLocalStorage === 'string') {
 					const user2 = JSON.parse(userLocalStorage);
 					userContext?.setUser(user2);
-					
 				}
 			} else {
 				setErrorInfo('Wrong name or password');
 			}
 		});
-		console.log(userContext?.user, 'funckja na przycisk');
 	};
 
 	return (

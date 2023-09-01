@@ -4,17 +4,19 @@ import { Dispatch, SetStateAction } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import './NavMenu.scss';
-
+import { UserContext } from '../../../context/UserContext';
 type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
-	logged?: boolean;
 };
-function NavMenu({ showMenu, location, setShowMenu, logged }: PropsNavType) {
+function NavMenu({ showMenu, location, setShowMenu}: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
-
+	const userContext = useContext(UserContext);
+	const userLogged = userContext?.user?.logIn
+	
 	useEffect(() => {
+
 		if (location !== '/') {
 			setHiddenLink(true);
 		} else {
@@ -74,7 +76,7 @@ function NavMenu({ showMenu, location, setShowMenu, logged }: PropsNavType) {
 								Contact
 							</a>
 						</li>
-						{logged ? (
+						{userLogged ? (
 							<Link to='/myAccount' className='logo link' onClick={() => {}}>
 								MyAccount
 								<FaUser className='user-icon' />

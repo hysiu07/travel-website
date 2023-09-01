@@ -11,17 +11,19 @@ import {
 	Reviews,
 	Contact,
 } from '../components';
-function MainView() {
-	const [user, setUser] = useState();
-
+function MainView() { 
+	const userContext = useContext(UserContext);
+	const [userLogged, setUserLogged] = useState();
 	useEffect(() => {
 		const userLocalStorage = localStorage.getItem('user');
 		if (typeof userLocalStorage === 'string') {
 			const user2 = JSON.parse(userLocalStorage);
-			setUser(user2);
+			setUserLogged(user2);
+			userContext?.setUser(user2);
 		}
 	}, []);
-	console.log(user);
+	console.log(userLogged, ' zalogowany ');
+	
 	return (
 		<div>
 			<Nav />

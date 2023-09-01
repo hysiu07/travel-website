@@ -9,22 +9,11 @@ import { NavMenu } from './NavMenu';
 import { NavBtn } from './NavBtn';
 import { useLocation } from 'react-router-dom';
 
-
 function Nav() {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const locationObj = useLocation();
 	const location = locationObj.pathname;
-	const [user, setUser] = useState();
-	
-	useEffect(() => {
-		const userLocalStorage = localStorage.getItem('user');
-		if (typeof userLocalStorage === 'string') {
-			const user2 = JSON.parse(userLocalStorage);
-			setUser(user2);
-		}
-	}, []);
 
-	console.log(user, 'clg z navu');
 	return (
 		<nav className='nav'>
 			<div className='nav__container'>
