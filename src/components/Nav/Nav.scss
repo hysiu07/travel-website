@@ -15,15 +15,13 @@
 	&__logo-box {
 		display: flex;
 		align-items: center;
-	
 	}
 	&__logo-link {
 		font-size: 3rem;
 		margin-left: 5px;
 		text-decoration: none;
 		font-family: 'Kalam', cursive;
-		color: #398AB9;
-	
+		color: #398ab9;
 	}
 	&__logo-dot {
 		position: relative;
@@ -43,8 +41,4 @@
 		width: 100%;
 		max-width: 1200px;
 	}
-	
-
 }
-
-

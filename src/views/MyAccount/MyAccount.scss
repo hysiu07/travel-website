@@ -1,5 +1,5 @@
-.my-account{
-    display: flex;
+.my-account {
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	position: relative;
@@ -9,4 +9,7 @@
 	background-position: center;
 	background-size: cover;
 	overflow: hidden;
+	button {
+		padding: 10px 20px;
+	}
 }

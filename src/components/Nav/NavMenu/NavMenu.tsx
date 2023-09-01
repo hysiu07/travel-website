@@ -10,13 +10,12 @@ type PropsNavType = {
 	showMenu: boolean;
 	location?: string;
 };
-function NavMenu({ showMenu, location, setShowMenu}: PropsNavType) {
+function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
 	const userContext = useContext(UserContext);
-	const userLogged = userContext?.user?.logIn
-	
-	useEffect(() => {
+	const userLogged: boolean | undefined = userContext?.user?.logIn;
 
+	useEffect(() => {
 		if (location !== '/') {
 			setHiddenLink(true);
 		} else {

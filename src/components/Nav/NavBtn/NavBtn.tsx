@@ -8,8 +8,7 @@ type NavBtnPropsType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 };
 
-
-function NavBtn({ showMenu,  setShowMenu }: NavBtnPropsType) {
+function NavBtn({ showMenu, setShowMenu }: NavBtnPropsType) {
 	return showMenu ? (
 		<IoClose
 			size={40}

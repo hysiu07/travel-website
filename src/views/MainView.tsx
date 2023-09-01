@@ -11,19 +11,23 @@ import {
 	Reviews,
 	Contact,
 } from '../components';
-function MainView() { 
+import { FavPanel } from '../container/FavoritesPanel';
+
+function MainView() {
 	const userContext = useContext(UserContext);
-	const [userLogged, setUserLogged] = useState();
+	// const [userLogged, setUserLogged] = useState();
 	useEffect(() => {
 		const userLocalStorage = localStorage.getItem('user');
 		if (typeof userLocalStorage === 'string') {
 			const user2 = JSON.parse(userLocalStorage);
-			setUserLogged(user2);
 			userContext?.setUser(user2);
+			// setUserLogged(user2);
 		}
 	}, []);
-	console.log(userLogged, ' zalogowany ');
-	
+	// pozniej to ogarnac
+	// console.log(userContext?.user, ' zalogowany do contextu ');
+	// console.log(userLogged, ' zalogowany ze State ');
+
 	return (
 		<div>
 			<Nav />
@@ -34,6 +38,7 @@ function MainView() {
 			<Insurance />
 			<Reviews />
 			<Contact />
+			<FavPanel />
 		</div>
 	);
 }
