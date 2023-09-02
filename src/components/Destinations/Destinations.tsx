@@ -13,7 +13,6 @@ function Destinations() {
 					return (
 						<DestinationCard
 							key={direction.id}
-							text={direction.info}
 							country={direction.country}
 							img={direction.img}
 						/>

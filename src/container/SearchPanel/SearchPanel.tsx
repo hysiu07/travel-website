@@ -1,8 +1,18 @@
 import './SearchPanel.scss';
+
 function SearchPanel() {
+	const search: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault()
+		console.log('dziala');
+	};
+
 	return (
-		<div >
-			<form action='' className='search-panel'>
+		<div>
+			<form
+				action='Search Your Destination'
+				className='search-panel'
+				onSubmit={search}
+			>
 				<div className='search-panel__box-item'>
 					<label htmlFor='search destination' className='search-panel__label'>
 						Search your destination:
@@ -34,7 +44,9 @@ function SearchPanel() {
 						min={1000}
 					/>
 				</div>
-				<button className='search-panel__button'>Search!</button>
+				<button className='search-panel__button' type='submit'>
+					Search!
+				</button>
 			</form>
 		</div>
 	);

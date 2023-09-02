@@ -1,9 +1,10 @@
-import { LastMinuteCard } from '../../container/LastMinuteCard';
+import { useEffect, useState } from 'react';
+import { DirectionCard } from '../../container/DirectionCard';
 import { travels } from '../../data/travels';
 import './LastMinute.scss';
 import Slider from 'react-slick';
 import useWindowWidth from '../../container/Hooks/useWindowWidth';
-import { useEffect, useState } from 'react';
+
 function LastMinute() {
 	const [countCard, setCountCard] = useState<number>(3);
 
@@ -11,15 +12,14 @@ function LastMinute() {
 
 	useEffect(() => {
 		if (width < 850) {
-		setCountCard(1)
-		} else if (width > 850 && width < 1300)
-			setCountCard(2)
-		else if (width > 1300)
-			setCountCard(3)
+			setCountCard(1);
+		} else if (width > 850 && width < 1300) {
+			setCountCard(2);
+		} else if (width > 1300) {
+			setCountCard(3);
+		}
 	}, []);
-	
-	
-	
+
 	const settings = {
 		infinite: true,
 		slidesToShow: countCard,
@@ -29,7 +29,6 @@ function LastMinute() {
 		autoplaySpeed: 3000,
 		cssEase: 'linear',
 		pauseOnHover: true,
-	
 	};
 	return (
 		<div id='last-minute'>
@@ -39,7 +38,7 @@ function LastMinute() {
 					{travels.map((direction) => {
 						if (direction.lastMinute) {
 							return (
-								<LastMinuteCard
+								<DirectionCard
 									key={direction.id}
 									img={direction.img}
 									hotel={direction.hotel}

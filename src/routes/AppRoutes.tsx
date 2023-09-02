@@ -1,8 +1,8 @@
+import { Routes, Route } from 'react-router-dom';
 import MainView from '../views/MainView';
 import { SignIn, Registration } from '../components';
-import { Routes, Route } from 'react-router-dom';
-import MyAccount from '../views/MyAccount/MyAccount';
-
+import { MyAccount } from '../views/MyAccount';
+import { Destination } from '../views/Destination';
 const AppRoutes = () => {
 	return (
 		<Routes>
@@ -10,8 +10,10 @@ const AppRoutes = () => {
 			<Route path='/signIn' element={<SignIn />} />
 			<Route path='/registration' element={<Registration />} />
 			<Route path='/myAccount' element={<MyAccount />} />
+			{/* <Route path='/destination' element={<Destination />} /> */}
+			<Route path='/destination/:id' element={<Destination />} />
 		</Routes>
 	);
 };
 
-export default AppRoutes
+export default AppRoutes;

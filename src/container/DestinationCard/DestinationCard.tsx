@@ -1,21 +1,17 @@
 import './DestinationCard.scss';
-
-import { tomorrowDate } from '../Hooks/tomorrowDate';
+import { Link } from 'react-router-dom';
 
 type DestinationProps = {
-	text: string;
 	country: string;
 	img: string;
 };
-function DestinationCard({ text, country, img }: DestinationProps) {
-	
-
+function DestinationCard({ country, img }: DestinationProps) {
 	return (
 		<div className='card'>
-			<img src={img} className='card-img' />
-			<h3 className='card-country'>{country}</h3>
-			{/* <div className='card-text'>{text}</div>
-			<button className='card-button'>Check directions!</button> */}
+			<Link to={`/destination/${country}`} onClick={() => {}}>
+				<img src={img} className='card-img' />
+				<h4 className='card-country'>{country}</h4>
+			</Link>
 		</div>
 	);
 }

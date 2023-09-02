@@ -1,9 +1,9 @@
 import ReactStars from 'react-rating-star-with-type';
 import { TiTick } from 'react-icons/ti';
 import { AiOutlineHeart } from 'react-icons/ai';
-import './LastminuteCard.scss'
+import './DirectionCard.scss';
 
-type LastMinuteCardPropsType = {
+type DirectionCardPropsType = {
 	id?: number;
 	img: string;
 	hotel: string;
@@ -14,7 +14,7 @@ type LastMinuteCardPropsType = {
 	date: string;
 };
 
-function LastMinuteCard({
+function DirectionCard({
 	img,
 	hotel,
 	stars,
@@ -22,10 +22,9 @@ function LastMinuteCard({
 	city,
 	price,
 	date,
-}: LastMinuteCardPropsType) {
-
+}: DirectionCardPropsType) {
 	return (
-		<div className='last-minute__card'>
+		<div className='direction-card'>
 			<div className='container'>
 				<AiOutlineHeart className='icon-heart' size={35} />
 				<div className='offer-label'>
@@ -33,11 +32,11 @@ function LastMinuteCard({
 				</div>
 				<img src={img} alt='' className='img' />
 				<div className='text-content'>
-					<h3 className='title'>{hotel}</h3>
+					<h4 className='title'>{hotel}</h4>
 					<ReactStars count={stars} size={24} inactiveColor='gold' />
-					<h4 className='city'>
+					<h5 className='city'>
 						{country}/{city}
-					</h4>
+					</h5>
 					<p>
 						<span>
 							<TiTick size={15} />
@@ -65,4 +64,4 @@ function LastMinuteCard({
 		</div>
 	);
 }
-export default LastMinuteCard;
+export default DirectionCard;
