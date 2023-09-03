@@ -4,10 +4,11 @@ import './Destination.scss';
 import { directionInfo } from '../../data/directionInfo';
 import { Destinations, Nav } from '../../components';
 import CountryInfo from './CountryInfo/CountryInfo';
-import { Map } from '../../container/Map';
 import { SliderCards } from '../../container/SliderCards';
 import { travels } from '../../data/travels';
 import { DirectionCard } from '../../container/DirectionCard';
+import { Weather } from '../../container/Weater';
+import axios from 'axios';
 
 type DestinationType = {
 	id?: number;
@@ -37,6 +38,11 @@ function Destination() {
 		});
 	}, [params.id]);
 
+	const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
+	const API_KEY = 'c75220d8681be195d50609327ea95e12';
+	axios.get(API + 'Stavanger' + '&appid=' + API_KEY).then((res) => {
+		console.log(res.data);
+	});
 	return (
 		<div className='destination'>
 			<Nav />
@@ -66,6 +72,7 @@ function Destination() {
 					}
 				})}
 			</SliderCards>
+			<Weather />
 			<Destinations />
 		</div>
 	);
