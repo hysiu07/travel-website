@@ -12,6 +12,7 @@ type DirectionCardPropsType = {
 	city: string;
 	price: number;
 	date: string;
+	lastMinute: boolean;
 };
 
 function DirectionCard({
@@ -22,14 +23,17 @@ function DirectionCard({
 	city,
 	price,
 	date,
+	lastMinute,
 }: DirectionCardPropsType) {
 	return (
 		<div className='direction-card'>
 			<div className='container'>
 				<AiOutlineHeart className='icon-heart' size={35} />
-				<div className='offer-label'>
-					<p>Last Minute!</p>
-				</div>
+				{lastMinute && (
+					<div className='offer-label'>
+						<p>Last Minute!</p>
+					</div>
+				)}
 				<img src={img} alt='' className='img' />
 				<div className='text-content'>
 					<h4 className='title'>{hotel}</h4>

@@ -17,17 +17,48 @@
 		background-position: center;
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	}
-	&__text-container {
+	&__content-container {
+		width: 100%;
 		padding: 2% 5%;
-		.text-info {
-			margin-top: 50px;
+		.country-info-text {
+			margin-top: 20px;
 			max-width: 1000px;
 			font-size: 1.8rem;
 		}
-		.attractions-box {
+
+		.box {
 			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			flex-wrap: wrap;
+			margin: 50px 0px;
+			.attractions {
+				width: 50%;
+			}
+			.map-box {
+				width: 50%;
+			}
+		}
+		.attraction-box {
+			display: flex;
+			align-items: center;
+
 			p {
 				font-size: 1.6rem;
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.country-info {
+		.box {
+			flex-direction: column;
+			.attractions {
+				width: 100%;
+			}
+			.map-box {
+				margin-top: 30px;
+				width: 100%;
 			}
 		}
 	}

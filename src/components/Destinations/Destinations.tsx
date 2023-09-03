@@ -15,6 +15,7 @@ function Destinations() {
 							key={direction.id}
 							country={direction.country}
 							img={direction.img}
+							
 						/>
 					);
 				})}

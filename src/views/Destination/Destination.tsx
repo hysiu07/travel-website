@@ -5,6 +5,9 @@ import { directionInfo } from '../../data/directionInfo';
 import { Destinations, Nav } from '../../components';
 import CountryInfo from './CountryInfo/CountryInfo';
 import { Map } from '../../container/Map';
+import { SliderCards } from '../../container/SliderCards';
+import { travels } from '../../data/travels';
+import { DirectionCard } from '../../container/DirectionCard';
 
 type DestinationType = {
 	id?: number;
@@ -12,7 +15,7 @@ type DestinationType = {
 	info: string;
 	img: string;
 	attractions: string[];
-	position: [number, number] ;
+	position: [number, number];
 };
 
 function Destination() {
@@ -27,13 +30,13 @@ function Destination() {
 	const params = useParams();
 
 	useEffect(() => {
-		directionInfo.forEach((destination) => {
+		directionInfo.map((destination) => {
 			if (params.id === destination.country) {
 				setDestinationInfo(destination);
 			}
 		});
+	}, [params.id]);
 
-	},[]);
 	return (
 		<div className='destination'>
 			<Nav />
@@ -42,8 +45,27 @@ function Destination() {
 				country={destinationInfo?.country}
 				info={destinationInfo.info}
 				attractions={destinationInfo.attractions}
+				position={destinationInfo.position}
 			/>
-			<Map position={destinationInfo.position} />
+			<SliderCards>
+				{travels.map((direction) => {
+					if (direction.country === destinationInfo.country) {
+						return (
+							<DirectionCard
+								key={direction.id}
+								img={direction.img}
+								hotel={direction.hotel}
+								stars={direction.stars}
+								country={direction.country}
+								city={direction.city}
+								date={direction.date}
+								price={direction.price}
+								lastMinute={direction.lastMinute}
+							/>
+						);
+					}
+				})}
+			</SliderCards>
 			<Destinations />
 		</div>
 	);

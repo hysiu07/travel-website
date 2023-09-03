@@ -10,7 +10,6 @@ const AppRoutes = () => {
 			<Route path='/signIn' element={<SignIn />} />
 			<Route path='/registration' element={<Registration />} />
 			<Route path='/myAccount' element={<MyAccount />} />
-			{/* <Route path='/destination' element={<Destination />} /> */}
 			<Route path='/destination/:id' element={<Destination />} />
 		</Routes>
 	);

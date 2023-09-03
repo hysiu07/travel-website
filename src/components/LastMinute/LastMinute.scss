@@ -2,27 +2,5 @@
 	&__title {
 		text-align: center;
 	}
-	&__container {
-		display: flex;
-		justify-content: center;
-		padding: 5%;
-		width: 100%;
-		overflow: hidden;
-	}
-
-	&__title {
-		text-align: center;
-	}
-
-	&__carousel {
-		width: 80%;
-	}
-}
-@media (max-width: 576px){
-	.last-minute{
-		&__carousel{
-			width: 130%;
-		}
-	}
 }
 
