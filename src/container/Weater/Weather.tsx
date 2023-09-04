@@ -1,31 +1,84 @@
-
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import './Weather.scss';
+import clouds from './img/cloud.png';
+import drizzle from './img/drizzle.png';
+import fog from './img/fog.png';
+import ice from './img/ice.png';
+import rain from './img/rain.png';
+import sun from './img/sun.png';
+import thunder from './img/thunder.png';
+import unknown from './img/unknown.png';
 
-function Weather() {
+type PropsWeatherType = {
+	city: string;
+};
+type CityForecastObjType = {
+	temp: number;
+	humidity: number;
+	weather: string;
+	id: number;
+};
+function Weather({ city }: PropsWeatherType) {
+	const params = useParams();
+	const [cityForecast, setCityForecast] = useState<CityForecastObjType>({
+		temp: 0,
+		humidity: 0,
+		weather: '',
+		id: 0,
+	});
+	const [photo, setPhoto] = useState(sun);
+	const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
+	const API_KEY = 'c75220d8681be195d50609327ea95e12';
+
+	useEffect(() => {
+		axios
+			.get(API + city + '&appid=' + API_KEY)
+			.then((res) => {
+				console.log(res.data);
+				setCityForecast({
+					temp: Math.floor(res.data.main.temp - 270),
+					humidity: res.data.main.humidity,
+					weather: res.data.weather[0].main,
+					id: res.data.weather[0].id,
+				});
+				// setPhoto(() => {
+				//     if (cityForecast.id >= 200 && cityForecast.id < 300) {
+				//         return ''
+				//     }
+				// });
+			})
+			.catch(() => {
+				console.error('error');
+			});
+	}, [params.id, city]);
 
 	return (
-        <div className='weather'>
-            <div className='weather__shadow'></div>
+		<div className='weather'>
+			<div className='weather__shadow'></div>
 			<div className='weather__content-container'>
-				<h3 className='title'>Weater</h3>
+				<h3 className='title'>Weater Forecast</h3>
 				<div className='weather-position-box'>
 					<div className='weather-position-box__name-box'>
-						<h4>London</h4>
+						<h4>{city}</h4>
 					</div>
-					<div className='weather-position-box__img'>dfd</div>
+					<div className='weather-position-box__img'>
+						<img src={photo} alt='' />
+					</div>
 				</div>
 				<div className='weather-info-box'>
 					<div className='box'>
 						<h5>Weather:</h5>
-						<p>cv</p>
+						<p>{cityForecast?.weather}</p>
 					</div>
 					<div className='box'>
 						<h5>Temperature:</h5>
-						<p>vcv</p>
+						<p>{cityForecast?.temp} °C</p>
 					</div>
 					<div className='box'>
 						<h5>Humidity:</h5>
-						<p>cc</p>
+						<p>{cityForecast?.humidity} %</p>
 					</div>
 				</div>
 			</div>
