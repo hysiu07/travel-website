@@ -15,6 +15,7 @@ type DestinationType = {
 	capital: string;
 	info: string;
 	img: string;
+	imgArray?: string[] | [];
 	attractions: string[];
 	position: [number, number];
 };
@@ -25,6 +26,7 @@ function Destination() {
 		capital: '',
 		info: '',
 		img: '',
+		imgArray:[],
 		attractions: [],
 		position: [28.877147, -9.697155],
 	});
@@ -37,12 +39,14 @@ function Destination() {
 				setDestinationInfo(destination);
 			}
 		});
+		window.scrollTo(0, 0);
 	}, [params.id]);
 
 	return (
 		<div className='destination'>
 			<Nav />
 			<CountryInfo
+				imgArray={destinationInfo.imgArray}
 				img={destinationInfo?.img}
 				country={destinationInfo?.country}
 				info={destinationInfo.info}
