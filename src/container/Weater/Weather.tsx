@@ -8,7 +8,7 @@ import fog from './img/fog.png';
 import ice from './img/ice.png';
 import rain from './img/rain.png';
 import sun from './img/sun.png';
-import thunder from './img/thunder.png';
+import thunder from './img/thunderstorm.png';
 import unknown from './img/unknown.png';
 
 type PropsWeatherType = {
@@ -28,7 +28,7 @@ function Weather({ city }: PropsWeatherType) {
 		weather: '',
 		id: 0,
 	});
-	const [photo, setPhoto] = useState(sun);
+	const [photo, setPhoto] = useState<string>();
 	const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
 	const API_KEY = 'c75220d8681be195d50609327ea95e12';
 
@@ -36,22 +36,34 @@ function Weather({ city }: PropsWeatherType) {
 		axios
 			.get(API + city + '&appid=' + API_KEY)
 			.then((res) => {
-				console.log(res.data);
 				setCityForecast({
 					temp: Math.floor(res.data.main.temp - 270),
 					humidity: res.data.main.humidity,
 					weather: res.data.weather[0].main,
 					id: res.data.weather[0].id,
 				});
-				// setPhoto(() => {
-				//     if (cityForecast.id >= 200 && cityForecast.id < 300) {
-				//         return ''
-				//     }
-				// });
+
+				setPhoto(() => {
+					if (cityForecast.id >= 200 && cityForecast.id < 300) {
+						return thunder;
+					} else if (cityForecast.id >= 300 && cityForecast.id < 400) {
+						return drizzle;
+					} else if (cityForecast.id >= 500 && cityForecast.id < 600) {
+						return rain;
+					} else if (cityForecast.id >= 600 && cityForecast.id < 700) {
+						return ice;
+					} else if (cityForecast.id >= 700 && cityForecast.id < 800) {
+						return fog;
+					} else if (cityForecast.id === 800) {
+						return sun;
+					} else if (cityForecast.id >= 800 && cityForecast.id < 900) {
+						return clouds;
+					} else {
+						return unknown;
+					}
+				});
 			})
-			.catch(() => {
-				console.error('error');
-			});
+			.catch(() => {});
 	}, [params.id, city]);
 
 	return (
