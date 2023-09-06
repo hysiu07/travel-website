@@ -6,7 +6,7 @@ import { Destination } from '../views/Destination';
 const AppRoutes = () => {
 	return (
 		<Routes>
-			<Route path='/' element={<MainView />} />
+			<Route path='/' element={<MainView />}  />
 			<Route path='/signIn' element={<SignIn />} />
 			<Route path='/registration' element={<Registration />} />
 			<Route path='/myAccount' element={<MyAccount />} />
