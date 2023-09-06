@@ -8,31 +8,40 @@ import { SliderCards } from '../../container/SliderCards';
 import { travels } from '../../data/travels';
 import { DirectionCard } from '../../container/DirectionCard';
 import { Weather } from '../../container/Weater';
-
+import Slider from 'react-slick';
+import img3 from '../../img/cyprus-direction-3.jpg';
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 type DestinationType = {
 	id?: number;
 	country: string;
 	capital: string;
 	info: string;
 	img: string;
-	imgArray?: string[] | [];
+	imgArray?: string[];
 	attractions: string[];
 	position: [number, number];
 };
-
+const settings = {
+	dots: true,
+	infinite: true,
+	speed: 500,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+};
 function Destination() {
 	const [destinationInfo, setDestinationInfo] = useState<DestinationType>({
 		country: '',
 		capital: '',
 		info: '',
 		img: '',
-		imgArray:[],
+		imgArray: [],
 		attractions: [],
 		position: [28.877147, -9.697155],
 	});
 
 	const params = useParams();
-
+	console.log(destinationInfo.country);
 	useEffect(() => {
 		directionInfo.map((destination) => {
 			if (params.id === destination.country) {
@@ -40,11 +49,46 @@ function Destination() {
 			}
 		});
 		window.scrollTo(0, 0);
-	}, [params.id]);
+	}, [params.id, destinationInfo.imgArray]);
 
 	return (
 		<div className='destination'>
 			<Nav />
+
+			{/* <Slider {...settings} className='www'>
+				{destinationInfo.imgArray?.map((img2) => {
+					return (
+						<div className='aaa'>
+							<img src={img2} alt='' />
+						</div>
+					);
+				})}
+				<div className='aaa'>
+					<img src={img3} alt='' />
+				</div>
+				
+			</Slider> */}
+			<Carousel className='www' showThumbs={false} showStatus={false}>
+				{destinationInfo.imgArray?.map((img4) => {
+					return (
+						<div className='aaa'>
+							<img src={img4} alt='' />
+						</div>
+					);
+				})}
+				{/* <div>
+					<img src='assets/1.jpeg' />
+					<p className='legend'>Legend 1</p>
+				</div>
+				<div>
+					<img src='assets/2.jpeg' />
+					<p className='legend'>Legend 2</p>
+				</div>
+				<div>
+					<img src='assets/3.jpeg' />
+					<p className='legend'>Legend 3</p>
+				</div> */}
+			</Carousel>
 			<CountryInfo
 				imgArray={destinationInfo.imgArray}
 				img={destinationInfo?.img}

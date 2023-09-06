@@ -21,7 +21,7 @@ function Map({ position, country }: PropsMapsType) {
 	return (
 		<div className='map'>
 			<MapContainer
-				className='aaa'
+				className='map-container'
 				center={position}
 				zoom={5}
 				scrollWheelZoom={false}

@@ -35,7 +35,7 @@ import zanzibar3 from '../img/zanzibar3.jpg'
 export const travels = [
     {
         id: 1,
-        country: 'Turkey',
+        country: 'Turkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Orient Express',
@@ -47,7 +47,7 @@ export const travels = [
 },
     {
         id: 2,
-        country: 'Turkey',
+        country: 'Turkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Club Boran Mare Beach',
@@ -59,7 +59,7 @@ export const travels = [
 },
     {   
         id: 3,
-        country: 'Turkey',
+        country: 'Turkiye',
         city: 'Antalya',
         airPort: 'Warszawa',
         hotel: 'Marmaris Bay Resort ',
@@ -71,7 +71,7 @@ export const travels = [
 },
     {   
         id: 4,
-        country: 'Turkey',
+        country: 'Turkiye',
         city: 'Bodrum',
         airPort: 'Warszawa',
         hotel: 'Aquasis Deluxe Resort & Spa',
@@ -83,7 +83,7 @@ export const travels = [
 },
     {
         id: 5,
-        country: 'Turkey',
+        country: 'Turkiye',
         city: 'Bodrum',
         airPort: 'Poznań',
         hotel: 'Black pearl',
@@ -382,7 +382,7 @@ export const travels = [
     },
     {
         id: 30,
-        country: 'Morocco',
+        country: 'Marocco',
         city: 'Marrakech',
         airPort: 'Warsaw',
         hotel: 'Riad Oasis',
@@ -394,7 +394,7 @@ export const travels = [
     },
     {
         id: 31,
-        country: 'Morocco',
+        country: 'Marocco',
         city: 'Casablanca',
         airPort: 'Krakow',
         hotel: 'Casablanca Grand Hotel',
@@ -406,7 +406,7 @@ export const travels = [
     },
     {
         id: 32,
-        country: 'Morocco',
+        country: 'Marocco',
         city: 'Fez',
         airPort: 'Gdansk',
         hotel: 'Royal Palace Riad',

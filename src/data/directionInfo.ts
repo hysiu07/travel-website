@@ -45,7 +45,7 @@ type DirectionInfoType = {
     capital: string
     info: string,
     img: string,
-    imgArray?: string[]
+    imgArray: string[]
     attractions: string[]
 }
 export const directionInfo: DirectionInfoType[] = [
