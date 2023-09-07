@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { TiTick } from 'react-icons/ti';
 import { Map } from '../../../container/Map';
-
 import './CountryInfo.scss';
 
 
@@ -20,16 +19,11 @@ function CountryInfo({
 	position,
 	imgArray,
 }: PropsCountryInfoType) {
-	
-	console.log(imgArray);
-
 	useEffect(() => {
 
 	}, [imgArray]);
 	return (
 		<div className='country-info'>
-			
-
 			<div className='country-info__content-container'>
 				<h2>{country}</h2>
 				<p className='country-info-text'>{info}</p>

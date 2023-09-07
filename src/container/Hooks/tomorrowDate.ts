@@ -1,5 +1,5 @@
 
-export const tomorrowDate = () => {
+export const tomorrowDate = ()=>  {
     const today = new Date()
     const tomorrow = new Date(today)
     tomorrow.setDate(tomorrow.getDate() + 1)

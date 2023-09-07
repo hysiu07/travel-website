@@ -70,7 +70,7 @@ function Weather({ city }: PropsWeatherType) {
 		<div className='weather'>
 			<div className='weather__shadow'></div>
 			<div className='weather__content-container'>
-				<h3 className='title'>Weater</h3>
+				<h3 className='title'>Weather</h3>
 				<div className='weather-position-box'>
 					<div className='weather-position-box__name-box'>
 						<h4>{city}</h4>

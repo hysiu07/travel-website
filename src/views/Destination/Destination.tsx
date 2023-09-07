@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import './Destination.scss';
 import { directionInfo } from '../../data/directionInfo';
 import { Destinations, Nav } from '../../components';
 import CountryInfo from './CountryInfo/CountryInfo';
 import { SliderCards } from '../../container/SliderCards';
 import { travels } from '../../data/travels';
 import { DirectionCard } from '../../container/DirectionCard';
-import { Weather } from '../../container/Weater';
-import Slider from 'react-slick';
-import img3 from '../../img/cyprus-direction-3.jpg';
+import { Weather } from '../../container/Weather';
+
+import svgMap from '../../img/map-svg.png'
+import iconPoint from '../../img/icon-point.png'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import './Destination.scss';
 type DestinationType = {
 	id?: number;
 	country: string;
@@ -22,13 +23,7 @@ type DestinationType = {
 	attractions: string[];
 	position: [number, number];
 };
-const settings = {
-	dots: true,
-	infinite: true,
-	speed: 500,
-	slidesToShow: 1,
-	slidesToScroll: 1,
-};
+
 function Destination() {
 	const [destinationInfo, setDestinationInfo] = useState<DestinationType>({
 		country: '',
@@ -41,7 +36,7 @@ function Destination() {
 	});
 
 	const params = useParams();
-	console.log(destinationInfo.country);
+	
 	useEffect(() => {
 		directionInfo.map((destination) => {
 			if (params.id === destination.country) {
@@ -53,22 +48,17 @@ function Destination() {
 
 	return (
 		<div className='destination'>
+			<img src={svgMap} alt="" className='icon-map' />
+			<img src={iconPoint} alt="" className='icon-point' />
 			<Nav />
 
-			{/* <Slider {...settings} className='www'>
-				{destinationInfo.imgArray?.map((img2) => {
-					return (
-						<div className='aaa'>
-							<img src={img2} alt='' />
-						</div>
-					);
-				})}
-				<div className='aaa'>
-					<img src={img3} alt='' />
-				</div>
-				
-			</Slider> */}
-			<Carousel className='www' showThumbs={false} showStatus={false}>
+			<Carousel
+				className='www'
+				showThumbs={false}
+				showStatus={false}
+				autoPlay={true}
+				interval={2000}
+			>
 				{destinationInfo.imgArray?.map((img4) => {
 					return (
 						<div className='aaa'>
@@ -76,18 +66,6 @@ function Destination() {
 						</div>
 					);
 				})}
-				{/* <div>
-					<img src='assets/1.jpeg' />
-					<p className='legend'>Legend 1</p>
-				</div>
-				<div>
-					<img src='assets/2.jpeg' />
-					<p className='legend'>Legend 2</p>
-				</div>
-				<div>
-					<img src='assets/3.jpeg' />
-					<p className='legend'>Legend 3</p>
-				</div> */}
 			</Carousel>
 			<CountryInfo
 				imgArray={destinationInfo.imgArray}
