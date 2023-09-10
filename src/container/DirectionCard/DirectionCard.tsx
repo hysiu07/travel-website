@@ -11,7 +11,8 @@ type DirectionCardPropsType = {
 	country: string | undefined;
 	city: string;
 	price: number;
-	date: string;
+	dateStart: string;
+	dateEnd: string;
 	lastMinute: boolean;
 };
 
@@ -22,7 +23,8 @@ function DirectionCard({
 	country,
 	city,
 	price,
-	date,
+	dateStart,
+	dateEnd,
 	lastMinute,
 }: DirectionCardPropsType) {
 	return (
@@ -59,7 +61,7 @@ function DirectionCard({
 						</span>
 						Lorem ipsum dolor sit amet.
 					</p>
-					<p className='date'>{date}</p>
+					<p className='date'>{dateStart}</p>
 					<div className='price-box'>
 						<p className='price'>{price}</p>
 					</div>

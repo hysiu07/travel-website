@@ -1,44 +1,80 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchPanel.scss';
 import { ThreeCircles } from 'react-loader-spinner';
 import { tomorrowDate } from '../Hooks/tomorrowDate';
-type FilterType = {
-	country?: string;
-	date: Date;
+import { travels } from '../../data/travels';
+
+import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
+type SearchType = {
+	country: string;
+	dateStart: string | Date;
 	price: number;
 };
 function SearchPanel() {
-	const search: React.FormEventHandler<HTMLFormElement> = (e) => {
+	const navigate = useNavigate();
+	// context
+	const { filteredTravels, setFilteredTravels } = useContext(
+		FilteredTravelsContext
+	);
+	async function changePath() {
+		await new Promise<void>((resolve) => {
+			setTimeout(() => {
+				resolve();
+			}, 2000);
+		});
+		navigate('/searchedTravels', {replace: true});
+	}
+console.log(filteredTravels);
+	// search yours travels
+	const handleSearch: React.FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		console.log('dziala');
+		setShowLoader(true);
+		filterTravel();
+		changePath()
 	};
-	const inputRef = useRef<HTMLInputElement>(null);
-	const inputData = useRef<HTMLInputElement>(null);
-	console.log(inputRef.current?.value);
-	console.log(inputRef.current?.value);
-	const [showLoader, setShowLoader] = useState<boolean>(false);
-	// const date = new Date(inputData.current?.value)
-	console.log(tomorrowDate());
 
-	const [filterTours, setFilterTours] = useState<FilterType>({
-		country: inputRef.current?.value,
-		date: new Date(tomorrowDate()),
-		price: 1000,
+	const [showLoader, setShowLoader] = useState<boolean>(false);
+
+	// default search travel value
+	const [searchTours, setSearchTours] = useState<SearchType>({
+		country: '',
+		dateStart: tomorrowDate(),
+		price: 5000,
 	});
-	const info: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+
+	// handle to find yours travel
+	const handleChangeSearchValues: React.ChangeEventHandler<HTMLInputElement> = (
+		e
+	) => {
 		const target = e.target;
 		const name = target.name;
-		setFilterTours({ ...filterTours, [name]: target.value });
+
+		setSearchTours({
+			...searchTours,
+			[name]: target.value.toLocaleLowerCase(),
+		});
 	};
-	useEffect(() => {
-		console.log(filterTours);
-	}, []);
+	// function filter your travel
+	const filterTravel = () => {
+		const filteredTravels2 = travels.filter((travel) => {
+			const selectedDate = new Date(travel.dateStart);
+			const travelStartDate = new Date(searchTours.dateStart);
+			const countryMatch = travel.country.includes(searchTours.country);
+			const priceMatch = searchTours.price >= travel.price;
+			const dateMatch = selectedDate >= travelStartDate;
+			return countryMatch && dateMatch && priceMatch;
+		});
+
+		setFilteredTravels(filteredTravels2);
+	};
+
 	return (
 		<div>
 			<form
 				action='Search Your Destination'
 				className='search-panel'
-				onSubmit={search}
+				onSubmit={handleSearch}
 			>
 				<div className='search-panel__box-item'>
 					<label htmlFor='search destination' className='search-panel__label'>
@@ -49,6 +85,7 @@ function SearchPanel() {
 						name='country'
 						className='search-panel__input'
 						placeholder='Enter country'
+						onChange={handleChangeSearchValues}
 					/>
 				</div>
 				<div className='search-panel__box-item'>
@@ -57,14 +94,10 @@ function SearchPanel() {
 					</label>
 					<input
 						type='date'
-						name='date'
+						name='dateStart'
 						className='search-panel__input'
+						onChange={handleChangeSearchValues}
 						defaultValue={tomorrowDate()}
-						ref={inputData}
-						onChange={() => {
-							console.log(inputData.current?.value);
-							console.log(new Date());
-						}}
 					/>
 				</div>
 				<div className='search-panel__box-item'>
@@ -76,12 +109,10 @@ function SearchPanel() {
 						type='range'
 						name='price'
 						className='search-panel__input range'
-						ref={inputRef}
 						max={5000}
 						min={1000}
-						onChange={() => {
-							console.log(inputRef.current?.value);
-						}}
+						defaultValue={5000}
+						onChange={handleChangeSearchValues}
 					/>
 				</div>
 				<button

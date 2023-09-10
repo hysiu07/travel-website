@@ -86,7 +86,8 @@ function Destination() {
 								stars={direction.stars}
 								country={direction.country}
 								city={direction.city}
-								date={direction.date}
+								dateStart={direction.dateStart}
+								dateEnd={direction.dateEnd}
 								price={direction.price}
 								lastMinute={direction.lastMinute}
 							/>

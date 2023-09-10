@@ -1,0 +1,1 @@
+export { default as SearchedTravels } from './SearchedTravels'
