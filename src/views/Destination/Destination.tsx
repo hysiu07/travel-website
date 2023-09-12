@@ -77,7 +77,7 @@ function Destination() {
 			/>
 			<SliderCards>
 				{travels.map((direction) => {
-					if (direction.country === destinationInfo.country) {
+					if (direction.country === destinationInfo.country.toLocaleLowerCase()) {
 						return (
 							<DirectionCard
 								key={direction.id}

@@ -6,32 +6,34 @@ import { tomorrowDate } from '../Hooks/tomorrowDate';
 import { travels } from '../../data/travels';
 
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
+import { resolve } from 'path';
+
 type SearchType = {
 	country: string;
 	dateStart: string | Date;
 	price: number;
 };
 function SearchPanel() {
+	const { setFilteredTravels } = useContext(FilteredTravelsContext);
+
 	const navigate = useNavigate();
 	// context
-	const { filteredTravels, setFilteredTravels } = useContext(
-		FilteredTravelsContext
-	);
-	async function changePath() {
+	const changePath = () => {
+		navigate('/searchedTravels');
+	};
+
+	// search yours travels
+	const handleSearch: React.FormEventHandler<HTMLFormElement> = async (e) => {
+		e.preventDefault();
+		setShowLoader(true);
+
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
 				resolve();
-			}, 2000);
+				filterTravel();
+			}, 3000);
 		});
-		navigate('/searchedTravels', {replace: true});
-	}
-console.log(filteredTravels);
-	// search yours travels
-	const handleSearch: React.FormEventHandler<HTMLFormElement> = (e) => {
-		e.preventDefault();
-		setShowLoader(true);
-		filterTravel();
-		changePath()
+		changePath();
 	};
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -67,6 +69,7 @@ console.log(filteredTravels);
 		});
 
 		setFilteredTravels(filteredTravels2);
+		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
 	};
 
 	return (
