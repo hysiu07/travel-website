@@ -1,34 +1,4 @@
-.searched-travels {
-	width: 100%;
-	height: 100vh;
-	background-image: url('../../img//dominican-republic-direction-5.jpg');
-	background-size: cover;
-	background-position: center;
-
-	&__container {
-		display: flex;
-		flex-direction: row;
-		margin: 0 auto;
-		padding: 5%;
-		width: 80%;
-		height: 100vh;
-		max-width: 1400px;
-		background-color: rgba(255, 255, 255, 0.9);
-		overflow: scroll;
-	}
-	&__filter-panel {
-		width: 25%;
-
-		.map {
-			width: 100%;
-			height: 50px;
-		}
-	}
-  
-	&__filtered-travels {
-		width: 75%;
-
-		.travel-offer {
+.travel-offer {
 			display: flex;
 			width: 100%;
 
@@ -97,5 +67,3 @@
 				}
 			}
 		}
-	}
-}
