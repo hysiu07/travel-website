@@ -12,7 +12,7 @@ function SignIn() {
 	const usersData = userContext?.usersRegistration;
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
-	const [successLogIn, setSuccessLogIn] = useState(false);
+	const [snackBar, setSnackBar] = useState(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [inputValue, setInputValue] = useState<inputValueTypes>({
 		email: '',
@@ -51,9 +51,9 @@ function SignIn() {
 		await setShowLoader(true);
 		await timeOut();
 		await setShowLoader(false);
-		await setSuccessLogIn(true);
+		await setSnackBar(true);
 		await setTimeout(() => {
-			setSuccessLogIn(false);
+			setSnackBar(false);
 		}, 5000);
 		await setDisabledBtn(true);
 	}
@@ -93,7 +93,7 @@ function SignIn() {
 			<Nav />
 			<SnackBar
 				text='Login Success!'
-				position={successLogIn ? { right: '50px' } : { right: '-300px' }}
+				position={snackBar ? { right: '50px' } : { right: '-300px' }}
 			/>
 			<div className='signin__panel'>
 				<h3 className='title'>Please login</h3>

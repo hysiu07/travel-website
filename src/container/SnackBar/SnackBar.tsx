@@ -5,6 +5,7 @@ type SnackBarPropsType = {
 	position: React.CSSProperties;
 };
 function SnackBar({ text, position }: SnackBarPropsType) {
+	
 	return (
 		<div className='snack-bar' style={position}>
 			<MdDone color='green' size={25} />

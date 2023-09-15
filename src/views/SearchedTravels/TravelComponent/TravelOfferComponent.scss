@@ -1,69 +1,83 @@
 .travel-offer {
-			display: flex;
+	display: flex;
+	width: 100%;
+
+	margin: 20px;
+
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	overflow: hidden;
+	&__img-box {
+		position: relative;
+		height: 200px;
+		width: 250px;
+		img {
+			height: 100%;
 			width: 100%;
-
-			margin: 20px;
-
+		}
+		.icon-heart {
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			cursor: pointer;
+		}
+		.last-minute-label {
+			position: absolute;
+			top: 20px;
+			left: 0;
+			z-index: 500;
+			padding: 7px 14px;
+			background-color: red;
 			border-radius: 20px;
-			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-			overflow: hidden;
-			&__img-box {
-				position: relative;
-				height: 200px;
-				width: 250px;
-				img {
-					height: 100%;
-					width: 100%;
-				}
-				.heart-icon {
-					position: absolute;
-					top: 8px;
-					right: 8px;
-					cursor: pointer;
-				}
-			}
-			&__travel-content {
-				padding: 10px;
-				width: 400px;
-				h5 {
-					font-size: 2.6rem;
-				}
-				p {
-					font-size: 1.8rem;
-				}
-
-				.date-box,
-				.airport-box,
-				.meal-options-box {
-					display: flex;
-					align-items: center;
-					padding: 4px;
-					span {
-						margin-left: 10px;
-						font-size: 1.6rem;
-					}
-				}
-			}
-			&__asside-info {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				width: 250px;
-				p {
-					font-size: 2.5rem;
-					span {
-						font-size: 2rem;
-					}
-				}
-				.show-offer-btn {
-					padding: 15px 30px;
-					margin-top: 20px;
-					border-radius: 30px;
-					font-size: 2rem;
-					border: none;
-					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-					cursor: pointer;
-				}
+			p {
+				font-size: 1.2rem;
+				font-weight: bold;
+				color: white;
 			}
 		}
+	}
+	&__travel-content {
+		padding: 10px;
+		width: 400px;
+		h5 {
+			font-size: 2.6rem;
+		}
+		p {
+			font-size: 1.8rem;
+		}
+
+		.date-box,
+		.airport-box,
+		.meal-options-box {
+			display: flex;
+			align-items: center;
+			padding: 4px;
+			span {
+				margin-left: 10px;
+				font-size: 1.6rem;
+			}
+		}
+	}
+	&__asside-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 250px;
+		p {
+			font-size: 2.5rem;
+			span {
+				font-size: 2rem;
+			}
+		}
+		.show-offer-btn {
+			padding: 15px 30px;
+			margin-top: 20px;
+			border-radius: 30px;
+			font-size: 2rem;
+			border: none;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			cursor: pointer;
+		}
+	}
+}

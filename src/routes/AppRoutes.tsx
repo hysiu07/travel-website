@@ -5,6 +5,7 @@ import { MyAccount } from '../views/MyAccount';
 import { Destination } from '../views/Destination';
 import { SearchedTravels } from '../views/SearchedTravels';
 import { FilteredTravelsContextProvider } from '../context/FilteredTravelsContext';
+import { UserContextProvider } from '../context/UserContext';
 const AppRoutes = () => {
 	return (
 		<Routes>
@@ -16,9 +17,11 @@ const AppRoutes = () => {
 			<Route
 				path='/searchedTravels'
 				element={
-					<FilteredTravelsContextProvider>
-						<SearchedTravels />
-					</FilteredTravelsContextProvider>
+					<UserContextProvider>
+						<FilteredTravelsContextProvider>
+							<SearchedTravels />
+						</FilteredTravelsContextProvider>
+					</UserContextProvider>
 				}
 			/>
 		</Routes>

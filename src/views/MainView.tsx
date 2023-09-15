@@ -21,7 +21,7 @@ function MainView() {
 		if (typeof userLocalStorage === 'string') {
 			const user2 = JSON.parse(userLocalStorage);
 			userContext?.setUser(user2);
-			// setUserLogged(user2);
+			
 		}
 	}, []);
 	// pozniej to ogarnac

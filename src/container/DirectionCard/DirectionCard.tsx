@@ -1,6 +1,9 @@
+import { useContext, useState, useEffect } from 'react';
 import ReactStars from 'react-rating-star-with-type';
 import { TiTick } from 'react-icons/ti';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
+import { UserContext } from '../../context/UserContext';
 import './DirectionCard.scss';
 
 type DirectionCardPropsType = {
@@ -27,10 +30,41 @@ function DirectionCard({
 	dateEnd,
 	lastMinute,
 }: DirectionCardPropsType) {
+	const userContext = useContext(UserContext);
+	const userLogged: boolean | undefined = userContext?.user?.logIn;
+
+	const [liked, setLiked] = useState(false);
+console.log(userLogged);
 	return (
 		<div className='direction-card'>
 			<div className='container'>
-				<AiOutlineHeart className='icon-heart' size={35} />
+				{liked ? (
+					<AiFillHeart
+						className='icon-heart'
+						size={35}
+						color='red'
+						onClick={() => {
+							if (userLogged) {
+								setLiked(!liked);
+							} else {
+								console.log('niezalowany, zaloguj sie');
+							}
+						}}
+					/>
+				) : (
+					<AiOutlineHeart
+						className='icon-heart'
+						size={35}
+						onClick={() => {
+							if (userLogged) {
+								setLiked(!liked);
+							} else {
+								console.log('niezalowany, zaloguj sie');
+							}
+						}}
+					/>
+				)}
+
 				{lastMinute && (
 					<div className='offer-label'>
 						<p>Last Minute!</p>
@@ -61,7 +95,9 @@ function DirectionCard({
 						</span>
 						Lorem ipsum dolor sit amet.
 					</p>
-					<p className='date'>{dateStart}</p>
+					<p className='date'>
+						{dateStart} / {dateEnd}
+					</p>
 					<div className='price-box'>
 						<p className='price'>{price}</p>
 					</div>

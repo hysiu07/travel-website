@@ -1,5 +1,8 @@
+import { useState} from 'react';
+
 import './TravelOfferComponent.scss';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { AiFillHeart } from 'react-icons/ai';
 import { SlCalender } from 'react-icons/sl';
 import { BsAirplane } from 'react-icons/bs';
 import { GiMeal } from 'react-icons/gi';
@@ -14,6 +17,9 @@ type PropsTravelType = {
 	airPort: string;
 	price: number;
 	hotel: string;
+	lastMinute: boolean;
+	userLogged: boolean | undefined;
+	handleShowSnackBar: (info : string) => void;
 };
 
 function TravelOfferComponent({
@@ -26,16 +32,54 @@ function TravelOfferComponent({
 	airPort,
 	price,
 	hotel,
+	lastMinute,
+	userLogged,
+	handleShowSnackBar
 }: PropsTravelType) {
-	
+	const [liked, setLiked] = useState(false);
+
 	const firstLetter = country.charAt(0).toUpperCase();
 	const restOfLetters = country.slice(1);
 	const formatedTravelCountry = firstLetter + restOfLetters;
+
 	return (
 		<div className='travel-offer'>
 			<div className='travel-offer__img-box'>
 				<img src={img} alt='' />
-				<AiOutlineHeart className='heart-icon' size={40} />
+				{liked ? (
+					<AiFillHeart
+						className='icon-heart'
+						size={35}
+						color='red'
+						onClick={() => {
+							if (userLogged) {
+								setLiked(!liked);
+								handleShowSnackBar('You DisLiked!')
+							} else {
+								console.log('niezalowany, zaloguj sie');
+							}
+						}}
+					/>
+				) : (
+					<AiOutlineHeart
+						className='icon-heart'
+						size={35}
+						onClick={() => {
+							if (userLogged) {
+								setLiked(!liked);
+								handleShowSnackBar('You Liked!');
+							} else {
+								console.log('niezalowany, zaloguj sie');
+							}
+						}}
+					/>
+				)}
+
+				{lastMinute && (
+					<div className='last-minute-label'>
+						<p>Last Minute</p>
+					</div>
+				)}
 			</div>
 			<div className='travel-offer__travel-content'>
 				<h5>{hotel}</h5>

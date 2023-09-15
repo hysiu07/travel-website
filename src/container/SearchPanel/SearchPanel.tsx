@@ -6,7 +6,7 @@ import { tomorrowDate } from '../Hooks/tomorrowDate';
 import { travels } from '../../data/travels';
 
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
-import { resolve } from 'path';
+
 
 type SearchType = {
 	country: string;

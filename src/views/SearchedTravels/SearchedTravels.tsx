@@ -1,24 +1,75 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import './SearchedTravels.scss';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { Nav } from '../../components';
-
+import { UserContext } from '../../context/UserContext';
 import { FilterComponent } from './Filter';
 import { TravelOfferComponent } from './TravelComponent';
+import { SnackBar } from '../../container/SnackBar';
+import { TravelType } from '../../data/travels';
 function SearchedTravels() {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
 	);
+	const userContext = useContext(UserContext);
+	console.log(userContext?.user?.logIn, ' z glownego komponentu');
+
+	const userLogged = userContext?.user?.logIn;
+
+	const [snackBar, setSnackBar] = useState<boolean>(false);
+	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
+
+	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
+	
 	useEffect(() => {
 		const travelsLocalStorage = localStorage.getItem('travels');
 		if (typeof travelsLocalStorage === 'string') {
 			const travels = JSON.parse(travelsLocalStorage);
 			setFilteredTravels(travels);
 		}
+		const userLocalStorage = localStorage.getItem('user');
+		if (typeof userLocalStorage === 'string') {
+			const user2 = JSON.parse(userLocalStorage);
+			userContext?.setUser(user2);
+		}
 	}, []);
 
+	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
+		if (sortBy === 'priceLowToHigh') {
+			return [...travels].sort((a, b) => a.price - b.price);
+		} else if (sortBy === 'priceHightToLow') {
+			return [...travels].sort((a, b) => b.price - a.price);
+		} else if (sortBy === 'nameAZ') {
+			return [...travels].sort((a, b) => a.country.localeCompare(b.country));
+		} else if (sortBy === 'nameZA') {
+			return [...travels].sort((a, b) => b.country.localeCompare(a.country));
+		} else {
+			return travels;
+		}
+	};
+
+	const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = (e) => {
+		const newSortBy = e.target.value;
+		const sortedTravels = sortTravels(filteredTravels, newSortBy);
+		setFilteredTravels(sortedTravels);
+		setSortBy(newSortBy);
+	};
+
+	async function handleShowSnackBar(info: string) {
+		await setSnackBarInfo(info)
+		await setSnackBar(true);
+		await new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(setSnackBar(false));
+			}, 2000);
+		});
+	}
 	return (
 		<div className='searched-travels'>
+			<SnackBar
+				text={snackBarInfo}
+				position={snackBar ? { right: '50px' } : { right: '-300px' }}
+			/>
 			<Nav />
 			<div className='searched-travels__container'>
 				<div className='searched-travels__filter-panel'>
@@ -81,11 +132,28 @@ function SearchedTravels() {
 					/>
 				</div>
 				<div className='searched-travels__filtered-travels'>
-					<h2>We find for you {filteredTravels.length} offers</h2>
+					<div className='sort-input'>
+						<h2>We found {filteredTravels.length} offers</h2>
+						<div>
+							<label htmlFor='sort travels'> Sort:</label>
+							<select
+								name='sort travels'
+								id='sort-travels'
+								value={sortBy}
+								onChange={handleSortChange}
+							>
+								<option value='priceLowToHigh'>Price Low to High</option>
+								<option value='priceHightToLow'>Price High to Low</option>
+								<option value='nameAZ'>Name A-Z</option>
+								<option value='nameZA'>Name Z-A</option>
+							</select>
+						</div>
+					</div>
+
 					{filteredTravels.map((travel) => {
-					
 						return (
 							<TravelOfferComponent
+								key={travel.id}
 								img={travel.img}
 								stars={travel.stars}
 								country={travel.country}
@@ -95,6 +163,9 @@ function SearchedTravels() {
 								airPort={travel.airPort}
 								price={travel.price}
 								hotel={travel.hotel}
+								lastMinute={travel.lastMinute}
+								userLogged={userLogged}
+								handleShowSnackBar={handleShowSnackBar}
 							/>
 						);
 					})}
