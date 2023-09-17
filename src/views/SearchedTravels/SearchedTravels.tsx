@@ -12,7 +12,6 @@ function SearchedTravels() {
 		FilteredTravelsContext
 	);
 	const userContext = useContext(UserContext);
-	console.log(userContext?.user?.logIn, ' z glownego komponentu');
 
 	const userLogged = userContext?.user?.logIn;
 
@@ -20,7 +19,7 @@ function SearchedTravels() {
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
-	
+
 	useEffect(() => {
 		const travelsLocalStorage = localStorage.getItem('travels');
 		if (typeof travelsLocalStorage === 'string') {
@@ -54,9 +53,11 @@ function SearchedTravels() {
 		setFilteredTravels(sortedTravels);
 		setSortBy(newSortBy);
 	};
+	
+	
 
 	async function handleShowSnackBar(info: string) {
-		await setSnackBarInfo(info)
+		await setSnackBarInfo(info);
 		await setSnackBar(true);
 		await new Promise((resolve) => {
 			setTimeout(() => {

@@ -34,7 +34,7 @@ function DirectionCard({
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
 
 	const [liked, setLiked] = useState(false);
-console.log(userLogged);
+
 	return (
 		<div className='direction-card'>
 			<div className='container'>
@@ -70,7 +70,7 @@ console.log(userLogged);
 						<p>Last Minute!</p>
 					</div>
 				)}
-				<img src={img} alt='' className='img' />
+				<img src={img} alt='direction-img' className='img' />
 				<div className='text-content'>
 					<h4 className='title'>{hotel}</h4>
 					<ReactStars count={stars} size={24} inactiveColor='gold' />

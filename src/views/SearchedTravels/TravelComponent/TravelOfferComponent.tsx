@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 
 import './TravelOfferComponent.scss';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -19,7 +19,7 @@ type PropsTravelType = {
 	hotel: string;
 	lastMinute: boolean;
 	userLogged: boolean | undefined;
-	handleShowSnackBar: (info : string) => void;
+	handleShowSnackBar: (info: string) => void;
 };
 
 function TravelOfferComponent({
@@ -34,13 +34,19 @@ function TravelOfferComponent({
 	hotel,
 	lastMinute,
 	userLogged,
-	handleShowSnackBar
+	handleShowSnackBar,
 }: PropsTravelType) {
 	const [liked, setLiked] = useState(false);
 
 	const firstLetter = country.charAt(0).toUpperCase();
 	const restOfLetters = country.slice(1);
 	const formatedTravelCountry = firstLetter + restOfLetters;
+	const [bestTravels, setBestTravel] = useState<{}[]>([]);
+	const handleAddLikedTravel = () => {
+		if (liked) {
+			setBestTravel([...bestTravels, { likedTravel: { hotel } }]);
+		}
+	};
 
 	return (
 		<div className='travel-offer'>
@@ -54,9 +60,9 @@ function TravelOfferComponent({
 						onClick={() => {
 							if (userLogged) {
 								setLiked(!liked);
-								handleShowSnackBar('You DisLiked!')
+								handleShowSnackBar('You DisLiked!');
 							} else {
-								console.log('niezalowany, zaloguj sie');
+								handleShowSnackBar('You have to sign in!');
 							}
 						}}
 					/>
@@ -68,8 +74,9 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
+								handleAddLikedTravel();
 							} else {
-								console.log('niezalowany, zaloguj sie');
+								handleShowSnackBar('You have to sign in!');
 							}
 						}}
 					/>
@@ -104,9 +111,7 @@ function TravelOfferComponent({
 				</div>
 			</div>
 			<div className='travel-offer__asside-info'>
-				<p className='price'>
-					{price}$ <span>one person</span>
-				</p>
+				<p className='price'>{price}$</p>
 				<button className='show-offer-btn'>See offer</button>
 			</div>
 		</div>

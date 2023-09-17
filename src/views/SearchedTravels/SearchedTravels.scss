@@ -10,8 +10,10 @@
 	&__container {
 		display: flex;
 		flex-direction: row;
+
 		margin: 0 auto;
-		padding: 5%;
+		padding: 100px 5% 5% 5%;
+
 		width: 80%;
 		height: 100vh;
 		max-width: 1400px;
@@ -40,6 +42,71 @@
 				margin-left: 5px;
 				padding: 8px 16px;
 				border-radius: 20px;
+			}
+		}
+	}
+}
+@media (max-width: 1500px) {
+	.searched-travels {
+		&__container {
+			padding: 150px 3% 3% 3%;
+		}
+		&__filtered-travels {
+			h2 {
+				font-size: 3rem;
+			}
+		}
+	}
+}
+@media (max-width: 1200px) {
+	.searched-travels {
+		&__container {
+			padding: 140px 2% 2% 2%;
+		}
+	}
+}
+@media (max-width: 996px) {
+	.searched-travels {
+		&__filtered-travels {
+			.sort-input {
+				flex-direction: column;
+				h2 {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.searched-travels {
+		&__container {
+			padding: 100px 2% 2% 2%;
+		}
+	}
+}
+@media (max-width: 576px) {
+	.searched-travels {
+		&__container {
+			padding: 80px 3% 3% 3%;
+		}
+		&__filter-panel {
+			display: none;
+		}
+		&__filtered-travels {
+			width: 100%;
+			h2 {
+				font-size: 2.5rem;
+			}
+		}
+	}
+}
+@media (max-width: 366px) {
+	.searched-travels {
+		&__filtered-travels {
+			width: 100%;
+			h2 {
+				font-size: 2.2rem;
 			}
 		}
 	}
