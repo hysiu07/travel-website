@@ -93,7 +93,7 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 						style={showMenu ? { right: '0' } : { right: '-150%' }}
 					>
 						<div className='nav-menu__shadow'></div>
-						<Link to='/' className='logo link'>
+						<Link to='/travel-website' className='logo link'>
 							Home <AiFillHome />
 						</Link>
 					</ul>

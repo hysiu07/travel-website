@@ -2,7 +2,7 @@
 
 
 #myIgnore files
-/src/video
+# /src/video
 
 # dependencies
 /node_modules
