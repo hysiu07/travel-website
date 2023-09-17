@@ -1,12 +1,12 @@
 import './Header.scss';
-import video from '../../video/video.mp4';
+// import video from '../../video/video.mp4';
 import { SearchPanel } from '../../container/SearchPanel';
 import { FilteredTravelsContextProvider } from '../../context/FilteredTravelsContext';
 function Header() {
 	return (
 		<header className='header'>
 			<div className='header__shadow'></div>
-			<video
+			{/* <video
 				src={video}
 				muted
 				autoPlay
@@ -15,7 +15,7 @@ function Header() {
 				typeof='video.mp4'
 			>
 				video
-			</video>
+			</video> */}
 			<div className='header__container'>
 				<div className='header__content-text'>
 					<h1>YourTrip Welcome!</h1>
