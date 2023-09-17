@@ -1,8 +1,9 @@
 {
   "files": {
     "main.css": "/travel-website/static/css/main.706e18d2.css",
-    "main.js": "/travel-website/static/js/main.4ec47138.js",
+    "main.js": "/travel-website/static/js/main.207cd423.js",
     "static/js/787.397fec01.chunk.js": "/travel-website/static/js/787.397fec01.chunk.js",
+    "static/media/video.mp4": "/travel-website/static/media/video.e06c322d6a8c1f148abe.mp4",
     "static/media/turkiye-direction-4.jpg": "/travel-website/static/media/turkiye-direction-4.3d178d9a86e8590f4a3e.jpg",
     "static/media/cyprus-direction-2.jpg": "/travel-website/static/media/cyprus-direction-2.574e64fd9d77c19aed17.jpg",
     "static/media/spain-direction-4.jpg": "/travel-website/static/media/spain-direction-4.15af747941861ca234a1.jpg",
@@ -89,11 +90,11 @@
     "static/media/map-svg.png": "/travel-website/static/media/map-svg.9d79357bf07813ddccfa.png",
     "index.html": "/travel-website/index.html",
     "main.706e18d2.css.map": "/travel-website/static/css/main.706e18d2.css.map",
-    "main.4ec47138.js.map": "/travel-website/static/js/main.4ec47138.js.map",
+    "main.207cd423.js.map": "/travel-website/static/js/main.207cd423.js.map",
     "787.397fec01.chunk.js.map": "/travel-website/static/js/787.397fec01.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.706e18d2.css",
-    "static/js/main.4ec47138.js"
+    "static/js/main.207cd423.js"
   ]
 }
