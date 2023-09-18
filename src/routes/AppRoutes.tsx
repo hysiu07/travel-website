@@ -10,6 +10,7 @@ const AppRoutes = () => {
 	return (
 		<Routes>
 			<Route path='/travel-website' element={<MainView />} />
+			<Route path='/travel-website/' element={<MainView />} />
 			<Route path='/signIn' element={<SignIn />} />
 			<Route path='/registration' element={<Registration />} />
 			<Route path='/myAccount' element={<MyAccount />} />
