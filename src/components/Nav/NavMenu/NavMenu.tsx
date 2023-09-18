@@ -11,18 +11,18 @@ type PropsNavType = {
 	location?: string;
 };
 function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
-	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
+	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
 	const userContext = useContext(UserContext);
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
 	console.log(location);
 
 	useEffect(() => {
-		if ( location === '/travel-website/') {
+		if (location === '/travel-website' || location === '/travel-website/') {
 			setHiddenLink(true);
 		} else {
 			setHiddenLink(false);
 		}
-	}, [location, []]);
+	}, []);
 	return (
 		<div className='nav-menu'>
 			<div>
