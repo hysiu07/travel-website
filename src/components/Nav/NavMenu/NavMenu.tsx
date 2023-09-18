@@ -14,9 +14,10 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(null);
 	const userContext = useContext(UserContext);
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
+	console.log(location);
 
 	useEffect(() => {
-		if (location !== '/') {
+		if (location !== '/travel-website' && '/travel-website/') {
 			setHiddenLink(true);
 		} else {
 			setHiddenLink(false);
