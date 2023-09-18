@@ -17,7 +17,7 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 	console.log(location);
 
 	useEffect(() => {
-		if (location === '/travel-website' || location === '/travel-website/') {
+		if (location === '/travel-website/' || location === '/travel-website') {
 			setHiddenLink(true);
 		} else {
 			setHiddenLink(false);
