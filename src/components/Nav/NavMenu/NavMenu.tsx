@@ -17,16 +17,16 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 	console.log(location);
 
 	useEffect(() => {
-		if (location !== '/travel-website' && '/travel-website/') {
+		if (location === '/travel-website' || location === '/travel-website/') {
 			setHiddenLink(true);
 		} else {
 			setHiddenLink(false);
 		}
-	}, []);
+	}, [location]);
 	return (
 		<div className='nav-menu'>
 			<div>
-				{!hiddenLink ? (
+				{hiddenLink ? (
 					<ul
 						className='nav-menu__links'
 						style={showMenu ? { right: '0' } : { right: '-150%' }}
