@@ -9,7 +9,7 @@ function Nav() {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
 	const locationObj = useLocation();
 	const location = locationObj.pathname;
-
+	console.log(locationObj);
 	return (
 		<nav className='nav'>
 			<div className='nav__container'>

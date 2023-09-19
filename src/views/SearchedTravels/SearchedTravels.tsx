@@ -53,8 +53,6 @@ function SearchedTravels() {
 		setFilteredTravels(sortedTravels);
 		setSortBy(newSortBy);
 	};
-	
-	
 
 	async function handleShowSnackBar(info: string) {
 		await setSnackBarInfo(info);
@@ -134,7 +132,7 @@ function SearchedTravels() {
 				</div>
 				<div className='searched-travels__filtered-travels'>
 					<div className='sort-input'>
-						<h2>We found {filteredTravels.length} offers</h2>
+						<h3>We found {filteredTravels.length} offers</h3>
 						<div>
 							<label htmlFor='sort travels'> Sort:</label>
 							<select

@@ -33,6 +33,10 @@ function DirectionCard({
 	const userContext = useContext(UserContext);
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
 
+	const firstLetter = country?.charAt(0).toUpperCase() || '';
+	const restOfLetters = country?.slice(1);
+	const formatedTravelCountry = firstLetter + restOfLetters
+
 	const [liked, setLiked] = useState(false);
 
 	return (
@@ -75,7 +79,7 @@ function DirectionCard({
 					<h4 className='title'>{hotel}</h4>
 					<ReactStars count={stars} size={24} inactiveColor='gold' />
 					<h5 className='city'>
-						{country}/{city}
+						{formatedTravelCountry}/{city}
 					</h5>
 					<p>
 						<span>

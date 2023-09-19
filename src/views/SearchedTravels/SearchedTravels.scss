@@ -32,6 +32,9 @@
 	&__filtered-travels {
 		width: 75%;
 		.sort-input {
+			h3 {
+				font-size: 4rem;
+			}
 			display: flex;
 			justify-content: space-between;
 			align-items: center;

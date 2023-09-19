@@ -7,6 +7,7 @@ function LastMinute() {
 	return (
 		<div id='last-minute' className='last-minute'>
 			<h2 className='last-minute__title'>LastMinute</h2>
+
 			<SliderCards>
 				{travels.map((direction) => {
 					if (direction.lastMinute) {

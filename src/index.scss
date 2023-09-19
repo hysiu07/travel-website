@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
 
 * {
 	margin: 0;
@@ -22,33 +22,45 @@ code {
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
+	scroll-margin: 30px;
 }
 h2 {
-	font-size: 4rem;
-	text-decoration: underline;
+	font-size: 6rem;
+	font-family: 'Caveat', cursive;
+	margin-bottom: 40px;
+	// color: rgba(49, 49, 49, 0.862745098)
 }
 h3 {
 	font-size: 2.5rem;
 	margin: 20px 0px;
+	font-family: 'Caveat', cursive;
+}
+h4 {
+	font-family: 'Caveat', cursive;
 }
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
-    scrollbar-width: auto;
-    scrollbar-color: #418bb9 #ffffff;
-  }
+/* Firefox */
+* {
+	scrollbar-width: auto;
+	scrollbar-color: #418bb9 #ffffff;
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
-    width: 16px;
-  }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 16px;
+}
 
-  *::-webkit-scrollbar-track {
-    background: #ffffff;
-  }
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+}
 
-  *::-webkit-scrollbar-thumb {
-    background-color: #418bb9;
-    border-radius: 10px;
-    border: 3px solid #ffffff;
-  }
+*::-webkit-scrollbar-thumb {
+	background-color: #418bb9;
+	border-radius: 10px;
+	border: 3px solid #ffffff;
+}
+@media (max-width: 576px) {
+	h2 {
+		font-size: 4rem;
+	}
+}
