@@ -1,10 +1,12 @@
 .reviews {
-	padding: 7%;
+	padding: 5%;
 	width: 100%;
 	&__container {
 		display: flex;
 		justify-content: space-around;
+		align-items: center;
 		flex-wrap: wrap;
 		width: 100%;
+	
 	}
 }

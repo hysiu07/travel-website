@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import './TravelOfferComponent.scss';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
@@ -7,6 +6,7 @@ import { SlCalender } from 'react-icons/sl';
 import { BsAirplane } from 'react-icons/bs';
 import { GiMeal } from 'react-icons/gi';
 import ReactStars from 'react-rating-star-with-type';
+import { OfferModal } from '../../../container/OfferModal';
 type PropsTravelType = {
 	img: string;
 	stars: number;
@@ -42,6 +42,7 @@ function TravelOfferComponent({
 	const restOfLetters = country.slice(1);
 	const formatedTravelCountry = firstLetter + restOfLetters;
 	const [bestTravels, setBestTravel] = useState<{}[]>([]);
+	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 	const handleAddLikedTravel = () => {
 		if (liked) {
 			setBestTravel([...bestTravels, { likedTravel: { hotel } }]);
@@ -50,6 +51,7 @@ function TravelOfferComponent({
 
 	return (
 		<div className='travel-offer'>
+			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
 			<div className='travel-offer__img-box'>
 				<img src={img} alt='' />
 				{liked ? (
@@ -81,12 +83,12 @@ function TravelOfferComponent({
 						}}
 					/>
 				)}
-
 				{lastMinute && (
 					<div className='last-minute-label'>
 						<p>Last Minute</p>
 					</div>
 				)}
+				O
 			</div>
 			<div className='travel-offer__travel-content'>
 				<h5>{hotel}</h5>
@@ -112,7 +114,14 @@ function TravelOfferComponent({
 			</div>
 			<div className='travel-offer__asside-info'>
 				<p className='price'>{price}$</p>
-				<button className='show-offer-btn'>See offer</button>
+				<button
+					className='show-offer-btn btn'
+					onClick={() => {
+						setShowOfferModal(!showOfferModal);
+					}}
+				>
+					See offer
+				</button>
 			</div>
 		</div>
 	);

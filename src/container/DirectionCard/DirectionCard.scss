@@ -10,6 +10,8 @@
 		border-radius: 10px;
 		overflow: hidden;
 		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		cursor: pointer;
+		transition: 0.3s;
 		.icon-heart {
 			position: absolute;
 			top: 10px;
@@ -50,13 +52,25 @@
 			.price-box {
 				margin-top: 10px;
 				padding: 10px 30px;
-				border: 1px solid black;
+				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 				border-radius: 20px;
+				p {
+					font-size: 1.4rem;
+				}
 			}
 			.date {
 				margin: 5px 0;
+				font-weight: bold;
 			}
 		}
+	}
+	.container:hover {
+		box-shadow: #398ab9 0px 3px 8px;
+	}
+	.container:hover .price-box {
+		background-color: #398ab9;
+		color: white;
+		box-shadow: #398ab9 0px 5px 15px;
 	}
 }
 @media (max-width: 576px) {

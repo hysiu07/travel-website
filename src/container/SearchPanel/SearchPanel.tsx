@@ -7,7 +7,6 @@ import { travels } from '../../data/travels';
 
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 
-
 type SearchType = {
 	country: string;
 	dateStart: string | Date;
@@ -104,10 +103,12 @@ function SearchPanel() {
 					/>
 				</div>
 				<div className='search-panel__box-item'>
-					<label htmlFor='price range' className='search-panel__label'>
-						Max price:
-						<span>max 5000$</span>
-					</label>
+					<div className='search-panel__label-container'>
+						<label htmlFor='price range' className='search-panel__label'>
+							Price:
+						</label>
+						<span>max {searchTours.price}$</span>
+					</div>
 					<input
 						type='range'
 						name='price'
@@ -119,7 +120,7 @@ function SearchPanel() {
 					/>
 				</div>
 				<button
-					className='search-panel__button'
+					className='search-panel__button btn'
 					type='submit'
 					onClick={() => {
 						setShowLoader(!showLoader);

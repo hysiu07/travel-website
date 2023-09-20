@@ -1,9 +1,10 @@
-import { useContext, useState, useEffect } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../context/UserContext';
+import { OfferModal } from '../OfferModal';
 import ReactStars from 'react-rating-star-with-type';
 import { TiTick } from 'react-icons/ti';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
-import { UserContext } from '../../context/UserContext';
 import './DirectionCard.scss';
 
 type DirectionCardPropsType = {
@@ -35,13 +36,17 @@ function DirectionCard({
 
 	const firstLetter = country?.charAt(0).toUpperCase() || '';
 	const restOfLetters = country?.slice(1);
-	const formatedTravelCountry = firstLetter + restOfLetters
+	const formatedTravelCountry = firstLetter + restOfLetters;
 
 	const [liked, setLiked] = useState(false);
+	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
 	return (
 		<div className='direction-card'>
-			<div className='container'>
+			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
+			<div className='container' onClick={() => {
+				setShowOfferModal(true)
+			}}>
 				{liked ? (
 					<AiFillHeart
 						className='icon-heart'
@@ -85,24 +90,24 @@ function DirectionCard({
 						<span>
 							<TiTick size={15} />
 						</span>
-						Lorem ipsum dolor sit amet.
+						<span>Lorem ipsum dolor sit amet.</span>
 					</p>
 					<p>
 						<span>
 							<TiTick size={15} />
 						</span>
-						Lorem ipsum dolor sit amet.
+						<span>Lorem ipsum dolor sit amet.</span>
 					</p>
 					<p>
 						<span>
 							<TiTick size={15} />
 						</span>
-						Lorem ipsum dolor sit amet.
+						<span>Lorem ipsum dolor sit amet.</span>
 					</p>
 					<p className='date'>
 						{dateStart} / {dateEnd}
 					</p>
-					<div className='price-box'>
+					<div className='price-box btn'>
 						<p className='price'>{price}</p>
 					</div>
 				</div>

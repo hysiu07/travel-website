@@ -10,7 +10,7 @@ type ReviewsType = {
 
 function ReviewCard({ img, name, review, rating }: ReviewsType) {
 	return (
-		<div className='card-review' >
+		<div className='card-review'>
 			<div
 				className='img'
 				style={{
@@ -21,7 +21,7 @@ function ReviewCard({ img, name, review, rating }: ReviewsType) {
 			<span className='rating'>
 				<ReactStars count={rating} size={24} inactiveColor='gold' />
 			</span>
-			<p className='review'>{review}</p>
+			<p className='review'>"{review}"</p>
 		</div>
 	);
 }

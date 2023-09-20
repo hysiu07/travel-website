@@ -11,8 +11,6 @@ function About() {
 	const isElementInViewport = () => {
 		if (sectionRef.current) {
 			const rect = sectionRef.current.getBoundingClientRect();
-			console.log(rect);
-			console.log(window.innerHeight);
 			return rect.top < 750 && rect.bottom >= 0;
 		}
 		return false;

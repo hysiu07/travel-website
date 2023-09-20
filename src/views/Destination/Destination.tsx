@@ -48,8 +48,8 @@ function Destination() {
 
 	return (
 		<div className='destination'>
-			<img src={svgMap} alt="" className='icon-map' />
-			<img src={iconPoint} alt="" className='icon-point' />
+			<img src={svgMap} alt="svg-map" className='icon-map' />
+			<img src={iconPoint} alt="point-icon" className='icon-point' />
 			<Nav />
 
 			<Carousel

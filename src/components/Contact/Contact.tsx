@@ -14,7 +14,7 @@ function Contact() {
 							placeholder='Enter Email Adress'
 							className='input'
 						/>
-						<button type='submit' className='button'>
+						<button type='submit' className='button btn'>
 							Send!
 						</button>
 					</form>

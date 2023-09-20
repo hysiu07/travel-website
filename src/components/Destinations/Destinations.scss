@@ -1,13 +1,13 @@
 .destinations {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	padding: 5% 2%;
 	width: 100%;
-	&__text-container {
-		
-	}
+
+	
 	&__cards-container {
 		display: flex;
 		justify-content: center;

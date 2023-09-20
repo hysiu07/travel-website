@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import './Destinations.scss';
 import { directionInfo } from '../../data/directionInfo';
 import { DestinationCard } from '../../container/DestinationCard';
-import { useScrollY } from '../../container/Hooks/useScrollY';
+
 import MovingText from 'react-moving-text';
 
 function Destinations() {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Nav.scss';
 import { NavMenu } from './NavMenu';
@@ -7,11 +7,25 @@ import { NavLogo } from './NavLogo';
 
 function Nav() {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
+	const [backGround, setBackGround] = useState<boolean>(false);
 	const locationObj = useLocation();
 	const location = locationObj.pathname;
-	console.log(locationObj);
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 100) {
+				setBackGround(true);
+			} else {
+				setBackGround(false);
+			}
+		})
+		return window.removeEventListener('scroll', ()=>{})
+	}, []);
 	return (
-		<nav className='nav'>
+		<nav
+			className='nav'
+			style={backGround ? { backgroundColor: 'rgba(238, 238, 238, 0.9' } : {}}
+		>
 			<div className='nav__container'>
 				<NavLogo />
 				<NavMenu
