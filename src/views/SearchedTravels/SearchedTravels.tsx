@@ -32,6 +32,7 @@ function SearchedTravels() {
 			userContext?.setUser(user2);
 		}
 	}, []);
+	console.log(userContext?.user);
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
 		if (sortBy === 'priceLowToHigh') {

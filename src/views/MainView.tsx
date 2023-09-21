@@ -24,6 +24,7 @@ function MainView() {
 			
 		}
 	}, []);
+	console.log(userContext?.user);
 	// pozniej to ogarnac
 	// console.log(userContext?.user, ' zalogowany do contextu ');
 	// console.log(userLogged, ' zalogowany ze State ');

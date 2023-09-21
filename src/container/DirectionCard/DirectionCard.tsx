@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { OfferModal } from '../OfferModal';
 import ReactStars from 'react-rating-star-with-type';
@@ -41,18 +41,59 @@ function DirectionCard({
 	const [liked, setLiked] = useState(false);
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
+	useEffect(() => {
+		localStorage.setItem('user', JSON.stringify(userContext?.user));
+		if (userContext && userContext.user && userContext.user.bestTravels) {
+			const userBestTravels = userContext.user.bestTravels ;
+			const hasLiked = userBestTravels.includes(hotel);
+			setLiked(hasLiked);
+		}
+	}, [userContext?.user, hotel]);
+
+	const handlAddBestTravel = () => {
+		userContext?.setUser((prevUser) => {
+			if (!prevUser) return null;
+			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
+				? [...prevUser.bestTravels, hotel]
+				: [hotel];
+			return {
+				...prevUser,
+				bestTravels: updatedBestTravels,
+			};
+		});
+	};
+	const handlRemoveBestTravel = () => {
+		userContext?.setUser((prevUser) => {
+			if (!prevUser) return null;
+
+			if (Array.isArray(prevUser.bestTravels)) {
+				const updatedBestTravels = prevUser.bestTravels.filter(
+					(travel) => travel !== hotel
+				);
+				return {
+					...prevUser,
+					bestTravels: updatedBestTravels,
+				};
+			}
+		});
+	};
+
 	return (
 		<div className='direction-card'>
 			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
-			<div className='container' onClick={() => {
-				setShowOfferModal(true)
-			}}>
+			<div
+				className='container'
+				onClick={() => {
+					setShowOfferModal(true);
+				}}
+			>
 				{liked ? (
 					<AiFillHeart
 						className='icon-heart'
 						size={35}
 						color='red'
 						onClick={() => {
+							handlRemoveBestTravel();
 							if (userLogged) {
 								setLiked(!liked);
 							} else {
@@ -65,6 +106,7 @@ function DirectionCard({
 						className='icon-heart'
 						size={35}
 						onClick={() => {
+							handlAddBestTravel();
 							if (userLogged) {
 								setLiked(!liked);
 							} else {

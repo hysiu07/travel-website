@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import './TravelOfferComponent.scss';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
@@ -7,6 +7,7 @@ import { BsAirplane } from 'react-icons/bs';
 import { GiMeal } from 'react-icons/gi';
 import ReactStars from 'react-rating-star-with-type';
 import { OfferModal } from '../../../container/OfferModal';
+import { UserContext } from '../../../context/UserContext';
 type PropsTravelType = {
 	img: string;
 	stars: number;
@@ -36,19 +37,52 @@ function TravelOfferComponent({
 	userLogged,
 	handleShowSnackBar,
 }: PropsTravelType) {
+	const userContext = useContext(UserContext);
 	const [liked, setLiked] = useState(false);
 
 	const firstLetter = country.charAt(0).toUpperCase();
 	const restOfLetters = country.slice(1);
 	const formatedTravelCountry = firstLetter + restOfLetters;
-	const [bestTravels, setBestTravel] = useState<{}[]>([]);
+
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
-	const handleAddLikedTravel = () => {
-		if (liked) {
-			setBestTravel([...bestTravels, { likedTravel: { hotel } }]);
-		}
+
+	const handlAddBestTravel = () => {
+		userContext?.setUser((prevUser) => {
+			if (!prevUser) return null;
+			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
+				? [...prevUser.bestTravels, hotel]
+				: [hotel];
+			return {
+				...prevUser,
+				bestTravels: updatedBestTravels,
+			};
+		});
+	};
+	const handlRemoveBestTravel = () => {
+		userContext?.setUser((prevUser) => {
+			if (!prevUser) return null;
+
+			if (Array.isArray(prevUser.bestTravels)) {
+				const updatedBestTravels = prevUser.bestTravels.filter(
+					(travel) => travel !== hotel
+				);
+				return {
+					...prevUser,
+					bestTravels: updatedBestTravels,
+				};
+			}
+		});
 	};
 
+
+	useEffect(() => {
+		localStorage.setItem('user', JSON.stringify(userContext?.user));
+		if (userContext && userContext.user && userContext.user.bestTravels) {
+			const userBestTravels = userContext.user.bestTravels;
+			const hasLiked = userBestTravels.includes(hotel);
+			setLiked(hasLiked);
+		}
+	}, [userContext?.user]);
 	return (
 		<div className='travel-offer'>
 			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
@@ -63,6 +97,7 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You DisLiked!');
+								handlRemoveBestTravel()
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -76,7 +111,7 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
-								handleAddLikedTravel();
+								handlAddBestTravel()
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}

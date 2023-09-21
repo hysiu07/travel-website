@@ -4,6 +4,7 @@ type UserType = {
 	name: string;
 	email: string;
 	logIn?: boolean;
+	bestTravels?: string[] | null 
 };
 type UsersRegistrationType = {
 	name: string;
@@ -15,8 +16,8 @@ type UserContextProviderProps = {
 	children: React.ReactNode;
 };
 type UserContextType = {
-	user: UserType | null;
-	setUser: React.Dispatch<React.SetStateAction<UserType | null>>;
+	user: UserType | null | undefined;
+	setUser: React.Dispatch<React.SetStateAction<UserType | null | undefined>>;
 	usersRegistration: UsersRegistrationType[] | [];
 	setUsersRegistration: React.Dispatch<
 		React.SetStateAction<UsersRegistrationType[] | []>
@@ -25,7 +26,7 @@ type UserContextType = {
 export const UserContext = createContext<UserContextType | null>(null);
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
-	const [user, setUser] = useState<UserType | null>(null);
+	const [user, setUser] = useState<UserType | null | undefined>(null);
 	const [usersRegistration, setUsersRegistration] = useState<
 		UsersRegistrationType[] | []
 	>([
