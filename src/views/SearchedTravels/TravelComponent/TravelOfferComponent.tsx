@@ -74,7 +74,6 @@ function TravelOfferComponent({
 		});
 	};
 
-
 	useEffect(() => {
 		localStorage.setItem('user', JSON.stringify(userContext?.user));
 		if (userContext && userContext.user && userContext.user.bestTravels) {
@@ -82,7 +81,9 @@ function TravelOfferComponent({
 			const hasLiked = userBestTravels.includes(hotel);
 			setLiked(hasLiked);
 		}
-	}, [userContext?.user]);
+	}, [userContext?.user?.bestTravels]);
+
+	// console.log(userContext?.user?.bestTravels);
 	return (
 		<div className='travel-offer'>
 			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
@@ -97,7 +98,7 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You DisLiked!');
-								handlRemoveBestTravel()
+								handlRemoveBestTravel();
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -111,7 +112,7 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
-								handlAddBestTravel()
+								handlAddBestTravel();
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}

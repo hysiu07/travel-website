@@ -16,9 +16,9 @@ function SearchPanel() {
 	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 
 	const navigate = useNavigate();
-	// context
+
 	const changePath = () => {
-		navigate('/searchedTravels');
+		navigate('/travel-website/searchedTravels');
 	};
 
 	// search yours travels

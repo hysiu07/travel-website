@@ -41,14 +41,15 @@ function DirectionCard({
 	const [liked, setLiked] = useState(false);
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
+	// localStorage.setItem('user', JSON.stringify(userContext?.user));
 	useEffect(() => {
-		localStorage.setItem('user', JSON.stringify(userContext?.user));
+// localStorage.setItem('user', JSON.stringify(userContext?.user));
 		if (userContext && userContext.user && userContext.user.bestTravels) {
-			const userBestTravels = userContext.user.bestTravels ;
+			const userBestTravels = userContext.user.bestTravels;
 			const hasLiked = userBestTravels.includes(hotel);
 			setLiked(hasLiked);
 		}
-	}, [userContext?.user, hotel]);
+	}, [liked]);
 
 	const handlAddBestTravel = () => {
 		userContext?.setUser((prevUser) => {
@@ -61,6 +62,7 @@ function DirectionCard({
 				bestTravels: updatedBestTravels,
 			};
 		});
+		localStorage.setItem('user', JSON.stringify(userContext?.user));
 	};
 	const handlRemoveBestTravel = () => {
 		userContext?.setUser((prevUser) => {
@@ -76,11 +78,12 @@ function DirectionCard({
 				};
 			}
 		});
+		localStorage.setItem('user', JSON.stringify(userContext?.user));
 	};
 
 	return (
 		<div className='direction-card'>
-			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
+			{/* {showOfferModal && <OfferModal closeModal={setShowOfferModal} />} */}
 			<div
 				className='container'
 				onClick={() => {

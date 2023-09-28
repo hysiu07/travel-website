@@ -17,7 +17,7 @@ const AppRoutes = () => {
 			<Route path='/myAccount' element={<MyAccount />} />
 			<Route path='/destination/:id' element={<Destination />} />
 			<Route
-				path='/searchedTravels'
+				path='/travel-website/searchedTravels'
 				element={
 					<UserContextProvider>
 						<FilteredTravelsContextProvider>

@@ -21,6 +21,8 @@ function SearchedTravels() {
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
 
 	useEffect(() => {
+
+		
 		const travelsLocalStorage = localStorage.getItem('travels');
 		if (typeof travelsLocalStorage === 'string') {
 			const travels = JSON.parse(travelsLocalStorage);
@@ -31,9 +33,14 @@ function SearchedTravels() {
 			const user2 = JSON.parse(userLocalStorage);
 			userContext?.setUser(user2);
 		}
+		return () => {
+			if (userContext?.user) {
+				
+				localStorage.setItem('user', JSON.stringify(userContext?.user));
+			}
+		}
 	}, []);
-	console.log(userContext?.user);
-
+	console.log(userContext?.user, ' user Z Searchedtravels');
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
 		if (sortBy === 'priceLowToHigh') {
 			return [...travels].sort((a, b) => a.price - b.price);

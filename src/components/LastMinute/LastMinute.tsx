@@ -6,10 +6,8 @@ import { travels } from '../../data/travels';
 import { OfferModal } from '../../container/OfferModal';
 
 function LastMinute() {
-	
 	return (
 		<div id='last-minute' className='last-minute'>
-		
 			<h2 className='last-minute__title'>LastMinute</h2>
 
 			<SliderCards>
