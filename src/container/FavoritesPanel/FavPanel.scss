@@ -1,11 +1,29 @@
 .fav-panel {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: fixed;
-	bottom: 20px;
+	bottom: 50px;
 	left: 20px;
 	width: 80px;
 	height: 80px;
 	cursor: pointer;
+	&__tooltip {
+		padding: 5px;
+		background-color: #418bb9;
+		box-shadow: #398ab9 0px 3px 8px;
+		border-radius: 10px;
+		opacity: 0;
+		transition: .4s;
+		p {
+			font-size: 1.2rem;
+			font-weight: bold;
+			color: white;
+		}
+	}
+}
+
+.fav-panel:hover .fav-panel__tooltip {
+	opacity: 1;
 }

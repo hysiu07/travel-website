@@ -76,12 +76,12 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 							</a>
 						</li>
 						{userLogged ? (
-							<Link to='/myAccount' className='logo link' onClick={() => {}}>
+							<Link to='/myAccount' className='logo link' >
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>
 						) : (
-							<Link to='/signIn' className='logo link' onClick={() => {}}>
+							<Link to='/signIn' className='logo link' >
 								SignIn
 								<FaUser className='user-icon' />
 							</Link>

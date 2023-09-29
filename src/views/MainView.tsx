@@ -23,7 +23,7 @@ function MainView() {
 			userContext?.setUser(user2);
 		}
 	}, []);
-	console.log(userContext?.user, 'user z mainView');
+	
 	return (
 		<div>
 			<Nav />

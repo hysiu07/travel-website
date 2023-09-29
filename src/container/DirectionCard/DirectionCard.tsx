@@ -41,9 +41,7 @@ function DirectionCard({
 	const [liked, setLiked] = useState(false);
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
-	// localStorage.setItem('user', JSON.stringify(userContext?.user));
 	useEffect(() => {
-// localStorage.setItem('user', JSON.stringify(userContext?.user));
 		if (userContext && userContext.user && userContext.user.bestTravels) {
 			const userBestTravels = userContext.user.bestTravels;
 			const hasLiked = userBestTravels.includes(hotel);
@@ -57,12 +55,13 @@ function DirectionCard({
 			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
 				? [...prevUser.bestTravels, hotel]
 				: [hotel];
-			return {
+			const updatedUser = {
 				...prevUser,
 				bestTravels: updatedBestTravels,
 			};
+			localStorage.setItem('user', JSON.stringify(updatedUser));
+			return updatedUser;
 		});
-		localStorage.setItem('user', JSON.stringify(userContext?.user));
 	};
 	const handlRemoveBestTravel = () => {
 		userContext?.setUser((prevUser) => {
@@ -72,13 +71,14 @@ function DirectionCard({
 				const updatedBestTravels = prevUser.bestTravels.filter(
 					(travel) => travel !== hotel
 				);
-				return {
+				const updatedUser = {
 					...prevUser,
 					bestTravels: updatedBestTravels,
 				};
+				localStorage.setItem('user', JSON.stringify(updatedUser));
+				return updatedUser;
 			}
 		});
-		localStorage.setItem('user', JSON.stringify(userContext?.user));
 	};
 
 	return (

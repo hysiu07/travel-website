@@ -46,16 +46,25 @@ function TravelOfferComponent({
 
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
+	useEffect(() => {
+		if (userContext && userContext.user && userContext.user.bestTravels) {
+			const userBestTravels = userContext.user.bestTravels;
+			const hasLiked = userBestTravels.includes(hotel);
+			setLiked(hasLiked);
+		}
+	}, [liked]);
 	const handlAddBestTravel = () => {
 		userContext?.setUser((prevUser) => {
 			if (!prevUser) return null;
 			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
 				? [...prevUser.bestTravels, hotel]
 				: [hotel];
-			return {
+			const updatedUser = {
 				...prevUser,
 				bestTravels: updatedBestTravels,
 			};
+			localStorage.setItem('user', JSON.stringify(updatedUser));
+			return updatedUser;
 		});
 	};
 	const handlRemoveBestTravel = () => {
@@ -66,24 +75,16 @@ function TravelOfferComponent({
 				const updatedBestTravels = prevUser.bestTravels.filter(
 					(travel) => travel !== hotel
 				);
-				return {
+				const updatedUser = {
 					...prevUser,
 					bestTravels: updatedBestTravels,
 				};
+				localStorage.setItem('user', JSON.stringify(updatedUser));
+				return updatedUser;
 			}
 		});
 	};
 
-	useEffect(() => {
-		localStorage.setItem('user', JSON.stringify(userContext?.user));
-		if (userContext && userContext.user && userContext.user.bestTravels) {
-			const userBestTravels = userContext.user.bestTravels;
-			const hasLiked = userBestTravels.includes(hotel);
-			setLiked(hasLiked);
-		}
-	}, [userContext?.user?.bestTravels]);
-
-	// console.log(userContext?.user?.bestTravels);
 	return (
 		<div className='travel-offer'>
 			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
@@ -124,7 +125,6 @@ function TravelOfferComponent({
 						<p>Last Minute</p>
 					</div>
 				)}
-				O
 			</div>
 			<div className='travel-offer__travel-content'>
 				<h5>{hotel}</h5>
