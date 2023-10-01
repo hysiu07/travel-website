@@ -13,9 +13,12 @@ type SearchType = {
 	price: number;
 };
 function SearchPanel() {
-	const { setFilteredTravels } = useContext(FilteredTravelsContext);
-
 	const navigate = useNavigate();
+	const {  setFilteredTravels } = useContext(
+		FilteredTravelsContext
+	);
+
+	const [showLoader, setShowLoader] = useState<boolean>(false);
 
 	const changePath = () => {
 		navigate('/travel-website/searchedTravels');
@@ -27,15 +30,13 @@ function SearchPanel() {
 		setShowLoader(true);
 
 		await new Promise<void>((resolve) => {
+			filterTravel();
 			setTimeout(() => {
 				resolve();
-				filterTravel();
+				changePath();
 			}, 3000);
 		});
-		changePath();
 	};
-
-	const [showLoader, setShowLoader] = useState<boolean>(false);
 
 	// default search travel value
 	const [searchTours, setSearchTours] = useState<SearchType>({
@@ -66,11 +67,10 @@ function SearchPanel() {
 			const dateMatch = selectedDate >= travelStartDate;
 			return countryMatch && dateMatch && priceMatch;
 		});
-
 		setFilteredTravels(filteredTravels2);
 		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
-	};
 
+	};
 	return (
 		<div>
 			<form

@@ -1,0 +1,33 @@
+.reservations {
+	display: flex;
+	width: 100%;
+	&__up-comming-trips {
+        h3{
+            font-size: 3rem;
+        }
+		width: 50%;
+	}
+	&__previous-trips {
+        h3{
+            font-size: 3rem;
+        }
+		width: 50%;
+        p{
+            font-size: 1.6rem;
+        }
+	}
+}
+@media (max-width: 768px) {
+   .reservations {
+	flex-direction: column;
+	&__up-comming-trips {
+		width: 100%;
+	}
+	&__previous-trips {
+		width: 100%;
+        p{
+            font-size: 1.8rem;
+        }
+	}
+}
+}

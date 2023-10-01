@@ -1,41 +1,37 @@
 import { useContext, useEffect, useState } from 'react';
 import './SearchedTravels.scss';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
-import { Nav } from '../../components';
 import { UserContext } from '../../context/UserContext';
+import { Nav } from '../../components';
 import { FilterComponent } from './Filter';
 import { TravelOfferComponent } from './TravelComponent';
 import { SnackBar } from '../../container/SnackBar';
 import { TravelType } from '../../data/travels';
+
 function SearchedTravels() {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
 	);
 	const userContext = useContext(UserContext);
-
 	const userLogged = userContext?.user?.logIn;
 
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
-
 	useEffect(() => {
-
-		
 		const travelsLocalStorage = localStorage.getItem('travels');
 		if (typeof travelsLocalStorage === 'string') {
 			const travels = JSON.parse(travelsLocalStorage);
 			setFilteredTravels(travels);
 		}
-		const userLocalStorage = localStorage.getItem('user');
-		if (typeof userLocalStorage === 'string') {
-			const user2 = JSON.parse(userLocalStorage);
-			userContext?.setUser(user2);
-		}
-	
+		// const userLocalStorage = localStorage.getItem('user');
+		// if (typeof userLocalStorage === 'string') {
+		// 	const user2 = JSON.parse(userLocalStorage);
+		// 	userContext?.setUser(user2);
+		// }
 	}, []);
-	
+
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
 		if (sortBy === 'priceLowToHigh') {
 			return [...travels].sort((a, b) => a.price - b.price);

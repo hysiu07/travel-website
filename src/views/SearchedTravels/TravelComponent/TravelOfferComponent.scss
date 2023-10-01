@@ -1,9 +1,9 @@
 .travel-offer {
 	display: flex;
-	width: 100%;
+	width: 95%;
+	max-width: 1000px;
 	height: 200px;
 	margin: 20px;
-
 	border-radius: 20px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	overflow: hidden;
@@ -74,8 +74,8 @@
 		.show-offer-btn {
 			padding: 15px 30px;
 			margin-top: 10px;
-			border-radius: 30px;
 			font-size: 2rem;
+			border-radius: 30px;
 			border: none;
 			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 			cursor: pointer;

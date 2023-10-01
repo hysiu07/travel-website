@@ -15,7 +15,7 @@ import { FavPanel } from '../container/FavoritesPanel';
 
 function MainView() {
 	const userContext = useContext(UserContext);
-
+	console.log(userContext?.user, 'context z mainView');
 	useEffect(() => {
 		const userLocalStorage = localStorage.getItem('user');
 		if (typeof userLocalStorage === 'string') {
@@ -23,7 +23,7 @@ function MainView() {
 			userContext?.setUser(user2);
 		}
 	}, []);
-	
+
 	return (
 		<div>
 			<Nav />

@@ -11,7 +11,10 @@ function FavPanel() {
 
 	console.log(userContext?.user?.bestTravels);
 	useEffect(() => {
-		if (userContext?.user?.bestTravels?.length === 0) {
+		if (
+			!userContext?.user?.bestTravels ||
+			userContext.user.bestTravels.length === 0
+		) {
 			setHasFavorites(false);
 			console.log('brak polubionych');
 		} else {

@@ -87,7 +87,19 @@ function TravelOfferComponent({
 
 	return (
 		<div className='travel-offer'>
-			{showOfferModal && <OfferModal closeModal={setShowOfferModal} />}
+			{showOfferModal && (
+				<OfferModal
+					closeModal={setShowOfferModal}
+					img={img}
+					hotel={hotel}
+					dateStart={dateStart}
+					dateEnd={dateEnd}
+					airPort={airPort}
+					price={price}
+					country={country}
+					userLogged={userLogged}
+				/>
+			)}
 			<div className='travel-offer__img-box'>
 				<img src={img} alt='' />
 				{liked ? (

@@ -5,14 +5,49 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	z-index: 1500;
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
-	// &__container {
-	// 	width: 80%;
-	// 	height: 80%;
-	// 	border-radius: 20px;
-	// 	background-color: white;
-	// }
+	&__panel {
+		display: flex;
+		justify-content: space-between;
+		padding: 30px;
+		width: 1200px;
+		height: 600px;
+		border-radius: 20px;
+		background-color: white;
+		.offer-modal-img-box {
+			width: 60%;
+			border-radius: 20px;
+			box-shadow: #398ab9 0px 5px 15px;
+			overflow: hidden;
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.reservation-info-box {
+			width: 30%;
+			padding: 10px;
+			border-radius: 20px;
+			box-shadow: #398ab9 0px 5px 15px;
+			h4 {
+				font-size: 2rem;
+				margin: 10px 0;
+			}
+			h3 {
+				font-size: 3rem;
+				text-align: center;
+				margin: 10px 0;
+			}
+			.reservation-btn {
+				display: block;
+				margin: 0 auto;
+				font-size: 2rem;
+
+			}
+		}
+	}
 }

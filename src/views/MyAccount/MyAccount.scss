@@ -2,7 +2,13 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 10vh;
+
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../../img/thailand-direction.jpeg');
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
 	&__shadow {
 		position: absolute;
 		top: 0px;
@@ -11,22 +17,114 @@
 		background-color: rgb(57, 138, 185, 0.6);
 	}
 	&__panel {
+		top: 150px;
 		z-index: 200;
 		padding: 3%;
 		width: 80%;
-		height: 80%;
+		height: 700px;
+		max-width: 1400px;
 		border-radius: 20px;
 		background-color: rgba(255, 255, 255, 0.7);
 		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		overflow: hidden;
+		.box-welcome {
+			display: flex;
+			justify-content: space-between;
+		}
+		.container {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+			.menu-panel {
+				width: 15%;
+				.menu-item {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					margin: 10px 0;
+					padding: 15px;
+					width: 120px;
+					border: 1px solid black;
+					border-radius: 20px;
+					cursor: pointer;
+					transition: 0.3s;
+					p {
+						margin-top: 3px;
+						font-size: 1.5rem;
+					}
+				}
+
+				.active {
+					width: 140px;
+					border: #418bb9 1px solid;
+					box-shadow: rgba(65, 139, 185, 0.35) 0px 5px 15px;
+				}
+			}
+			.view-panel {
+				padding: 2%;
+				width: 80%;
+
+				// border: 1px solid black;
+				// border-radius: 20px;
+				// overflow: scroll;
+			}
+		}
 	}
-	position: relative;
-	width: 100vw;
-	height: 100vh;
-	background-image: url('../../img/thailand-direction.jpeg');
-	background-position: center;
-	background-size: cover;
-	overflow: hidden;
-	button {
+	.logOut-btn {
 		padding: 10px 20px;
+		height: 40px;
+		font-size: 1.8rem;
+		border-radius: 25px;
+		border: none;
+		border-radius: 40px;
+		background-color: #418bb9;
+		color: white;
+		transform: translate(0, 50%);
+		transition: 0.3s;
+		cursor: pointer;
+	}
+	.logOut-btn:hover {
+		box-shadow: #398ab9 0px 5px 15px;
+	}
+}
+@media (max-width: 992px) {
+	.my-account {
+		&__panel {
+			width: 90%;
+			.container {
+				.menu-panel {
+					.menu-item {
+						width: 80px;
+						p {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.my-account {
+		&__panel {
+			.container {
+				flex-direction: column;
+				.menu-panel {
+					display: flex;
+					justify-content: space-around;
+					width: 100%;
+					.menu-item {
+						padding: 5px;
+						p {
+							display: none;
+						}
+					}
+				}
+				.view-panel {
+					width: 100%;
+				}
+			}
+		}
 	}
 }
