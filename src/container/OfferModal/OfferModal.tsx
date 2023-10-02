@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import './OfferModal.scss';
 import MovingText from 'react-moving-text';
@@ -20,8 +21,39 @@ function OfferModal({
 	dateEnd,
 	country,
 	price,
-	airPort
+	airPort,
 }: PropsOfferModalType) {
+	const [countPerson, setCountPerson] = useState(1);
+	const [insurancetype, setInsuranceType] = useState<
+		'Basic' | 'Silver' | 'Gold'
+	>('Basic');
+	const [priceInsurance, setPriceInsurance] = useState<number>(0);
+
+	const firstLetter = country.charAt(0).toUpperCase();
+	const restOfLetters = country.slice(1);
+	const formatedTravelCountry = firstLetter + restOfLetters;
+	useEffect(() => {
+		if (insurancetype === 'Basic') {
+			setPriceInsurance(0);
+		} else if (insurancetype === 'Silver') {
+			setPriceInsurance(100);
+		} else {
+			setPriceInsurance(200);
+		}
+	}, [insurancetype]);
+	const handleChangeCountPerson = (newValue: number) => {
+		const minNumber = 1;
+		const maxNumber = 6;
+
+		if (newValue >= minNumber && newValue <= maxNumber) {
+			setCountPerson(newValue);
+		} else if (newValue < minNumber) {
+			setCountPerson(minNumber);
+		} else {
+			setCountPerson(maxNumber);
+		}
+	};
+
 	return (
 		<div
 			className='offer-modal'
@@ -57,7 +89,7 @@ function OfferModal({
 							<hr />
 						</div>
 						<div className='country-box'>
-							<h4>Country: {country}</h4>
+							<h4>Country: {formatedTravelCountry}</h4>
 							<hr />
 						</div>
 						<div className='airPort-box'>
@@ -75,14 +107,56 @@ function OfferModal({
 							<hr />
 						</div>
 						<div className='adult-box'>
-							<h4>Person: 1</h4>
+							<div>
+								<h4>Person: {countPerson}</h4>
+								<div className='count-adults-btns'>
+									<button
+										className='add-person-btn'
+										onClick={() => {
+											handleChangeCountPerson(countPerson + 1);
+										}}
+									>
+										+
+									</button>
+									<button
+										className='sub-person-btn'
+										onClick={() => {
+											handleChangeCountPerson(countPerson - 1);
+										}}
+									>
+										-
+									</button>
+								</div>
+							</div>
+
 							<hr />
 						</div>
 						<div className='insurance-box'>
-							<h4>Insurance:</h4>
+							<div>
+								<h4>Insurance: {insurancetype}</h4>
+								<select
+									name='insurance'
+									id='insurance'
+									className='insurance-select'
+									onChange={(e) => {
+										setInsuranceType(
+											e.target.value as 'Basic' | 'Silver' | 'Gold'
+										);
+									}}
+								>
+									<option value='Basic'>Basic</option>
+									<option value='Silver'>Silver</option>
+									<option value='Gold'>Gold</option>
+								</select>
+							</div>
+
 							<hr />
 						</div>
-						<h3>{price} $</h3>
+						<h3>{price * countPerson} $</h3>
+						{priceInsurance !== 0 && (
+							<h4>+Insurance {priceInsurance * countPerson}$</h4>
+						)}
+
 						<button className='reservation-btn btn'>Reservation!</button>
 					</div>
 				</div>
