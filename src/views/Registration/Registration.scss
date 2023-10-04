@@ -79,3 +79,14 @@
 		}
 	}
 }
+
+@media (max-width: 576px) {
+	.registration {
+		&__panel {
+			padding-top: 10vh;
+			width: 100%;
+			height: 100%;
+			border-radius: 0;
+		}
+	}
+}

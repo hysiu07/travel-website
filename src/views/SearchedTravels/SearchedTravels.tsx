@@ -25,11 +25,7 @@ function SearchedTravels() {
 			const travels = JSON.parse(travelsLocalStorage);
 			setFilteredTravels(travels);
 		}
-		// const userLocalStorage = localStorage.getItem('user');
-		// if (typeof userLocalStorage === 'string') {
-		// 	const user2 = JSON.parse(userLocalStorage);
-		// 	userContext?.setUser(user2);
-		// }
+	
 	}, []);
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {

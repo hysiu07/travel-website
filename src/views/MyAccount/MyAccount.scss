@@ -64,10 +64,6 @@
 			.view-panel {
 				padding: 2%;
 				width: 80%;
-
-				// border: 1px solid black;
-				// border-radius: 20px;
-				// overflow: scroll;
 			}
 		}
 	}
@@ -108,6 +104,34 @@
 @media (max-width: 768px) {
 	.my-account {
 		&__panel {
+			.container {
+				flex-direction: column;
+				.menu-panel {
+					display: flex;
+					justify-content: space-around;
+					width: 100%;
+					.menu-item {
+						padding: 5px;
+						p {
+							display: none;
+						}
+					}
+				}
+				.view-panel {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.my-account {
+		&__panel {
+			padding-top: 12vh;
+			width: 100vw;
+			height: 100vh;
+			border-radius: 0;
+			overflow-y: auto;
 			.container {
 				flex-direction: column;
 				.menu-panel {

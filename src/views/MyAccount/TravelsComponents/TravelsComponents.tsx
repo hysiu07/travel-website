@@ -9,12 +9,10 @@ function TravelsComponents() {
 	const userLogged = userContext?.user?.logIn;
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
-	console.log(userContext?.user?.bestTravels);
+	
 	const bestTravels = userContext?.user?.bestTravels;
-	console.log(bestTravels);
-	if (bestTravels?.includes('Orient Express')) {
-		console.log('sad');
-	}
+
+
 	async function handleShowSnackBar(info: string) {
 		await setSnackBarInfo(info);
 		await setSnackBar(true);

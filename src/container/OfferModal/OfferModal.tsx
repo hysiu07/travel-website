@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import './OfferModal.scss';
 import MovingText from 'react-moving-text';
+import { ThreeCircles } from 'react-loader-spinner';
+import { UserContext } from '../../context/UserContext';
 type PropsOfferModalType = {
 	dateStart: string;
 	dateEnd: string;
@@ -23,15 +25,19 @@ function OfferModal({
 	price,
 	airPort,
 }: PropsOfferModalType) {
+	const userContext = useContext(UserContext);
+
 	const [countPerson, setCountPerson] = useState(1);
 	const [insurancetype, setInsuranceType] = useState<
 		'Basic' | 'Silver' | 'Gold'
 	>('Basic');
 	const [priceInsurance, setPriceInsurance] = useState<number>(0);
+	const [showLoader, setShowLoader] = useState<boolean>(false);
 
 	const firstLetter = country.charAt(0).toUpperCase();
 	const restOfLetters = country.slice(1);
 	const formatedTravelCountry = firstLetter + restOfLetters;
+
 	useEffect(() => {
 		if (insurancetype === 'Basic') {
 			setPriceInsurance(0);
@@ -40,6 +46,7 @@ function OfferModal({
 		} else {
 			setPriceInsurance(200);
 		}
+		console.log(userContext?.user);
 	}, [insurancetype]);
 	const handleChangeCountPerson = (newValue: number) => {
 		const minNumber = 1;
@@ -157,7 +164,37 @@ function OfferModal({
 							<h4>+Insurance {priceInsurance * countPerson}$</h4>
 						)}
 
-						<button className='reservation-btn btn'>Reservation!</button>
+						<button
+							className='reservation-btn'
+							onClick={() => {
+								setShowLoader(!showLoader);
+								
+								userContext?.setUser((prevValue) => {
+									if (!prevValue) return null;
+									return {
+										...prevValue,
+										reservation: {
+											travel: hotel,
+											insurance: insurancetype,
+										},
+									};
+								})
+									console.log(userContext?.user);;
+							}}
+						>
+							{showLoader ? (
+								<ThreeCircles
+									height='30'
+									width='30'
+									color='#398AB9'
+									wrapperStyle={{}}
+									visible={true}
+									ariaLabel='three-circles-rotating'
+								/>
+							) : (
+								'Reservation!'
+							)}
+						</button>
 					</div>
 				</div>
 			</MovingText>

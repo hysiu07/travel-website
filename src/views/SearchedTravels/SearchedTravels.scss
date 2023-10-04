@@ -91,6 +91,7 @@
 @media (max-width: 576px) {
 	.searched-travels {
 		&__container {
+			width: 100%;
 			padding: 80px 3% 3% 3%;
 		}
 		&__filter-panel {

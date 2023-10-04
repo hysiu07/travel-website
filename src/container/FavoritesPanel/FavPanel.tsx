@@ -9,7 +9,7 @@ function FavPanel() {
 
 	const [hasFavorites, setHasFavorites] = useState<boolean>(false);
 
-	console.log(userContext?.user?.bestTravels);
+
 	useEffect(() => {
 		if (
 			!userContext?.user?.bestTravels ||

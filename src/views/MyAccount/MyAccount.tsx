@@ -15,8 +15,8 @@ function MyAccount() {
 	const navigate = useNavigate();
 	const name = userContext?.user?.name;
 	const [menuType, setMenuType] = useState<string>('desktop');
-	useEffect(() => {}, [userContext]);
 
+	console.log(userContext?.user);
 	return (
 		<div className='my-account'>
 			<Nav />

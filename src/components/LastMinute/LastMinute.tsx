@@ -25,6 +25,7 @@ function LastMinute() {
 								dateEnd={direction.dateEnd}
 								price={direction.price}
 								lastMinute={direction.lastMinute}
+								airPort={direction.airPort}
 							/>
 						);
 					}

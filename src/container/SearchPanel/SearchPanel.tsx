@@ -120,7 +120,7 @@ function SearchPanel() {
 					/>
 				</div>
 				<button
-					className='search-panel__button btn'
+					className='search-panel__button'
 					type='submit'
 					onClick={() => {
 						setShowLoader(!showLoader);

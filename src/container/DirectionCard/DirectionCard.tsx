@@ -12,12 +12,14 @@ type DirectionCardPropsType = {
 	img: string;
 	hotel: string;
 	stars: number;
-	country: string | undefined;
+	country: string;
 	city: string;
 	price: number;
 	dateStart: string;
 	dateEnd: string;
 	lastMinute: boolean;
+	airPort: string 
+	
 };
 
 function DirectionCard({
@@ -30,6 +32,7 @@ function DirectionCard({
 	dateStart,
 	dateEnd,
 	lastMinute,
+	airPort,
 }: DirectionCardPropsType) {
 	const userContext = useContext(UserContext);
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
@@ -39,7 +42,7 @@ function DirectionCard({
 	const formatedTravelCountry = firstLetter + restOfLetters;
 
 	const [liked, setLiked] = useState(false);
-	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
+	
 
 	useEffect(() => {
 		if (userContext && userContext.user && userContext.user.bestTravels) {
@@ -83,12 +86,9 @@ function DirectionCard({
 
 	return (
 		<div className='direction-card'>
-			{/* {showOfferModal && <OfferModal closeModal={setShowOfferModal} />} */}
 			<div
 				className='container'
-				onClick={() => {
-					setShowOfferModal(true);
-				}}
+				
 			>
 				{liked ? (
 					<AiFillHeart

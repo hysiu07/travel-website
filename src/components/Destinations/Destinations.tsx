@@ -61,17 +61,6 @@ function Destinations() {
 				</MovingText>
 			)}
 
-			{/* <div className='destinations__cards-container'>
-				{directionInfo.map((direction) => {
-					return (
-						<DestinationCard
-							key={direction.id}
-							country={direction.country}
-							img={direction.img}
-						/>
-					);
-				})}
-			</div> */}
 		</div>
 	);
 }

@@ -139,10 +139,15 @@
 @media (max-width: 576px) {
 	.travel-offer {
 		width: 95%;
-		height: 450px;
+		height: 520px;
 		&__img-box {
 			height: 250px;
 			width: 100%;
 		}
+	}
+}
+@media (max-width: 360px) {
+	.travel-offer {
+		height: 450px;
 	}
 }

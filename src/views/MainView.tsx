@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect} from 'react';
 import { UserContext } from '../context/UserContext';
 
 import {
@@ -15,7 +15,7 @@ import { FavPanel } from '../container/FavoritesPanel';
 
 function MainView() {
 	const userContext = useContext(UserContext);
-	console.log(userContext?.user, 'context z mainView');
+
 	useEffect(() => {
 		const userLocalStorage = localStorage.getItem('user');
 		if (typeof userLocalStorage === 'string') {
