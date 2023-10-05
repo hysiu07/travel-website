@@ -3,15 +3,16 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { travels } from '../../../data/travels';
 import { TravelOfferComponent } from '../../SearchedTravels/TravelComponent';
-
-function TravelsComponents() {
+type PropsTravelsComponentType = {
+	setHiddenNav: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function TravelsComponents({ setHiddenNav }: PropsTravelsComponentType) {
 	const userContext = useContext(UserContext);
 	const userLogged = userContext?.user?.logIn;
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
-	
-	const bestTravels = userContext?.user?.bestTravels;
 
+	const bestTravels = userContext?.user?.bestTravels;
 
 	async function handleShowSnackBar(info: string) {
 		await setSnackBarInfo(info);
@@ -41,6 +42,7 @@ function TravelsComponents() {
 							lastMinute={travel.lastMinute}
 							userLogged={userLogged}
 							handleShowSnackBar={handleShowSnackBar}
+							setHiddenNav={setHiddenNav}
 						/>
 					);
 				}

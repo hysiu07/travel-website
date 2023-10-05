@@ -1,10 +1,10 @@
 .contact {
 	position: relative;
 	width: 100%;
-
 	background-image: url('../../img/thailand-boats.jpg');
 	background-position: center;
 	background-size: cover;
+	overflow: hidden;
 	&__container {
 		display: flex;
 		flex-direction: column;

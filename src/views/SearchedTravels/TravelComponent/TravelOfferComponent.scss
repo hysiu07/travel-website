@@ -1,8 +1,8 @@
 .travel-offer {
 	display: flex;
-	width: 95%;
+	width: 90%;
 	max-width: 1000px;
-	height: 200px;
+	height: 240px;
 	margin: 20px;
 	border-radius: 20px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -10,7 +10,7 @@
 	&__img-box {
 		position: relative;
 		height: 100%;
-		width: 250px;
+		width: 450px;
 		img {
 			height: 100%;
 			width: 100%;
@@ -23,8 +23,8 @@
 		}
 		.last-minute-label {
 			position: absolute;
-			top: 20px;
-			left: 20px;
+			top: 15px;
+			left: 15px;
 			z-index: 100;
 			padding: 7px 14px;
 			background-color: red;

@@ -1,12 +1,12 @@
 .searched-travels {
 	position: relative;
-	overflow: hidden;
 	width: 100%;
 	height: 100vh;
 	background-image: url('../../img//dominican-republic-direction-5.jpg');
 	background-size: cover;
 	background-position: center;
-
+	overflow: hidden;
+	
 	&__container {
 		display: flex;
 		flex-direction: row;
@@ -33,7 +33,8 @@
 		width: 75%;
 		.sort-input {
 			h3 {
-				font-size: 4rem;
+				font-size: 3rem;
+				font-family: "Montserrat", sans-serif;
 			}
 			display: flex;
 			justify-content: space-between;
@@ -64,6 +65,7 @@
 @media (max-width: 1200px) {
 	.searched-travels {
 		&__container {
+			width: 90%;
 			padding: 140px 2% 2% 2%;
 		}
 	}

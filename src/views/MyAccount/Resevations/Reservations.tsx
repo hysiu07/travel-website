@@ -1,6 +1,7 @@
 import './Reservations.scss';
 
 function Reservations() {
+	
 	return (
 		<div className='reservations'>
 			<div className='reservations__up-comming-trips'>

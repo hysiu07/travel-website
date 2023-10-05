@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
+	padding-top: 10vh;
 	width: 100vw;
 	height: 100vh;
 	background-image: url('../../img/thailand-direction.jpeg');
@@ -17,11 +17,10 @@
 		background-color: rgb(57, 138, 185, 0.6);
 	}
 	&__panel {
-		top: 150px;
 		z-index: 200;
 		padding: 3%;
 		width: 80%;
-		height: 700px;
+		height: 600px;
 		max-width: 1400px;
 		border-radius: 20px;
 		background-color: rgba(255, 255, 255, 0.7);
@@ -30,6 +29,22 @@
 		.box-welcome {
 			display: flex;
 			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+			h2 {
+				margin: 0;
+			}
+			.logOut-btn {
+				padding: 10px 20px;
+				height: 40px;
+				font-size: 1.8rem;
+				border: none;
+				border-radius: 40px;
+				background-color: #418bb9;
+				color: white;
+				transition: 0.3s;
+				cursor: pointer;
+			}
 		}
 		.container {
 			display: flex;
@@ -67,19 +82,7 @@
 			}
 		}
 	}
-	.logOut-btn {
-		padding: 10px 20px;
-		height: 40px;
-		font-size: 1.8rem;
-		border-radius: 25px;
-		border: none;
-		border-radius: 40px;
-		background-color: #418bb9;
-		color: white;
-		transform: translate(0, 50%);
-		transition: 0.3s;
-		cursor: pointer;
-	}
+
 	.logOut-btn:hover {
 		box-shadow: #398ab9 0px 5px 15px;
 	}
@@ -126,12 +129,27 @@
 }
 @media (max-width: 576px) {
 	.my-account {
+		padding-top: 0;
 		&__panel {
 			padding-top: 12vh;
 			width: 100vw;
 			height: 100vh;
 			border-radius: 0;
 			overflow-y: auto;
+			.box-welcome {
+				padding: 10px;
+				align-items: center;
+				h2 {
+					justify-content: center;
+					margin: 0;
+					font-size: 4rem;
+				}
+				.logOut-btn {
+					font-size: 1.6rem;
+					padding: 8px 16px;
+					transform: none;
+				}
+			}
 			.container {
 				flex-direction: column;
 				.menu-panel {

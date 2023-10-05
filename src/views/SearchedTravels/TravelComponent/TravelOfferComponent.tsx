@@ -21,6 +21,7 @@ type PropsTravelType = {
 	lastMinute: boolean;
 	userLogged: boolean | undefined;
 	handleShowSnackBar: (info: string) => void;
+	setHiddenNav?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function TravelOfferComponent({
@@ -36,6 +37,7 @@ function TravelOfferComponent({
 	lastMinute,
 	userLogged,
 	handleShowSnackBar,
+	setHiddenNav,
 }: PropsTravelType) {
 	const userContext = useContext(UserContext);
 	const [liked, setLiked] = useState(false);
@@ -98,6 +100,7 @@ function TravelOfferComponent({
 					price={price}
 					country={country}
 					userLogged={userLogged}
+					setHiddenNav={setHiddenNav}
 				/>
 			)}
 			<div className='travel-offer__img-box'>
@@ -166,6 +169,9 @@ function TravelOfferComponent({
 					className='show-offer-btn btn'
 					onClick={() => {
 						setShowOfferModal(!showOfferModal);
+						if (setHiddenNav) {
+							setHiddenNav(true);
+						}
 					}}
 				>
 					See offer

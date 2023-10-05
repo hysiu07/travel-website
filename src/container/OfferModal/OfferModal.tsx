@@ -1,9 +1,12 @@
 import { useEffect, useState, useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import './OfferModal.scss';
+import { UserContext } from '../../context/UserContext';
+import { IoClose } from 'react-icons/io5';
 import MovingText from 'react-moving-text';
 import { ThreeCircles } from 'react-loader-spinner';
-import { UserContext } from '../../context/UserContext';
+import './OfferModal.scss';
+import useWindowWidth from '../../container/Hooks/useWindowWidth';
+import { SnackBar } from '../SnackBar';
 type PropsOfferModalType = {
 	dateStart: string;
 	dateEnd: string;
@@ -14,6 +17,7 @@ type PropsOfferModalType = {
 	img: string;
 	hotel: string;
 	closeModal: Dispatch<SetStateAction<boolean>>;
+	setHiddenNav?: Dispatch<SetStateAction<boolean>>;
 };
 function OfferModal({
 	closeModal,
@@ -24,8 +28,10 @@ function OfferModal({
 	country,
 	price,
 	airPort,
+	setHiddenNav,
 }: PropsOfferModalType) {
 	const userContext = useContext(UserContext);
+	const { width } = useWindowWidth();
 
 	const [countPerson, setCountPerson] = useState(1);
 	const [insurancetype, setInsuranceType] = useState<
@@ -33,6 +39,7 @@ function OfferModal({
 	>('Basic');
 	const [priceInsurance, setPriceInsurance] = useState<number>(0);
 	const [showLoader, setShowLoader] = useState<boolean>(false);
+	const [showSnackBar, setShowSnackBar] = useState<boolean>(false);
 
 	const firstLetter = country.charAt(0).toUpperCase();
 	const restOfLetters = country.slice(1);
@@ -48,6 +55,7 @@ function OfferModal({
 		}
 		console.log(userContext?.user);
 	}, [insurancetype]);
+
 	const handleChangeCountPerson = (newValue: number) => {
 		const minNumber = 1;
 		const maxNumber = 6;
@@ -60,14 +68,50 @@ function OfferModal({
 			setCountPerson(maxNumber);
 		}
 	};
+	async function handleAddReservation() {
+		await setShowLoader(!showLoader);
+
+		await userContext?.setUser((prevValue) => {
+			if (!prevValue) return null;
+			const updatedUser = {
+				...prevValue,
+				reservation: {
+					travel: hotel,
+					insurance: insurancetype,
+				},
+			};
+			localStorage.setItem('user', JSON.stringify(updatedUser));
+			return updatedUser;
+		});
+		await new Promise<void>((resolve) => {
+			setTimeout(() => {
+				resolve();
+				setShowLoader(false);
+			}, 3000);
+		});
+		await setShowSnackBar(true);
+		await new Promise<void>((resolve) => {
+			setTimeout(() => {
+				resolve();
+				setShowSnackBar(false);
+			}, 3000);
+		});
+	}
 
 	return (
 		<div
 			className='offer-modal'
 			onClick={() => {
 				closeModal(false);
+				if (setHiddenNav) {
+					setHiddenNav(false);
+				}
 			}}
 		>
+			<SnackBar
+				text='Added your Reservation!'
+				position={showSnackBar ? { right: '50px' } : { right: '-300px' }}
+			/>
 			<MovingText
 				type='fadeInFromBottom'
 				duration='600ms'
@@ -85,6 +129,18 @@ function OfferModal({
 				>
 					<div className='offer-modal-img-box'>
 						<img src={img} alt='hotel picture' />
+						{width < 576 && (
+							<IoClose
+								size={40}
+								className='close-btn'
+								onClick={() => {
+									closeModal(false);
+									if (setHiddenNav) {
+										setHiddenNav(false);
+									}
+								}}
+							/>
+						)}
 					</div>
 					<div className='reservation-info-box'>
 						<div className='title-box'>
@@ -159,27 +215,31 @@ function OfferModal({
 
 							<hr />
 						</div>
-						<h3>{price * countPerson} $</h3>
-						{priceInsurance !== 0 && (
-							<h4>+Insurance {priceInsurance * countPerson}$</h4>
-						)}
+						<div className='price-box'>
+							<h3>{price * countPerson} $</h3>
+							{priceInsurance !== 0 && (
+								<h4>+Insurance {priceInsurance * countPerson}$</h4>
+							)}
+						</div>
 
 						<button
 							className='reservation-btn'
 							onClick={() => {
-								setShowLoader(!showLoader);
-								
-								userContext?.setUser((prevValue) => {
-									if (!prevValue) return null;
-									return {
-										...prevValue,
-										reservation: {
-											travel: hotel,
-											insurance: insurancetype,
-										},
-									};
-								})
-									console.log(userContext?.user);;
+								// setShowLoader(!showLoader);
+
+								// userContext?.setUser((prevValue) => {
+								// 	if (!prevValue) return null;
+								// 	const updatedUser = {
+								// 		...prevValue,
+								// 		reservation: {
+								// 			travel: hotel,
+								// 			insurance: insurancetype,
+								// 		},
+								// 	};
+								// 	localStorage.setItem('user', JSON.stringify(updatedUser));
+								// 	return updatedUser;
+								// });
+								handleAddReservation();
 							}}
 						>
 							{showLoader ? (

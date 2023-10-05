@@ -15,11 +15,14 @@ function MyAccount() {
 	const navigate = useNavigate();
 	const name = userContext?.user?.name;
 	const [menuType, setMenuType] = useState<string>('desktop');
+	const [hiddenNav, setHiddenNav] = useState(false);
 
 	console.log(userContext?.user);
+	
 	return (
 		<div className='my-account'>
-			<Nav />
+			{hiddenNav ? '' : <Nav />}
+
 			<div className='my-account__shadow'></div>
 			<div className='my-account__panel'>
 				<div className='box-welcome'>
@@ -78,8 +81,10 @@ function MyAccount() {
 					</div>
 					<div className='view-panel'>
 						{(menuType === 'desktop' && <DesktopComponent />) ||
-							(menuType === 'travels' && <TravelsComponents />) ||
-							(menuType === 'reservations' && <Reservations />)}
+							(menuType === 'travels' && (
+								<TravelsComponents setHiddenNav={setHiddenNav} />
+							)) ||
+							(menuType === 'reservations' && <Reservations  />)}
 					</div>
 				</div>
 			</div>

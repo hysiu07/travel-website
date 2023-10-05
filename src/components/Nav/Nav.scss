@@ -2,7 +2,7 @@
 
 .nav {
 	position: fixed;
-	z-index: 2000;
+	z-index: 1500;
 	top: 0;
 	display: flex;
 	justify-content: center;
@@ -19,5 +19,12 @@
 		width: 100%;
 		max-width: 1200px;
 	}
-
 }
+
+// @media (max-width: 576px) {
+// 	.nav {
+// 		z-index: 1500;
+// 		&__container {
+// 		}
+// 	}
+// }
