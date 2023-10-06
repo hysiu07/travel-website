@@ -4,7 +4,19 @@ type UserType = {
 	name: string;
 	email: string;
 	logIn?: boolean;
-	bestTravels?: string[] | null 
+	bestTravels?: string[] | null;
+	reservation?: {
+		travel: string;
+		country: string;
+		airPort: string;
+		price: number;
+		insurance: string;
+		insurancePrice: number;
+		dateEnd: string;
+		dateStart: string;
+		food: string;
+		amountPersons: number;
+	} | null;
 };
 type UsersRegistrationType = {
 	name: string;

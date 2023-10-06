@@ -77,7 +77,15 @@ function OfferModal({
 				...prevValue,
 				reservation: {
 					travel: hotel,
+					country: country,
+					airPort: airPort,
+					price: price * countPerson,
 					insurance: insurancetype,
+					insurancePrice: priceInsurance * countPerson,
+					dateEnd: dateEnd,
+					dateStart: dateStart,
+					food: 'AllInclusive',
+					amountPersons: countPerson
 				},
 			};
 			localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -225,20 +233,6 @@ function OfferModal({
 						<button
 							className='reservation-btn'
 							onClick={() => {
-								// setShowLoader(!showLoader);
-
-								// userContext?.setUser((prevValue) => {
-								// 	if (!prevValue) return null;
-								// 	const updatedUser = {
-								// 		...prevValue,
-								// 		reservation: {
-								// 			travel: hotel,
-								// 			insurance: insurancetype,
-								// 		},
-								// 	};
-								// 	localStorage.setItem('user', JSON.stringify(updatedUser));
-								// 	return updatedUser;
-								// });
 								handleAddReservation();
 							}}
 						>

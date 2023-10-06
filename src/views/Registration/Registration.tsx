@@ -1,10 +1,10 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Nav } from '../../components';
 import './Registration.scss';
 import { UserContext } from '../../context/UserContext';
 import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
-import { Link } from 'react-router-dom';
 import { ErrorsType, UserInfoType } from '../../types';
 
 function Registration() {
@@ -13,7 +13,6 @@ function Registration() {
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [successRegistration, setSuccessRegistration] =
 		useState<boolean>(false);
-	const [signInBtn, setSignInBtn] = useState<boolean>(false);
 
 	const [error, setError] = useState<ErrorsType>({
 		errorName: null,
@@ -34,7 +33,6 @@ function Registration() {
 		password: '',
 		confirmPassword: '',
 	});
-
 	const checkValidation = () => {
 		if (
 			error.errorName !== false ||
@@ -54,7 +52,13 @@ function Registration() {
 
 		setInfoUser({ ...infoUser, [name]: target.value.trim() });
 	};
-
+	useEffect(() => {
+		console.log(infoUser);
+		console.log(error);
+		handleValidationConfirmPass()
+		
+	}, [infoUser]);
+console.log(disabledBtn);
 	const handleValidationName = () => {
 		if (infoUser.name.length <= 5) {
 			setError({
@@ -161,8 +165,10 @@ function Registration() {
 				errorInfoPasswordConfirm: '',
 			});
 		}
+
 		checkValidation();
 	};
+
 	const clearInputs = () => {
 		setInfoUser({
 			name: '',
@@ -191,7 +197,7 @@ function Registration() {
 		await setTimeout(() => {
 			setSuccessRegistration(false);
 		}, 5000);
-		await setSignInBtn(true);
+		await setDisabledBtn(true);
 	}
 
 	const submit: React.FormEventHandler = (e) => {
@@ -268,13 +274,18 @@ function Registration() {
 						placeholder='Repeat password'
 						className='input-repeat-password'
 						value={infoUser.confirmPassword}
-						onChange={handleInfoUser}
+						onChange={(e) => {
+							handleInfoUser(e);
+						}}
 						onBlur={handleValidationConfirmPass}
 						style={
 							error.errorPass ? { border: '2px solid red' } : { border: 'none' }
 						}
 					/>
 					<p>{errorInfo.errorInfoPasswordConfirm}</p>
+					<div>
+						<input type='checkbox' /> <span>zezwalam na </span>
+					</div>
 
 					<button
 						type='submit'
@@ -289,18 +300,6 @@ function Registration() {
 						Register
 					</button>
 				</form>
-				{signInBtn && (
-					<button
-						className='btn-signIn'
-						onClick={() => {
-							setSignInBtn(false);
-						}}
-					>
-						<Link to='/signIn' className='link-signIn'>
-							SignIn
-						</Link>
-					</button>
-				)}
 			</div>
 		</div>
 	);
