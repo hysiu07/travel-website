@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/travel-website/static/css/main.7fca52a8.css",
-    "main.js": "/travel-website/static/js/main.3f8ef6ee.js",
+    "main.css": "/travel-website/static/css/main.24d275ed.css",
+    "main.js": "/travel-website/static/js/main.47d65660.js",
     "static/js/787.397fec01.chunk.js": "/travel-website/static/js/787.397fec01.chunk.js",
     "static/media/video.mp4": "/travel-website/static/media/video.e06c322d6a8c1f148abe.mp4",
     "static/media/turkiye-direction-4.jpg": "/travel-website/static/media/turkiye-direction-4.3d178d9a86e8590f4a3e.jpg",
@@ -74,7 +74,6 @@
     "static/media/spain2.jpg": "/travel-website/static/media/spain2.8a5b1bfd8bcb275a2b35.jpg",
     "static/media/spain3.jpg": "/travel-website/static/media/spain3.e565eb1028ac7f6f27ce.jpg",
     "static/media/greece-direction.jpeg": "/travel-website/static/media/greece-direction.529be5deaacd14482337.jpeg",
-    "static/media/weather-cloud-bgc.jpg": "/travel-website/static/media/weather-cloud-bgc.fb6864cac53be8fe35eb.jpg",
     "static/media/cyprus3.jpg": "/travel-website/static/media/cyprus3.844d92cbefd13cf25993.jpg",
     "static/media/greece4.jpg": "/travel-website/static/media/greece4.c9c6af30ff7692013bdc.jpg",
     "static/media/marocco2.jpg": "/travel-website/static/media/marocco2.3e56161258f459cae4aa.jpg",
@@ -88,12 +87,12 @@
     "static/media/marocco-direction-2.jpeg": "/travel-website/static/media/marocco-direction-2.612909f6136a0c3d1de4.jpeg",
     "static/media/marocco-direction.jpeg": "/travel-website/static/media/marocco-direction.e70d18dfd3798a4e27c9.jpeg",
     "index.html": "/travel-website/index.html",
-    "main.7fca52a8.css.map": "/travel-website/static/css/main.7fca52a8.css.map",
-    "main.3f8ef6ee.js.map": "/travel-website/static/js/main.3f8ef6ee.js.map",
+    "main.24d275ed.css.map": "/travel-website/static/css/main.24d275ed.css.map",
+    "main.47d65660.js.map": "/travel-website/static/js/main.47d65660.js.map",
     "787.397fec01.chunk.js.map": "/travel-website/static/js/787.397fec01.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fca52a8.css",
-    "static/js/main.3f8ef6ee.js"
+    "static/css/main.24d275ed.css",
+    "static/js/main.47d65660.js"
   ]
 }
