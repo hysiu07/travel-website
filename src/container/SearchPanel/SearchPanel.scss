@@ -51,11 +51,29 @@
 		cursor: pointer;
 		transition: 0.3s;
 	}
-	
 
 	.range {
 		accent-color: #398ab9;
 		box-shadow: none;
+	}
+}
+@media (max-width: 350px) {
+	.search-panel {
+		&__box-item {
+			input {
+				margin-top: 0;
+				padding: 8px 16px;
+				font-size: 1.4rem;
+			}
+		}
+		&__label {
+			font-size: 1.8rem;
+		}
+
+		&__button {
+			padding: 8px 16px;
+			font-size: 1.8rem;
+		}
 	}
 }
 @media (max-width: 576px) {
@@ -67,6 +85,16 @@
 			font-size: 1.6rem;
 			margin: 5px;
 		}
+		&__label-container {
+			margin-top: 5px;
+			span {
+				font-size: 1.6rem;
+				color: #313131dc;
+			}
+		}
+		.range {
+			margin-top: 0;
+		}
 	}
 }
 @media (min-width: 577px) and (max-width: 768px) {
@@ -76,6 +104,11 @@
 		}
 		&__label {
 			font-size: 1.8rem;
+		}
+		&__label-container {
+			span {
+				font-size: 1.6rem;
+			}
 		}
 	}
 }

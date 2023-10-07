@@ -44,33 +44,30 @@
 	}
 }
 
+
 @media (max-width: 576px) {
 	.header {
 		overflow: hidden;
 		&__content-text {
 			padding: 4%;
-			margin-bottom: 50px;
 
 			h1 {
 				font-size: 4.5rem;
 			}
 			p {
-				font-size: 2.5rem;
+				font-size: 2.2rem;
 			}
 		}
 	}
 }
-@media (max-width: 360px) {
+@media (max-width: 350px) {
 	.header {
 		overflow: hidden;
 		&__content-text {
 			margin-bottom: 0;
 
 			h1 {
-				font-size: 4rem;
-			}
-			p {
-				font-size: 2.5rem;
+				font-size: 3.6rem;
 			}
 		}
 	}

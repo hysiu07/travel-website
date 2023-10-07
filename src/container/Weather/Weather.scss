@@ -3,18 +3,10 @@
 	width: 100%;
 	padding: 2% 5%;
 	margin: 30px 0;
-	background-image: url('./img/weather-cloud-bgc.jpg');
-	background-position: center;
-	background-size: cover;
-	// &__shadow{
-	//     position: absolute;
-	//     z-index: 500;
-	//     width: 100%;
-	//     height: 100%;
-	//     top: 0;
-	//     left: 0;
-	//     background-color: rgba(255, 255, 255, .5);
-	// }
+	
+	background-image: linear-gradient(180deg, #ffffff 0%, #5899e2 50%, #ffffff 100%);
+
+
 	&__content-container {
 		display: flex;
 		flex-direction: column;
@@ -26,8 +18,8 @@
 		padding: 20px;
 		max-width: 1000px;
 		border-radius: 20px;
-		background-color: white;
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		background-color: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 		.title {
 			text-align: center;
 			font-size: 4rem;
@@ -39,6 +31,7 @@
 			justify-content: space-around;
 			align-items: center;
 			flex-wrap: wrap;
+			margin-bottom: 30px;
 
 			&__name-box {
 				display: flex;
@@ -46,7 +39,6 @@
 				align-items: center;
 				h4 {
 					font-size: 5rem;
-					
 				}
 			}
 			&__img {
@@ -64,20 +56,52 @@
 			display: flex;
 			justify-content: space-around;
 			flex-wrap: wrap;
+
 			.box {
 				margin: 15px;
 				width: 200px;
 				padding: 10px;
-				border-radius: 20px;
+
 				text-align: center;
-				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 				h5 {
 					font-size: 2.5rem;
 					margin-bottom: 10px;
 				}
 				p {
+					padding: 20px;
 					text-align: center;
 					font-size: 2rem;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.weather {
+		.weather-position-box {
+			margin-bottom: 0;
+				&__img {
+				
+
+				img {
+					height: 80px;
+					width: 180px;
+				}
+			}
+		}
+		.weather-info-box {
+			
+
+			.box {
+				margin: 5px;
+				h5{
+					font-size: 2.2rem;
+				}
+				p {
+					padding: 10px;
+					text-align: center;
+					font-size: 1.8rem;
 				}
 			}
 		}

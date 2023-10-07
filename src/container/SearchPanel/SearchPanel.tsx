@@ -71,6 +71,7 @@ function SearchPanel() {
 		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
 
 	};
+	
 	return (
 		<div>
 			<form

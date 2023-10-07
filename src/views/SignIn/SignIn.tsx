@@ -54,7 +54,7 @@ function SignIn() {
 		await setSnackBar(true);
 		await setTimeout(() => {
 			setSnackBar(false);
-		}, 5000);
+		}, 3000);
 		await setDisabledBtn(true);
 	}
 

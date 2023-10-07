@@ -13,7 +13,8 @@ function Registration() {
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [successRegistration, setSuccessRegistration] =
 		useState<boolean>(false);
-
+	const [userDataProcessingConsent, setUserDataProcessingConsent] =
+		useState(false);
 	const [error, setError] = useState<ErrorsType>({
 		errorName: null,
 		errorEmail: null,
@@ -38,7 +39,8 @@ function Registration() {
 			error.errorName !== false ||
 			error.errorEmail !== false ||
 			error.errorPass !== false ||
-			error.errorConfirmPass !== false
+			error.errorConfirmPass !== false ||
+			userDataProcessingConsent !== false
 		) {
 			setDisabledBtn(true);
 		} else {
@@ -53,12 +55,9 @@ function Registration() {
 		setInfoUser({ ...infoUser, [name]: target.value.trim() });
 	};
 	useEffect(() => {
-		console.log(infoUser);
-		console.log(error);
-		handleValidationConfirmPass()
-		
+		handleValidationConfirmPass();
 	}, [infoUser]);
-console.log(disabledBtn);
+	
 	const handleValidationName = () => {
 		if (infoUser.name.length <= 5) {
 			setError({
@@ -198,6 +197,14 @@ console.log(disabledBtn);
 			setSuccessRegistration(false);
 		}, 5000);
 		await setDisabledBtn(true);
+		await setUserDataProcessingConsent(false);
+		await setError({
+			errorName: null,
+			errorEmail: null,
+			errorPass: null,
+			errorConfirmPass: null,
+		});
+		
 	}
 
 	const submit: React.FormEventHandler = (e) => {
@@ -284,7 +291,20 @@ console.log(disabledBtn);
 					/>
 					<p>{errorInfo.errorInfoPasswordConfirm}</p>
 					<div>
-						<input type='checkbox' /> <span>zezwalam na </span>
+						<input
+							type='checkbox'
+							onChange={(e) => {
+								setUserDataProcessingConsent(() => {
+									if (e.target.checked) {
+										return true;
+									} else {
+										return false;
+									}
+								});
+							}}
+							checked={userDataProcessingConsent}
+						/>
+						<span> I consent to the processing of my personal data. </span>
 					</div>
 
 					<button

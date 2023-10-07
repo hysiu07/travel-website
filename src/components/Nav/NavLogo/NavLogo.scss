@@ -1,20 +1,27 @@
+.logo-box {
+	display: flex;
+	align-items: center;
+	.logo-link {
+		font-size: 3rem;
+		margin-left: 5px;
+		text-decoration: none;
+		font-family: 'Kalam', cursive;
+		color: #398ab9;
+	}
+	.logo-dot {
+		position: relative;
+		top: 8px;
+		height: 10px;
+		width: 10px;
+		margin-left: 3px;
+		background-color: black;
+		border-radius: 50%;
+	}
+}
+@media (max-width: 350px) {
 	.logo-box {
-		display: flex;
-		align-items: center;
 		.logo-link {
-			font-size: 3rem;
-			margin-left: 5px;
-			text-decoration: none;
-			font-family: 'Kalam', cursive;
-			color: #398ab9;
-		}
-		.logo-dot {
-			position: relative;
-			top: 8px;
-			height: 10px;
-			width: 10px;
-			margin-left: 3px;
-			background-color: black;
-			border-radius: 50%;
+			font-size: 2.5rem;
 		}
 	}
+}

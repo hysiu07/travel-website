@@ -27,3 +27,9 @@
 .fav-panel:hover .fav-panel__tooltip {
 	opacity: 1;
 }
+
+@media(max-width:576px){
+	.fav-panel{
+		bottom: 30px;
+	}
+}

@@ -95,3 +95,16 @@
 		}
 	}
 }
+@media (max-width: 350px) {
+	.signin {
+		&__panel {
+			justify-content: start;
+			.title {
+				margin: 0;
+			}
+			.input-email {
+				margin: 20px 0;
+			}
+		}
+	}
+}
