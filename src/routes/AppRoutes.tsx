@@ -4,6 +4,7 @@ import { SignIn, Registration } from '../components';
 import { MyAccount } from '../views/MyAccount';
 import { Destination } from '../views/Destination';
 import { SearchedTravels } from '../views/SearchedTravels';
+import { InsuranceInfo } from '../views/InsuranceInfo'
 
 const AppRoutes = () => {
 	return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
 			<Route path='/registration' element={<Registration />} />
 			<Route path='/myAccount' element={<MyAccount />} />
 			<Route path='/destination/:id' element={<Destination />} />
+			<Route path='/insuranceInfo' element={<InsuranceInfo/>} />
 			<Route
 				path='/travel-website/searchedTravels'
 				element={<SearchedTravels />}

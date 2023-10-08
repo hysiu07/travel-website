@@ -1,7 +1,8 @@
 import './Insurance.scss';
+import { Link } from 'react-router-dom';
 function Insurance() {
 	return (
-		<div className='insurance'>
+		<div className='insurance' id='insurance'>
 			<div className='insurance__shadow'>
 				<div className='insurance__text-container'>
 					<h3>Insurance for you!</h3>
@@ -13,7 +14,7 @@ function Insurance() {
 					<h4>Choose our best insurance and enjoy peaceful vacations!</h4>
 				</div>
 				<button className='insurance__button'>
-					Click for more informations!
+					<Link to='/insuranceInfo'>Click for more informations!</Link>
 				</button>
 			</div>
 		</div>

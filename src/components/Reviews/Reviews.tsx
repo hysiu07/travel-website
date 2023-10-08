@@ -4,7 +4,7 @@ import { ReviewCard } from '../../container/ReviewCard';
 
 function Reviews() {
 	return (
-		<div className='reviews'>
+		<div className='reviews' id='reviews'>
 			<div className='reviews__container'>
 				{dataReviews.map((review) => {
 					return (

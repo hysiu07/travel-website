@@ -16,8 +16,6 @@ function MyAccount() {
 	const name = userContext?.user?.name;
 	const [menuType, setMenuType] = useState<string>('desktop');
 	const [hiddenNav, setHiddenNav] = useState(false);
-
-	console.log(userContext?.user);
 	
 	return (
 		<div className='my-account'>

@@ -12,7 +12,7 @@ function SearchedTravels() {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
 	);
-	console.log(filteredTravels);
+
 	const userContext = useContext(UserContext);
 	const userLogged = userContext?.user?.logIn;
 

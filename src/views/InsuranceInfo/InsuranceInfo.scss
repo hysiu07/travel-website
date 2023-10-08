@@ -1,0 +1,41 @@
+.insurance-info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 10vh;
+	width: 100vw;
+	height: 100vh;
+	background-image: url('../../img/thailand-direction.jpeg');
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+	&__shadow {
+		position: absolute;
+		top: 0px;
+		width: 100%;
+		height: 100%;
+		background-color: rgb(57, 138, 185, 0.6);
+	}
+	&__panel {
+		display: flex;
+		justify-content: space-around;
+		z-index: 200;
+		padding: 3%;
+		width: 80%;
+		max-width: 1400px;
+		border-radius: 20px;
+		background-color: rgba(255, 255, 255, 0.7);
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		overflow: hidden;
+		.insurance-card {
+			padding: 20px;
+
+			width: 300px;
+
+			p {
+				margin: 10px 0;
+				font-size: 1.6rem;
+			}
+		}
+	}
+}

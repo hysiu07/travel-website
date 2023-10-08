@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { NavLogo } from '../Nav/NavLogo';
 import { AiFillFacebook } from 'react-icons/ai';
@@ -8,6 +8,7 @@ import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { travels } from '../../data/travels';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import './Contact.scss';
+import { SnackBar } from '../../container/SnackBar';
 type PropsCategoryType = {
 	title: string;
 	links: string[];
@@ -40,10 +41,7 @@ const Category = ({ title, links }: PropsCategoryType) => {
 					<div className='link-box'>
 						<MdOutlineKeyboardArrowRight className='link-box__arrow-icon' />
 						{title === 'Partners' ? (
-							<Link
-								to={`https://www.${link}.com/`}
-								target='_blank'
-							>
+							<Link to={`https://www.${link}.com/`} target='_blank'>
 								{link}
 							</Link>
 						) : (
@@ -62,8 +60,28 @@ const Category = ({ title, links }: PropsCategoryType) => {
 	);
 };
 function Contact() {
+	const [disabled, setDisabled] = useState<boolean>(true);
+	const [snackBar, setSnackBar] = useState<boolean>(false);
+	const [inputEmail, setInputEmail] = useState<string>('');
+
+	const handleValidationEmail = (emailValue: string) => {
+		if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(emailValue)) {
+			setDisabled(true);
+		} else {
+			setDisabled(false);
+		}
+	};
 	return (
 		<div className='contact' id='contact'>
+			<SnackBar
+				text='Subscribe to the newsletter'
+				position={
+					snackBar
+						? { right: '50px', top: '20px' }
+						: { right: '-300px', top: '20px' }
+				}
+			/>
+
 			<div className='contact__container'>
 				<div className='contact__box-first'>
 					<div className='contact__text'>
@@ -72,11 +90,31 @@ function Contact() {
 					</div>
 					<form action='' className='contact__form'>
 						<input
-							type='text'
+							type='email'
 							placeholder='Enter Email Adress'
 							className='input'
+							onChange={(e) => {
+								handleValidationEmail(e.target.value);
+								setInputEmail(e.target.value);
+							}}
+							value={inputEmail}
 						/>
-						<button type='submit' className='button btn'>
+						<button
+							type='submit'
+							className='button'
+							disabled={disabled}
+							onClick={async (e) => {
+								e.preventDefault();
+								await setSnackBar(true);
+								await setInputEmail('');
+								await setDisabled(true);
+								await new Promise((resolve) => {
+									setTimeout(() => {
+										resolve(setSnackBar(false));
+									}, 3000);
+								});
+							}}
+						>
 							Send!
 						</button>
 					</form>
@@ -115,7 +153,7 @@ function Contact() {
 							</div>
 							<div className='link-box'>
 								<MdOutlineKeyboardArrowRight className='link-box__arrow-icon' />
-								<a href='#'>Payment</a>
+								<a href='#'>Search Travel</a>
 							</div>
 						</div>
 						<Category
@@ -134,6 +172,7 @@ function Contact() {
 						/>
 					</div>
 				</div>
+				sS
 			</div>
 		</div>
 	);

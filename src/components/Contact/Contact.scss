@@ -109,6 +109,8 @@
 			padding: 15px 30px;
 			border-radius: 30px;
 			font-size: 1.6rem;
+			border: none;
+			cursor: pointer;
 		}
 	}
 }
@@ -212,21 +214,31 @@
 
 		&__box-second {
 			padding: 20px;
-			height: 800px;
+			height: 850px;
 			width: 95%;
-
+			.company {
+				.company-info {
+					p {
+						font-size: 1.6rem;
+					}
+				}
+			}
 			.categories {
 				flex-direction: column;
 				width: 100%;
 				.category {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
 					h3 {
-						font-size: 2.4rem;
+						font-size: 2.6rem;
 						margin: 10px 0;
 					}
 					.link-box {
 						a,
 						p {
-							font-size: 1.6rem;
+							font-size: 1.8rem;
 						}
 					}
 				}
