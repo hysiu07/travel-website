@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
 import { Nav } from '../../components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.scss';
 import { UserContext } from '../../context/UserContext';
 import { inputValueTypes } from '../../types';
@@ -10,6 +10,7 @@ import { inputValueTypes } from '../../types';
 function SignIn() {
 	const userContext = useContext(UserContext);
 	const usersData = userContext?.usersRegistration;
+	const navigate = useNavigate();
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [snackBar, setSnackBar] = useState(false);
@@ -56,6 +57,9 @@ function SignIn() {
 			setSnackBar(false);
 		}, 3000);
 		await setDisabledBtn(true);
+		await setTimeout(() => {
+			navigate('/travel-website');
+		}, 2000);
 	}
 
 	const logIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchPanel.scss';
 import { ThreeCircles } from 'react-loader-spinner';
@@ -14,9 +14,10 @@ type SearchType = {
 };
 function SearchPanel() {
 	const navigate = useNavigate();
-	const {  setFilteredTravels } = useContext(
+	const { setFilteredTravels, searchFilters, setSearchFilters } = useContext(
 		FilteredTravelsContext
 	);
+	console.log(searchFilters);
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 
@@ -69,9 +70,17 @@ function SearchPanel() {
 		});
 		setFilteredTravels(filteredTravels2);
 		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
-
+		localStorage.setItem('filters', JSON.stringify(searchFilters));
 	};
-	
+	useEffect(() => {
+		setSearchFilters({
+			filters: {
+				country: searchTours.country,
+				dateStart: searchTours.dateStart,
+				price: searchTours.price,
+			},
+		});
+	}, [searchTours]);
 	return (
 		<div>
 			<form

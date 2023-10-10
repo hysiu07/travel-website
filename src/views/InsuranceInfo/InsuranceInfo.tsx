@@ -17,6 +17,7 @@ function InsuranceInfo() {
 					<p>Baggage insurance: up to $1,000</p>
 					<hr />
 					<p>Trip cancellation insurance: up to $500</p>
+					<h3>Price: 0$</h3>
 				</div>
 				<div className='insurance-gold insurance-card'>
 					<h3>Gold</h3>
@@ -36,6 +37,7 @@ function InsuranceInfo() {
 						Coverage for the breakdown of travel equipment (e.g., laptop or
 						camera): up to $500
 					</p>
+					<h3>Price: 200$</h3>
 				</div>
 				<div className='insurance-silver insurance-card'>
 					<h3>Silver</h3>
@@ -50,6 +52,7 @@ function InsuranceInfo() {
 					<p>Trip cancellation insurance: up to $1,000</p>
 					<hr />
 					<p>Coverage for delayed or lost baggage: up to $500</p>
+					<h3>Price: 100$</h3>
 				</div>
 			</div>
 		</div>

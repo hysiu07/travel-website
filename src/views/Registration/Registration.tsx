@@ -9,6 +9,7 @@ import { ErrorsType, UserInfoType } from '../../types';
 
 function Registration() {
 	const userContext = useContext(UserContext);
+	const navigate = useNavigate();
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [successRegistration, setSuccessRegistration] =
@@ -57,7 +58,7 @@ function Registration() {
 	useEffect(() => {
 		handleValidationConfirmPass();
 	}, [infoUser]);
-	
+
 	const handleValidationName = () => {
 		if (infoUser.name.length <= 5) {
 			setError({
@@ -204,7 +205,9 @@ function Registration() {
 			errorPass: null,
 			errorConfirmPass: null,
 		});
-		
+		await setTimeout(() => {
+			navigate('/signIn');
+		}, 2000);
 	}
 
 	const submit: React.FormEventHandler = (e) => {

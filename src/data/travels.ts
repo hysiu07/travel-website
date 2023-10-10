@@ -42,254 +42,274 @@ export type TravelType = {
         dateStart: string,
         dateEnd: string,
         lastMinute: boolean,
-        img: string
+        img: string,
+        diningOptions: string
 }
 export const travels: TravelType[] = [
     {
         id: 1,
         country: 'turkiye',
         city: 'Antalya',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Orient Express',
         price: 2500,
         stars: 4,
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: turkiye1
+        img: turkiye1,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 2,
         country: 'turkiye',
         city: 'Antalya',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Club Boran Mare Beach',
         price: 2000,
         stars: 3, 
         dateStart: '2024-07-10',
         dateEnd:  '2024-07-17',
         lastMinute: false,
-        img: turkiye2
+        img: turkiye2,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 3,
         country: 'turkiye',
         city: 'Antalya',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Marmaris Bay Resort ',
         price: 2000,
         stars: 3,
         dateStart: '2024-07-15',
         dateEnd:  '2024-07-22',
         lastMinute: false,
-        img: turkiye3
+        img: turkiye3,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 4,
         country: 'turkiye',
         city: 'Bodrum',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Aquasis Deluxe Resort & Spa',
         price: 2700,
         stars: 5,
         dateStart: '2024-07-10',
         dateEnd:  '2024-07-17',
         lastMinute: false,
-        img: turkiye4
+        img: turkiye4,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 5,
         country: 'turkiye',
         city: 'Bodrum',
-        airPort: 'Poznań',
+        airPort: 'Poznan',
         hotel: 'Black pearl',
         price: 3000,
         stars: 5,
         dateStart: '2024-07-07',
         dateEnd:  '2024-07-14',
         lastMinute: false,
-        img: turkiye5
+        img: turkiye5,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 6,
         country: 'greece',
         city: 'Corfu',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Maris Bellos',
         price: 2100,
         stars: 5,
         dateStart: '2024-08-05',
         dateEnd:  '2024-08-13',
         lastMinute: false,
-        img: greece1
+        img: greece1,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 7,
         country: 'greece',
         city: 'Rodos',
-        airPort: 'Poznań',
+        airPort: 'Poznan',
         hotel: 'Meliton',
         price: 2300,
         stars: 3,
         dateStart: '2024-07-20',
         dateEnd:  '2024-07-27',
         lastMinute: false,
-        img: greece2
+        img: greece2,
+        diningOptions: 'All-Inclusive'
 },
     {   
         id: 8,
         country: 'greece',
         city: 'Rodos',
-        airPort: 'Poznań',
+        airPort: 'Poznan',
         hotel: 'Zeus',
         price: 3000,
         stars: 4,
         dateStart: '2024-07-20',
         dateEnd:  '2024-07-27',
         lastMinute: false,
-        img: greece3
+        img: greece3,
+        diningOptions: 'All-Inclusive'
 },
     {   
         id: 9,
         country: 'greece',
         city: 'Zakynthos',
-        airPort: 'Poznań',
+        airPort: 'Poznan',
         hotel: 'Lesante Cape Resort & Villas',
         price: 4000,
         stars: 5,
         dateStart: '2024-07-10',
         dateEnd:  '2024-07-17',
         lastMinute: false,
-        img: greece4
+        img: greece4,
+        diningOptions: 'All-Inclusive'
 },
     {
         id: 10,
         country: 'greece',
         city: 'Crete',
-        airPort: 'Poznań',
+        airPort: 'Poznan',
         hotel: 'Nana Princess',
         price: 3700,
         stars: 5,
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: greece5
+        img: greece5,
+        diningOptions: 'All-Inclusive'
     }, {
         id:11,
         country: 'thailand',
         city: 'Bangkok',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Grand Palace Hotel',
         price: 3500,
         stars: 4,
         dateStart: '2024-06-15',
         dateEnd: '2024-06-22',
         lastMinute: false,
-        img: thailand1
+        img: thailand1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 12,
         country: 'thailand',
         city: 'Phuket',
-        airPort: 'Kraków',
+        airPort: 'Krakow',
         hotel: 'Palm Beach Resort',
         price: 2800,
         stars: 3,
         dateStart: '2024-07-10',
         dateEnd:  '2024-07-17',
         lastMinute: false,
-        img: thailand2
+        img: thailand2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 13,
         country: 'thailand',
         city: 'Chiang Mai',
-        airPort: 'Gdańsk',
+        airPort: 'Gdansk',
         hotel: 'Mountain View Lodge',
         price: 2200,
         stars: 2,
         dateStart: '2024-08-05',
         dateEnd:  '2024-08-12',
         lastMinute: false,
-        img: thailand3
+        img: thailand3,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 14,
         country: 'thailand',
         city: 'Krabi',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Coconut Paradise Resort',
         price: 2900,
         stars: 4,
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: thailand4
+        img: thailand4,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 15,
         country: 'thailand',
         city: 'Koh Samui',
-        airPort: 'Kraków',
+        airPort: 'Krakow',
         hotel: 'Beachfront Bungalows',
         price: 2600,
         stars: 3,
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: thailand5
+        img: thailand5,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 16,
         country: 'spain',
         city: 'Barcelona',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Hotel Costa del Sol',
         price: 3200,
         stars: 4,
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: spain1
+        img: spain1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 17,
         country: 'spain',
         city: 'Madrid',
-        airPort: 'Kraków',
+        airPort: 'Krakow',
         hotel: 'Plaza Central Suites',
         price: 2800,
         stars: 3,
         dateStart: '2024-07-10',
         dateEnd: '2024-07-17',
         lastMinute: false,
-        img: spain2
+        img: spain2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 18,
         country: 'spain',
         city: 'Valencia',
-        airPort: 'Gdańsk',
+        airPort: 'Gdansk',
         hotel: 'Resort Beachfront Vista',
         price: 2400,
         stars: 3,
         dateStart: '2024-08-05',
         dateEnd: '2024-08-12',
         lastMinute: false,
-        img: spain3
+        img: spain3,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 19,
         country: 'spain',
         city: 'Malaga',
-        airPort: 'Warszawa',
+        airPort: 'Warsaw',
         hotel: 'Marbella Gardens',
         price: 3100,
         stars: 4,
         dateStart: '2024-06-20',
         dateEnd: '2024-06-27',
         lastMinute: false,
-        img: spain4
+        img: spain4,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 20,
@@ -302,7 +322,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-08-12',
         dateEnd: '2024-08-19',
         lastMinute: false,
-        img: spain5
+        img: spain5,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 21,
@@ -315,7 +336,8 @@ export const travels: TravelType[] = [
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: dominican1
+        img: dominican1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 22,
@@ -328,7 +350,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-07-10',
         dateEnd: '2024-07-17',
         lastMinute: false,
-        img: dominican2
+        img: dominican2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 23,
@@ -341,7 +364,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-08-05',
         dateEnd: '2024-08-12',
         lastMinute: false,
-        img: dominican3
+        img: dominican3,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 24,
@@ -354,7 +378,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-06-18',
         dateEnd: '2024-06-25',
         lastMinute: false,
-        img: cyprus1
+        img: cyprus1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 25,
@@ -367,7 +392,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-07-12',
         dateEnd: '2024-07-19',
         lastMinute: false,
-        img: cyprus2
+        img: cyprus2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 26,
@@ -380,7 +406,8 @@ export const travels: TravelType[] = [
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: cyprus3
+        img: cyprus3,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 27,
@@ -393,7 +420,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-07-16',
         dateEnd: '2024-07-23',
         lastMinute: false,
-        img: zanzibar1
+        img: zanzibar1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 28,
@@ -406,7 +434,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-07-10',
         dateEnd: '2024-07-17',
         lastMinute: false,
-        img: zanzibar2
+        img: zanzibar2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 29,
@@ -419,7 +448,8 @@ export const travels: TravelType[] = [
         dateStart: tomorrowDate(),
         dateEnd: nextWeekDate(),
         lastMinute: true,
-        img: zanzibar3
+        img: zanzibar3,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 30,
@@ -432,7 +462,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-07-16',
         dateEnd: '2024-07-23',
         lastMinute: false,
-        img: marocco1
+        img: marocco1,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 31,
@@ -445,7 +476,8 @@ export const travels: TravelType[] = [
         dateStart: '2024-08-10',
         dateEnd: '2024-08-17',
         lastMinute: false,
-        img: marocco2
+        img: marocco2,
+        diningOptions: 'All-Inclusive'
     },
     {
         id: 32,
@@ -458,7 +490,23 @@ export const travels: TravelType[] = [
         dateStart: '2024-09-05',
         dateEnd: '2024-09-12',
         lastMinute: false,
-        img: marocco3
+        img: marocco3,
+        diningOptions: 'All-Inclusive'
+    }
+    ,
+    {
+        id: 33,
+        country: 'marocco',
+        city: 'Fez',
+        airPort: 'Warsaw',
+        hotel: 'Best Prince',
+        price: 3300,
+        stars: 4,
+        dateStart: '2024-09-05',
+        dateEnd: '2024-09-12',
+        lastMinute: false,
+        img: marocco3,
+        diningOptions: 'Breakfasts'
     }
 
 ]

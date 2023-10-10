@@ -1,1 +1,3 @@
-export { default as FilterComponent} from './FilterComponent'
+export { default as FilterComponentStars} from './FilterComponentStars'
+export { default as FilterComponentDinerOptions} from './FilterComponentDinerOptions'
+export { default as FilterComponentLastMinute} from './FilterComponentLastMinute'

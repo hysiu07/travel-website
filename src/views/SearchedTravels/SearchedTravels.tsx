@@ -3,16 +3,28 @@ import './SearchedTravels.scss';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { UserContext } from '../../context/UserContext';
 import { Nav } from '../../components';
-import { FilterComponent } from './Filter';
+import {
+	FilterComponentStars,
+	FilterComponentDinerOptions,
+	FilterComponentLastMinute,
+} from './Filter';
 import { TravelOfferComponent } from './TravelComponent';
 import { SnackBar } from '../../container/SnackBar';
 import { TravelType } from '../../data/travels';
+import { travels } from '../../data/travels';
+import FilterComponentAirPort from './Filter/FilterComponentAirPort';
+import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
 
 function SearchedTravels() {
-	const { filteredTravels, setFilteredTravels } = useContext(
-		FilteredTravelsContext
-	);
-
+	const {
+		filteredTravels,
+		setFilteredTravels,
+		searchFilters,
+		setSearchFilters,
+	} = useContext(FilteredTravelsContext);
+	useEffect(() => {
+		console.log(searchFilters);
+	}, [searchFilters]);
 	const userContext = useContext(UserContext);
 	const userLogged = userContext?.user?.logIn;
 
@@ -20,13 +32,77 @@ function SearchedTravels() {
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
+	const handleFilterTravel = () => {
+		if (searchFilters) {
+			const filteredTravels2 = travels.filter((travel) => {
+				const selectedDate = new Date(travel.dateStart);
+				const travelStartDate =
+					typeof searchFilters.filters.dateStart === 'string' &&
+					new Date(searchFilters.filters.dateStart);
+				const countryMatch =
+					typeof searchFilters.filters.country === 'string' &&
+					travel.country.includes(searchFilters.filters.country);
+				const priceMatch =
+					typeof searchFilters.filters.price === 'number' &&
+					searchFilters.filters.price >= travel.price;
+				const dateMatch = selectedDate >= travelStartDate;
+
+				const starsMatch =
+					typeof searchFilters.filters.stars !== 'undefined'
+						? searchFilters.filters.stars <= travel.stars
+						: true;
+
+				const dinerOptionsMatch =
+					typeof searchFilters.filters.diningOptions !== 'undefined'
+						? searchFilters.filters.diningOptions === travel.diningOptions
+						: true;
+				const lastMinuteMatch =
+					typeof searchFilters.filters.lastMinute !== 'undefined'
+						? searchFilters.filters.lastMinute === travel.lastMinute
+						: true;
+				const airPortMatch =
+					typeof searchFilters.filters.airPort !== 'undefined'
+						? searchFilters.filters.airPort === travel.airPort
+						: true;
+				return (
+					countryMatch &&
+					dateMatch &&
+					priceMatch &&
+					starsMatch &&
+					dinerOptionsMatch &&
+					lastMinuteMatch &&
+					airPortMatch
+				);
+			});
+			setFilteredTravels(filteredTravels2);
+		}
+	};
+	const handleRemoveFilters = async () => {
+		await setSearchFilters({
+			filters: {
+				country: '',
+				dateStart: tomorrowDate(),
+				price: 5000,
+			},
+		});
+	};
+	useEffect(() => {
+		handleFilterTravel();
+	}, [searchFilters]);
 	useEffect(() => {
 		const travelsLocalStorage = localStorage.getItem('travels');
 		if (typeof travelsLocalStorage === 'string') {
 			const travels = JSON.parse(travelsLocalStorage);
 			setFilteredTravels(travels);
 		}
-	
+		const filtersLocalStorage = localStorage.getItem('filters');
+		if (typeof filtersLocalStorage === 'string') {
+			const filters = JSON.parse(filtersLocalStorage);
+			setSearchFilters(filters);
+		}
+		return () => {
+			localStorage.removeItem('filters');
+		};
 	}, []);
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
@@ -35,9 +111,9 @@ function SearchedTravels() {
 		} else if (sortBy === 'priceHightToLow') {
 			return [...travels].sort((a, b) => b.price - a.price);
 		} else if (sortBy === 'nameAZ') {
-			return [...travels].sort((a, b) => a.country.localeCompare(b.country));
+			return [...travels].sort((a, b) => a.hotel.localeCompare(b.hotel));
 		} else if (sortBy === 'nameZA') {
-			return [...travels].sort((a, b) => b.country.localeCompare(a.country));
+			return [...travels].sort((a, b) => b.hotel.localeCompare(a.hotel));
 		} else {
 			return travels;
 		}
@@ -68,7 +144,7 @@ function SearchedTravels() {
 			<Nav />
 			<div className='searched-travels__container'>
 				<div className='searched-travels__filter-panel'>
-					<FilterComponent
+					<FilterComponentDinerOptions
 						choices={[
 							'All-Inclusive',
 							'3 Meals',
@@ -77,54 +153,27 @@ function SearchedTravels() {
 						]}
 						title='Dining Options'
 					/>
-					<FilterComponent
-						choices={[
-							'Any',
-							'1 star *',
-							'2 stars **',
-							'3 stars ***',
-							'4 stars ****',
-							'5 stars *****',
-						]}
+					<FilterComponentStars
+						choices={[1, 2, 3, 4, 5]}
 						title='Hotel Rating'
 					/>
-					<FilterComponent
-						choices={[
-							'Sandy beach',
-							'Sunbeds and umbrellas included',
-							'Playground',
-							'Kids menu',
-							'Spa',
-							'Indoor pool',
-							'Adults-only',
-							'Gluten-free menu',
-							'Facilities for people with disabilities',
-							'City Break hotels',
-							'Adult entertainment',
-							'Children entertainment',
-							'Intimate hotels',
-						]}
-						title='Amenities'
+					<FilterComponentLastMinute
+						title='Last Minute'
+						choices={['Yes', 'No', 'All']}
 					/>
-					<FilterComponent
-						choices={[
-							'Suite',
-							'Bungalow',
-							'Double Room',
-							'Family Room',
-							'Apartment',
-							'Studio',
-						]}
-						title='Room Type'
+					<FilterComponentAirPort
+						title='AirPort'
+						choices={['Krakow', 'Warsaw', 'Poznan', 'Gdansk']}
 					/>
-					<FilterComponent
-						choices={['Any', 'Up to 50m', 'Up to 250m', 'Up to 500m']}
-						title='Beach Distances'
-					/>
-					<FilterComponent
-						choices={['Free in the hotel', 'Free in the lobby']}
-						title='WiFi'
-					/>
+
+					<div className='container-btns'>
+						{/* <button onClick={handleFilterTravel} className='filter-panel-btn'>
+							Show results!
+						</button> */}
+						<button onClick={handleRemoveFilters} className='filter-panel-btn'>
+							Reset filters!
+						</button>
+					</div>
 				</div>
 				<div className='searched-travels__filtered-travels'>
 					<div className='sort-input'>
@@ -161,6 +210,7 @@ function SearchedTravels() {
 								lastMinute={travel.lastMinute}
 								userLogged={userLogged}
 								handleShowSnackBar={handleShowSnackBar}
+								dinerOptions={travel.diningOptions}
 							/>
 						);
 					})}

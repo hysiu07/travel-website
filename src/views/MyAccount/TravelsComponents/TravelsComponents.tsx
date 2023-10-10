@@ -43,6 +43,7 @@ function TravelsComponents({ setHiddenNav }: PropsTravelsComponentType) {
 							userLogged={userLogged}
 							handleShowSnackBar={handleShowSnackBar}
 							setHiddenNav={setHiddenNav}
+							dinerOptions={travel.diningOptions}
 						/>
 					);
 				}
