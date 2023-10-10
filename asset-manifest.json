@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/travel-website/static/css/main.71c79904.css",
-    "main.js": "/travel-website/static/js/main.8044d899.js",
+    "main.css": "/travel-website/static/css/main.13a83a4c.css",
+    "main.js": "/travel-website/static/js/main.9fba1c15.js",
     "static/js/787.397fec01.chunk.js": "/travel-website/static/js/787.397fec01.chunk.js",
     "static/media/video.mp4": "/travel-website/static/media/video.e06c322d6a8c1f148abe.mp4",
     "static/media/turkiye-direction-4.jpg": "/travel-website/static/media/turkiye-direction-4.3d178d9a86e8590f4a3e.jpg",
@@ -87,12 +87,12 @@
     "static/media/marocco-direction-2.jpeg": "/travel-website/static/media/marocco-direction-2.612909f6136a0c3d1de4.jpeg",
     "static/media/marocco-direction.jpeg": "/travel-website/static/media/marocco-direction.e70d18dfd3798a4e27c9.jpeg",
     "index.html": "/travel-website/index.html",
-    "main.71c79904.css.map": "/travel-website/static/css/main.71c79904.css.map",
-    "main.8044d899.js.map": "/travel-website/static/js/main.8044d899.js.map",
+    "main.13a83a4c.css.map": "/travel-website/static/css/main.13a83a4c.css.map",
+    "main.9fba1c15.js.map": "/travel-website/static/js/main.9fba1c15.js.map",
     "787.397fec01.chunk.js.map": "/travel-website/static/js/787.397fec01.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.71c79904.css",
-    "static/js/main.8044d899.js"
+    "static/css/main.13a83a4c.css",
+    "static/js/main.9fba1c15.js"
   ]
 }
