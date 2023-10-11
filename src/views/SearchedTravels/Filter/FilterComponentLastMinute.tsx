@@ -1,30 +1,40 @@
-import { useState, useContext } from 'react';
+import {  useContext } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
-import './FilterComponentDinerOptions.scss';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-
-
+import './FilterComponent.scss';
 
 type PropsFiltersType = {
 	choices: string[];
 	title: string;
+	showChoices: boolean;
+	setShowChoices: Dispatch<
+		SetStateAction<{
+			filterComponentAirPort: boolean;
+			filterComponentDinerOptions: boolean;
+			filterComponentLastMinute: boolean;
+			filterComponentStars: boolean;
+		}>
+	>;
 };
 
-function FilterComponentLastMinute({ choices, title }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(
-		FilteredTravelsContext
-	);
+function FilterComponentLastMinute({
+	choices,
+	title,
+	showChoices,
+	setShowChoices,
+}: PropsFiltersType) {
+	const { setSearchFilters } = useContext(FilteredTravelsContext);
 
-	const [showChoices, setShowChoices] = useState<boolean>(true);
 	const handleAddFilter = (choice: string) => {
 		let lastMinuteValue: boolean | undefined;
 		if (choice === 'Yes') {
 			lastMinuteValue = true;
-		} else if(choice === 'No') {
+		} else if (choice === 'No') {
 			lastMinuteValue = false;
-        } else if (choice === 'All') {
-            lastMinuteValue = undefined
-        }
+		} else if (choice === 'All') {
+			lastMinuteValue = undefined;
+		}
 
 		setSearchFilters((prevValue) => {
 			return {
@@ -49,7 +59,14 @@ function FilterComponentLastMinute({ choices, title }: PropsFiltersType) {
 							? { transform: 'none' }
 							: { transform: 'rotate(180deg)' }
 					}
-					onClick={() => setShowChoices(!showChoices)}
+					onClick={() =>
+						setShowChoices((prevValue) => {
+							return {
+								...prevValue,
+								filterComponentLastMinute: !showChoices,
+							};
+						})
+					}
 				/>
 			</div>
 			{showChoices && (

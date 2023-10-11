@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
-import { OfferModal } from '../OfferModal';
+import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
+import { travels } from '../../data/travels';
 import ReactStars from 'react-rating-star-with-type';
 import { TiTick } from 'react-icons/ti';
 import { AiOutlineHeart } from 'react-icons/ai';
@@ -18,8 +20,7 @@ type DirectionCardPropsType = {
 	dateStart: string;
 	dateEnd: string;
 	lastMinute: boolean;
-	airPort: string 
-	
+	airPort: string;
 };
 
 function DirectionCard({
@@ -34,6 +35,7 @@ function DirectionCard({
 	lastMinute,
 	airPort,
 }: DirectionCardPropsType) {
+	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 	const userContext = useContext(UserContext);
 	const userLogged: boolean | undefined = userContext?.user?.logIn;
 
@@ -42,7 +44,8 @@ function DirectionCard({
 	const formatedTravelCountry = firstLetter + restOfLetters;
 
 	const [liked, setLiked] = useState(false);
-	
+
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (userContext && userContext.user && userContext.user.bestTravels) {
@@ -83,19 +86,30 @@ function DirectionCard({
 			}
 		});
 	};
+	const changePath = () => {
+		navigate('/travel-website/searchedTravels');
+	};
+
+	const filterTravel = () => {
+		const filteredTravels2 = travels.filter((travel) => {
+			const directionLastMinute = travel.lastMinute === true;
+			return directionLastMinute;
+		});
+		setFilteredTravels(filteredTravels2);
+		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
+		changePath();
+	};
 
 	return (
 		<div className='direction-card'>
-			<div
-				className='container'
-				
-			>
+			<div className='container' onClick={filterTravel}>
 				{liked ? (
 					<AiFillHeart
 						className='icon-heart'
 						size={35}
 						color='red'
-						onClick={() => {
+						onClick={(e) => {
+							e.stopPropagation();
 							handlRemoveBestTravel();
 							if (userLogged) {
 								setLiked(!liked);
@@ -108,7 +122,8 @@ function DirectionCard({
 					<AiOutlineHeart
 						className='icon-heart'
 						size={35}
-						onClick={() => {
+						onClick={(e) => {
+							e.stopPropagation();
 							handlAddBestTravel();
 							if (userLogged) {
 								setLiked(!liked);

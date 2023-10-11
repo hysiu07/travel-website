@@ -9,6 +9,7 @@
 			z-index: 500;
 		}
 		.link {
+			margin-left: 30px;
 			text-decoration: none;
 			font-size: 2.2rem;
 			font-family: 'Roboto', sans-serif;
@@ -32,6 +33,7 @@
 	.nav-menu {
 		&__links {
 			position: fixed;
+
 			z-index: 300;
 			top: 0;
 			right: -150%;

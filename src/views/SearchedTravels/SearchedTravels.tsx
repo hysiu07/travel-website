@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
-import './SearchedTravels.scss';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { UserContext } from '../../context/UserContext';
 import { Nav } from '../../components';
 import {
-	FilterComponentStars,
+	FilterComponentRatingHotel,
 	FilterComponentDinerOptions,
 	FilterComponentLastMinute,
+	FilterComponentAirPort,
 } from './Filter';
 import { TravelOfferComponent } from './TravelComponent';
 import { SnackBar } from '../../container/SnackBar';
 import { TravelType } from '../../data/travels';
 import { travels } from '../../data/travels';
-import FilterComponentAirPort from './Filter/FilterComponentAirPort';
 import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
+import './SearchedTravels.scss';
 
 function SearchedTravels() {
 	const {
@@ -32,6 +32,7 @@ function SearchedTravels() {
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
+
 	const handleFilterTravel = () => {
 		if (searchFilters) {
 			const filteredTravels2 = travels.filter((travel) => {
@@ -135,6 +136,13 @@ function SearchedTravels() {
 			}, 2000);
 		});
 	}
+
+	const [showChoicesFilters, setShowChoicesFilters] = useState({
+		filterComponentAirPort: false,
+		filterComponentDinerOptions: false,
+		filterComponentLastMinute: false,
+		filterComponentStars: false,
+	});
 	return (
 		<div className='searched-travels'>
 			<SnackBar
@@ -145,6 +153,8 @@ function SearchedTravels() {
 			<div className='searched-travels__container'>
 				<div className='searched-travels__filter-panel'>
 					<FilterComponentDinerOptions
+						showChoices={showChoicesFilters.filterComponentDinerOptions}
+						setShowChoices={setShowChoicesFilters}
 						choices={[
 							'All-Inclusive',
 							'3 Meals',
@@ -153,24 +163,38 @@ function SearchedTravels() {
 						]}
 						title='Dining Options'
 					/>
-					<FilterComponentStars
+					<FilterComponentRatingHotel
+						showChoices={showChoicesFilters.filterComponentStars}
+						setShowChoices={setShowChoicesFilters}
 						choices={[1, 2, 3, 4, 5]}
 						title='Hotel Rating'
 					/>
 					<FilterComponentLastMinute
+						showChoices={showChoicesFilters.filterComponentLastMinute}
+						setShowChoices={setShowChoicesFilters}
 						title='Last Minute'
 						choices={['Yes', 'No', 'All']}
 					/>
 					<FilterComponentAirPort
+						showChoices={showChoicesFilters.filterComponentAirPort}
+						setShowChoices={setShowChoicesFilters}
 						title='AirPort'
 						choices={['Krakow', 'Warsaw', 'Poznan', 'Gdansk']}
 					/>
 
 					<div className='container-btns'>
-						{/* <button onClick={handleFilterTravel} className='filter-panel-btn'>
-							Show results!
-						</button> */}
-						<button onClick={handleRemoveFilters} className='filter-panel-btn'>
+						<button
+							onClick={() => {
+								handleRemoveFilters();
+								setShowChoicesFilters({
+									filterComponentAirPort: false,
+									filterComponentDinerOptions: false,
+									filterComponentLastMinute: false,
+									filterComponentStars: false,
+								});
+							}}
+							className='filter-panel-btn'
+						>
 							Reset filters!
 						</button>
 					</div>

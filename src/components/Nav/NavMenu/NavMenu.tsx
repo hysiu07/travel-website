@@ -76,12 +76,12 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 							</a>
 						</li>
 						{userLogged ? (
-							<Link to='/myAccount' className='logo link' >
+							<Link to='/myAccount' className='logo link'>
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>
 						) : (
-							<Link to='/signIn' className='logo link' >
+							<Link to='/signIn' className='logo link'>
 								SignIn
 								<FaUser className='user-icon' />
 							</Link>
@@ -96,6 +96,17 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 						<Link to='/travel-website' className='logo link'>
 							Home <AiFillHome />
 						</Link>
+						{userLogged ? (
+							<Link to='/myAccount' className='logo link'>
+								MyAccount
+								<FaUser className='user-icon' />
+							</Link>
+						) : (
+							<Link to='/signIn' className='logo link'>
+								SignIn
+								<FaUser className='user-icon' />
+							</Link>
+						)}
 					</ul>
 				)}
 			</div>

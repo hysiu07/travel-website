@@ -1,22 +1,29 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
-import './FilterComponentDinerOptions.scss';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-
-
-
+import './FilterComponent.scss';
 type PropsFiltersType = {
 	choices: string[];
 	title: string;
+	showChoices: boolean;
+	setShowChoices: Dispatch<
+		SetStateAction<{
+			filterComponentAirPort: boolean;
+			filterComponentDinerOptions: boolean;
+			filterComponentLastMinute: boolean;
+			filterComponentStars: boolean;
+		}>
+	>;
 };
 
-function FilterComponentDinerOptions({ choices, title }: PropsFiltersType) {
-	const {  setSearchFilters } = useContext(
-		FilteredTravelsContext
-	);
-
-	const [showChoices, setShowChoices] = useState<boolean>(true);
-	
+function FilterComponentDinerOptions({
+	choices,
+	title,
+	showChoices,
+	setShowChoices,
+}: PropsFiltersType) {
+	const { setSearchFilters } = useContext(FilteredTravelsContext);
 
 	const handleAddFilter = (choice: string) => {
 		setSearchFilters((prevValue) => {
@@ -42,7 +49,14 @@ function FilterComponentDinerOptions({ choices, title }: PropsFiltersType) {
 							? { transform: 'none' }
 							: { transform: 'rotate(180deg)' }
 					}
-					onClick={() => setShowChoices(!showChoices)}
+					onClick={() =>
+						setShowChoices((prevValue) => {
+							return {
+								...prevValue,
+								filterComponentDinerOptions: !showChoices,
+							};
+						})
+					}
 				/>
 			</div>
 			{showChoices && (

@@ -1,22 +1,31 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
-import './FilterComponentStars.scss';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
-
-
+import './FilterComponent.scss';
 
 type PropsFiltersType = {
 	choices: number[];
 	title: string;
+	showChoices: boolean;
+	setShowChoices: Dispatch<
+		SetStateAction<{
+			filterComponentAirPort: boolean;
+			filterComponentDinerOptions: boolean;
+			filterComponentLastMinute: boolean;
+			filterComponentStars: boolean;
+		}>
+	>;
 };
 
-function FilterComponentStars({ choices, title }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(
-		FilteredTravelsContext
-	);
+function FilterComponentRatingHotel({
+	choices,
+	title,
+	showChoices,
+	setShowChoices,
+}: PropsFiltersType) {
+	const { setSearchFilters } = useContext(FilteredTravelsContext);
 
-	
-	const [showChoices, setShowChoices] = useState<boolean>(true);
 	return (
 		<div className='filter-component'>
 			<div className='heading-box'>
@@ -29,7 +38,14 @@ function FilterComponentStars({ choices, title }: PropsFiltersType) {
 							? { transform: 'none' }
 							: { transform: 'rotate(180deg)' }
 					}
-					onClick={() => setShowChoices(!showChoices)}
+					onClick={() =>
+						setShowChoices((prevValue) => {
+							return {
+								...prevValue,
+								filterComponentStars: !showChoices,
+							};
+						})
+					}
 				/>
 			</div>
 			{showChoices && (
@@ -57,10 +73,9 @@ function FilterComponentStars({ choices, title }: PropsFiltersType) {
 							</div>
 						);
 					})}
-					
 				</div>
 			)}
 		</div>
 	);
 }
-export default FilterComponentStars;
+export default FilterComponentRatingHotel;
