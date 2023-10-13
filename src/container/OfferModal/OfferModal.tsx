@@ -4,9 +4,9 @@ import { UserContext } from '../../context/UserContext';
 import { IoClose } from 'react-icons/io5';
 import MovingText from 'react-moving-text';
 import { ThreeCircles } from 'react-loader-spinner';
-import './OfferModal.scss';
 import useWindowWidth from '../../container/Hooks/useWindowWidth';
 import { SnackBar } from '../SnackBar';
+import './OfferModal.scss';
 type PropsOfferModalType = {
 	dateStart: string;
 	dateEnd: string;
@@ -53,7 +53,7 @@ function OfferModal({
 		} else {
 			setPriceInsurance(200);
 		}
-		console.log(userContext?.user);
+		
 	}, [insurancetype]);
 
 	const handleChangeCountPerson = (newValue: number) => {

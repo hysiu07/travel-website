@@ -61,9 +61,9 @@ function FilterComponentDinerOptions({
 			</div>
 			{showChoices && (
 				<div className='choices'>
-					{choices.map((choice) => {
+					{choices.map((choice, index) => {
 						return (
-							<div className='choices__box'>
+							<div className='choices__box' key={index}>
 								<input
 									type='radio'
 									name='diningOption'

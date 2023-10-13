@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { UserContext } from '../../context/UserContext';
 import { Nav } from '../../components';
@@ -22,9 +23,9 @@ function SearchedTravels() {
 		searchFilters,
 		setSearchFilters,
 	} = useContext(FilteredTravelsContext);
-	useEffect(() => {
-		console.log(searchFilters);
-	}, [searchFilters]);
+	const params = useParams();
+	console.log(params);
+	console.log(searchFilters.filters);
 	const userContext = useContext(UserContext);
 	const userLogged = userContext?.user?.logIn;
 
@@ -42,7 +43,8 @@ function SearchedTravels() {
 					new Date(searchFilters.filters.dateStart);
 				const countryMatch =
 					typeof searchFilters.filters.country === 'string' &&
-					travel.country.includes(searchFilters.filters.country);
+					(searchFilters.filters.country === 'All' ||
+						travel.country.includes(searchFilters.filters.country));
 				const priceMatch =
 					typeof searchFilters.filters.price === 'number' &&
 					searchFilters.filters.price >= travel.price;
@@ -78,8 +80,8 @@ function SearchedTravels() {
 			setFilteredTravels(filteredTravels2);
 		}
 	};
-	const handleRemoveFilters = async () => {
-		await setSearchFilters({
+	const handleRemoveFilters =  () => {
+		 setSearchFilters({
 			filters: {
 				country: '',
 				dateStart: tomorrowDate(),

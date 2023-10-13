@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import './FilterComponent.scss';
@@ -24,8 +25,11 @@ function FilterComponentRatingHotel({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(FilteredTravelsContext);
-
+	const { setSearchFilters, searchFilters } = useContext(
+		FilteredTravelsContext
+	);
+	console.log(searchFilters);
+	const navigate = useNavigate();
 	return (
 		<div className='filter-component'>
 			<div className='heading-box'>
@@ -50,9 +54,9 @@ function FilterComponentRatingHotel({
 			</div>
 			{showChoices && (
 				<div className='choices'>
-					{choices.map((choice) => {
+					{choices.map((choice, index) => {
 						return (
-							<div className='choices__box'>
+							<div className='choices__box' key={index}>
 								<input
 									type='radio'
 									name='stars'

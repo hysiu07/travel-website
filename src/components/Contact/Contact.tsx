@@ -1,14 +1,14 @@
 import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { NavLogo } from '../Nav/NavLogo';
 import { AiFillFacebook } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { travels } from '../../data/travels';
-import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
-import './Contact.scss';
 import { SnackBar } from '../../container/SnackBar';
+import './Contact.scss';
 type PropsCategoryType = {
 	title: string;
 	links: string[];
@@ -36,9 +36,9 @@ const Category = ({ title, links }: PropsCategoryType) => {
 	return (
 		<div className='category'>
 			<h3>{title}</h3>
-			{links.map((link) => {
+			{links.map((link,index) => {
 				return (
-					<div className='link-box'>
+					<div className='link-box' key={index}>
 						<MdOutlineKeyboardArrowRight className='link-box__arrow-icon' />
 						{title === 'Partners' ? (
 							<Link to={`https://www.${link}.com/`} target='_blank'>

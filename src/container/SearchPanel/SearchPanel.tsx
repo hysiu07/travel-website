@@ -17,12 +17,12 @@ function SearchPanel() {
 	const { setFilteredTravels, searchFilters, setSearchFilters } = useContext(
 		FilteredTravelsContext
 	);
-	console.log(searchFilters);
+
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 
 	const changePath = () => {
-		navigate('/travel-website/searchedTravels');
+		navigate(`/travel-website/searchedTravels/${searchTours.country}/${searchTours.dateStart}/${searchTours.price}`);
 	};
 
 	// search yours travels
@@ -41,7 +41,7 @@ function SearchPanel() {
 
 	// default search travel value
 	const [searchTours, setSearchTours] = useState<SearchType>({
-		country: '',
+		country: 'All',
 		dateStart: tomorrowDate(),
 		price: 5000,
 	});

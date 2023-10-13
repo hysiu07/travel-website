@@ -7,6 +7,8 @@ import turkiye5 from '../img/turkiye5.jpg'
 import cyprus1 from '../img/cyprus1.jpg'
 import cyprus2 from '../img/cyprus2.jpg'
 import cyprus3 from '../img/cyprus3.jpg'
+import cyprus4 from '../img/cyprus4.jpg'
+import cyprus5 from '../img/cyprus5.jpg'
 import dominican1 from '../img/dominican1.jpg'
 import dominican2 from '../img/dominican2.jpg'
 import dominican3 from '../img/dominican3.jpg'
@@ -15,6 +17,11 @@ import greece2 from '../img/greece2.jpg'
 import greece3 from '../img/greece3.jpg'
 import greece4 from '../img/greece4.jpg'
 import greece5 from '../img/greece5.jpg'
+import greece6 from '../img/greece6.jpg'
+import greece7 from '../img/greece7.jpg'
+import greece8 from '../img/greece8.jpg'
+import greece9 from '../img/greece9.jpg'
+import greece10 from '../img/greece10.jpg'
 import marocco1 from '../img/marocco1.jpg'
 import marocco2 from '../img/marocco2.jpg'
 import marocco3 from '../img/marocco3.jpg'
@@ -31,6 +38,16 @@ import thailand5 from '../img/thailand5.jpg'
 import zanzibar1 from '../img/zanzibar1.jpg'
 import zanzibar2 from '../img/zanzibar2.jpg'
 import zanzibar3 from '../img/zanzibar3.jpg'
+import zanzibar4 from '../img/zanzibar4.jpg'
+import zanzibar5 from '../img/zanzibar5.jpg'
+import zanzibar6 from '../img/zanzibar6.jpg'
+import zanzibar7 from '../img/zanzibar7.jpg'
+import zanzibar8 from '../img/zanzibar8.jpg'
+import zanzibar9 from '../img/zanzibar9.jpg'
+import zanzibar10 from '../img/zanzibar10.jpg'
+import zanzibar11 from '../img/zanzibar11.jpg'
+import zanzibar12 from '../img/zanzibar12.jpg'
+import zanzibar13 from '../img/zanzibar13.jpg'
 export type TravelType = {
     id: number,
         country: string,
@@ -507,6 +524,254 @@ export const travels: TravelType[] = [
         lastMinute: false,
         img: marocco3,
         diningOptions: 'Breakfasts'
-    }
+    },
+    {
+    id: 34,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Gdansk',
+    hotel: 'Paje Sands Resort',
+    price: 4200,
+    stars: 5,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: zanzibar4,
+    diningOptions: 'All-Inclusive',
+  },
+  {
+    id: 35,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Warsaw',
+    hotel: 'Beachfront Bungalows',
+    price: 3500,
+    stars: 4,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: zanzibar5,
+    diningOptions: '3 Meals',
+  },
+  {
+    id: 36,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Poznan',
+    hotel: 'Zanzibar Paradise',
+    price: 3800,
+    stars: 4,
+    dateStart: '2024-09-05',
+    dateEnd: '2024-09-12',
+    lastMinute: false,
+    img: zanzibar6,
+    diningOptions: 'All-Inclusive',
+  },
+  {
+    id: 37,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Krakow',
+    hotel: 'Tropical Beach Resort',
+    price: 4500,
+    stars: 5,
+    dateStart: '2024-09-05',
+    dateEnd: '2024-09-12',
+    lastMinute: false,
+    img: zanzibar7,
+    diningOptions: 'All-Inclusive',
+  },
+  {
+    id: 38,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Gdansk',
+    hotel: 'Sunset View Hotel',
+    price: 3400,
+    stars: 3,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: zanzibar8,
+    diningOptions: 'Without Meals',
+  },
+  {
+    id: 39,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Warsaw',
+    hotel: 'Ocean Paradise Resort',
+    price: 4200,
+    stars: 4,
+    dateStart: '2024-07-10',
+    dateEnd: '2024-07-17',
+    lastMinute: false,
+    img: zanzibar9,
+    diningOptions: 'All-Inclusive',
+  },
+  {
+    id: 40,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Poznan',
+    hotel: 'Paje Beach Bungalows',
+    price: 3600,
+    stars: 3,
+    dateStart: '2024-07-10',
+    dateEnd: '2024-07-17',
+    lastMinute: false,
+    img: zanzibar10,
+    diningOptions: 'All-Inclusive',
+  },
+  {
+    id: 41,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Krakow',
+    hotel: 'Zanzibar Pearl Hotel',
+    price: 4300,
+    stars: 5,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: zanzibar11,
+    diningOptions: '3 Meals',
+  },
+  {
+    id: 42,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Gdansk',
+    hotel: 'Paradise Beach Resort',
+    price: 3900,
+    stars: 4,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: zanzibar12,
+    diningOptions: 'All-Inclusive',
+  },
+    {
+    id: 43,
+    country: 'zanzibar',
+    city: 'Paje',
+    airPort: 'Warsaw',
+    hotel: 'Zanzibar Sunset Hotel',
+    price: 4100,
+    stars: 4,
+    dateStart: '2024-07-10',
+    dateEnd: '2024-07-17',
+    lastMinute: false,
+    img: zanzibar13,
+    diningOptions: 'Breakfasts',
+    },
+    {
+    id: 44,
+    country: 'greece',
+    city: 'Santorini',
+    airPort: 'Krakow',
+    hotel: 'Santorini Beach Resort',
+    price: 4600,
+    stars: 5,
+    dateStart: '2024-07-10',
+    dateEnd: '2024-07-17',
+    lastMinute: false,
+    img: greece5,
+    diningOptions: 'Breakfasts',
+}, {
+    id: 45,
+    country: 'greece',
+    city: 'Mykonos',
+    airPort: 'Gdansk',
+    hotel: 'Mykonos Luxury Villa',
+    price: 5500,
+    stars: 5,
+    dateStart: '2024-08-15',
+    dateEnd: '2024-08-22',
+    lastMinute: false,
+    img: greece6,
+    diningOptions: 'All-Inclusive',
+    },
+    {
+    id: 46,
+    country: 'greece',
+    city: 'Rhodes',
+    airPort: 'Warsaw',
+    hotel: 'Rhodes Beachfront Resort',
+    price: 4800,
+    stars: 4,
+    dateStart: '2024-06-20',
+    dateEnd: '2024-06-27',
+    lastMinute: false,
+    img: greece7,
+    diningOptions: '3 Meals',
+}, {
+    id: 47,
+    country: 'greece',
+    city: 'Heraklion',
+    airPort: 'Gdansk',
+    hotel: 'Crete Seaside Hotel',
+    price: 4900,
+    stars: 4,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: greece8,
+    diningOptions: 'Breakfasts',
+}, {
+    id: 48,
+    country: 'greece',
+    city: 'Corfu',
+    airPort: 'Poznan',
+    hotel: 'Corfu Paradise Resort',
+    price: 4300,
+    stars: 3,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: greece9,
+    diningOptions: 'Without Meals',
+}
+, {
+    id: 49,
+    country: 'greece',
+    city: 'Corfu',
+    airPort: 'Warsaw',
+    hotel: ' Paradise Ocean',
+    price: 4300,
+    stars: 3,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: greece10,
+    diningOptions: 'All-Inclusive',
+}, {
+    id: 50,
+    country: 'cyprus',
+    city: 'Paphos',
+    airPort: 'Poznan',
+    hotel: 'Cyprus Seaside Resort',
+    price: 4800,
+    stars: 4,
+    dateStart: '2024-07-25',
+    dateEnd: '2024-08-01',
+    lastMinute: false,
+    img: cyprus4,
+    diningOptions: '3 Meals',
+    },
+{
+    id: 51,
+    country: 'cyprus',
+    city: 'Larnaca',
+    airPort: 'Larnaca',
+    hotel: 'Sunny Beach Resort',
+    price: 3900,
+    stars: 3,
+    dateStart: tomorrowDate(),
+    dateEnd: nextWeekDate(),
+    lastMinute: true,
+    img: cyprus5,
+    diningOptions: 'Breakfasts',
+}
 
 ]

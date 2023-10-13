@@ -7,7 +7,6 @@ import { SliderCards } from '../../container/SliderCards';
 import { travels } from '../../data/travels';
 import { DirectionCard } from '../../container/DirectionCard';
 import { Weather } from '../../container/Weather';
-
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './Destination.scss';
@@ -55,9 +54,9 @@ function Destination() {
 				autoPlay={true}
 				interval={2000}
 			>
-				{destinationInfo.imgArray?.map((img4) => {
+				{destinationInfo.imgArray?.map((img4, index) => {
 					return (
-						<div className='carousel-destination-img'>
+						<div className='carousel-destination-img' key={index}>
 							<img src={img4} alt='destination-img' />
 						</div>
 					);
