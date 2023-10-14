@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import './FilterComponent.scss';
@@ -24,7 +25,7 @@ function FilterComponentDinerOptions({
 	setShowChoices,
 }: PropsFiltersType) {
 	const { setSearchFilters } = useContext(FilteredTravelsContext);
-
+	const [searchParams, setSearchParams] = useSearchParams();
 	const handleAddFilter = (choice: string) => {
 		setSearchFilters((prevValue) => {
 			return {
@@ -36,7 +37,10 @@ function FilterComponentDinerOptions({
 			};
 		});
 	};
-
+	const addSearchParams = (key: string, value: string) => {
+		searchParams.set(key, value);
+		setSearchParams(searchParams);
+	};
 	return (
 		<div className='filter-component'>
 			<div className='heading-box'>
@@ -69,6 +73,7 @@ function FilterComponentDinerOptions({
 									name='diningOption'
 									onChange={() => {
 										handleAddFilter(choice);
+										addSearchParams('dinerOptions', choice);
 									}}
 									value={choice}
 								/>

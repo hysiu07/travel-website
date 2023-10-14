@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { UserContext } from '../../context/UserContext';
 import { Nav } from '../../components';
@@ -24,8 +24,9 @@ function SearchedTravels() {
 		setSearchFilters,
 	} = useContext(FilteredTravelsContext);
 	const params = useParams();
-	console.log(params);
-	console.log(searchFilters.filters);
+	const navigate = useNavigate();
+	const [searchParams] = useSearchParams();
+
 	const userContext = useContext(UserContext);
 	const userLogged = userContext?.user?.logIn;
 
@@ -35,77 +36,71 @@ function SearchedTravels() {
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
 
 	const handleFilterTravel = () => {
-		if (searchFilters) {
-			const filteredTravels2 = travels.filter((travel) => {
-				const selectedDate = new Date(travel.dateStart);
-				const travelStartDate =
-					typeof searchFilters.filters.dateStart === 'string' &&
-					new Date(searchFilters.filters.dateStart);
-				const countryMatch =
-					typeof searchFilters.filters.country === 'string' &&
-					(searchFilters.filters.country === 'All' ||
-						travel.country.includes(searchFilters.filters.country));
-				const priceMatch =
-					typeof searchFilters.filters.price === 'number' &&
-					searchFilters.filters.price >= travel.price;
-				const dateMatch = selectedDate >= travelStartDate;
+		const filteredTravels2 = travels.filter((travel) => {
+			const starsParams = searchParams.get('hotelRating');
+			const dinerOptionParams = searchParams.get('dinerOptions');
+			const airPortParams = searchParams.get('airPort');
+			const lastMinuteParams = searchParams.get('lastMinute');
+			const selectedDate = new Date(travel.dateStart);
+			const travelStartDate =
+				typeof params.date === 'string' && new Date(params.date);
+			const countryMatch =
+				params.country === 'All' ||
+				(params.country && travel.country.includes(params.country));
+			const priceMatch = params.price && Number(params.price) >= travel.price;
+			const dateMatch = selectedDate >= travelStartDate;
 
-				const starsMatch =
-					typeof searchFilters.filters.stars !== 'undefined'
-						? searchFilters.filters.stars <= travel.stars
-						: true;
+			const starsMatch =
+				starsParams !== null ? Number(starsParams) <= travel.stars : true;
 
-				const dinerOptionsMatch =
-					typeof searchFilters.filters.diningOptions !== 'undefined'
-						? searchFilters.filters.diningOptions === travel.diningOptions
-						: true;
-				const lastMinuteMatch =
-					typeof searchFilters.filters.lastMinute !== 'undefined'
-						? searchFilters.filters.lastMinute === travel.lastMinute
-						: true;
-				const airPortMatch =
-					typeof searchFilters.filters.airPort !== 'undefined'
-						? searchFilters.filters.airPort === travel.airPort
-						: true;
-				return (
-					countryMatch &&
-					dateMatch &&
-					priceMatch &&
-					starsMatch &&
-					dinerOptionsMatch &&
-					lastMinuteMatch &&
-					airPortMatch
-				);
-			});
-			setFilteredTravels(filteredTravels2);
-		}
-	};
-	const handleRemoveFilters =  () => {
-		 setSearchFilters({
-			filters: {
-				country: '',
-				dateStart: tomorrowDate(),
-				price: 5000,
-			},
+			const dinerOptionsMatch =
+				dinerOptionParams !== null
+					? dinerOptionParams === travel.diningOptions
+					: true;
+			let lastMinuteType;
+			if (lastMinuteParams === 'Yes') {
+				lastMinuteType = true;
+			} else if (lastMinuteParams === 'No') {
+				lastMinuteType = false;
+			} else {
+				lastMinuteType = undefined;
+			}
+			const lastMinuteMatch =
+				lastMinuteType !== undefined
+					? lastMinuteType === travel.lastMinute
+					: true
+			const airPortMatch =
+				airPortParams !== null ? airPortParams === travel.airPort : true;
+			return (
+				countryMatch &&
+				dateMatch &&
+				priceMatch &&
+				starsMatch &&
+				dinerOptionsMatch &&
+				lastMinuteMatch &&
+				airPortMatch
+			);
 		});
+		setFilteredTravels(filteredTravels2);
 	};
+	const handleRemoveFilters = () => {
+		navigate(`/travel-website/searchedTravels/All/${tomorrowDate()}/5000`);
+	};
+
 	useEffect(() => {
 		handleFilterTravel();
-	}, [searchFilters]);
+	}, [params, searchFilters]);
+
 	useEffect(() => {
-		const travelsLocalStorage = localStorage.getItem('travels');
-		if (typeof travelsLocalStorage === 'string') {
-			const travels = JSON.parse(travelsLocalStorage);
-			setFilteredTravels(travels);
-		}
-		const filtersLocalStorage = localStorage.getItem('filters');
-		if (typeof filtersLocalStorage === 'string') {
-			const filters = JSON.parse(filtersLocalStorage);
-			setSearchFilters(filters);
-		}
-		return () => {
-			localStorage.removeItem('filters');
-		};
+		// const travelsLocalStorage = localStorage.getItem('travels');
+		// if (typeof travelsLocalStorage === 'string') {
+		// 	const travels = JSON.parse(travelsLocalStorage);
+		// 	setFilteredTravels(travels);
+		// }
+		handleFilterTravel();
+		// return () => {
+		// 	localStorage.removeItem('filters');
+		// };
 	}, []);
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {

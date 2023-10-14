@@ -1,12 +1,10 @@
-import { useContext, useState } from 'react';
+import {  useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { NavLogo } from '../Nav/NavLogo';
 import { AiFillFacebook } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
 import { AiFillYoutube } from 'react-icons/ai';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
-import { travels } from '../../data/travels';
 import { SnackBar } from '../../container/SnackBar';
 import './Contact.scss';
 type PropsCategoryType = {
@@ -15,24 +13,14 @@ type PropsCategoryType = {
 };
 
 const Category = ({ title, links }: PropsCategoryType) => {
-	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 
 	const navigate = useNavigate();
-	const changePath = () => {
-		navigate('/travel-website/searchedTravels');
+	const changePath = (direction: string) => {
+		navigate(
+			`/travel-website/searchedTravels/${direction.toLocaleLowerCase()}/2023-10-15/5000?lastMinute=Yes`
+		);
 	};
-	const filterTravel = (direction: string) => {
-		const filteredTravels2 = travels.filter((travel) => {
-			const countryMatch = travel.country.includes(
-				direction.toLocaleLowerCase()
-			);
-			const directionLastMinute = travel.lastMinute === true;
-			return countryMatch && directionLastMinute;
-		});
-		setFilteredTravels(filteredTravels2);
-		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
-		changePath();
-	};
+
 	return (
 		<div className='category'>
 			<h3>{title}</h3>
@@ -47,7 +35,7 @@ const Category = ({ title, links }: PropsCategoryType) => {
 						) : (
 							<p
 								onClick={() => {
-									filterTravel(link);
+									changePath(link);
 								}}
 							>
 								{link}

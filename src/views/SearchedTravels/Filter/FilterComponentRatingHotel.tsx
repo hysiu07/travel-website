@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
@@ -25,11 +26,15 @@ function FilterComponentRatingHotel({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters, searchFilters } = useContext(
+	const { setSearchFilters} = useContext(
 		FilteredTravelsContext
 	);
-	console.log(searchFilters);
-	const navigate = useNavigate();
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	const addSearchParams = (key: string, value: string) => {
+		searchParams.set(key, value);
+		setSearchParams(searchParams);
+	};
 	return (
 		<div className='filter-component'>
 			<div className='heading-box'>
@@ -61,15 +66,16 @@ function FilterComponentRatingHotel({
 									type='radio'
 									name='stars'
 									onChange={() => {
-										setSearchFilters((prevValue) => {
-											return {
-												...prevValue,
-												filters: {
-													...prevValue.filters,
-													stars: choice,
-												},
-											};
-										});
+										// setSearchFilters((prevValue) => {
+										// 	return {
+										// 		...prevValue,
+										// 		filters: {
+										// 			...prevValue.filters,
+										// 			stars: choice,
+										// 		},
+										// 	};
+										// });
+										addSearchParams('hotelRating', choice.toString());
 									}}
 									value={choice}
 								/>

@@ -1,5 +1,6 @@
-import {  useContext } from 'react';
+import { useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import './FilterComponent.scss';
@@ -25,7 +26,7 @@ function FilterComponentLastMinute({
 	setShowChoices,
 }: PropsFiltersType) {
 	const { setSearchFilters } = useContext(FilteredTravelsContext);
-
+	const [searchParams, setSearchParams] = useSearchParams();
 	const handleAddFilter = (choice: string) => {
 		let lastMinuteValue: boolean | undefined;
 		if (choice === 'Yes') {
@@ -46,7 +47,10 @@ function FilterComponentLastMinute({
 			};
 		});
 	};
-
+	const addSearchParams = (key: string, value: string) => {
+		searchParams.set(key, value);
+		setSearchParams(searchParams);
+	};
 	return (
 		<div className='filter-component'>
 			<div className='heading-box'>
@@ -71,7 +75,7 @@ function FilterComponentLastMinute({
 			</div>
 			{showChoices && (
 				<div className='choices'>
-					{choices.map((choice,index) => {
+					{choices.map((choice, index) => {
 						return (
 							<div className='choices__box' key={index}>
 								<input
@@ -79,6 +83,7 @@ function FilterComponentLastMinute({
 									name='lastMinute'
 									onChange={() => {
 										handleAddFilter(choice);
+										addSearchParams('lastMinute', choice);
 									}}
 									value={choice}
 								/>

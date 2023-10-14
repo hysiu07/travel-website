@@ -1,11 +1,9 @@
-import { useState, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState} from 'react';
+import { useNavigate} from 'react-router-dom';
 import './SearchPanel.scss';
 import { ThreeCircles } from 'react-loader-spinner';
 import { tomorrowDate } from '../Hooks/tomorrowDate';
-import { travels } from '../../data/travels';
 
-import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 
 type SearchType = {
 	country: string;
@@ -14,15 +12,13 @@ type SearchType = {
 };
 function SearchPanel() {
 	const navigate = useNavigate();
-	const { setFilteredTravels, searchFilters, setSearchFilters } = useContext(
-		FilteredTravelsContext
-	);
-
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 
 	const changePath = () => {
-		navigate(`/travel-website/searchedTravels/${searchTours.country}/${searchTours.dateStart}/${searchTours.price}`);
+		navigate(
+			`/travel-website/searchedTravels/${searchTours.country}/${searchTours.dateStart}/${searchTours.price}`
+		);
 	};
 
 	// search yours travels
@@ -31,7 +27,6 @@ function SearchPanel() {
 		setShowLoader(true);
 
 		await new Promise<void>((resolve) => {
-			filterTravel();
 			setTimeout(() => {
 				resolve();
 				changePath();
@@ -45,8 +40,6 @@ function SearchPanel() {
 		dateStart: tomorrowDate(),
 		price: 5000,
 	});
-
-	// handle to find yours travel
 	const handleChangeSearchValues: React.ChangeEventHandler<HTMLInputElement> = (
 		e
 	) => {
@@ -58,29 +51,6 @@ function SearchPanel() {
 			[name]: target.value.toLocaleLowerCase(),
 		});
 	};
-	// function filter your travel
-	const filterTravel = () => {
-		const filteredTravels2 = travels.filter((travel) => {
-			const selectedDate = new Date(travel.dateStart);
-			const travelStartDate = new Date(searchTours.dateStart);
-			const countryMatch = travel.country.includes(searchTours.country);
-			const priceMatch = searchTours.price >= travel.price;
-			const dateMatch = selectedDate >= travelStartDate;
-			return countryMatch && dateMatch && priceMatch;
-		});
-		setFilteredTravels(filteredTravels2);
-		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
-		localStorage.setItem('filters', JSON.stringify(searchFilters));
-	};
-	useEffect(() => {
-		setSearchFilters({
-			filters: {
-				country: searchTours.country,
-				dateStart: searchTours.dateStart,
-				price: searchTours.price,
-			},
-		});
-	}, [searchTours]);
 	return (
 		<div>
 			<form

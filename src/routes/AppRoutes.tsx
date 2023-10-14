@@ -16,7 +16,8 @@ const AppRoutes = () => {
 			<Route path='/destination/:id' element={<Destination />} />
 			<Route path='/insuranceInfo' element={<InsuranceInfo/>} />
 			<Route
-				path='/travel-website/searchedTravels/:country/:dateStart/:price/:amountStars?'
+				path='/travel-website/searchedTravels/:country/:dateStart/:price'
+				// path='/travel-website/searchedTravels'
 				element={<SearchedTravels />}
 			/>
 		</Routes>
