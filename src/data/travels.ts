@@ -737,7 +737,7 @@ export const travels: TravelType[] = [
     country: 'greece',
     city: 'Corfu',
     airPort: 'Warsaw',
-    hotel: ' Paradise Ocean',
+    hotel: 'Paradise Ocean',
     price: 4300,
     stars: 3,
     dateStart: tomorrowDate(),

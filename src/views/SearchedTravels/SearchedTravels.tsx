@@ -17,10 +17,9 @@ import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
 import './SearchedTravels.scss';
 
 function SearchedTravels() {
-	const {
-		filteredTravels,
-		setFilteredTravels,
-	} = useContext(FilteredTravelsContext);
+	const { filteredTravels, setFilteredTravels } = useContext(
+		FilteredTravelsContext
+	);
 
 	const params = useParams();
 	const navigate = useNavigate();
@@ -32,7 +31,7 @@ function SearchedTravels() {
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
-	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
+	const [sortBy, setSortBy] = useState<string>('deafaultOption');
 
 	const handleFilterTravel = () => {
 		const uppDateFiltersTravel = travels.filter((travel) => {
@@ -87,6 +86,7 @@ function SearchedTravels() {
 	};
 	const handleRemoveFilters = () => {
 		navigate(`/travel-website/searchedTravels/All/${tomorrowDate()}/5000`);
+		setSortBy('defaultOption');
 	};
 
 	useEffect(() => {
@@ -95,7 +95,6 @@ function SearchedTravels() {
 	useEffect(() => {
 		handleFilterTravel();
 	}, []);
-
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
 		if (sortBy === 'priceLowToHigh') {
@@ -201,6 +200,7 @@ function SearchedTravels() {
 								value={sortBy}
 								onChange={handleSortChange}
 							>
+								<option value='defaultOption'>Sort your Travles</option>
 								<option value='priceLowToHigh'>Price Low to High</option>
 								<option value='priceHightToLow'>Price High to Low</option>
 								<option value='nameAZ'>Name A-Z</option>

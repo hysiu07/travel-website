@@ -237,9 +237,11 @@ function Registration() {
 							ariaLabel='three-circles-rotating'
 						/>
 					)}
+					<label htmlFor='name'></label>
 					<input
 						name='name'
 						type='name'
+						id='name'
 						placeholder='Name'
 						className='input-name'
 						value={infoUser.name}
@@ -250,9 +252,11 @@ function Registration() {
 						}
 					/>
 					<p>{errorInfo.errorInfoName}</p>
+					<label htmlFor='email'></label>
 					<input
 						name='email'
 						type='email'
+						id='email'
 						placeholder='Email address'
 						className='input-email'
 						value={infoUser.email}

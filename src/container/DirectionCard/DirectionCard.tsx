@@ -165,7 +165,7 @@ function DirectionCard({
 						{dateStart} / {dateEnd}
 					</p>
 					<div className='price-box btn'>
-						<p className='price'>{price}</p>
+						<p className='price'>{price} $</p>
 					</div>
 				</div>
 			</div>
