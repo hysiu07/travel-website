@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
-import './Map.scss';
+
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import markerIconPng from 'leaflet/dist/images/marker-icon.png';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useMap } from 'react-leaflet';
+import './Map.scss';
 
 type PropsMapsType = {
 	position: [number, number];

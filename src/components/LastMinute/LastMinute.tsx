@@ -1,9 +1,7 @@
-import { useState } from 'react';
 import { SliderCards } from '../../container/SliderCards';
-import './LastMinute.scss';
 import { DirectionCard } from '../../container/DirectionCard';
 import { travels } from '../../data/travels';
-import { OfferModal } from '../../container/OfferModal';
+import './LastMinute.scss';
 
 function LastMinute() {
 	return (

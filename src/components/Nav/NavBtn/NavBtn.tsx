@@ -1,7 +1,7 @@
-import './NavBtn.scss';
+import { Dispatch, SetStateAction } from 'react';
 import { BiMenu } from 'react-icons/bi';
 import { IoClose } from 'react-icons/io5';
-import { Dispatch, SetStateAction } from 'react';
+import './NavBtn.scss';
 
 type NavBtnPropsType = {
 	showMenu: boolean;

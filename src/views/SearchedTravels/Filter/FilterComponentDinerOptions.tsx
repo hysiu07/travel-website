@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
+import { useSearchParams } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import './FilterComponent.scss';
 type PropsFiltersType = {
@@ -24,19 +22,8 @@ function FilterComponentDinerOptions({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(FilteredTravelsContext);
 	const [searchParams, setSearchParams] = useSearchParams();
-	const handleAddFilter = (choice: string) => {
-		setSearchFilters((prevValue) => {
-			return {
-				...prevValue,
-				filters: {
-					...prevValue.filters,
-					diningOptions: choice,
-				},
-			};
-		});
-	};
+
 	const addSearchParams = (key: string, value: string) => {
 		searchParams.set(key, value);
 		setSearchParams(searchParams);
@@ -72,7 +59,6 @@ function FilterComponentDinerOptions({
 									type='radio'
 									name='diningOption'
 									onChange={() => {
-										handleAddFilter(choice);
 										addSearchParams('dinerOptions', choice);
 									}}
 									value={choice}

@@ -1,9 +1,8 @@
-import { useState} from 'react';
-import { useNavigate} from 'react-router-dom';
-import './SearchPanel.scss';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ThreeCircles } from 'react-loader-spinner';
 import { tomorrowDate } from '../Hooks/tomorrowDate';
-
+import './SearchPanel.scss';
 
 type SearchType = {
 	country: string;

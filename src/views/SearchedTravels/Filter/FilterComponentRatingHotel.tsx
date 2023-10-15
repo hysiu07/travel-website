@@ -1,8 +1,6 @@
-import { useContext } from 'react';
+
 import { Dispatch, SetStateAction } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
+import {  useSearchParams } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import './FilterComponent.scss';
 
@@ -26,9 +24,6 @@ function FilterComponentRatingHotel({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters} = useContext(
-		FilteredTravelsContext
-	);
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	const addSearchParams = (key: string, value: string) => {
@@ -66,15 +61,6 @@ function FilterComponentRatingHotel({
 									type='radio'
 									name='stars'
 									onChange={() => {
-										// setSearchFilters((prevValue) => {
-										// 	return {
-										// 		...prevValue,
-										// 		filters: {
-										// 			...prevValue.filters,
-										// 			stars: choice,
-										// 		},
-										// 	};
-										// });
 										addSearchParams('hotelRating', choice.toString());
 									}}
 									value={choice}

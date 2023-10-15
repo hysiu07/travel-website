@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import './Nav.scss';
 import { NavMenu } from './NavMenu';
 import { NavBtn } from './NavBtn';
 import { NavLogo } from './NavLogo';
+import './Nav.scss';
 
 function Nav() {
 	const [showMenu, setShowMenu] = useState<boolean>(false);
@@ -18,8 +18,8 @@ function Nav() {
 			} else {
 				setBackGround(false);
 			}
-		})
-		return window.removeEventListener('scroll', ()=>{})
+		});
+		return window.removeEventListener('scroll', () => {});
 	}, []);
 	return (
 		<nav

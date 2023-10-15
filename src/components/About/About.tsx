@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { BiSolidPlane, BiSolidCheckShield, BiWindowOpen } from 'react-icons/bi';
+import { BiSolidPlane, BiSolidCheckShield } from 'react-icons/bi';
 import { BsMap, BsFillTelephoneFill } from 'react-icons/bs';
 import { MdOutlineReviews } from 'react-icons/md';
 import { ImCoinDollar } from 'react-icons/im';

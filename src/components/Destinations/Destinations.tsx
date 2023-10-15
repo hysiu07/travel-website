@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import './Destinations.scss';
 import { directionInfo } from '../../data/directionInfo';
 import { DestinationCard } from '../../container/DestinationCard';
 
 import MovingText from 'react-moving-text';
+import './Destinations.scss';
 
 function Destinations() {
 	const sectionRef = useRef<HTMLDivElement | null>(null);

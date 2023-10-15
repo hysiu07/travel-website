@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Dispatch, SetStateAction } from 'react';
+import { Link } from 'react-router-dom';
+import { UserContext } from '../../../context/UserContext';
 import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import './NavMenu.scss';
-import { UserContext } from '../../../context/UserContext';
 type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
@@ -76,7 +76,7 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 							</a>
 						</li>
 						{userLogged ? (
-							<Link to='/myAccount' className='logo link'>
+							<Link to='/myAccount?menuType=desktop' className='logo link'>
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>
@@ -97,7 +97,7 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 							Home <AiFillHome />
 						</Link>
 						{userLogged ? (
-							<Link to='/myAccount' className='logo link'>
+							<Link to='/myAccount?menuType=desktop' className='logo link'>
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>

@@ -20,9 +20,8 @@ function SearchedTravels() {
 	const {
 		filteredTravels,
 		setFilteredTravels,
-		searchFilters,
-		setSearchFilters,
 	} = useContext(FilteredTravelsContext);
+
 	const params = useParams();
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
@@ -36,7 +35,7 @@ function SearchedTravels() {
 	const [sortBy, setSortBy] = useState<string>('priceLowToHigh');
 
 	const handleFilterTravel = () => {
-		const filteredTravels2 = travels.filter((travel) => {
+		const uppDateFiltersTravel = travels.filter((travel) => {
 			const starsParams = searchParams.get('hotelRating');
 			const dinerOptionParams = searchParams.get('dinerOptions');
 			const airPortParams = searchParams.get('airPort');
@@ -57,6 +56,7 @@ function SearchedTravels() {
 				dinerOptionParams !== null
 					? dinerOptionParams === travel.diningOptions
 					: true;
+
 			let lastMinuteType;
 			if (lastMinuteParams === 'Yes') {
 				lastMinuteType = true;
@@ -68,9 +68,11 @@ function SearchedTravels() {
 			const lastMinuteMatch =
 				lastMinuteType !== undefined
 					? lastMinuteType === travel.lastMinute
-					: true
+					: true;
+
 			const airPortMatch =
 				airPortParams !== null ? airPortParams === travel.airPort : true;
+
 			return (
 				countryMatch &&
 				dateMatch &&
@@ -81,7 +83,7 @@ function SearchedTravels() {
 				airPortMatch
 			);
 		});
-		setFilteredTravels(filteredTravels2);
+		setFilteredTravels(uppDateFiltersTravel);
 	};
 	const handleRemoveFilters = () => {
 		navigate(`/travel-website/searchedTravels/All/${tomorrowDate()}/5000`);
@@ -89,19 +91,11 @@ function SearchedTravels() {
 
 	useEffect(() => {
 		handleFilterTravel();
-	}, [params, searchFilters]);
-
+	}, [params]);
 	useEffect(() => {
-		// const travelsLocalStorage = localStorage.getItem('travels');
-		// if (typeof travelsLocalStorage === 'string') {
-		// 	const travels = JSON.parse(travelsLocalStorage);
-		// 	setFilteredTravels(travels);
-		// }
 		handleFilterTravel();
-		// return () => {
-		// 	localStorage.removeItem('filters');
-		// };
 	}, []);
+
 
 	const sortTravels = (travels: TravelType[], sortBy: string): TravelType[] => {
 		if (sortBy === 'priceLowToHigh') {
@@ -135,10 +129,10 @@ function SearchedTravels() {
 	}
 
 	const [showChoicesFilters, setShowChoicesFilters] = useState({
-		filterComponentAirPort: false,
-		filterComponentDinerOptions: false,
-		filterComponentLastMinute: false,
-		filterComponentStars: false,
+		filterComponentAirPort: true,
+		filterComponentDinerOptions: true,
+		filterComponentLastMinute: true,
+		filterComponentStars: true,
 	});
 	return (
 		<div className='searched-travels'>

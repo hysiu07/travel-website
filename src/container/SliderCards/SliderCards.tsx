@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import './SliderCards.scss';
 import useWindowWidth from '../../container/Hooks/useWindowWidth';
+import './SliderCards.scss';
 
 type PropsSliderCardsType = {
 	children: React.ReactNode;

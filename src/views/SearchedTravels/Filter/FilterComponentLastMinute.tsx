@@ -25,28 +25,9 @@ function FilterComponentLastMinute({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(FilteredTravelsContext);
-	const [searchParams, setSearchParams] = useSearchParams();
-	const handleAddFilter = (choice: string) => {
-		let lastMinuteValue: boolean | undefined;
-		if (choice === 'Yes') {
-			lastMinuteValue = true;
-		} else if (choice === 'No') {
-			lastMinuteValue = false;
-		} else if (choice === 'All') {
-			lastMinuteValue = undefined;
-		}
 
-		setSearchFilters((prevValue) => {
-			return {
-				...prevValue,
-				filters: {
-					...prevValue.filters,
-					lastMinute: lastMinuteValue,
-				},
-			};
-		});
-	};
+	const [searchParams, setSearchParams] = useSearchParams();
+	
 	const addSearchParams = (key: string, value: string) => {
 		searchParams.set(key, value);
 		setSearchParams(searchParams);
@@ -82,7 +63,6 @@ function FilterComponentLastMinute({
 									type='radio'
 									name='lastMinute'
 									onChange={() => {
-										handleAddFilter(choice);
 										addSearchParams('lastMinute', choice);
 									}}
 									value={choice}

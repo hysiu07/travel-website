@@ -1,6 +1,6 @@
-import './Reviews.scss';
-import dataReviews from '../../data/reviews.json';
 import { ReviewCard } from '../../container/ReviewCard';
+import dataReviews from '../../data/reviews.json';
+import './Reviews.scss';
 
 function Reviews() {
 	return (

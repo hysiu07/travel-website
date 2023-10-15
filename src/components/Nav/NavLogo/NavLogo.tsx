@@ -1,6 +1,6 @@
-import './NavLogo.scss';
 import { Link } from 'react-router-dom';
 import { LuPlane } from 'react-icons/lu';
+import './NavLogo.scss';
 
 function NavLogo() {
 	return (

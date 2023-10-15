@@ -13,7 +13,7 @@ type PropsCategoryType = {
 };
 
 const Category = ({ title, links }: PropsCategoryType) => {
-
+	
 	const navigate = useNavigate();
 	const changePath = (direction: string) => {
 		navigate(

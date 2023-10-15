@@ -1,5 +1,5 @@
-import './Insurance.scss';
 import { Link } from 'react-router-dom';
+import './Insurance.scss';
 function Insurance() {
 	return (
 		<div className='insurance' id='insurance'>

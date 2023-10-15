@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { travels } from '../../data/travels';
@@ -33,7 +33,6 @@ function DirectionCard({
 	dateStart,
 	dateEnd,
 	lastMinute,
-	airPort,
 }: DirectionCardPropsType) {
 	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 	const userContext = useContext(UserContext);
@@ -87,7 +86,9 @@ function DirectionCard({
 		});
 	};
 	const changePath = () => {
-		navigate('/travel-website/searchedTravels');
+		navigate(
+			'/travel-website/searchedTravels/All/2023-10-16/5000?lastMinute=Yes'
+		);
 	};
 
 	const filterTravel = () => {
@@ -113,8 +114,6 @@ function DirectionCard({
 							handlRemoveBestTravel();
 							if (userLogged) {
 								setLiked(!liked);
-							} else {
-								console.log('niezalowany, zaloguj sie');
 							}
 						}}
 					/>
@@ -127,8 +126,6 @@ function DirectionCard({
 							handlAddBestTravel();
 							if (userLogged) {
 								setLiked(!liked);
-							} else {
-								console.log('niezalowany, zaloguj sie');
 							}
 						}}
 					/>

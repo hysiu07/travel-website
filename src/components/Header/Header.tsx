@@ -1,8 +1,8 @@
-import './Header.scss';
-import video from '../../video/video.mp4';
 import { SearchPanel } from '../../container/SearchPanel';
 import { FilteredTravelsContextProvider } from '../../context/FilteredTravelsContext';
 import MovingText from 'react-moving-text';
+import video from '../../video/video.mp4';
+import './Header.scss';
 function Header() {
 
 	return (

@@ -1,7 +1,4 @@
-import { useContext } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { FilteredTravelsContext } from '../../../context/FilteredTravelsContext';
+import { useSearchParams } from 'react-router-dom';
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md';
 import { Dispatch, SetStateAction } from 'react';
 import './FilterComponent.scss';
@@ -25,24 +22,8 @@ function FilterComponentAirPort({
 	showChoices,
 	setShowChoices,
 }: PropsFiltersType) {
-	const { setSearchFilters } = useContext(FilteredTravelsContext);
-	const params = useParams();
 	const [searchParams, setSearchParams] = useSearchParams();
-	// console.log(params);
-	// const currentURL = window.location.href;
-	// console.log(currentURL);
-	const navigate = useNavigate();
-	const handleAddFilter = (choice: string) => {
-		setSearchFilters((prevValue) => {
-			return {
-				...prevValue,
-				filters: {
-					...prevValue.filters,
-					airPort: choice,
-				},
-			};
-		});
-	};
+
 	const addSearchParams = (key: string, value: string) => {
 		searchParams.set(key, value);
 		setSearchParams(searchParams);
@@ -78,21 +59,6 @@ function FilterComponentAirPort({
 									type='radio'
 									name='airPort'
 									onChange={() => {
-										handleAddFilter(choice);
-										// navigate(
-										// 	`/travel-website/searchedTravels/${params.country}/${
-										// 		params.dateStart
-										// 	}/${params.price}${
-										// 		params.amountStars ? '/' + params.amountStars : ''
-										// 	}/${choice}`
-										// );
-										// setSearchParams((prevState) => {
-										// 	const newState = {
-										// 		...prevState,
-										// 		stars: choice.toString(),
-										// 	};
-										// 	return newState;
-										// });
 										addSearchParams('airPort', choice);
 									}}
 									value={choice}
