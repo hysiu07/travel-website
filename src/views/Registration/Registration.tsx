@@ -7,7 +7,11 @@ import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
 import { ErrorsType, UserInfoType } from '../../types';
 
-function Registration() {
+import { connect } from 'react-redux';
+import { addUser } from '../../reduxUsersRegistration/redux';
+
+function Registration({ registeredUser, addUser }: any) {
+	console.log(registeredUser);
 	const userContext = useContext(UserContext);
 	const navigate = useNavigate();
 	const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -318,6 +322,9 @@ function Registration() {
 						type='submit'
 						className='btn-register'
 						disabled={disabledBtn}
+						onClick={() => {
+							addUser(infoUser);
+						}}
 						style={
 							disabledBtn
 								? { backgroundColor: 'gray', backgroundImage: 'none' }
@@ -331,4 +338,15 @@ function Registration() {
 		</div>
 	);
 }
-export default Registration;
+
+const mapStateToProps = (state: any) => {
+	return { registeredUser: state.userRegistered.users };
+};
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		addUser: (infoUser: UserInfoType) => {
+			dispatch(addUser(infoUser));
+		},
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Registration);
