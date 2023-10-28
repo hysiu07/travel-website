@@ -7,6 +7,10 @@ import { ThreeCircles } from 'react-loader-spinner';
 import useWindowWidth from '../../container/Hooks/useWindowWidth';
 import { SnackBar } from '../SnackBar';
 import './OfferModal.scss';
+
+import { connect } from 'react-redux';
+import { addReservation } from '../../redux/reduxUserInfo';
+
 type PropsOfferModalType = {
 	dateStart: string;
 	dateEnd: string;
@@ -18,6 +22,8 @@ type PropsOfferModalType = {
 	hotel: string;
 	closeModal: Dispatch<SetStateAction<boolean>>;
 	setHiddenNav?: Dispatch<SetStateAction<boolean>>;
+	reservation: any;
+	setReservation: any;
 };
 function OfferModal({
 	closeModal,
@@ -29,7 +35,10 @@ function OfferModal({
 	price,
 	airPort,
 	setHiddenNav,
+	reservation,
+	setReservation,
 }: PropsOfferModalType) {
+	console.log(reservation);
 	const userContext = useContext(UserContext);
 	const { width } = useWindowWidth();
 
@@ -53,7 +62,6 @@ function OfferModal({
 		} else {
 			setPriceInsurance(200);
 		}
-		
 	}, [insurancetype]);
 
 	const handleChangeCountPerson = (newValue: number) => {
@@ -85,7 +93,7 @@ function OfferModal({
 					dateEnd: dateEnd,
 					dateStart: dateStart,
 					food: 'AllInclusive',
-					amountPersons: countPerson
+					amountPersons: countPerson,
 				},
 			};
 			localStorage.setItem('user', JSON.stringify(updatedUser));
@@ -234,6 +242,18 @@ function OfferModal({
 							className='reservation-btn'
 							onClick={() => {
 								handleAddReservation();
+								setReservation({
+									travel: hotel,
+									country: country,
+									airPort: airPort,
+									price: price * countPerson,
+									insurance: insurancetype,
+									insurancePrice: priceInsurance * countPerson,
+									dateEnd: dateEnd,
+									dateStart: dateStart,
+									food: 'AllInclusive',
+									amountPersons: countPerson,
+								});
 							}}
 						>
 							{showLoader ? (
@@ -255,4 +275,16 @@ function OfferModal({
 		</div>
 	);
 }
-export default OfferModal;
+const mapStateToProps = (state: any) => {
+	return {
+		reservation: state.userInfo.user,
+	};
+};
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		setReservation: (reservation: any) => {
+			dispatch(addReservation(reservation));
+		},
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(OfferModal);

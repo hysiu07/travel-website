@@ -13,4 +13,5 @@
 export type inputValueTypes = {
 	email: string;
 	password: string;
+	logIn?: boolean
 };

@@ -8,7 +8,7 @@ import { SnackBar } from '../../container/SnackBar';
 import { ErrorsType, UserInfoType } from '../../types';
 
 import { connect } from 'react-redux';
-import { addUser } from '../../reduxUsersRegistration/redux';
+import { addUser } from '../../redux/reduxRegistration';
 
 function Registration({ registeredUser, addUser }: any) {
 	console.log(registeredUser);

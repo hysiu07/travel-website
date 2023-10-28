@@ -8,6 +8,10 @@ import { GiMeal } from 'react-icons/gi';
 import ReactStars from 'react-rating-star-with-type';
 import { OfferModal } from '../../../container/OfferModal';
 import { UserContext } from '../../../context/UserContext';
+
+import { connect } from 'react-redux';
+import { addBestTravels, removeBestTravel } from '../../../redux/reduxUserInfo';
+
 type PropsTravelType = {
 	img: string;
 	stars: number;
@@ -23,6 +27,9 @@ type PropsTravelType = {
 	userLogged: boolean | undefined;
 	handleShowSnackBar: (info: string) => void;
 	setHiddenNav?: React.Dispatch<React.SetStateAction<boolean>>;
+	bestTravels: any;
+	setBestTravels: any;
+	removeTravel: any
 };
 
 function TravelOfferComponent({
@@ -39,8 +46,13 @@ function TravelOfferComponent({
 	userLogged,
 	handleShowSnackBar,
 	setHiddenNav,
-	dinerOptions
+	dinerOptions,
+	bestTravels,
+	setBestTravels,
+	removeTravel
 }: PropsTravelType) {
+
+	console.log(bestTravels);
 	const userContext = useContext(UserContext);
 	const [liked, setLiked] = useState(false);
 
@@ -117,6 +129,7 @@ function TravelOfferComponent({
 								setLiked(!liked);
 								handleShowSnackBar('You DisLiked!');
 								handlRemoveBestTravel();
+								removeTravel(hotel)
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -131,6 +144,7 @@ function TravelOfferComponent({
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
 								handlAddBestTravel();
+								setBestTravels(hotel)
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -182,4 +196,19 @@ function TravelOfferComponent({
 		</div>
 	);
 }
-export default TravelOfferComponent;
+const mapStateToProps = (state: any) => {
+	return {
+		bestTravels: state.userInfo.user.bestTravels,
+	};
+};
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		setBestTravels: (hotelName: any) => {
+			dispatch(addBestTravels(hotelName));
+		},
+		removeTravel: (hotelName: string) => {
+			dispatch(removeBestTravel(hotelName));
+		},
+	};
+};
+export default connect(mapStateToProps,mapDispatchToProps)(TravelOfferComponent);

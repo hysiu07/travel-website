@@ -7,7 +7,11 @@ import './SignIn.scss';
 import { UserContext } from '../../context/UserContext';
 import { inputValueTypes } from '../../types';
 
-function SignIn() {
+import connect from 'react-redux/es/components/connect';
+import { loggInUser } from '../../redux/reduxUserInfo';
+
+function SignIn({ user, logInUser }: any) {
+	console.log(user);
 	const userContext = useContext(UserContext);
 	const usersData = userContext?.usersRegistration;
 	const navigate = useNavigate();
@@ -18,6 +22,7 @@ function SignIn() {
 	const [inputValue, setInputValue] = useState<inputValueTypes>({
 		email: '',
 		password: '',
+		logIn: true
 	});
 	const [errorInfo, setErrorInfo] = useState<string>('');
 	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -39,6 +44,7 @@ function SignIn() {
 		setInputValue({
 			email: '',
 			password: '',
+			logIn: false
 		});
 	};
 	const timeOut = () => {
@@ -133,13 +139,18 @@ function SignIn() {
 					<button
 						type='submit'
 						className='btn-login'
+						
 						disabled={disabledBtn}
 						style={
 							disabledBtn
 								? { backgroundColor: 'gray', backgroundImage: 'none' }
 								: { backgroundColor: '' }
 						}
-						onClick={logIn}
+						onClick={(e) => {
+							e.preventDefault()
+							logInUser(inputValue)
+							logIn(e)
+						}}
 					>
 						Login
 					</button>
@@ -153,4 +164,17 @@ function SignIn() {
 		</div>
 	);
 }
-export default SignIn;
+
+const mapStateToProps = (state: any) => {
+	return {
+		user: state.userInfo,
+	};
+};
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		logInUser: (user: any) => {
+			dispatch(loggInUser(user));
+		},
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

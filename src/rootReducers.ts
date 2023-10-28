@@ -1,6 +1,8 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { reducerUserRegistration } from "./reduxUsersRegistration/redux";
+import { reducerUserRegistration } from "./redux/reduxRegistration";
+import { reducerUserInfo } from "./redux/reduxUserInfo";
 
 export const rootReducers = combineReducers({
- userRegistered: reducerUserRegistration
+    userRegistered: reducerUserRegistration,
+    userInfo: reducerUserInfo
 })

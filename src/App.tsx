@@ -7,17 +7,20 @@ import { FilteredTravelsContextProvider } from './context/FilteredTravelsContext
 import { configureStore } from '@reduxjs/toolkit';
 import { rootReducers } from './rootReducers';
 import { Provider } from 'react-redux/es/exports';
-
-export const store = configureStore({
-	reducer: rootReducers,
-});
+import { persistor, store } from './configureStorePersist';
+import { PersistGate } from 'redux-persist/integration/react';
+// export const store = configureStore({
+// 	reducer: rootReducers,
+// });
 
 function App() {
 	return (
 		<FilteredTravelsContextProvider>
 			<UserContextProvider>
 				<Provider store={store}>
-					<AppRoutes />
+					<PersistGate loading={null} persistor={persistor}>
+						<AppRoutes />
+					</PersistGate>
 				</Provider>
 			</UserContextProvider>
 		</FilteredTravelsContextProvider>
