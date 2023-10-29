@@ -27,9 +27,9 @@ type PropsTravelType = {
 	userLogged: boolean | undefined;
 	handleShowSnackBar: (info: string) => void;
 	setHiddenNav?: React.Dispatch<React.SetStateAction<boolean>>;
-	bestTravels: any;
+	infoUser: any;
 	setBestTravels: any;
-	removeTravel: any
+	removeTravel: any;
 };
 
 function TravelOfferComponent({
@@ -47,12 +47,11 @@ function TravelOfferComponent({
 	handleShowSnackBar,
 	setHiddenNav,
 	dinerOptions,
-	bestTravels,
+	infoUser,
 	setBestTravels,
-	removeTravel
+	removeTravel,
 }: PropsTravelType) {
-
-	console.log(bestTravels);
+	console.log(infoUser.bestTravels,' wycieczki');
 	const userContext = useContext(UserContext);
 	const [liked, setLiked] = useState(false);
 
@@ -63,43 +62,43 @@ function TravelOfferComponent({
 	const [showOfferModal, setShowOfferModal] = useState<boolean>(false);
 
 	useEffect(() => {
-		if (userContext && userContext.user && userContext.user.bestTravels) {
-			const userBestTravels = userContext.user.bestTravels;
+		if (infoUser.bestTravels) {
+			const userBestTravels = infoUser.bestTravels;
 			const hasLiked = userBestTravels.includes(hotel);
 			setLiked(hasLiked);
 		}
 	}, [liked]);
-	const handlAddBestTravel = () => {
-		userContext?.setUser((prevUser) => {
-			if (!prevUser) return null;
-			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
-				? [...prevUser.bestTravels, hotel]
-				: [hotel];
-			const updatedUser = {
-				...prevUser,
-				bestTravels: updatedBestTravels,
-			};
-			localStorage.setItem('user', JSON.stringify(updatedUser));
-			return updatedUser;
-		});
-	};
-	const handlRemoveBestTravel = () => {
-		userContext?.setUser((prevUser) => {
-			if (!prevUser) return null;
+	// const handlAddBestTravel = () => {
+	// 	userContext?.setUser((prevUser) => {
+	// 		if (!prevUser) return null;
+	// 		const updatedBestTravels = Array.isArray(prevUser.bestTravels)
+	// 			? [...prevUser.bestTravels, hotel]
+	// 			: [hotel];
+	// 		const updatedUser = {
+	// 			...prevUser,
+	// 			bestTravels: updatedBestTravels,
+	// 		};
+	// 		localStorage.setItem('user', JSON.stringify(updatedUser));
+	// 		return updatedUser;
+	// 	});
+	// };
+	// const handlRemoveBestTravel = () => {
+	// 	userContext?.setUser((prevUser) => {
+	// 		if (!prevUser) return null;
 
-			if (Array.isArray(prevUser.bestTravels)) {
-				const updatedBestTravels = prevUser.bestTravels.filter(
-					(travel) => travel !== hotel
-				);
-				const updatedUser = {
-					...prevUser,
-					bestTravels: updatedBestTravels,
-				};
-				localStorage.setItem('user', JSON.stringify(updatedUser));
-				return updatedUser;
-			}
-		});
-	};
+	// 		if (Array.isArray(prevUser.bestTravels)) {
+	// 			const updatedBestTravels = prevUser.bestTravels.filter(
+	// 				(travel) => travel !== hotel
+	// 			);
+	// 			const updatedUser = {
+	// 				...prevUser,
+	// 				bestTravels: updatedBestTravels,
+	// 			};
+	// 			localStorage.setItem('user', JSON.stringify(updatedUser));
+	// 			return updatedUser;
+	// 		}
+	// 	});
+	// };
 
 	return (
 		<div className='travel-offer'>
@@ -128,8 +127,8 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You DisLiked!');
-								handlRemoveBestTravel();
-								removeTravel(hotel)
+								// handlRemoveBestTravel();
+								removeTravel(hotel);
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -143,8 +142,8 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
-								handlAddBestTravel();
-								setBestTravels(hotel)
+								// handlAddBestTravel();
+								setBestTravels(hotel);
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -198,7 +197,7 @@ function TravelOfferComponent({
 }
 const mapStateToProps = (state: any) => {
 	return {
-		bestTravels: state.userInfo.user.bestTravels,
+		infoUser: state.userInfo.user,
 	};
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -211,4 +210,7 @@ const mapDispatchToProps = (dispatch: any) => {
 		},
 	};
 };
-export default connect(mapStateToProps,mapDispatchToProps)(TravelOfferComponent);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(TravelOfferComponent);

@@ -11,7 +11,8 @@
 	confirmPassword: string;
 };
 export type inputValueTypes = {
+	name?: string;
 	email: string;
 	password: string;
-	logIn?: boolean
+	isLoggIn?: boolean
 };

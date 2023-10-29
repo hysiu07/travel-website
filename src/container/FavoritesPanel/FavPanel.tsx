@@ -4,26 +4,30 @@ import { Link } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import './FavPanel.scss';
 
-function FavPanel() {
-	const userContext = useContext(UserContext);
+import { connect } from 'react-redux';
+type FavPanelPropsType = {
+	infoUser: any;
+};
 
+function FavPanel({ infoUser }: FavPanelPropsType) {
+	
+	
 	const [hasFavorites, setHasFavorites] = useState<boolean>(false);
+	const bestTravels = infoUser.bestTravels
+
 
 	useEffect(() => {
-		if (
-			!userContext?.user?.bestTravels ||
-			userContext.user.bestTravels.length === 0
-		) {
-			setHasFavorites(false);
-		} else {
+		if ( infoUser.isLoggIn) {
 			setHasFavorites(true);
+		} else {
+			setHasFavorites(false);
 		}
-	}, [userContext]);
+	}, [infoUser.bestTravels, infoUser.isLoggIn]);
 
 	return (
 		<div className='fav-panel'>
 			<div className='fav-panel__tooltip'>
-				<p>You have {userContext?.user?.bestTravels?.length} Liked travels!</p>
+				<p>You have {bestTravels.length} Liked travels!</p>
 			</div>
 			{hasFavorites && (
 				<Link
@@ -36,4 +40,9 @@ function FavPanel() {
 		</div>
 	);
 }
-export default FavPanel;
+const mapStateToProps = (state: any) => {
+	return {
+		infoUser: state.userInfo.user,
+	};
+};
+export default connect(mapStateToProps)(FavPanel);

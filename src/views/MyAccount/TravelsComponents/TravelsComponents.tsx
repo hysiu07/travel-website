@@ -3,16 +3,25 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../../context/UserContext';
 import { travels } from '../../../data/travels';
 import { TravelOfferComponent } from '../../SearchedTravels/TravelComponent';
+
+import { connect } from 'react-redux';
+
 type PropsTravelsComponentType = {
 	setHiddenNav: React.Dispatch<React.SetStateAction<boolean>>;
+	infoUser: any
 };
-function TravelsComponents({ setHiddenNav }: PropsTravelsComponentType) {
+function TravelsComponents({
+	setHiddenNav,
+	infoUser
+}: PropsTravelsComponentType) {
+	console.log(infoUser,'myaccount');
 	const userContext = useContext(UserContext);
-	const userLogged = userContext?.user?.logIn;
+	const userLogged = infoUser.isLoggIn
+	console.log(userLogged,'trav');
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
-	const bestTravels = userContext?.user?.bestTravels;
+	// const bestTravels = userContext?.user?.bestTravels;
 
 	async function handleShowSnackBar(info: string) {
 		await setSnackBarInfo(info);
@@ -26,7 +35,7 @@ function TravelsComponents({ setHiddenNav }: PropsTravelsComponentType) {
 	return (
 		<div className='travels-component'>
 			{travels.map((travel) => {
-				if (bestTravels?.includes(travel.hotel)) {
+				if (Array.isArray(infoUser.bestTravels) && infoUser.bestTravels.includes(travel.hotel)) {
 					return (
 						<TravelOfferComponent
 							key={travel.id}
@@ -51,5 +60,9 @@ function TravelsComponents({ setHiddenNav }: PropsTravelsComponentType) {
 		</div>
 	);
 }
-
-export default TravelsComponents;
+const mapStateToProps = (state: any) => {
+	return {
+		infoUser: state.userInfo.user
+	};
+};
+export default connect(mapStateToProps)(TravelsComponents)

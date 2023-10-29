@@ -11,17 +11,28 @@ import { DesktopComponent } from './DesktopComponent';
 import { TravelsComponents } from './TravelsComponents';
 import { Nav } from '../../components';
 import Reservations from './Resevations/Reservations';
+
+import { connect } from 'react-redux';
+import { handleLoggOutUser } from '../../redux/reduxUserInfo';
 import './MyAccount.scss';
-function MyAccount() {
+
+type MyAccountPropsType = {
+	loggOutUser: any;
+	infoUser: any;
+};
+
+function MyAccount({ loggOutUser, infoUser }: MyAccountPropsType) {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const params = useParams();
 	const addSearchParams = (key: string, value: string) => {
 		searchParams.set(key, value);
 		setSearchParams(searchParams);
 	};
-	const userContext = useContext(UserContext);
+	// const userContext = useContext(UserContext);
 	const navigate = useNavigate();
-	const name = userContext?.user?.name;
+	// const name = userContext?.user?.name;
+	const name = infoUser.name;
+
 	const [menuType, setMenuType] = useState<string>('desktop');
 	const [hiddenNav, setHiddenNav] = useState(false);
 
@@ -60,11 +71,14 @@ function MyAccount() {
 					<h2>Hello {name}!</h2>
 					<button
 						className='logOut-btn'
-						onClick={() => {
-							localStorage.removeItem('user');
-							userContext?.setUser(null);
-							navigate('/travel-website');
-						}}
+						onClick={
+							() => {
+								loggOutUser();
+								navigate('/travel-website');
+							}
+							// localStorage.removeItem('user');
+							// userContext?.setUser(null);
+						}
 					>
 						LogOut
 					</button>
@@ -126,4 +140,15 @@ function MyAccount() {
 		</div>
 	);
 }
-export default MyAccount;
+
+const mapStateToProps = (state: any) => {
+	return { infoUser: state.userInfo.user };
+};
+const mapDispatchToProps = (dispatch: any) => {
+	return {
+		loggOutUser: () => {
+			dispatch(handleLoggOutUser());
+		},
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(MyAccount);

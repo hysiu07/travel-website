@@ -544,7 +544,7 @@ export const travels: TravelType[] = [
     country: 'zanzibar',
     city: 'Paje',
     airPort: 'Warsaw',
-    hotel: 'Beachfront Bungalows',
+    hotel: 'Beachfront Bungalows 2',
     price: 3500,
     stars: 4,
     dateStart: tomorrowDate(),

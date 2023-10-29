@@ -1,19 +1,16 @@
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
 import { Nav } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
 import './SignIn.scss';
-import { UserContext } from '../../context/UserContext';
+
 import { inputValueTypes } from '../../types';
 
 import connect from 'react-redux/es/components/connect';
 import { loggInUser } from '../../redux/reduxUserInfo';
 
-function SignIn({ user, logInUser }: any) {
-	console.log(user);
-	const userContext = useContext(UserContext);
-	const usersData = userContext?.usersRegistration;
+function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
 	const navigate = useNavigate();
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -22,8 +19,9 @@ function SignIn({ user, logInUser }: any) {
 	const [inputValue, setInputValue] = useState<inputValueTypes>({
 		email: '',
 		password: '',
-		logIn: true
+		isLoggIn: true,
 	});
+
 	const [errorInfo, setErrorInfo] = useState<string>('');
 	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		const target = e.target;
@@ -44,7 +42,7 @@ function SignIn({ user, logInUser }: any) {
 		setInputValue({
 			email: '',
 			password: '',
-			logIn: false
+			isLoggIn: false,
 		});
 	};
 	const timeOut = () => {
@@ -54,47 +52,40 @@ function SignIn({ user, logInUser }: any) {
 			}, 3000);
 		});
 	};
-	async function asyncFuncionLogIn() {
-		await setShowLoader(true);
-		await timeOut();
-		await setShowLoader(false);
-		await setSnackBar(true);
-		await setTimeout(() => {
-			setSnackBar(false);
-		}, 3000);
-		await setDisabledBtn(true);
-		await setTimeout(() => {
-			navigate('/travel-website');
-		}, 2000);
-	}
+	async function asyncFuncionLogIn() {}
 
-	const logIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+	const handleLoggIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault();
 
-		usersData?.forEach((user) => {
+		usersRegistered.forEach((user: any) => {
 			if (
 				inputValue.email === user.email &&
 				inputValue.password === user.password
 			) {
+				loggInUser({
+					name: user.name,
+					...inputValue,
+				});
 				setErrorInfo('');
 				asyncFuncionLogIn();
-				localStorage.setItem(
-					'user',
-					JSON.stringify({
-						name: user.name,
-						email: inputValue.email,
-						logIn: true,
-					})
-				);
-				const userLocalStorage = localStorage.getItem('user');
-				if (typeof userLocalStorage === 'string') {
-					const user2 = JSON.parse(userLocalStorage);
-					userContext?.setUser(user2);
-				}
+
+				setShowLoader(true);
+				timeOut();
+				setShowLoader(false);
+				setSnackBar(true);
+
+				setTimeout(() => {
+					setSnackBar(false);
+				}, 3000);
+				setDisabledBtn(true);
+				// await setTimeout(() => {
+				// 	navigate('/travel-website');
+				// }, 2000);
 			} else {
 				setErrorInfo('Wrong name or password');
 			}
 		});
+		return;
 	};
 
 	return (
@@ -139,7 +130,6 @@ function SignIn({ user, logInUser }: any) {
 					<button
 						type='submit'
 						className='btn-login'
-						
 						disabled={disabledBtn}
 						style={
 							disabledBtn
@@ -147,9 +137,7 @@ function SignIn({ user, logInUser }: any) {
 								: { backgroundColor: '' }
 						}
 						onClick={(e) => {
-							e.preventDefault()
-							logInUser(inputValue)
-							logIn(e)
+							handleLoggIn(e);
 						}}
 					>
 						Login
@@ -167,12 +155,13 @@ function SignIn({ user, logInUser }: any) {
 
 const mapStateToProps = (state: any) => {
 	return {
-		user: state.userInfo,
+		infoUser: state.userInfo,
+		usersRegistered: state.userRegistered.users,
 	};
 };
 const mapDispatchToProps = (dispatch: any) => {
 	return {
-		logInUser: (user: any) => {
+		loggInUser: (user: any) => {
 			dispatch(loggInUser(user));
 		},
 	};

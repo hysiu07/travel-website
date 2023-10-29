@@ -10,7 +10,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import './DirectionCard.scss';
 
 import { connect } from 'react-redux';
-import { addBestTravels,removeBestTravel } from '../../redux/reduxUserInfo';
+import { addBestTravels, removeBestTravel } from '../../redux/reduxUserInfo';
 
 type DirectionCardPropsType = {
 	id?: number;
@@ -24,9 +24,9 @@ type DirectionCardPropsType = {
 	dateEnd: string;
 	lastMinute: boolean;
 	airPort: string;
-	bestTravels: any;
+	infoUser: any;
 	setBestTravels: any;
-	removeTravel: any
+	removeTravel: any;
 };
 
 function DirectionCard({
@@ -39,15 +39,13 @@ function DirectionCard({
 	dateStart,
 	dateEnd,
 	lastMinute,
-	bestTravels,
+	infoUser,
 	setBestTravels,
-	removeTravel
+	removeTravel,
 }: DirectionCardPropsType) {
-
-	console.log(bestTravels);
 	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 	const userContext = useContext(UserContext);
-	const userLogged: boolean | undefined = userContext?.user?.logIn;
+	const userLogged: boolean = infoUser.isLoggIn;
 
 	const firstLetter = country?.charAt(0).toUpperCase() || '';
 	const restOfLetters = country?.slice(1);
@@ -58,8 +56,8 @@ function DirectionCard({
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		if (userContext && userContext.user && userContext.user.bestTravels) {
-			const userBestTravels = userContext.user.bestTravels;
+		if (infoUser.bestTravels) {
+			const userBestTravels = infoUser.bestTravels;
 			const hasLiked = userBestTravels.includes(hotel);
 			setLiked(hasLiked);
 		}
@@ -123,7 +121,7 @@ function DirectionCard({
 						onClick={(e) => {
 							e.stopPropagation();
 							handlRemoveBestTravel();
-							removeTravel(hotel)
+							removeTravel(hotel);
 							if (userLogged) {
 								setLiked(!liked);
 							}
@@ -189,7 +187,7 @@ function DirectionCard({
 
 const mapStateToProps = (state: any) => {
 	return {
-		bestTravels: state.userInfo.user.bestTravels,
+		infoUser: state.userInfo.user,
 	};
 };
 const mapDispatchToProps = (dispatch: any) => {
@@ -197,9 +195,9 @@ const mapDispatchToProps = (dispatch: any) => {
 		setBestTravels: (hotelName: any) => {
 			dispatch(addBestTravels(hotelName));
 		},
-		removeTravel: (hotelName:string) => {
-			dispatch(removeBestTravel(hotelName))
-		}
+		removeTravel: (hotelName: string) => {
+			dispatch(removeBestTravel(hotelName));
+		},
 	};
 };
 export default connect(mapStateToProps, mapDispatchToProps)(DirectionCard);

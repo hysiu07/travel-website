@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Travel_Agency WebApp - Demo 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+The Travel Agency Demo Application is a project that showcases a simple web application simulating the operation of a travel agency. The application allows users to browse available tours, make reservations, and manage personal information.
+## Usage
+After launching the application, you can:
 
-## Available Scripts
+Browse available tours.
+Make reservations for selected tours.
+Manage your personal information, such as name, surname, and email address.
 
-In the project directory, you can run:
+## Project Status
+This demo is a work in progress and is intended to showcase the functionality of a travel agency. Further enhancements and feature extensions are planned.
 
-### `npm start`
+## Technologies Used
+The project was created using the following technologies:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+HTML
+CSS
+SASS
+GIT / GITHUB
+AJAX / REST API
+TypeScript
+React.js
+React Redux / Redux Saga
+React Redux Presist
+## Skills Demonstrated
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+soon
 
-### `npm test`
+## Project Vision
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project serves as a testament to my journey as a front-end developer and the unwavering commitment to my personal growth. It reflects the dedication to reaching my milestones, as outlined in my roadmap https://hysiu07.github.io/ . With each new project, I aim to demonstrate the substantial progress I have made on my journey.
 
-### `npm run build`
+Front-end development is not just a profession; it's a passion, and I pour my heart and soul into refining my skills and pursuing my goals. This project, along with others in my portfolio, stands as a representation of my continuous growth and showcases the dedication I bring to every aspect of my work.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Thank you for being a part of this journey, and I look forward to what lies ahead as I continue to learn, build, and evolve as a front-end developer.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Daniel

@@ -4,16 +4,22 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../../context/UserContext';
 import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
+
+import { connect } from 'react-redux';
+
 import './NavMenu.scss';
 type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
+	infoUser?: any;
 };
-function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
+function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
+	
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
-	const userContext = useContext(UserContext);
-	const userLogged: boolean | undefined = userContext?.user?.logIn;
+	// const userContext = useContext(UserContext);
+	// const userLogged: boolean | undefined = userContext?.user?.logIn;
+	const userLogged: boolean = infoUser.isLoggIn;
 
 	useEffect(() => {
 		if (location === '/travel-website/' || location === '/travel-website') {
@@ -113,4 +119,9 @@ function NavMenu({ showMenu, location, setShowMenu }: PropsNavType) {
 		</div>
 	);
 }
-export default NavMenu;
+const mapStateToProps = (state: any) => {
+	return {
+		infoUser: state.userInfo.user,
+	};
+};
+export default connect(mapStateToProps)(NavMenu);

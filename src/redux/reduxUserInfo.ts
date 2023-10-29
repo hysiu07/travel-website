@@ -1,4 +1,5 @@
 const LOGG_IN_USER: string = 'user/LOGG_IN_USER';
+const LOGG_OUT_USER: string = 'user/LOGG_OUT_USER';
 const ADD_BEST_TRAVELS: string = 'user/ADD_BEST_TRAVELS';
 const REMOVE_BEST_TRAVELS: string = 'user/REMOVE_BEST_TRAVELS';
 const ADD_RESERVATION: string = 'user/ADD_RESERVATION';
@@ -7,7 +8,7 @@ type UserType = {
 	user: {
 		name: string;
 		email: string;
-		logIn?: boolean;
+		isLoggIn: boolean;
 		bestTravels?: string[];
 		reservation?: {
 			travel: string;
@@ -28,7 +29,7 @@ const INITIAL_STATE_REGISTERED = {
 	user: {
 		name: '',
 		email: '',
-		logIn: false,
+		isLoggIn: false,
 		bestTravels: [],
 	},
 };
@@ -37,6 +38,8 @@ export const loggInUser = (user: any) => ({
 	type: LOGG_IN_USER,
 	payload: user,
 });
+export const handleLoggOutUser = () => ({ type: LOGG_OUT_USER });
+
 export const addBestTravels = (hotelName: string) => ({
 	type: ADD_BEST_TRAVELS,
 	payload: hotelName,
@@ -46,7 +49,7 @@ export const addReservation = (reservation: any) => ({
 	payload: reservation,
 });
 export const removeBestTravel = (hotelName: string) => ({
-	type:REMOVE_BEST_TRAVELS,
+	type: REMOVE_BEST_TRAVELS,
 	payload: hotelName,
 });
 
@@ -58,6 +61,15 @@ export const reducerUserInfo = (
 		case LOGG_IN_USER:
 			return {
 				user: action.payload,
+			};
+		case LOGG_OUT_USER:
+			return {
+				user: {
+					name: '',
+					email: '',
+					isLoggIn: false,
+					bestTravels: [],
+				},
 			};
 		case ADD_BEST_TRAVELS:
 			return {
@@ -77,7 +89,7 @@ export const reducerUserInfo = (
 					bestTravels:
 						Array.isArray(state.user.bestTravels) &&
 						state.user.bestTravels.filter((item) => {
-						return 	item !== action.payload;
+							return item !== action.payload;
 						}),
 				},
 			};

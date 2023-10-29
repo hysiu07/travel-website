@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { addUser } from '../../redux/reduxRegistration';
 
 function Registration({ registeredUser, addUser }: any) {
-	console.log(registeredUser);
+
 	const userContext = useContext(UserContext);
 	const navigate = useNavigate();
 	const [showLoader, setShowLoader] = useState<boolean>(false);

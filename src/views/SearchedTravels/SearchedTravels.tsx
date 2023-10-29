@@ -16,7 +16,10 @@ import { travels } from '../../data/travels';
 import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
 import './SearchedTravels.scss';
 
-function SearchedTravels() {
+
+import { connect } from 'react-redux';
+
+function SearchedTravels({ infoUser }: any) {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
 	);
@@ -25,8 +28,8 @@ function SearchedTravels() {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 
-	const userContext = useContext(UserContext);
-	const userLogged = userContext?.user?.logIn;
+	// const userContext = useContext(UserContext);
+	const userLogged = infoUser.isLoggIn;
 
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
@@ -234,4 +237,9 @@ function SearchedTravels() {
 		</div>
 	);
 }
-export default SearchedTravels;
+const mapStateToProps = (state: any) => {
+	return {
+		infoUser: state.userInfo.user,
+	};
+};
+export default connect(mapStateToProps)(SearchedTravels);
