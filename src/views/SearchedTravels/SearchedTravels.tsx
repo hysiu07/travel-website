@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
-import { UserContext } from '../../context/UserContext';
+
 import { Nav } from '../../components';
 import {
 	FilterComponentRatingHotel,
@@ -14,11 +14,10 @@ import { SnackBar } from '../../container/SnackBar';
 import { TravelType } from '../../data/travels';
 import { travels } from '../../data/travels';
 import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
-import './SearchedTravels.scss';
-
 
 import { connect } from 'react-redux';
 
+import './SearchedTravels.scss';
 function SearchedTravels({ infoUser }: any) {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
@@ -28,7 +27,6 @@ function SearchedTravels({ infoUser }: any) {
 	const navigate = useNavigate();
 	const [searchParams] = useSearchParams();
 
-	// const userContext = useContext(UserContext);
 	const userLogged = infoUser.isLoggIn;
 
 	const [snackBar, setSnackBar] = useState<boolean>(false);

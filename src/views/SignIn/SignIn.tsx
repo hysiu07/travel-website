@@ -3,14 +3,14 @@ import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
 import { Nav } from '../../components';
 import { Link, useNavigate } from 'react-router-dom';
-import './SignIn.scss';
 
 import { inputValueTypes } from '../../types';
 
 import connect from 'react-redux/es/components/connect';
 import { loggInUser } from '../../redux/reduxUserInfo';
 
-function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
+import './SignIn.scss';
+function SignIn({ loggInUser, usersRegistered,infoUser }: any) {
 	const navigate = useNavigate();
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -23,6 +23,7 @@ function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
 	});
 
 	const [errorInfo, setErrorInfo] = useState<string>('');
+
 	const checkValue: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		const target = e.target;
 		const name = target.name;
@@ -45,14 +46,25 @@ function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
 			isLoggIn: false,
 		});
 	};
-	const timeOut = () => {
-		return new Promise((resolve) => {
+
+	async function asyncProcessLogIn() {
+		setShowLoader(true);
+		await new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(clearInputs());
 			}, 3000);
 		});
-	};
-	async function asyncFuncionLogIn() {}
+		setShowLoader(false);
+		setSnackBar(true);
+
+		setTimeout(() => {
+			setSnackBar(false);
+		}, 3000);
+		setDisabledBtn(true);
+		await setTimeout(() => {
+			navigate('/travel-website');
+		}, 2000);
+	}
 
 	const handleLoggIn: React.MouseEventHandler<HTMLButtonElement> = (e) => {
 		e.preventDefault();
@@ -62,25 +74,14 @@ function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
 				inputValue.email === user.email &&
 				inputValue.password === user.password
 			) {
+				asyncProcessLogIn();
+
 				loggInUser({
 					name: user.name,
+					bestTravels: [...infoUser.bestTravels],
 					...inputValue,
 				});
 				setErrorInfo('');
-				asyncFuncionLogIn();
-
-				setShowLoader(true);
-				timeOut();
-				setShowLoader(false);
-				setSnackBar(true);
-
-				setTimeout(() => {
-					setSnackBar(false);
-				}, 3000);
-				setDisabledBtn(true);
-				// await setTimeout(() => {
-				// 	navigate('/travel-website');
-				// }, 2000);
 			} else {
 				setErrorInfo('Wrong name or password');
 			}
@@ -155,7 +156,7 @@ function SignIn({ infoUser, loggInUser, usersRegistered }: any) {
 
 const mapStateToProps = (state: any) => {
 	return {
-		infoUser: state.userInfo,
+		infoUser: state.userInfo.user,
 		usersRegistered: state.userRegistered.users,
 	};
 };

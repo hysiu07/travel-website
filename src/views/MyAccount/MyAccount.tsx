@@ -1,6 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate, useParams } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
 
 import { AiOutlineAppstore } from 'react-icons/ai';
 import { AiTwotoneHeart } from 'react-icons/ai';
@@ -28,9 +27,9 @@ function MyAccount({ loggOutUser, infoUser }: MyAccountPropsType) {
 		searchParams.set(key, value);
 		setSearchParams(searchParams);
 	};
-	// const userContext = useContext(UserContext);
+
 	const navigate = useNavigate();
-	// const name = userContext?.user?.name;
+
 	const name = infoUser.name;
 
 	const [menuType, setMenuType] = useState<string>('desktop');
@@ -76,8 +75,6 @@ function MyAccount({ loggOutUser, infoUser }: MyAccountPropsType) {
 								loggOutUser();
 								navigate('/travel-website');
 							}
-							// localStorage.removeItem('user');
-							// userContext?.setUser(null);
 						}
 					>
 						LogOut

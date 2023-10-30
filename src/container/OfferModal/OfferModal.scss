@@ -20,6 +20,21 @@
 		max-width: 1200px;
 		border-radius: 20px;
 		background-color: white;
+		.close-btn {
+			position: absolute;
+			right: -22px;
+			top: -22px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 4px;
+			font-size: 1.8rem;
+			width: 25px;
+			height: 25px;
+			background-color: white;
+			border-radius: 50%;
+			cursor: pointer;
+		}
 		.offer-modal-img-box {
 			width: 60%;
 			border-radius: 20px;

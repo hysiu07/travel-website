@@ -1,5 +1,3 @@
-import { useContext, useEffect} from 'react';
-import { UserContext } from '../context/UserContext';
 
 import {
 	Nav,
@@ -14,15 +12,6 @@ import {
 import { FavPanel } from '../container/FavoritesPanel';
 
 function MainView() {
-	const userContext = useContext(UserContext);
-
-	useEffect(() => {
-		const userLocalStorage = localStorage.getItem('user');
-		if (typeof userLocalStorage === 'string') {
-			const user2 = JSON.parse(userLocalStorage);
-			userContext?.setUser(user2);
-		}
-	}, []);
 
 	return (
 		<div>

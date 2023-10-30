@@ -1,5 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { useEffect, useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import './FavPanel.scss';
@@ -10,24 +10,21 @@ type FavPanelPropsType = {
 };
 
 function FavPanel({ infoUser }: FavPanelPropsType) {
-	
-	
 	const [hasFavorites, setHasFavorites] = useState<boolean>(false);
-	const bestTravels = infoUser.bestTravels
-
-
+	const bestTravels = infoUser.bestTravels;
+	const isLoggIn = infoUser.isLoggIn;
 	useEffect(() => {
-		if ( infoUser.isLoggIn) {
-			setHasFavorites(true);
-		} else {
+		if (isLoggIn === false || bestTravels.length === 0) {
 			setHasFavorites(false);
+		} else {
+			setHasFavorites(true);
 		}
-	}, [infoUser.bestTravels, infoUser.isLoggIn]);
+	}, [bestTravels, isLoggIn]);
 
 	return (
 		<div className='fav-panel'>
 			<div className='fav-panel__tooltip'>
-				<p>You have {bestTravels.length} Liked travels!</p>
+				<p>You have {bestTravels?.length} Liked travels!</p>
 			</div>
 			{hasFavorites && (
 				<Link

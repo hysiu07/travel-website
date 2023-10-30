@@ -1,8 +1,7 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Nav } from '../../components';
-import './Registration.scss';
-import { UserContext } from '../../context/UserContext';
+
 import { ThreeCircles } from 'react-loader-spinner';
 import { SnackBar } from '../../container/SnackBar';
 import { ErrorsType, UserInfoType } from '../../types';
@@ -10,9 +9,8 @@ import { ErrorsType, UserInfoType } from '../../types';
 import { connect } from 'react-redux';
 import { addUser } from '../../redux/reduxRegistration';
 
-function Registration({ registeredUser, addUser }: any) {
-
-	const userContext = useContext(UserContext);
+import './Registration.scss';
+function Registration({ addUser }: any) {
 	const navigate = useNavigate();
 	const [showLoader, setShowLoader] = useState<boolean>(false);
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
@@ -194,10 +192,6 @@ function Registration({ registeredUser, addUser }: any) {
 		await timeOut();
 		await setShowLoader(false);
 		await setSuccessRegistration(true);
-		await userContext?.setUsersRegistration([
-			...userContext.usersRegistration,
-			infoUser,
-		]);
 		await setTimeout(() => {
 			setSuccessRegistration(false);
 		}, 5000);
@@ -339,9 +333,6 @@ function Registration({ registeredUser, addUser }: any) {
 	);
 }
 
-const mapStateToProps = (state: any) => {
-	return { registeredUser: state.userRegistered.users };
-};
 const mapDispatchToProps = (dispatch: any) => {
 	return {
 		addUser: (infoUser: UserInfoType) => {
@@ -349,4 +340,4 @@ const mapDispatchToProps = (dispatch: any) => {
 		},
 	};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Registration);
+export default connect(null, mapDispatchToProps)(Registration);

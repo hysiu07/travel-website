@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 import { travels } from '../../data/travels';
 import ReactStars from 'react-rating-star-with-type';
 import { TiTick } from 'react-icons/ti';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
-import './DirectionCard.scss';
 
 import { connect } from 'react-redux';
 import { addBestTravels, removeBestTravel } from '../../redux/reduxUserInfo';
+
+import './DirectionCard.scss';
 
 type DirectionCardPropsType = {
 	id?: number;
@@ -44,7 +45,7 @@ function DirectionCard({
 	removeTravel,
 }: DirectionCardPropsType) {
 	const { setFilteredTravels } = useContext(FilteredTravelsContext);
-	const userContext = useContext(UserContext);
+
 	const userLogged: boolean = infoUser.isLoggIn;
 
 	const firstLetter = country?.charAt(0).toUpperCase() || '';
@@ -62,38 +63,6 @@ function DirectionCard({
 			setLiked(hasLiked);
 		}
 	}, [liked]);
-
-	const handlAddBestTravel = () => {
-		userContext?.setUser((prevUser) => {
-			if (!prevUser) return null;
-			const updatedBestTravels = Array.isArray(prevUser.bestTravels)
-				? [...prevUser.bestTravels, hotel]
-				: [hotel];
-			const updatedUser = {
-				...prevUser,
-				bestTravels: updatedBestTravels,
-			};
-			localStorage.setItem('user', JSON.stringify(updatedUser));
-			return updatedUser;
-		});
-	};
-	const handlRemoveBestTravel = () => {
-		userContext?.setUser((prevUser) => {
-			if (!prevUser) return null;
-
-			if (Array.isArray(prevUser.bestTravels)) {
-				const updatedBestTravels = prevUser.bestTravels.filter(
-					(travel) => travel !== hotel
-				);
-				const updatedUser = {
-					...prevUser,
-					bestTravels: updatedBestTravels,
-				};
-				localStorage.setItem('user', JSON.stringify(updatedUser));
-				return updatedUser;
-			}
-		});
-	};
 	const changePath = () => {
 		navigate(
 			'/travel-website/searchedTravels/All/2023-10-16/5000?lastMinute=Yes'
@@ -101,12 +70,11 @@ function DirectionCard({
 	};
 
 	const filterTravel = () => {
-		const filteredTravels2 = travels.filter((travel) => {
+		const filteredTravels = travels.filter((travel) => {
 			const directionLastMinute = travel.lastMinute === true;
 			return directionLastMinute;
 		});
-		setFilteredTravels(filteredTravels2);
-		localStorage.setItem('travels', JSON.stringify(filteredTravels2));
+		setFilteredTravels(filteredTravels);
 		changePath();
 	};
 
@@ -120,7 +88,6 @@ function DirectionCard({
 						color='red'
 						onClick={(e) => {
 							e.stopPropagation();
-							handlRemoveBestTravel();
 							removeTravel(hotel);
 							if (userLogged) {
 								setLiked(!liked);
@@ -133,7 +100,6 @@ function DirectionCard({
 						size={35}
 						onClick={(e) => {
 							e.stopPropagation();
-							handlAddBestTravel();
 							setBestTravels(hotel);
 
 							if (userLogged) {

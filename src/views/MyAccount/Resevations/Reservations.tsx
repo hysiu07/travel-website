@@ -1,5 +1,4 @@
-import { useContext, useState, useEffect } from 'react';
-import { UserContext } from '../../../context/UserContext';
+import { connect } from 'react-redux';
 import './Reservations.scss';
 type ReservationObjectType = {
 	travel: string;
@@ -13,17 +12,11 @@ type ReservationObjectType = {
 	food: string;
 	amountPersons: number;
 };
-function Reservations() {
-	const userContext = useContext(UserContext);
 
-	const [userReservation, setUserReservation] =
-		useState<ReservationObjectType | null>(null);
-
-	useEffect(() => {
-		if (userContext?.user?.reservation) {
-			setUserReservation(userContext?.user?.reservation);
-		}
-	}, []);
+type PropsReservationType = {
+	reservation: ReservationObjectType | undefined;
+};
+function Reservations({ reservation }: PropsReservationType) {
 	const formatCountryName = (country: string) => {
 		return country.charAt(0).toUpperCase() + country.slice(1).toLowerCase();
 	};
@@ -32,27 +25,27 @@ function Reservations() {
 		<div className='reservations'>
 			<div className='reservations__up-comming-trips'>
 				<h3>UpComming Trips:</h3>
-				{userReservation ? (
+				{reservation ? (
 					<div className='container'>
-						<p>Hotel: {userReservation?.travel}</p>
+						<p>Hotel: {reservation.travel}</p>
 						<hr />
-						<p>Country: {formatCountryName(userReservation.country)}</p>
+						<p>Country: {formatCountryName(reservation.country)}</p>
 						<hr />
-						<p>AirPort: {userReservation?.airPort}</p>
+						<p>AirPort: {reservation.airPort}</p>
 						<hr />
 						<p>
-							{userReservation?.dateStart}/{userReservation?.dateEnd}
+							{reservation.dateStart}/{reservation.dateEnd}
 						</p>
 						<hr />
-						<p>Insurance: {userReservation?.insurance}</p>
+						<p>Insurance: {reservation.insurance}</p>
 						<hr />
-						<p>Food: {userReservation?.food}</p>
+						<p>Food: {reservation.food}</p>
 						<hr />
-						<p>Number of people: {userReservation?.amountPersons}</p>
+						<p>Number of people: {reservation.amountPersons}</p>
 						<hr />
-						<p>Price Insurance: {userReservation?.insurancePrice}$</p>
+						<p>Price Insurance: {reservation.insurancePrice}$</p>
 						<hr />
-						<p>Price: {userReservation?.price}$</p>
+						<p>Price: {reservation.price}$</p>
 					</div>
 				) : (
 					<div className='container'>
@@ -70,4 +63,9 @@ function Reservations() {
 		</div>
 	);
 }
-export default Reservations;
+const mapStateToProps = (state: any) => {
+	return {
+		reservation: state.userInfo.user.reservation,
+	};
+};
+export default connect(mapStateToProps)(Reservations);

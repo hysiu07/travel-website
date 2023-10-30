@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import './TravelOfferComponent.scss';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillHeart } from 'react-icons/ai';
@@ -7,7 +7,6 @@ import { BsAirplane } from 'react-icons/bs';
 import { GiMeal } from 'react-icons/gi';
 import ReactStars from 'react-rating-star-with-type';
 import { OfferModal } from '../../../container/OfferModal';
-import { UserContext } from '../../../context/UserContext';
 
 import { connect } from 'react-redux';
 import { addBestTravels, removeBestTravel } from '../../../redux/reduxUserInfo';
@@ -29,7 +28,7 @@ type PropsTravelType = {
 	setHiddenNav?: React.Dispatch<React.SetStateAction<boolean>>;
 	infoUser: any;
 	setBestTravels: any;
-	removeTravel: any;
+	removeBestTravel: any;
 };
 
 function TravelOfferComponent({
@@ -49,10 +48,8 @@ function TravelOfferComponent({
 	dinerOptions,
 	infoUser,
 	setBestTravels,
-	removeTravel,
+	removeBestTravel,
 }: PropsTravelType) {
-	console.log(infoUser.bestTravels,' wycieczki');
-	const userContext = useContext(UserContext);
 	const [liked, setLiked] = useState(false);
 
 	const firstLetter = country.charAt(0).toUpperCase();
@@ -68,37 +65,6 @@ function TravelOfferComponent({
 			setLiked(hasLiked);
 		}
 	}, [liked]);
-	// const handlAddBestTravel = () => {
-	// 	userContext?.setUser((prevUser) => {
-	// 		if (!prevUser) return null;
-	// 		const updatedBestTravels = Array.isArray(prevUser.bestTravels)
-	// 			? [...prevUser.bestTravels, hotel]
-	// 			: [hotel];
-	// 		const updatedUser = {
-	// 			...prevUser,
-	// 			bestTravels: updatedBestTravels,
-	// 		};
-	// 		localStorage.setItem('user', JSON.stringify(updatedUser));
-	// 		return updatedUser;
-	// 	});
-	// };
-	// const handlRemoveBestTravel = () => {
-	// 	userContext?.setUser((prevUser) => {
-	// 		if (!prevUser) return null;
-
-	// 		if (Array.isArray(prevUser.bestTravels)) {
-	// 			const updatedBestTravels = prevUser.bestTravels.filter(
-	// 				(travel) => travel !== hotel
-	// 			);
-	// 			const updatedUser = {
-	// 				...prevUser,
-	// 				bestTravels: updatedBestTravels,
-	// 			};
-	// 			localStorage.setItem('user', JSON.stringify(updatedUser));
-	// 			return updatedUser;
-	// 		}
-	// 	});
-	// };
 
 	return (
 		<div className='travel-offer'>
@@ -127,8 +93,7 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You DisLiked!');
-								// handlRemoveBestTravel();
-								removeTravel(hotel);
+								removeBestTravel(hotel);
 							} else {
 								handleShowSnackBar('You have to sign in!');
 							}
@@ -142,7 +107,6 @@ function TravelOfferComponent({
 							if (userLogged) {
 								setLiked(!liked);
 								handleShowSnackBar('You Liked!');
-								// handlAddBestTravel();
 								setBestTravels(hotel);
 							} else {
 								handleShowSnackBar('You have to sign in!');
@@ -205,7 +169,7 @@ const mapDispatchToProps = (dispatch: any) => {
 		setBestTravels: (hotelName: any) => {
 			dispatch(addBestTravels(hotelName));
 		},
-		removeTravel: (hotelName: string) => {
+		removeBestTravel: (hotelName: string) => {
 			dispatch(removeBestTravel(hotelName));
 		},
 	};

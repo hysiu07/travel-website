@@ -1,15 +1,16 @@
 import { useEffect, useState, useContext } from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import { UserContext } from '../../context/UserContext';
+
 import { IoClose } from 'react-icons/io5';
 import MovingText from 'react-moving-text';
 import { ThreeCircles } from 'react-loader-spinner';
 import useWindowWidth from '../../container/Hooks/useWindowWidth';
 import { SnackBar } from '../SnackBar';
-import './OfferModal.scss';
 
 import { connect } from 'react-redux';
 import { addReservation } from '../../redux/reduxUserInfo';
+
+import './OfferModal.scss';
 
 type PropsOfferModalType = {
 	dateStart: string;
@@ -22,7 +23,6 @@ type PropsOfferModalType = {
 	hotel: string;
 	closeModal: Dispatch<SetStateAction<boolean>>;
 	setHiddenNav?: Dispatch<SetStateAction<boolean>>;
-	reservation: any;
 	setReservation: any;
 };
 function OfferModal({
@@ -35,11 +35,8 @@ function OfferModal({
 	price,
 	airPort,
 	setHiddenNav,
-	reservation,
 	setReservation,
 }: PropsOfferModalType) {
-	console.log(reservation);
-	const userContext = useContext(UserContext);
 	const { width } = useWindowWidth();
 
 	const [countPerson, setCountPerson] = useState(1);
@@ -79,26 +76,6 @@ function OfferModal({
 	async function handleAddReservation() {
 		await setShowLoader(!showLoader);
 
-		await userContext?.setUser((prevValue) => {
-			if (!prevValue) return null;
-			const updatedUser = {
-				...prevValue,
-				reservation: {
-					travel: hotel,
-					country: country,
-					airPort: airPort,
-					price: price * countPerson,
-					insurance: insurancetype,
-					insurancePrice: priceInsurance * countPerson,
-					dateEnd: dateEnd,
-					dateStart: dateStart,
-					food: 'AllInclusive',
-					amountPersons: countPerson,
-				},
-			};
-			localStorage.setItem('user', JSON.stringify(updatedUser));
-			return updatedUser;
-		});
 		await new Promise<void>((resolve) => {
 			setTimeout(() => {
 				resolve();
@@ -143,6 +120,14 @@ function OfferModal({
 						e.stopPropagation();
 					}}
 				>
+					<div
+						className='close-btn'
+						onClick={() => {
+							closeModal(false);
+						}}
+					>
+						X
+					</div>
 					<div className='offer-modal-img-box'>
 						<img src={img} alt='hotel picture' />
 						{width < 576 && (
@@ -275,11 +260,7 @@ function OfferModal({
 		</div>
 	);
 }
-const mapStateToProps = (state: any) => {
-	return {
-		reservation: state.userInfo.user,
-	};
-};
+
 const mapDispatchToProps = (dispatch: any) => {
 	return {
 		setReservation: (reservation: any) => {
@@ -287,4 +268,4 @@ const mapDispatchToProps = (dispatch: any) => {
 		},
 	};
 };
-export default connect(mapStateToProps, mapDispatchToProps)(OfferModal);
+export default connect(null, mapDispatchToProps)(OfferModal);

@@ -1,11 +1,11 @@
-import './TravelsComponents.scss';
-import { useContext, useState } from 'react';
-import { UserContext } from '../../../context/UserContext';
+import {  useState } from 'react';
+
 import { travels } from '../../../data/travels';
 import { TravelOfferComponent } from '../../SearchedTravels/TravelComponent';
 
 import { connect } from 'react-redux';
 
+import './TravelsComponents.scss';
 type PropsTravelsComponentType = {
 	setHiddenNav: React.Dispatch<React.SetStateAction<boolean>>;
 	infoUser: any
@@ -14,14 +14,11 @@ function TravelsComponents({
 	setHiddenNav,
 	infoUser
 }: PropsTravelsComponentType) {
-	console.log(infoUser,'myaccount');
-	const userContext = useContext(UserContext);
+
 	const userLogged = infoUser.isLoggIn
-	console.log(userLogged,'trav');
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
 
-	// const bestTravels = userContext?.user?.bestTravels;
 
 	async function handleShowSnackBar(info: string) {
 		await setSnackBarInfo(info);

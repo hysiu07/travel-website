@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../../../context/UserContext';
+
 import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 
@@ -17,8 +17,7 @@ type PropsNavType = {
 function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 	
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
-	// const userContext = useContext(UserContext);
-	// const userLogged: boolean | undefined = userContext?.user?.logIn;
+
 	const userLogged: boolean = infoUser.isLoggIn;
 
 	useEffect(() => {
