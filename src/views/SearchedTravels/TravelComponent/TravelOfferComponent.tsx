@@ -64,7 +64,7 @@ function TravelOfferComponent({
 			const hasLiked = userBestTravels.includes(hotel);
 			setLiked(hasLiked);
 		}
-	}, [liked]);
+	}, [liked, infoUser.bestTravels]);
 
 	return (
 		<div className='travel-offer'>
@@ -83,7 +83,7 @@ function TravelOfferComponent({
 				/>
 			)}
 			<div className='travel-offer__img-box'>
-				<img src={img} alt='' />
+				<img src={img} alt='travel picture' />
 				{liked ? (
 					<AiFillHeart
 						className='icon-heart'
@@ -95,7 +95,7 @@ function TravelOfferComponent({
 								handleShowSnackBar('You DisLiked!');
 								removeBestTravel(hotel);
 							} else {
-								handleShowSnackBar('You have to sign in!');
+								handleShowSnackBar('You have to SignIn!');
 							}
 						}}
 					/>
@@ -109,7 +109,7 @@ function TravelOfferComponent({
 								handleShowSnackBar('You Liked!');
 								setBestTravels(hotel);
 							} else {
-								handleShowSnackBar('You have to sign in!');
+								handleShowSnackBar('You have to SignIn!');
 							}
 						}}
 					/>

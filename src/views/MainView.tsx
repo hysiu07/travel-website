@@ -1,4 +1,3 @@
-
 import {
 	Nav,
 	Header,
@@ -10,9 +9,11 @@ import {
 	Contact,
 } from '../components';
 import { FavPanel } from '../container/FavoritesPanel';
+import ScrollUpComponent from '../container/ScrollUp/ScrollUpComponent';
+
+
 
 function MainView() {
-
 	return (
 		<div>
 			<Nav />
@@ -24,6 +25,7 @@ function MainView() {
 			<Reviews />
 			<Contact />
 			<FavPanel />
+			<ScrollUpComponent />
 		</div>
 	);
 }

@@ -14,10 +14,12 @@ import { SnackBar } from '../../container/SnackBar';
 import { TravelType } from '../../data/travels';
 import { travels } from '../../data/travels';
 import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
+import { FavPanel } from '../../container/FavoritesPanel';
 
 import { connect } from 'react-redux';
 
 import './SearchedTravels.scss';
+
 function SearchedTravels({ infoUser }: any) {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
@@ -136,6 +138,8 @@ function SearchedTravels({ infoUser }: any) {
 	});
 	return (
 		<div className='searched-travels'>
+			<FavPanel />
+		
 			<SnackBar
 				text={snackBarInfo}
 				position={snackBar ? { right: '50px' } : { right: '-300px' }}

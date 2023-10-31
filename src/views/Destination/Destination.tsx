@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { directionInfo } from '../../data/directionInfo';
 import { Destinations, Nav } from '../../components';
+import { SnackBar } from '../../container/SnackBar';
 import CountryInfo from './CountryInfo/CountryInfo';
 import { SliderCards } from '../../container/SliderCards';
 import { travels } from '../../data/travels';
@@ -9,6 +10,7 @@ import { DirectionCard } from '../../container/DirectionCard';
 import { Weather } from '../../container/Weather';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
+
 import './Destination.scss';
 type DestinationType = {
 	id?: number;
@@ -22,6 +24,19 @@ type DestinationType = {
 };
 
 function Destination() {
+	const [snackBar, setSnackBar] = useState<boolean>(false);
+	const [snackBarInfo, setSnackBarInfo] = useState<string>('');
+
+	async function handleShowSnackBar(info: string) {
+		await setSnackBarInfo(info);
+		await setSnackBar(true);
+		await new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(setSnackBar(false));
+			}, 2000);
+		});
+	}
+
 	const [destinationInfo, setDestinationInfo] = useState<DestinationType>({
 		country: '',
 		capital: '',
@@ -45,6 +60,14 @@ function Destination() {
 
 	return (
 		<div className='destination'>
+			<SnackBar
+				text={snackBarInfo}
+				position={
+					snackBar
+						? { right: '50px', position: 'fixed' }
+						: { right: '-300px', position: 'fixed' }
+				}
+			/>
 			<Nav />
 
 			<Carousel
@@ -88,6 +111,7 @@ function Destination() {
 								price={direction.price}
 								lastMinute={direction.lastMinute}
 								airPort={direction.airPort}
+								handleShowSnackBar={handleShowSnackBar}
 							/>
 						);
 					}

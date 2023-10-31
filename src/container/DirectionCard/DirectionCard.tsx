@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { addBestTravels, removeBestTravel } from '../../redux/reduxUserInfo';
 
 import './DirectionCard.scss';
-
+import { SnackBar } from '../../container/SnackBar';
 type DirectionCardPropsType = {
 	id?: number;
 	img: string;
@@ -28,6 +28,7 @@ type DirectionCardPropsType = {
 	infoUser: any;
 	setBestTravels: any;
 	removeTravel: any;
+	handleShowSnackBar: (info: string) => void;
 };
 
 function DirectionCard({
@@ -43,6 +44,7 @@ function DirectionCard({
 	infoUser,
 	setBestTravels,
 	removeTravel,
+	handleShowSnackBar,
 }: DirectionCardPropsType) {
 	const { setFilteredTravels } = useContext(FilteredTravelsContext);
 
@@ -91,6 +93,7 @@ function DirectionCard({
 							removeTravel(hotel);
 							if (userLogged) {
 								setLiked(!liked);
+								handleShowSnackBar('You DisLiked');
 							}
 						}}
 					/>
@@ -104,6 +107,9 @@ function DirectionCard({
 
 							if (userLogged) {
 								setLiked(!liked);
+								handleShowSnackBar('You Liked');
+							} else {
+								handleShowSnackBar('You have to SignIn');
 							}
 						}}
 					/>
