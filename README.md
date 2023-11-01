@@ -1,8 +1,11 @@
-# Travel_Agency WebApp - Demo 
+# Travel_Agency WebApp - Demo
 
 ## Description
+
 The Travel Agency Demo Application is a project that showcases a simple web application simulating the operation of a travel agency. The application allows users to browse available tours, make reservations, and manage personal information.
+
 ## Usage
+
 After launching the application, you can:
 
 Browse available tours.
@@ -10,23 +13,37 @@ Make reservations for selected tours.
 Manage your personal information, such as name, surname, and email address.
 
 ## Project Status
+
 This demo is a work in progress and is intended to showcase the functionality of a travel agency. Further enhancements and feature extensions are planned.
 
 ## Technologies Used
+
 The project was created using the following technologies:
 
-HTML
-CSS
-SASS
-GIT / GITHUB
-AJAX / REST API
-TypeScript
-React.js
-React Redux / Redux Saga
-React Redux Presist
+**HTML**
+**CSS**
+**SASS**
+**AJAX / REST API**
+**TypeScript**
+**React.js**
+**React Redux / Redux Saga**
+**React Redux Persist**
+
 ## Skills Demonstrated
 
-soon
+**React**: (useState/useEffect/useContext/useRef/ my custom Hooks/HoC-HighOrderComponent/Barrels and other populars patterns)
+**Redux**: (Redux Core/Toolkit, Redux Saga, Redux Persist)
+**Implementing various libraries** (Leaflet, Slider, Bootstrap)
+**Responsive Design**
+**Routing**: (Dynamics Routes, useParams, useSearchParams, useNavigate)
+**API Communication**
+**State Management**: (Redux)
+**Full TypeScript**
+**Sass styles** (BEM metodology)
+
+Soon
+**Testing** soon
+**Optimization** soon (useMemo, useCallback, lazy/suspens)
 
 ## Project Vision
 
