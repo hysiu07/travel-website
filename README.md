@@ -31,19 +31,19 @@ The project was created using the following technologies:
 
 ## Skills Demonstrated
 
-**React**: (useState/useEffect/useContext/useRef/ my custom Hooks/HoC-HighOrderComponent/Barrels and other populars patterns)
-**Redux**: (Redux Core/Toolkit, Redux Saga, Redux Persist)
-**Implementing various libraries** (Leaflet, Slider, Bootstrap)
-**Responsive Design**
-**Routing**: (Dynamics Routes, useParams, useSearchParams, useNavigate)
-**API Communication**
-**State Management**: (Redux)
-**Full TypeScript**
-**Sass styles** (BEM metodology)
+**React**: (useState/useEffect/useContext/useRef/ my custom Hooks/HoC-HighOrderComponent/Barrels and other populars patterns)<br>
+**Redux**: (Redux Core/Toolkit, Redux Saga, Redux Persist)<br>
+**Implementing various libraries** (Leaflet, Slider, Bootstrap)<br>
+**Responsive Design**<br>
+**Routing**: (Dynamics Routes, useParams, useSearchParams, useNavigate)<br>
+**API Communication**<br>
+**State Management**: (Redux)<br>
+**Full TypeScript**<br>
+**Sass styles** (BEM metodology)<br>
 
-Soon
-**Testing** soon
-**Optimization** soon (useMemo, useCallback, lazy/suspens)
+Soon<br>
+**Testing** soon<br>
+**Optimization** soon (useMemo, useCallback, lazy/suspens)<br>
 
 ## Project Vision
 
