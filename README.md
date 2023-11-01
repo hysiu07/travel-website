@@ -20,14 +20,14 @@ This demo is a work in progress and is intended to showcase the functionality of
 
 The project was created using the following technologies:
 
-**HTML**
-**CSS**
-**SASS**
-**AJAX / REST API**
-**TypeScript**
-**React.js**
-**React Redux / Redux Saga**
-**React Redux Persist**
+**HTML**<br>
+**CSS**<br>
+**SASS**<br>
+**AJAX / REST API**<br>
+**TypeScript**<br>
+**React.js**<br>
+**React Redux / Redux Saga**<br>
+**React Redux Persist**<br>
 
 ## Skills Demonstrated
 
