@@ -10,7 +10,7 @@ import { DirectionCard } from '../../container/DirectionCard';
 import { Weather } from '../../container/Weather';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
-
+import ScrollUpComponent from '../../container/ScrollUp/ScrollUpComponent';
 import './Destination.scss';
 type DestinationType = {
 	id?: number;
@@ -60,6 +60,7 @@ function Destination() {
 
 	return (
 		<div className='destination'>
+			<ScrollUpComponent />
 			<SnackBar
 				text={snackBarInfo}
 				position={

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import { FilteredTravelsContext } from '../../context/FilteredTravelsContext';
 
@@ -15,15 +15,19 @@ import { TravelType } from '../../data/travels';
 import { travels } from '../../data/travels';
 import { tomorrowDate } from '../../container/Hooks/tomorrowDate';
 import { FavPanel } from '../../container/FavoritesPanel';
+import ScrollUpComponent from '../../container/ScrollUp/ScrollUpComponent';
 
 import { connect } from 'react-redux';
 
 import './SearchedTravels.scss';
 
+
 function SearchedTravels({ infoUser }: any) {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
 	);
+	const [rectTop, setRectTop] = useState<number | undefined>(0);
+	const titleRef = useRef<HTMLHeadingElement>(null);
 
 	const params = useParams();
 	const navigate = useNavigate();
@@ -36,6 +40,17 @@ function SearchedTravels({ infoUser }: any) {
 
 	const [sortBy, setSortBy] = useState<string>('deafaultOption');
 
+	const handlescrollToTop = () => {
+		console.log('dziala');
+		if (titleRef.current) {
+			console.log(titleRef.current.getBoundingClientRect());
+			titleRef.current.scroll({
+				top: 0,
+				behavior: 'smooth',
+				
+			})
+		}
+	};
 	const handleFilterTravel = () => {
 		const uppDateFiltersTravel = travels.filter((travel) => {
 			const starsParams = searchParams.get('hotelRating');
@@ -138,14 +153,23 @@ function SearchedTravels({ infoUser }: any) {
 	});
 	return (
 		<div className='searched-travels'>
+			<ScrollUpComponent clientHeight={rectTop} scrollTop={handlescrollToTop} />
 			<FavPanel />
-		
+
 			<SnackBar
 				text={snackBarInfo}
 				position={snackBar ? { right: '50px' } : { right: '-300px' }}
 			/>
 			<Nav />
-			<div className='searched-travels__container'>
+			<div
+				className='searched-travels__container'
+				onScroll={() => {
+					if (titleRef.current) {
+						const rect = titleRef.current?.getBoundingClientRect();
+						setRectTop(rect?.top);
+					}
+				}}
+			>
 				<div className='searched-travels__filter-panel'>
 					<FilterComponentDinerOptions
 						showChoices={showChoicesFilters.filterComponentDinerOptions}
@@ -196,7 +220,7 @@ function SearchedTravels({ infoUser }: any) {
 				</div>
 				<div className='searched-travels__filtered-travels'>
 					<div className='sort-input'>
-						<h3>We found {filteredTravels.length} offers</h3>
+						<h3 ref={titleRef}>We found {filteredTravels.length} offers</h3>
 						<div>
 							<label htmlFor='sort travels'> Sort:</label>
 							<select

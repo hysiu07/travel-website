@@ -3,7 +3,15 @@ import './ScrollUpComponent.scss';
 import { FiChevronUp } from 'react-icons/fi';
 import { useScrollY } from '../Hooks/useScrollY';
 
-function ScrollUpComponent() {
+type PropsScrollUpComponentType = {
+	clientHeight?: number;
+	scrollTop?: () => void;
+};
+
+function ScrollUpComponent({
+	clientHeight,
+	scrollTop,
+}: PropsScrollUpComponentType) {
 	const scrollY = useScrollY();
 	const [showScrollBtn, setShowScrollBtn] = useState<boolean>(false);
 
@@ -15,17 +23,32 @@ function ScrollUpComponent() {
 	};
 
 	useEffect(() => {
-		if (scrollY > 400) {
-			setShowScrollBtn(true);
+		console.log(clientHeight);
+		if (clientHeight) {
+			if (clientHeight < -150) {
+				setShowScrollBtn(true);
+			} else {
+				setShowScrollBtn(false);
+			}
 		} else {
-			setShowScrollBtn(false);
+			if (scrollY > 350) {
+				setShowScrollBtn(true);
+			} else {
+				setShowScrollBtn(false);
+			}
 		}
-	}, [scrollY]);
+	}, [scrollY, clientHeight]);
 	return (
 		<div
 			className='scroll-up'
 			style={showScrollBtn ? { right: '30px' } : { right: '-300px' }}
-			onClick={scrollToTop}
+			onClick={() => {
+				if (clientHeight && scrollTop) {
+					scrollTop();
+				} else {
+					scrollToTop()
+				}
+			}}
 		>
 			<FiChevronUp size={50} />
 		</div>
