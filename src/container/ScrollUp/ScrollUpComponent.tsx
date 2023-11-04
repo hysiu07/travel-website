@@ -23,7 +23,7 @@ function ScrollUpComponent({
 	};
 
 	useEffect(() => {
-		console.log(clientHeight);
+	
 		if (clientHeight) {
 			if (clientHeight < -150) {
 				setShowScrollBtn(true);
@@ -41,7 +41,7 @@ function ScrollUpComponent({
 	return (
 		<div
 			className='scroll-up'
-			style={showScrollBtn ? { right: '30px' } : { right: '-300px' }}
+			style={showScrollBtn ? { right: '35px' } : { right: '-300px' }}
 			onClick={() => {
 				if (clientHeight && scrollTop) {
 					scrollTop();

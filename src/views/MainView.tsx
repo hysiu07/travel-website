@@ -9,9 +9,8 @@ import {
 	Contact,
 } from '../components';
 import { FavPanel } from '../container/FavoritesPanel';
+import { Chat } from '../container/ChatComponent';
 import ScrollUpComponent from '../container/ScrollUp/ScrollUpComponent';
-
-
 
 function MainView() {
 	return (
@@ -26,6 +25,7 @@ function MainView() {
 			<Contact />
 			<FavPanel />
 			<ScrollUpComponent />
+			<Chat />
 		</div>
 	);
 }

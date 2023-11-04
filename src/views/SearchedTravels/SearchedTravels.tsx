@@ -21,7 +21,6 @@ import { connect } from 'react-redux';
 
 import './SearchedTravels.scss';
 
-
 function SearchedTravels({ infoUser }: any) {
 	const { filteredTravels, setFilteredTravels } = useContext(
 		FilteredTravelsContext
@@ -41,14 +40,10 @@ function SearchedTravels({ infoUser }: any) {
 	const [sortBy, setSortBy] = useState<string>('deafaultOption');
 
 	const handlescrollToTop = () => {
-		console.log('dziala');
 		if (titleRef.current) {
-			console.log(titleRef.current.getBoundingClientRect());
-			titleRef.current.scroll({
-				top: 0,
+			titleRef.current.scrollIntoView({
 				behavior: 'smooth',
-				
-			})
+			});
 		}
 	};
 	const handleFilterTravel = () => {

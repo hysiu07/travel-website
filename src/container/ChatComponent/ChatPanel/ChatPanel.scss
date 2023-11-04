@@ -1,0 +1,64 @@
+.chat-panel {
+	display: flex;
+	flex-direction: column;
+
+	position: fixed;
+	z-index: 1900;
+	right: -500px;
+	bottom: 30px;
+	height: 700px;
+	width: 500px;
+	padding: 50px;
+	background-color: white;
+	border-radius: 20px;
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+	transition: 0.5s;
+	&__heading {
+		text-align: center;
+		font-size: 4rem;
+		margin: 20px 0;
+	}
+	&__guide-container {
+		display: flex;
+
+		img {
+			position: absolute;
+			right: -20px;
+			top: -20px;
+			height: 100px;
+			width: 100px;
+			border-radius: 50%;
+		}
+
+		.answers-text-box {
+			position: relative;
+			height: 150px;
+			padding: 10px;
+			width: 100%;
+			border: 1px solid black;
+            border-radius: 10px;
+			p {
+				font-size: 1.8rem;
+			}
+		}
+	}
+	&__questions-container {
+		margin-top: 50px;
+		.question {
+			margin: 20px 0;
+			padding: 10px;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            transition: .3s;
+			cursor: pointer;
+			&__text {
+				font-size: 1.4rem;
+			}
+		}
+	}
+    .active{
+        box-shadow: rgb(57, 138, 185) 0px 5px 15px;
+    }
+}
