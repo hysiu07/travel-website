@@ -15,6 +15,7 @@
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 	transition: 0.5s;
+	overflow: hidden;
 	&__heading {
 		text-align: center;
 		font-size: 4rem;
@@ -36,11 +37,12 @@
 			position: relative;
 			height: 150px;
 			padding: 10px;
+			padding-right: 80px;
 			width: 100%;
 			border: 1px solid black;
-            border-radius: 10px;
+			border-radius: 10px;
 			p {
-				font-size: 1.8rem;
+				font-size: 1.6rem;
 			}
 		}
 	}
@@ -49,16 +51,16 @@
 		.question {
 			margin: 20px 0;
 			padding: 10px;
-            border-radius: 10px;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            transition: .3s;
+			border-radius: 10px;
+			box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			transition: 0.1s;
 			cursor: pointer;
 			&__text {
 				font-size: 1.4rem;
 			}
 		}
 	}
-    .active{
-        box-shadow: rgb(57, 138, 185) 0px 5px 15px;
-    }
+	.active {
+		box-shadow: rgb(57, 138, 185) 0px 5px 15px;
+	}
 }
