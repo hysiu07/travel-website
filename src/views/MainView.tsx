@@ -1,3 +1,5 @@
+
+
 import {
 	Nav,
 	Header,
@@ -11,6 +13,8 @@ import {
 import { FavPanel } from '../container/FavoritesPanel';
 import { Chat } from '../container/ChatComponent';
 import ScrollUpComponent from '../container/ScrollUp/ScrollUpComponent';
+import { WeatherApp } from '../container/WeatherApp';
+
 
 function MainView() {
 	return (
@@ -26,6 +30,7 @@ function MainView() {
 			<FavPanel />
 			<ScrollUpComponent />
 			<Chat />
+			<WeatherApp />
 		</div>
 	);
 }

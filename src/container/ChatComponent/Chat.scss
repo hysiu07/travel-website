@@ -1,6 +1,6 @@
 .chat {
 	position: fixed;
-    padding: 15px;
+	padding: 15px;
 	z-index: 2000;
 	bottom: 30px;
 	right: 30px;
@@ -11,4 +11,10 @@
 	border-radius: 50%;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	cursor: pointer;
+}
+
+@media (max-width: 576px) {
+	.chat {
+		display: none;
+	}
 }
