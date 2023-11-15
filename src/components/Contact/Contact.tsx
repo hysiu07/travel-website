@@ -1,5 +1,6 @@
-import {  useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { NavLogo } from '../Nav/NavLogo';
 import { AiFillFacebook } from 'react-icons/ai';
 import { AiFillInstagram } from 'react-icons/ai';
@@ -7,14 +8,15 @@ import { AiFillYoutube } from 'react-icons/ai';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { SnackBar } from '../../container/SnackBar';
 import './Contact.scss';
+import { WeatherApp } from '../../container/WeatherApp';
 type PropsCategoryType = {
 	title: string;
 	links: string[];
 };
 
 const Category = ({ title, links }: PropsCategoryType) => {
-	
 	const navigate = useNavigate();
+
 	const changePath = (direction: string) => {
 		navigate(
 			`/travel-website/searchedTravels/${direction.toLocaleLowerCase()}/2023-10-15/5000?lastMinute=Yes`
@@ -24,7 +26,7 @@ const Category = ({ title, links }: PropsCategoryType) => {
 	return (
 		<div className='category'>
 			<h3>{title}</h3>
-			{links.map((link,index) => {
+			{links.map((link, index) => {
 				return (
 					<div className='link-box' key={index}>
 						<MdOutlineKeyboardArrowRight className='link-box__arrow-icon' />
@@ -51,6 +53,7 @@ function Contact() {
 	const [disabled, setDisabled] = useState<boolean>(true);
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [inputEmail, setInputEmail] = useState<string>('');
+	const dispatch = useDispatch();
 
 	const handleValidationEmail = (emailValue: string) => {
 		if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(emailValue)) {
@@ -76,7 +79,7 @@ function Contact() {
 						<p className='litle-title'>Keep in touch</p>
 						<p className='big-title'>Travel with us</p>
 					</div>
-					<form action='' className='contact__form'>
+					<form className='contact__form'>
 						<input
 							type='email'
 							placeholder='Enter Email Adress'
@@ -123,6 +126,17 @@ function Contact() {
 							<AiFillInstagram className='company-social__icon' />
 							<AiFillYoutube className='company-social__icon' />
 						</div>
+						{/* <div className='company-btn-forecast'>
+							<button
+								className='btn btn-weather'
+								onClick={() => {
+									dispatch({ type: 'weather/SHOW_FORECAST' });
+								}}
+							>
+								Weather Forecast
+							</button>
+						</div> */}
+						<WeatherApp />
 					</div>
 					<div className='categories'>
 						<div className='category'>
@@ -160,7 +174,6 @@ function Contact() {
 						/>
 					</div>
 				</div>
-				sS
 			</div>
 		</div>
 	);

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kalam&family=Montserrat&family=Ubuntu&display=swap');
+
+.weather-app-component {
+	position: relative;
+	.btn-weather {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		display: block;
+		margin: 0 auto;
+	}
+	.weather-app {
+		padding: 30px;
+		position: fixed;
+		z-index: 3000;
+		bottom: 50px;
+		left: 50px;
+
+		width: 90%;
+		height: 90%;
+		background-color: #1d2951;
+		background-image: linear-gradient(315deg, #1d2951 0%, #dbe7fc 74%);
+		border-radius: 25px;
+
+		&__title-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100%;
+			height: 20%;
+			.title {
+				text-align: center;
+				font-family: 'Kalam', cursive;
+				font-size: 5rem;
+			}
+
+			form {
+				input {
+					padding: 10px 20px;
+					border-radius: 20px;
+					font-size: 1.4rem;
+					border: none;
+				}
+				button {
+					padding: 10px 20px;
+					margin-left: 10px;
+					border: none;
+					border-radius: 20px;
+					cursor: pointer;
+				}
+			}
+		}
+		&__container-panels {
+			display: flex;
+			height: 80%;
+			.city-main-panel {
+				width: 40%;
+				height: 100%;
+				border-radius: 20px;
+				background-color: rgba(255, 255, 255, 0.7);
+				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+			}
+			.city-forecast-box {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				width: 60%;
+				padding: 0 10px;
+				.city-forecast-panel,
+				.city-future-forcast-panel {
+					width: 100%;
+					height: 49%;
+					border-radius: 20px;
+					background-color: rgba(255, 255, 255, 0.7);
+					box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+				}
+			}
+		}
+	}
+}

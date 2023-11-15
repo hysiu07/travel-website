@@ -64,7 +64,8 @@ function Weather({ city }: PropsWeatherType) {
 				});
 			})
 			.catch(() => {});
-	}, [params.id, city]);
+	}, [params.id, city
+	]);
 
 	return (
 		<div className='weather'>

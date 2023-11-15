@@ -36,11 +36,14 @@
 		display: flex;
 		padding: 40px 20px;
 		width: 80%;
-		height: 400px;
+		height: 430px;
 		background-color: rgba(255, 255, 255, 0.6);
 		border-radius: 20px;
 
 		.company {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			width: 30%;
 
 			.company-info {
@@ -57,6 +60,7 @@
 					cursor: pointer;
 				}
 			}
+			
 		}
 		.categories {
 			display: flex;

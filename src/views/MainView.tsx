@@ -1,5 +1,3 @@
-
-
 import {
 	Nav,
 	Header,
@@ -14,9 +12,10 @@ import { FavPanel } from '../container/FavoritesPanel';
 import { Chat } from '../container/ChatComponent';
 import ScrollUpComponent from '../container/ScrollUp/ScrollUpComponent';
 import { WeatherApp } from '../container/WeatherApp';
+import { connect } from 'react-redux';
 
-
-function MainView() {
+function MainView({ showWeatherApp }: any) {
+	console.log(showWeatherApp);
 	return (
 		<div>
 			<Nav />
@@ -30,8 +29,10 @@ function MainView() {
 			<FavPanel />
 			<ScrollUpComponent />
 			<Chat />
-			<WeatherApp />
+			
 		</div>
 	);
 }
+
+
 export default MainView;
