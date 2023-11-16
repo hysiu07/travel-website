@@ -60,6 +60,9 @@
 				border-radius: 20px;
 				background-color: rgba(255, 255, 255, 0.7);
 				box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+				img {
+					width: 60%;
+				}
 			}
 			.city-forecast-box {
 				display: flex;

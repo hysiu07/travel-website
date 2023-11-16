@@ -64,8 +64,7 @@ function Weather({ city }: PropsWeatherType) {
 				});
 			})
 			.catch(() => {});
-	}, [params.id, city
-	]);
+	}, [params.id, city]);
 
 	return (
 		<div className='weather'>
@@ -76,7 +75,7 @@ function Weather({ city }: PropsWeatherType) {
 						<h4>{city}</h4>
 					</div>
 					<div className='weather-position-box__img'>
-						<img src={photo} alt='' />
+						<img src={photo} alt='weather-img' />
 					</div>
 				</div>
 				<div className='weather-info-box'>
