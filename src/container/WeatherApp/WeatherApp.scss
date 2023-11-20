@@ -19,8 +19,9 @@
 		padding: 30px;
 		position: fixed;
 		z-index: 3000;
-		bottom: 50px;
-		left: 50px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 
 		width: 90%;
 		height: 90%;
@@ -170,5 +171,109 @@
 				}
 			}
 		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.weather-app-component {
+		.weather-app {
+			&__container-panels {
+				.city-forecast-box {
+					.city-future-forcast-panel {
+						.weather-card {
+							width: 100px;
+
+							border-radius: 20px;
+							box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+							h4 {
+								font-size: 2.1rem;
+								text-align: center;
+							}
+							img {
+								display: block;
+								margin: 20px auto;
+								width: 70px;
+								height: 55px;
+							}
+							p {
+								font-size: 2rem;
+								text-align: center;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 768px) {
+	.weather-app-component {
+		.weather-app {
+			width: 100vw;
+			height: 100vh;
+			border-radius: 0;
+			&__container-panels {
+				flex-direction: column;
+				.city-main-panel {
+					width: 100%;
+
+					img {
+						width: 30%;
+					}
+					.weather-main-info {
+						h1 {
+							font-size: 3rem;
+						}
+						p {
+							font-size: 2.5rem;
+						}
+					}
+					.weather-info {
+						width: 100%;
+						p {
+							font-size: 1.4rem;
+						}
+						.humidity-box,
+						.wind-box {
+							div {
+								span {
+									font-size: 1.4rem;
+								}
+							}
+						}
+					}
+				}
+
+				.city-forecast-box {
+					width: 100%;
+					.city-forecast-panel-map {
+						display: none;
+					}
+					.city-future-forcast-panel {
+						height: 90%;
+						width: 100%;
+						.weather-card {
+							width: 80px;
+
+							h4 {
+								font-size: 1.8rem;
+							}
+							img {
+								width: 50px;
+								height: 30px;
+							}
+							p {
+								font-size: 1.6rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 576px) {
+	.weather-app-component {
+		display: none;
 	}
 }

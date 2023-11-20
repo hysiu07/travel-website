@@ -147,9 +147,13 @@ function TravelOfferComponent({
 				<button
 					className='show-offer-btn'
 					onClick={() => {
-						setShowOfferModal(!showOfferModal);
-						if (setHiddenNav) {
-							setHiddenNav(true);
+						if (userLogged) {
+							setShowOfferModal(!showOfferModal);
+							if (setHiddenNav) {
+								setHiddenNav(true);
+							}
+						} else {
+							handleShowSnackBar('You have to SignIn!');
 						}
 					}}
 				>

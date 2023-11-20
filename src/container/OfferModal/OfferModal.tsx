@@ -124,6 +124,9 @@ function OfferModal({
 						className='close-btn'
 						onClick={() => {
 							closeModal(false);
+							if (setHiddenNav) {
+								setHiddenNav(false);
+							}
 						}}
 					>
 						X

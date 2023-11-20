@@ -146,8 +146,8 @@ function WeatherApp(props: any) {
 						{showLoader ? (
 							<div className='city-main-panel'>
 								<ThreeCircles
-									height='250'
-									width='250'
+									height='200'
+									width='200'
 									color='#398AB9'
 									wrapperStyle={{}}
 									visible={true}
@@ -192,8 +192,8 @@ function WeatherApp(props: any) {
 							{showLoader ? (
 								<div className='city-forecast-panel-map'>
 									<ThreeCircles
-										height='250'
-										width='250'
+										height='200'
+										width='200'
 										color='#398AB9'
 										wrapperStyle={{}}
 										visible={true}
@@ -217,8 +217,8 @@ function WeatherApp(props: any) {
 							{showLoader ? (
 								<div className='city-future-forcast-panel'>
 									<ThreeCircles
-										height='250'
-										width='250'
+										height='200'
+										width='200'
 										color='#398AB9'
 										wrapperStyle={{}}
 										visible={true}
