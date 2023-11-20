@@ -8,12 +8,12 @@ export default function withData(WrappedComponent: React.ComponentType) {
 		const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
 		const API_KEY = 'c75220d8681be195d50609327ea95e12';
 		const [filteredDailyForecast, setFilteredDailyForecast] = useState();
-		console.log(filteredDailyForecast);
+		const [error, setError] = useState<boolean>(false);
+
 		useEffect(() => {
 			axios
 				.get(API + city + '&appid=' + API_KEY)
 				.then((res) => {
-					console.log(res);
 					setCityForecast({
 						temp: Math.floor(res.data.main.temp - 270),
 						humidity: res.data.main.humidity,
@@ -23,10 +23,11 @@ export default function withData(WrappedComponent: React.ComponentType) {
 						lat: res.data.coord.lat,
 						lon: res.data.coord.lon,
 					});
+					setError(false);
 				})
 
 				.catch((error) => {
-					console.error(error);
+					setError(true);
 				});
 		}, [city]);
 
@@ -63,6 +64,7 @@ export default function withData(WrappedComponent: React.ComponentType) {
 				cityForeCast={cityForecast}
 				dailyForeCast={filteredDailyForecast}
 				setCity={setCity}
+				error={error}
 			/>
 		);
 	};

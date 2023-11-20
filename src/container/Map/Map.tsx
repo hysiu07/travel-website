@@ -23,7 +23,7 @@ function Map({ position, country }: PropsMapsType) {
 			<MapContainer
 				className='map-container'
 				center={position}
-				zoom={5}
+				zoom={7}
 				scrollWheelZoom={false}
 			>
 				<TileLayer
