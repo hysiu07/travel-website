@@ -15,7 +15,6 @@ type PropsNavType = {
 	infoUser?: any;
 };
 function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
-	
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
 
 	const userLogged: boolean = infoUser.isLoggIn;
@@ -29,7 +28,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 	}, []);
 	return (
 		<div className='nav-menu'>
-			<div>
+			<nav>
 				{hiddenLink ? (
 					<ul
 						className='nav-menu__links'
@@ -39,7 +38,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 						<li>
 							<a
 								href='#destinations'
-								className='link'
+								className='link link-destination'
 								onClick={() => {
 									setShowMenu(!showMenu);
 								}}
@@ -50,7 +49,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 						<li>
 							<a
 								href='#last-minute'
-								className='link'
+								className='link link-last-minute'
 								onClick={() => {
 									setShowMenu(!showMenu);
 								}}
@@ -61,7 +60,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 						<li>
 							<a
 								href='#about'
-								className='link'
+								className='link link-about'
 								onClick={() => {
 									setShowMenu(!showMenu);
 								}}
@@ -72,7 +71,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 						<li>
 							<a
 								href='#contact'
-								className='link'
+								className='link link-contact'
 								onClick={() => {
 									setShowMenu(!showMenu);
 								}}
@@ -81,14 +80,14 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 							</a>
 						</li>
 						{userLogged ? (
-							<Link to='/myAccount?menuType=desktop' className='logo link'>
+							<Link to='/myAccount?menuType=desktop' className='logo link my-account-link'>
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>
 						) : (
-							<Link to='/signIn' className='logo link'>
+							<Link to='/signIn' className='logo link sign-in-link'>
 								SignIn
-								<FaUser className='user-icon' />
+								<FaUser className='user-icon'  />
 							</Link>
 						)}
 					</ul>
@@ -114,7 +113,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 						)}
 					</ul>
 				)}
-			</div>
+			</nav>
 		</div>
 	);
 }
