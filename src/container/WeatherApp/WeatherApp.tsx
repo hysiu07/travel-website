@@ -92,7 +92,7 @@ function WeatherApp(props: any) {
 	return (
 		<div className='weather-app-component'>
 			<button
-				className='btn'
+				className='btn btn-show-weather-app'
 				onClick={() => {
 					showForecastPanel(true);
 				}}

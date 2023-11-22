@@ -146,6 +146,7 @@ function SearchedTravels({ infoUser }: any) {
 		filterComponentLastMinute: true,
 		filterComponentStars: true,
 	});
+	
 	return (
 		<div className='searched-travels'>
 			<ScrollUpComponent clientHeight={rectTop} scrollTop={handlescrollToTop} />
@@ -219,7 +220,7 @@ function SearchedTravels({ infoUser }: any) {
 						<div>
 							<label htmlFor='sort travels'> Sort:</label>
 							<select
-								name='sort travels'
+								name='sort-travels'
 								id='sort-travels'
 								value={sortBy}
 								onChange={handleSortChange}
