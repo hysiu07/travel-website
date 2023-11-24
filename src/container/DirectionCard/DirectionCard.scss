@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .direction-card {
 	padding: 10px 40px;
 	height: 470px;
@@ -65,12 +67,12 @@
 		}
 	}
 	.container:hover {
-		box-shadow: #398ab9 0px 3px 8px; 
+		box-shadow: $main-color 0px 3px 8px;
 	}
 	.container:hover .price-box {
-		background-color: #398ab9;
+		background-color: $main-color;
 		color: white;
-		box-shadow: #398ab9 0px 5px 15px;
+		box-shadow: $main-color 0px 5px 15px;
 	}
 }
 @media (max-width: 576px) {

@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Kalam&family=Montserrat&family=Roboto&family=Ubuntu&display=swap');
-
+@import '../../../index.scss';
 .nav-menu {
 	&__links {
 		display: flex;
@@ -21,7 +21,7 @@
 			}
 		}
 		.link:hover {
-			color: #398ab9;
+			color: $main-color;
 		}
 	}
 	&__menu {

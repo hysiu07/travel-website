@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .offer-modal {
 	position: absolute;
 	z-index: 3000;
@@ -38,7 +40,7 @@
 		.offer-modal-img-box {
 			width: 60%;
 			border-radius: 20px;
-			box-shadow: #398ab9 0px 5px 15px;
+			box-shadow: $main-color 0px 5px 15px;
 			overflow: hidden;
 			img {
 				width: 100%;
@@ -59,7 +61,7 @@
 			width: 30%;
 			padding: 10px;
 			border-radius: 20px;
-			box-shadow: #398ab9 0px 5px 15px;
+			box-shadow: $main-color 0px 5px 15px;
 			h4 {
 				font-size: 1.6rem;
 				margin: 10px 0;

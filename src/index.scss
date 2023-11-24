@@ -6,6 +6,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+$main-color: #398ab9;
+$shadow-background: rgb(57, 138, 185, 0.6);
+
+@mixin btn-gradient {
+	background-color: #06bcfb;
+	background-image: linear-gradient(315deg, #06bcfb 0%, $main-color 74%);
+}
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -26,9 +35,9 @@ body {
 	transition: 0.3s;
 }
 .btn:hover {
-	background-color: #398ab9;
+	background-color: $main-color;
 	color: white;
-	box-shadow: #398ab9 0px 5px 15px;
+	box-shadow: $main-color 0px 5px 15px;
 }
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -44,7 +53,6 @@ h2 {
 	font-size: 6rem;
 	font-family: 'Caveat', cursive;
 	margin-bottom: 40px;
-	// color: rgba(49, 49, 49, 0.862745098)
 }
 h3 {
 	font-size: 2.5rem;
@@ -59,7 +67,7 @@ h4 {
 /* Firefox */
 * {
 	scrollbar-width: auto;
-	scrollbar-color: #418bb9 #ffffff;
+	scrollbar-color: $main-color #ffffff;
 }
 
 /* Chrome, Edge, and Safari */
@@ -72,7 +80,7 @@ h4 {
 }
 
 *::-webkit-scrollbar-thumb {
-	background-color: #418bb9;
+	background-color: $main-color;
 	border-radius: 10px;
 	border: 3px solid #ffffff;
 }

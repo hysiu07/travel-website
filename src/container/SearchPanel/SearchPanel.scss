@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .search-panel {
 	margin: 0 auto;
 	display: flex;
@@ -53,7 +55,7 @@
 	}
 
 	.range {
-		accent-color: #398ab9;
+		accent-color: $main-color;
 		box-shadow: none;
 	}
 }

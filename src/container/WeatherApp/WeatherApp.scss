@@ -16,20 +16,21 @@
 		font-weight: bold;
 	}
 	.weather-app {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: space-between;
 		padding: 30px;
 		position: fixed;
 		z-index: 3000;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-
 		width: 90%;
 		height: 90%;
 		background-color: #ffffff;
 		background-image: linear-gradient(315deg, #ffffff 0%, #398ab9 74%);
-
 		border-radius: 25px;
-
 		.switch {
 			position: absolute;
 		}
@@ -72,7 +73,7 @@
 		}
 		&__container-panels {
 			display: flex;
-			height: 80%;
+			height: 78%;
 			.city-main-panel {
 				display: flex;
 				flex-direction: column;

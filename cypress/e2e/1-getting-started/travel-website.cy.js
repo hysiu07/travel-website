@@ -7,14 +7,14 @@ describe('Travel-Website', () => {
 		cy.visit('http://localhost:3000/travel-website');
 	});
 
-	it.skip('should open and check all links in navigation + scroll button', () => {
+	it('Should open and check all links in navigation + scroll button', () => {
 		cy.get('.link-destination').click();
 		cy.get('.link-last-minute').click();
 		cy.get('.link-about').click();
 		cy.get('.link-contact').click();
 		cy.get('.scroll-up').click();
 	});
-	it.skip('should login on page', () => {
+	it('Should login on page', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -22,7 +22,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=password]').type(`${userPassword}{enter}`);
 		cy.get('.btn-login').click();
 	});
-	it.skip('should register user', () => {
+	it('Should register user', () => {
 		const userName = 'DanielHys';
 		const userEmail = 'hysiu07@gmail.com';
 		const userPass = '11111!';
@@ -36,7 +36,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=checkbox]').click();
 		cy.get('.btn-register').click();
 	});
-	it.skip('Search random vacation and check all filters', () => {
+	it('Search random vacation and check all filters', () => {
 		const nameCountry = 'greece';
 		cy.get('input[name=country]').type(`${nameCountry}{enter}`);
 		cy.get('button[class=search-panel__button').click();
@@ -46,7 +46,7 @@ describe('Travel-Website', () => {
 		cy.get('input[value=Krakow]').click();
 		cy.get('.filter-panel-btn').click();
 	});
-	it.skip('Should reservation your tour and sort travels', () => {
+	it('Should reservation your tour and check sort travels', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -73,7 +73,7 @@ describe('Travel-Website', () => {
 		cy.contains('No Reservation').should('not.exist');
 		cy.get('.logOut-btn').click();
 	});
-	it.skip('Test chat', () => {
+	it('Test chat', () => {
 		cy.get('.chat').click();
 		cy.get('.chat-panel__questions-container').each(($element) => {
 			cy.wrap($element).should('contain', 'Where can I find your office?');
@@ -101,27 +101,20 @@ describe('Travel-Website', () => {
 		cy.contains('p', 'Can I take pets on vacation?').click();
 		cy.get('.chat').click();
 	});
-	it.skip('Search panel testing', () => {
+	it('Search panel testing', () => {
 		const nameCountry = 'zanzibar';
 		const price = '4000';
 		const date = '2023-11-25';
 		cy.get('input[name=country]').type(`${nameCountry}{enter}`);
 		cy.get('input[type=date]').type(date);
 		cy.get('input[type=range]').invoke('val', price).trigger('input');
-		cy.visit(
-			`http://localhost:3000/travel-website/searchedTravels/${nameCountry}/${date}/${price}`
-		);
 	});
-	it('Check best travels', () => {
-		// cy.get('.slick-list').each($element => {
-		// 	cy.get('')
-		// })
+	it('Check best travels component', () => {
 		cy.get('.icon-heart').first().click({ force: true });
 		cy.wait(1000);
 		cy.get('.snack-bar').should('have.css', 'right', '50px');
 		cy.get('.snack-bar p').contains('You have to SignIn');
 
-		// login
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -131,6 +124,7 @@ describe('Travel-Website', () => {
 		cy.wait(2000);
 
 		cy.get('a.heart-icon').should('be.visible');
-		// cy.get('.fav-panel').click();
+		cy.get('.fav-panel').click();
+		cy.get('.logOut-btn').click();
 	});
 });

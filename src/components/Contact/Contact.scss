@@ -1,3 +1,4 @@
+@import '../../index.scss';
 .contact {
 	position: relative;
 	width: 100%;
@@ -60,7 +61,6 @@
 					cursor: pointer;
 				}
 			}
-			
 		}
 		.categories {
 			display: flex;
@@ -88,11 +88,11 @@
 				}
 				.link-box:hover {
 					a {
-						color: #398ab9;
+						color: $main-color;
 						transform: translate(7px, 0);
 					}
 					p {
-						color: #398ab9;
+						color: $main-color;
 						transform: translate(7px, 0);
 					}
 				}

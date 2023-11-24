@@ -1,3 +1,5 @@
+@import '../../index.scss';
+
 .searched-travels {
 	position: relative;
 	width: 100%;
@@ -6,7 +8,7 @@
 	background-size: cover;
 	background-position: center;
 	overflow: hidden;
-	
+
 	&__container {
 		display: flex;
 		flex-direction: row;
@@ -23,12 +25,12 @@
 	&__filter-panel {
 		width: 25%;
 
-		.filter-panel-btn{
+		.filter-panel-btn {
 			padding: 7px 14px;
 			margin-right: 5px;
 			border-radius: 20px;
 			border: none;
-			background-color: #398ab9;
+			background-color: $main-color;
 			color: white;
 			cursor: pointer;
 		}
@@ -39,7 +41,7 @@
 		.sort-input {
 			h3 {
 				font-size: 3rem;
-				font-family: "Montserrat", sans-serif;
+				font-family: 'Montserrat', sans-serif;
 			}
 			display: flex;
 			justify-content: space-between;
