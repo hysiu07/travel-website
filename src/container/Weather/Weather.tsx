@@ -65,6 +65,39 @@ function Weather({ city }: PropsWeatherType) {
 			})
 			.catch(() => {});
 	}, [params.id, city]);
+	useEffect(() => {
+		axios
+			.get(API + city + '&appid=' + API_KEY)
+			.then((res) => {
+				setCityForecast({
+					temp: Math.floor(res.data.main.temp - 270),
+					humidity: res.data.main.humidity,
+					weather: res.data.weather[0].main,
+					id: res.data.weather[0].id,
+				});
+
+				setPhoto(() => {
+					if (cityForecast.id >= 200 && cityForecast.id < 300) {
+						return thunder;
+					} else if (cityForecast.id >= 300 && cityForecast.id < 400) {
+						return drizzle;
+					} else if (cityForecast.id >= 500 && cityForecast.id < 600) {
+						return rain;
+					} else if (cityForecast.id >= 600 && cityForecast.id < 700) {
+						return ice;
+					} else if (cityForecast.id >= 700 && cityForecast.id < 800) {
+						return fog;
+					} else if (cityForecast.id === 800) {
+						return sun;
+					} else if (cityForecast.id >= 800 && cityForecast.id < 900) {
+						return clouds;
+					} else {
+						return unknown;
+					}
+				});
+			})
+			.catch(() => {});
+	}, []);
 
 	return (
 		<div className='weather'>

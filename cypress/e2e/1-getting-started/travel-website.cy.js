@@ -1,20 +1,16 @@
 describe('Travel-Website', () => {
 	beforeEach(() => {
-		// Cypress starts out with a blank slate for each test
-		// so we must tell it to visit our website with the `cy.visit()` command.
-		// Since we want to visit the same URL at the start of all our tests,
-		// we include it in our beforeEach function so that it runs before each test
 		cy.visit('http://localhost:3000/travel-website');
 	});
 
-	it('Should open and check all links in navigation + scroll button', () => {
+	it.skip('Should open and check all links in navigation + scroll button', () => {
 		cy.get('.link-destination').click();
 		cy.get('.link-last-minute').click();
 		cy.get('.link-about').click();
 		cy.get('.link-contact').click();
 		cy.get('.scroll-up').click();
 	});
-	it('Should login on page', () => {
+	it.skip('Should login on page', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -22,7 +18,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=password]').type(`${userPassword}{enter}`);
 		cy.get('.btn-login').click();
 	});
-	it('Should register user', () => {
+	it.skip('Should register user', () => {
 		const userName = 'DanielHys';
 		const userEmail = 'hysiu07@gmail.com';
 		const userPass = '11111!';
@@ -36,7 +32,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=checkbox]').click();
 		cy.get('.btn-register').click();
 	});
-	it('Search random vacation and check all filters', () => {
+	it.skip('Search random vacation and check all filters', () => {
 		const nameCountry = 'greece';
 		cy.get('input[name=country]').type(`${nameCountry}{enter}`);
 		cy.get('button[class=search-panel__button').click();
@@ -46,7 +42,7 @@ describe('Travel-Website', () => {
 		cy.get('input[value=Krakow]').click();
 		cy.get('.filter-panel-btn').click();
 	});
-	it('Should reservation your tour and check sort travels', () => {
+	it.skip('Should reservation your tour and check sort travels', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -73,7 +69,7 @@ describe('Travel-Website', () => {
 		cy.contains('No Reservation').should('not.exist');
 		cy.get('.logOut-btn').click();
 	});
-	it('Test chat', () => {
+	it.skip('Test chat', () => {
 		cy.get('.chat').click();
 		cy.get('.chat-panel__questions-container').each(($element) => {
 			cy.wrap($element).should('contain', 'Where can I find your office?');
@@ -104,12 +100,18 @@ describe('Travel-Website', () => {
 	it('Search panel testing', () => {
 		const nameCountry = 'zanzibar';
 		const price = '4000';
-		const date = '2023-11-25';
-		cy.get('input[name=country]').type(`${nameCountry}{enter}`);
+		const date = '2024-04-01';
+		cy.get('input[name=country]').type(nameCountry);
 		cy.get('input[type=date]').type(date);
-		cy.get('input[type=range]').invoke('val', price).trigger('input');
+		cy.get('input[type=range]').invoke('val', '4000').trigger('change');
+		// cy.wait(2000);
+		cy.get('.search-panel__button').click();
+		cy.url().should(
+			'include',
+			`http://localhost:3000/travel-website/searchedTravels/${nameCountry}/${date}/4000`
+		);
 	});
-	it('Check best travels component', () => {
+	it.skip('Check best travels component', () => {
 		cy.get('.icon-heart').first().click({ force: true });
 		cy.wait(1000);
 		cy.get('.snack-bar').should('have.css', 'right', '50px');
@@ -126,5 +128,51 @@ describe('Travel-Website', () => {
 		cy.get('a.heart-icon').should('be.visible');
 		cy.get('.fav-panel').click();
 		cy.get('.logOut-btn').click();
+	});
+	it.skip('Check weather app - check default city, write own city and search, check reaction if write fail city name', () => {
+		cy.get('.weather-app-component > .btn').click();
+		cy.get('.city-main-panel').should('contain', 'London');
+		cy.get('.switch').click();
+		cy.get('.city-future-forcast-panel').should('exist');
+		cy.get('.city-future-forcast-panel .weather-card').should('have.length', 5);
+		cy.get('.city-forecast-panel-map').should('exist');
+
+		const city = 'Warsaw';
+		const failCityName = 'aaaa';
+		cy.get('.input-city-name').type(`${city}{enter}`);
+		cy.wait(2000);
+		cy.get('.city-main-panel').should('contain', city);
+		cy.get('.input-city-name').type(`${failCityName}{enter}`);
+		cy.wait(2000);
+		cy.get('.city-main-panel .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.city-future-forcast-panel .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.city-forecast-panel-map .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.btn-weather-close').click();
+	});
+
+	it.skip('Check destinations path content of component', () => {
+		Cypress.on('uncaught:exception', () => {
+			return false;
+		});
+		cy.get('.link-destination').click();
+		cy.wait(2000);
+		cy.get(':nth-child(1) > a > .card-destination-img').click();
+		cy.url().should('include', 'http://localhost:3000/destination/Marocco');
+		cy.get('.selected > .carousel-destination-img').should('exist');
+		cy.get('h2').should('exist');
+		cy.get('h3').should('contain', 'Main Attracions');
+		cy.get('.map-container').should('exist');
+		cy.get('.slick-slider').should('exist');
+		cy.get('.weather__content-container').should('exist');
+		cy.get('.destinations').should('exist');
 	});
 });

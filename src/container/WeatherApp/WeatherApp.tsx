@@ -85,6 +85,45 @@ function WeatherApp(props: any) {
 			});
 		}
 	}, [props.cityForeCast]);
+	useEffect(() => {
+		if (props.cityForeCast) {
+			setPhoto(() => {
+				if (props.cityForeCast.id >= 200 && props.cityForeCast.id < 300) {
+					return thunder;
+				} else if (
+					props.cityForeCast.id >= 300 &&
+					props.cityForeCast.id < 400
+				) {
+					return drizzle;
+				} else if (
+					props.cityForeCast.id >= 500 &&
+					props.cityForeCast.id < 600
+				) {
+					return rain;
+				} else if (
+					props.cityForeCast.id >= 600 &&
+					props.cityForeCast.id < 700
+				) {
+					return ice;
+				} else if (
+					props.cityForeCast.id >= 700 &&
+					props.cityForeCast.id < 800
+				) {
+					return fog;
+				} else if (props.cityForeCast.id === 800) {
+					return sun;
+				} else if (
+					props.cityForeCast.id >= 800 &&
+					props.cityForeCast.id < 900
+				) {
+					return clouds;
+				} else {
+					return unknown;
+				}
+			});
+		}
+	}, []);
+
 	const handleChangeColor = () => {
 		setColor(!color);
 	};
@@ -113,14 +152,13 @@ function WeatherApp(props: any) {
 					}
 				>
 					<Switch
-						defaultChecked
 						className='switch'
 						color='default'
 						checked={color}
 						onChange={handleChangeColor}
 					/>
 					<button
-						className='btn btn-weather'
+						className='btn btn-weather-close'
 						onClick={() => {
 							showForecastPanel(false);
 						}}
@@ -130,7 +168,7 @@ function WeatherApp(props: any) {
 					<div className='weather-app__title-container'>
 						<h1 className='title'>Forecast</h1>
 						<form>
-							<input type='text' ref={refInput} placeholder='Enter a City' />
+							<input type='text' ref={refInput} placeholder='Enter a City' className='input-city-name'/>
 							<button
 								onClick={(e) => {
 									e.preventDefault();
@@ -146,8 +184,8 @@ function WeatherApp(props: any) {
 						{showLoader ? (
 							<div className='city-main-panel'>
 								<ThreeCircles
-									height='200'
-									width='200'
+									height='150'
+									width='150'
 									color='#398AB9'
 									wrapperStyle={{}}
 									visible={true}
@@ -192,8 +230,8 @@ function WeatherApp(props: any) {
 							{showLoader ? (
 								<div className='city-forecast-panel-map'>
 									<ThreeCircles
-										height='200'
-										width='200'
+										height='150'
+										width='150'
 										color='#398AB9'
 										wrapperStyle={{}}
 										visible={true}
@@ -217,8 +255,8 @@ function WeatherApp(props: any) {
 							{showLoader ? (
 								<div className='city-future-forcast-panel'>
 									<ThreeCircles
-										height='200'
-										width='200'
+										height='150'
+										width='150'
 										color='#398AB9'
 										wrapperStyle={{}}
 										visible={true}
@@ -227,7 +265,7 @@ function WeatherApp(props: any) {
 								</div>
 							) : !error ? (
 								<div className='city-future-forcast-panel'>
-									{props.dailyForeCast.map((item: any, index: number) => {
+									{props.dailyForeCast?.map((item: any, index: number) => {
 										const dateString = item.dt_txt.toString().slice(0, 10);
 										const date = new Date(dateString);
 										const dayOfWeek = daysOfWeek[date.getDay()];
