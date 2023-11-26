@@ -28,6 +28,7 @@ The project was created using the following technologies:
 **React.js**<br>
 **React Redux / Redux Saga**<br>
 **React Redux Persist**<br>
+**Cypress**
 
 ## Skills Demonstrated
 
@@ -40,7 +41,8 @@ The project was created using the following technologies:
 **State Management**: (Redux)<br>
 **Full TypeScript**<br>
 **Sass styles** (BEM metodology)<br>
-**REST Api** (Weather Forecast small app - "Contact Section")
+**REST Api** (Weather Forecast small app - "Contact Section")<br>
+**basic Cypress** (10 examples test in Cypress)
 
 Soon<br>
 **Testing** soon<br>

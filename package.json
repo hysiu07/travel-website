@@ -9,7 +9,6 @@
 		"@mui/material": "^5.14.18",
 		"@mui/styled-engine-sc": "^6.0.0-alpha.6",
 		"@reduxjs/toolkit": "^1.9.7",
-		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
 		"@types/node": "^16.18.40",
@@ -44,7 +43,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!@toolz/allow-react)/\" --env=jsdom",
 		"eject": "react-scripts eject",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d build",
@@ -69,8 +68,11 @@
 		]
 	},
 	"devDependencies": {
+		"@babel/core": "^7.23.3",
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
 		"@babel/preset-env": "^7.23.3",
 		"@babel/preset-react": "^7.23.3",
+		"@testing-library/jest-dom": "^6.1.4",
 		"@types/jest": "^29.5.10",
 		"@types/leaflet": "^1.9.4",
 		"babel-core": "^7.0.0-bridge.0",

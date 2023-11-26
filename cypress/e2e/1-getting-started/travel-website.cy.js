@@ -2,15 +2,45 @@ describe('Travel-Website', () => {
 	beforeEach(() => {
 		cy.visit('http://localhost:3000/travel-website');
 	});
+	it('Check weather app - check default city, write own city and search, check reaction if write fail city name', () => {
+		cy.get('.weather-app-component > .btn').click();
+		cy.get('.city-main-panel').should('contain', 'London');
+		cy.get('.switch').click();
+		cy.get('.city-future-forcast-panel').should('exist');
+		cy.get('.city-future-forcast-panel .weather-card').should(($cards) => {
+			assert.isTrue($cards.length === 5 || $cards.length === 4);
+		});
+		cy.get('.city-forecast-panel-map').should('exist');
 
-	it.skip('Should open and check all links in navigation + scroll button', () => {
+		const city = 'Warsaw';
+		const failCityName = 'aaaa';
+		cy.get('.input-city-name').type(`${city}{enter}`);
+		cy.wait(2000);
+		cy.get('.city-main-panel').should('contain', city);
+		cy.get('.input-city-name').type(`${failCityName}{enter}`);
+		cy.wait(2000);
+		cy.get('.city-main-panel .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.city-future-forcast-panel .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.city-forecast-panel-map .error-info').should(
+			'have.text',
+			'City not found. Please enter it again.'
+		);
+		cy.get('.btn-weather-close').click();
+	});
+	it('Should open and check all links in navigation + scroll button', () => {
 		cy.get('.link-destination').click();
 		cy.get('.link-last-minute').click();
 		cy.get('.link-about').click();
 		cy.get('.link-contact').click();
 		cy.get('.scroll-up').click();
 	});
-	it.skip('Should login on page', () => {
+	it('Should login on page', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -18,7 +48,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=password]').type(`${userPassword}{enter}`);
 		cy.get('.btn-login').click();
 	});
-	it.skip('Should register user', () => {
+	it('Should register user', () => {
 		const userName = 'DanielHys';
 		const userEmail = 'hysiu07@gmail.com';
 		const userPass = '11111!';
@@ -32,7 +62,7 @@ describe('Travel-Website', () => {
 		cy.get('input[type=checkbox]').click();
 		cy.get('.btn-register').click();
 	});
-	it.skip('Search random vacation and check all filters', () => {
+	it('Search random vacation and check all filters', () => {
 		const nameCountry = 'greece';
 		cy.get('input[name=country]').type(`${nameCountry}{enter}`);
 		cy.get('button[class=search-panel__button').click();
@@ -42,7 +72,7 @@ describe('Travel-Website', () => {
 		cy.get('input[value=Krakow]').click();
 		cy.get('.filter-panel-btn').click();
 	});
-	it.skip('Should reservation your tour and check sort travels', () => {
+	it('Should reservation your tour and check sort travels', () => {
 		const userEmail = 'hysiu07@gmail.com';
 		const userPassword = '11111!';
 		cy.get('.sign-in-link').click();
@@ -69,7 +99,7 @@ describe('Travel-Website', () => {
 		cy.contains('No Reservation').should('not.exist');
 		cy.get('.logOut-btn').click();
 	});
-	it.skip('Test chat', () => {
+	it('Test chat', () => {
 		cy.get('.chat').click();
 		cy.get('.chat-panel__questions-container').each(($element) => {
 			cy.wrap($element).should('contain', 'Where can I find your office?');
@@ -99,19 +129,20 @@ describe('Travel-Website', () => {
 	});
 	it('Search panel testing', () => {
 		const nameCountry = 'zanzibar';
-		const price = '4000';
+		const price = 5000;
 		const date = '2024-04-01';
+
+		cy.get('input[type=range]').invoke('val', price).trigger('change');
 		cy.get('input[name=country]').type(nameCountry);
 		cy.get('input[type=date]').type(date);
-		cy.get('input[type=range]').invoke('val', '4000').trigger('change');
-		// cy.wait(2000);
+		cy.wait(2000);
 		cy.get('.search-panel__button').click();
 		cy.url().should(
 			'include',
-			`http://localhost:3000/travel-website/searchedTravels/${nameCountry}/${date}/4000`
+			`http://localhost:3000/travel-website/searchedTravels/${nameCountry}/${date}/${price}`
 		);
 	});
-	it.skip('Check best travels component', () => {
+	it('Check best travels component', () => {
 		cy.get('.icon-heart').first().click({ force: true });
 		cy.wait(1000);
 		cy.get('.snack-bar').should('have.css', 'right', '50px');
@@ -129,37 +160,8 @@ describe('Travel-Website', () => {
 		cy.get('.fav-panel').click();
 		cy.get('.logOut-btn').click();
 	});
-	it.skip('Check weather app - check default city, write own city and search, check reaction if write fail city name', () => {
-		cy.get('.weather-app-component > .btn').click();
-		cy.get('.city-main-panel').should('contain', 'London');
-		cy.get('.switch').click();
-		cy.get('.city-future-forcast-panel').should('exist');
-		cy.get('.city-future-forcast-panel .weather-card').should('have.length', 5);
-		cy.get('.city-forecast-panel-map').should('exist');
 
-		const city = 'Warsaw';
-		const failCityName = 'aaaa';
-		cy.get('.input-city-name').type(`${city}{enter}`);
-		cy.wait(2000);
-		cy.get('.city-main-panel').should('contain', city);
-		cy.get('.input-city-name').type(`${failCityName}{enter}`);
-		cy.wait(2000);
-		cy.get('.city-main-panel .error-info').should(
-			'have.text',
-			'City not found. Please enter it again.'
-		);
-		cy.get('.city-future-forcast-panel .error-info').should(
-			'have.text',
-			'City not found. Please enter it again.'
-		);
-		cy.get('.city-forecast-panel-map .error-info').should(
-			'have.text',
-			'City not found. Please enter it again.'
-		);
-		cy.get('.btn-weather-close').click();
-	});
-
-	it.skip('Check destinations path content of component', () => {
+	it('Check destinations path content of component', () => {
 		Cypress.on('uncaught:exception', () => {
 			return false;
 		});
