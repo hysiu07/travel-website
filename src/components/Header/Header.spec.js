@@ -13,8 +13,8 @@ describe('check heading', () => {
 			</Provider>
 		);
 		const heading = screen.getByText(/YourTrip Welcome!/i);
-        expect(heading).toBeInTheDocument();
-        const secondHeading = screen.getByText(/search your holiday!/i);
-        expect(secondHeading).toBeInTheDocument();
+		expect(heading).toBeInTheDocument();
+		const secondHeading = screen.getByText(/search your holiday!/i);
+		expect(secondHeading).toBeInTheDocument();
 	});
 });
