@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { SliderCards } from '../../container/SliderCards';
 import { DirectionCard } from '../../container/DirectionCard';
 import { travels } from '../../data/travels';
-import './LastMinute.scss';
 import { SnackBar } from '../../container/SnackBar';
+import './LastMinute.scss';
 
 function LastMinute() {
 	const [snackBar, setSnackBar] = useState<boolean>(false);

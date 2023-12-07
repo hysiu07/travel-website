@@ -8,13 +8,15 @@ import './About.scss';
 function About() {
 	const sectionRef = useRef<HTMLDivElement | null>(null);
 	const [animate, setAnimate] = useState<boolean>(false);
-	const isElementInViewport = () => {
+
+	const isElementInViewport = (): boolean => {
 		if (sectionRef.current) {
 			const rect = sectionRef.current.getBoundingClientRect();
 			return rect.top < 750 && rect.bottom >= 0;
 		}
 		return false;
 	};
+
 	useEffect(() => {
 		const handleScroll = () => {
 			if (isElementInViewport()) {
@@ -26,6 +28,7 @@ function About() {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+
 	return (
 		<div id='about' className='about' ref={sectionRef}>
 			<h2 className='about__title'>About</h2>

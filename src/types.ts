@@ -16,3 +16,4 @@ export type inputValueTypes = {
 	password: string;
 	isLoggIn?: boolean
 };
+

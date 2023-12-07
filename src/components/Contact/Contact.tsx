@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { NavLogo } from '../Nav/NavLogo';
-import { AiFillFacebook } from 'react-icons/ai';
-import { AiFillInstagram } from 'react-icons/ai';
-import { AiFillYoutube } from 'react-icons/ai';
+import { AiFillFacebook, AiFillInstagram, AiFillYoutube } from 'react-icons/ai';
 import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { SnackBar } from '../../container/SnackBar';
-import './Contact.scss';
 import { WeatherApp } from '../../container/WeatherApp';
+import './Contact.scss';
+
 type PropsCategoryType = {
 	title: string;
 	links: string[];
@@ -16,7 +14,6 @@ type PropsCategoryType = {
 
 const Category = ({ title, links }: PropsCategoryType) => {
 	const navigate = useNavigate();
-
 	const changePath = (direction: string) => {
 		navigate(
 			`/travel-website/searchedTravels/${direction.toLocaleLowerCase()}/2023-10-15/5000?lastMinute=Yes`
@@ -28,7 +25,7 @@ const Category = ({ title, links }: PropsCategoryType) => {
 			<h3>{title}</h3>
 			{links.map((link, index) => {
 				return (
-					<div className='link-box' key={index}>
+					<div className='link-box' key={`id=${index}`}>
 						<MdOutlineKeyboardArrowRight className='link-box__arrow-icon' />
 						{title === 'Partners' ? (
 							<Link to={`https://www.${link}.com/`} target='_blank'>
@@ -53,7 +50,6 @@ function Contact() {
 	const [disabled, setDisabled] = useState<boolean>(true);
 	const [snackBar, setSnackBar] = useState<boolean>(false);
 	const [inputEmail, setInputEmail] = useState<string>('');
-	const dispatch = useDispatch();
 
 	const handleValidationEmail = (emailValue: string) => {
 		if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(emailValue)) {
@@ -62,6 +58,18 @@ function Contact() {
 			setDisabled(false);
 		}
 	};
+	const submitContact = (e: any) => {
+		e.preventDefault();
+		setSnackBar(true);
+		setInputEmail('');
+		setDisabled(true);
+		new Promise((resolve) => {
+			setTimeout(() => {
+				resolve(setSnackBar(false));
+			}, 3000);
+		});
+	};
+
 	return (
 		<div className='contact' id='contact'>
 			<SnackBar
@@ -79,7 +87,7 @@ function Contact() {
 						<p className='litle-title'>Keep in touch</p>
 						<p className='big-title'>Travel with us</p>
 					</div>
-					<form className='contact__form'>
+					<form className='contact__form' onSubmit={submitContact}>
 						<input
 							type='email'
 							placeholder='Enter Email Adress'
@@ -94,17 +102,6 @@ function Contact() {
 							type='submit'
 							className='button'
 							disabled={disabled}
-							onClick={async (e) => {
-								e.preventDefault();
-								await setSnackBar(true);
-								await setInputEmail('');
-								await setDisabled(true);
-								await new Promise((resolve) => {
-									setTimeout(() => {
-										resolve(setSnackBar(false));
-									}, 3000);
-								});
-							}}
 						>
 							Send!
 						</button>
@@ -126,16 +123,6 @@ function Contact() {
 							<AiFillInstagram className='company-social__icon' />
 							<AiFillYoutube className='company-social__icon' />
 						</div>
-						{/* <div className='company-btn-forecast'>
-							<button
-								className='btn btn-weather'
-								onClick={() => {
-									dispatch({ type: 'weather/SHOW_FORECAST' });
-								}}
-							>
-								Weather Forecast
-							</button>
-						</div> */}
 						<WeatherApp />
 					</div>
 					<div className='categories'>

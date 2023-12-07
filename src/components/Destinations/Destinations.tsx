@@ -60,7 +60,6 @@ function Destinations() {
 					</div>
 				</MovingText>
 			)}
-
 		</div>
 	);
 }

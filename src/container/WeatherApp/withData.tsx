@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function withData(WrappedComponent: React.ComponentType) {
 	const WeatherForeCast = (props: any) => {
-		const [city, setCity] = useState('London');
+		const [city, setCity] = useState<string>('London');
 		const [cityForecast, setCityForecast] = useState<any>();
 		const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
 		const API_KEY = 'c75220d8681be195d50609327ea95e12';

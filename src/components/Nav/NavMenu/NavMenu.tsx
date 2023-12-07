@@ -6,18 +6,19 @@ import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 
 import { connect } from 'react-redux';
-
+import { UserTypeReducer } from '../../../redux/reduxUserInfo';
 import './NavMenu.scss';
+
 type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
-	infoUser?: any;
+	infoUser: UserTypeReducer | undefined | null;
 };
 function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
 
-	const userLogged: boolean = infoUser.isLoggIn;
+	const userLogged: boolean = infoUser?.isLoggIn ?? false;
 
 	useEffect(() => {
 		if (location === '/travel-website/' || location === '/travel-website') {
@@ -80,14 +81,17 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 							</a>
 						</li>
 						{userLogged ? (
-							<Link to='/myAccount?menuType=desktop' className='logo link my-account-link'>
+							<Link
+								to='/myAccount?menuType=desktop'
+								className='logo link my-account-link'
+							>
 								MyAccount
 								<FaUser className='user-icon' />
 							</Link>
 						) : (
 							<Link to='/signIn' className='logo link sign-in-link'>
 								SignIn
-								<FaUser className='user-icon'  />
+								<FaUser className='user-icon' />
 							</Link>
 						)}
 					</ul>

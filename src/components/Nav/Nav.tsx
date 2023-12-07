@@ -19,8 +19,9 @@ function Nav() {
 				setBackGround(false);
 			}
 		});
-		return window.removeEventListener('scroll', () => {});
+		return () => window.removeEventListener('scroll', () => {});
 	}, []);
+
 	return (
 		<nav
 			className='nav'

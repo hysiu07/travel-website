@@ -4,7 +4,7 @@ const ADD_BEST_TRAVELS: string = 'user/ADD_BEST_TRAVELS';
 const REMOVE_BEST_TRAVELS: string = 'user/REMOVE_BEST_TRAVELS';
 const ADD_RESERVATION: string = 'user/ADD_RESERVATION';
 
-type UserType = {
+export type UserTypeReducer = {
 	user: {
 		name: string;
 		email: string;
@@ -25,7 +25,7 @@ type UserType = {
 	};
 };
 
-const INITIAL_STATE_REGISTERED = {
+const INITIAL_STATE_REGISTERED: UserTypeReducer = {
 	user: {
 		name: '',
 		email: '',
@@ -34,7 +34,7 @@ const INITIAL_STATE_REGISTERED = {
 	},
 };
 
-export const loggInUser = (user: any) => ({
+export const loggInUser = (user: UserTypeReducer) => ({
 	type: LOGG_IN_USER,
 	payload: user,
 });
