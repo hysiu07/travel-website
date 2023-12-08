@@ -16,6 +16,14 @@
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 	transition: 0.5s;
 	overflow: hidden;
+	&__hide-btn {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		padding: 8px 16px;
+		border-radius: 10px;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	}
 	&__heading {
 		text-align: center;
 		font-size: 4rem;

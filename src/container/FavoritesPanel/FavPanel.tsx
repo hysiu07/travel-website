@@ -3,23 +3,24 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AiFillHeart } from 'react-icons/ai';
 import './FavPanel.scss';
-
+import { UserType } from '../../redux/reduxUserInfo';
 import { connect } from 'react-redux';
 type FavPanelPropsType = {
-	infoUser: any;
+	infoUser: UserType;
 };
 
 function FavPanel({ infoUser }: FavPanelPropsType) {
 	const [hasFavorites, setHasFavorites] = useState<boolean>(false);
-	const bestTravels = infoUser.bestTravels;
-	const isLoggIn = infoUser.isLoggIn;
+
+	const bestTravels = infoUser.user.bestTravels;
+	const isLoggIn = infoUser.user.isLoggIn;
 	useEffect(() => {
-		if (isLoggIn === false || bestTravels.length === 0) {
+		if (isLoggIn === false || bestTravels?.length === 0) {
 			setHasFavorites(false);
 		} else {
 			setHasFavorites(true);
 		}
-	}, [bestTravels, isLoggIn]);
+	}, [isLoggIn]);
 
 	return (
 		<div className='fav-panel'>
@@ -39,7 +40,7 @@ function FavPanel({ infoUser }: FavPanelPropsType) {
 }
 const mapStateToProps = (state: any) => {
 	return {
-		infoUser: state.userInfo.user,
+		infoUser: state.userInfo,
 	};
 };
 export default connect(mapStateToProps)(FavPanel);

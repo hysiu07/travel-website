@@ -6,19 +6,19 @@ import { FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 
 import { connect } from 'react-redux';
-import { UserTypeReducer } from '../../../redux/reduxUserInfo';
+import { UserType } from '../../../redux/reduxUserInfo';
 import './NavMenu.scss';
 
 type PropsNavType = {
 	setShowMenu: Dispatch<SetStateAction<boolean>>;
 	showMenu: boolean;
 	location?: string;
-	infoUser: UserTypeReducer | undefined | null;
+	infoUser: UserType
 };
 function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 	const [hiddenLink, setHiddenLink] = useState<boolean | null>(true);
 
-	const userLogged: boolean = infoUser?.isLoggIn ?? false;
+	const userLogged: boolean = infoUser.user.isLoggIn;
 
 	useEffect(() => {
 		if (location === '/travel-website/' || location === '/travel-website') {
@@ -26,7 +26,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 		} else {
 			setHiddenLink(false);
 		}
-	}, []);
+	}, [infoUser]);
 	return (
 		<div className='nav-menu'>
 			<nav>
@@ -123,7 +123,7 @@ function NavMenu({ showMenu, location, setShowMenu, infoUser }: PropsNavType) {
 }
 const mapStateToProps = (state: any) => {
 	return {
-		infoUser: state.userInfo.user,
+		infoUser: state.userInfo
 	};
 };
 export default connect(mapStateToProps)(NavMenu);

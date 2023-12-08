@@ -12,7 +12,7 @@ import { connect } from 'react-redux';
 import { addBestTravels, removeBestTravel } from '../../redux/reduxUserInfo';
 
 import './DirectionCard.scss';
-import { SnackBar } from '../../container/SnackBar';
+
 type DirectionCardPropsType = {
 	id?: number;
 	img: string;

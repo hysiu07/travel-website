@@ -1,11 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import Question from './Question/Question';
 import MovingText from 'react-moving-text';
-import './ChatPanel.scss';
 import imgGuide from '../../../img/guide.jpg';
+import { FaArrowRightLong } from 'react-icons/fa6';
+import './ChatPanel.scss';
+
 type PropsChatPanelType = {
 	showPanel: boolean;
+	hideChatPanel: React.Dispatch<React.SetStateAction<boolean>>;
 };
-function ChatPanel({ showPanel }: PropsChatPanelType) {
+function ChatPanel({ showPanel, hideChatPanel }: PropsChatPanelType) {
 	const [activeQestion, setActiveQuestion] = useState<number>(0);
 	const [answerQuestion, setAnswerQuestion] = useState<string>(
 		`Hello! I'm Leo. How can I help you?`
@@ -18,6 +22,14 @@ function ChatPanel({ showPanel }: PropsChatPanelType) {
 				e.stopPropagation();
 			}}
 		>
+			<div
+				className='chat-panel__hide-btn'
+				onClick={() => {
+					hideChatPanel(false);
+				}}
+			>
+				<FaArrowRightLong size={20} />
+			</div>
 			<h3 className='chat-panel__heading'>Chat with Leo Guide!</h3>
 			<div className='chat-panel__guide-container'>
 				<div className='answers-text-box'>
@@ -49,64 +61,46 @@ function ChatPanel({ showPanel }: PropsChatPanelType) {
 					fillMode='none'
 				>
 					<div className='chat-panel__questions-container'>
-						<div
-							className={`question ${activeQestion === 1 && 'active'}`}
-							onClick={() => {
-								setActiveQuestion(1);
-								setAnswerQuestion(
-									`You can book a tour here, but unfortunately, we don't have a physical office.`
-								);
-							}}
-						>
-							<p className='question__text'>Where can I find your office?</p>
-						</div>
-						<div
-							className={`question ${activeQestion === 2 && 'active'}`}
-							onClick={() => {
-								setActiveQuestion(2);
-								setAnswerQuestion(`Take a look at the last-minute section.`);
-							}}
-						>
-							<p className='question__text'>
-								What last-minute offers do you have available?
-							</p>
-						</div>
-
-						<div
-							className={`question ${activeQestion === 3 && 'active'}`}
-							onClick={() => {
-								setActiveQuestion(3);
-								setAnswerQuestion(
-									`We have 3 insurance packages: Basic, Silver, Gold. Learn more in the insurance section.`
-								);
-							}}
-						>
-							<p className='question__text'>
-								Is it possible to purchase additional insurance?
-							</p>
-						</div>
-						<div
-							className={`question ${activeQestion === 4 && 'active'}`}
-							onClick={() => {
-								setActiveQuestion(4);
-								setAnswerQuestion(`You have to take only your pass.`);
-							}}
-						>
-							<p className='question__text'>
-								What documents are required for travel?
-							</p>
-						</div>
-						<div
-							className={`question ${activeQestion === 5 && 'active'}`}
-							onClick={() => {
-								setActiveQuestion(5);
-								setAnswerQuestion(
-									`The additional fee for pets up to 15kg is $150. `
-								);
-							}}
-						>
-							<p className='question__text'>Can I take pets on vacation?</p>
-						</div>
+						<Question
+							setAnswerQuestion={setAnswerQuestion}
+							questionText='Where can I find your office?'
+							activeQuestion={activeQestion}
+							answerText="You can book a tour here, but unfortunately, we don't have a physical office."
+							setActiveQuestion={setActiveQuestion}
+							number={1}
+						/>
+						<Question
+							setAnswerQuestion={setAnswerQuestion}
+							questionText='What last-minute offers do you have available?'
+							activeQuestion={activeQestion}
+							answerText='Have a look at the last-minute section.'
+							setActiveQuestion={setActiveQuestion}
+							number={2}
+						/>
+						<Question
+							setAnswerQuestion={setAnswerQuestion}
+							questionText='Is it possible to purchase additional insurance?'
+							activeQuestion={activeQestion}
+							answerText='We have 3 insurance packages: Basic, Silver, Gold. Learn more in the insurance section.'
+							setActiveQuestion={setActiveQuestion}
+							number={3}
+						/>
+						<Question
+							setAnswerQuestion={setAnswerQuestion}
+							questionText='What documents are required for travel?'
+							activeQuestion={activeQestion}
+							answerText='You have to take only your pass.'
+							setActiveQuestion={setActiveQuestion}
+							number={4}
+						/>
+						<Question
+							setAnswerQuestion={setAnswerQuestion}
+							questionText='Can I take pets on vacation?'
+							activeQuestion={activeQestion}
+							answerText='The additional fee for pets up to 15kg is $150.'
+							setActiveQuestion={setActiveQuestion}
+							number={5}
+						/>
 					</div>
 				</MovingText>
 			)}

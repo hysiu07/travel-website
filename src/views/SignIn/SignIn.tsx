@@ -10,7 +10,7 @@ import connect from 'react-redux/es/components/connect';
 import { loggInUser } from '../../redux/reduxUserInfo';
 
 import './SignIn.scss';
-function SignIn({ loggInUser, usersRegistered,infoUser }: any) {
+function SignIn({ loggInUser, usersRegistered, infoUser }: any) {
 	const navigate = useNavigate();
 
 	const [showLoader, setShowLoader] = useState<boolean>(false);
@@ -47,7 +47,7 @@ function SignIn({ loggInUser, usersRegistered,infoUser }: any) {
 		});
 	};
 
-	async function asyncProcessLogIn() {
+	async function asyncProcessLogIn(user: any) {
 		setShowLoader(true);
 		await new Promise((resolve) => {
 			setTimeout(() => {
@@ -61,7 +61,12 @@ function SignIn({ loggInUser, usersRegistered,infoUser }: any) {
 			setSnackBar(false);
 		}, 3000);
 		setDisabledBtn(true);
-		await setTimeout(() => {
+		loggInUser({
+			name: user.name,
+			bestTravels: [...infoUser.bestTravels],
+			...inputValue,
+		});
+		setTimeout(() => {
 			navigate('/travel-website');
 		}, 2000);
 	}
@@ -74,19 +79,12 @@ function SignIn({ loggInUser, usersRegistered,infoUser }: any) {
 				inputValue.email === user.email &&
 				inputValue.password === user.password
 			) {
-				asyncProcessLogIn();
-
-				loggInUser({
-					name: user.name,
-					bestTravels: [...infoUser.bestTravels],
-					...inputValue,
-				});
+				asyncProcessLogIn(user);
 				setErrorInfo('');
 			} else {
 				setErrorInfo('Wrong name or password');
 			}
 		});
-		return;
 	};
 
 	return (
