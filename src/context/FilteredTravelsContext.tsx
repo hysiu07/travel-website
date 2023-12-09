@@ -6,8 +6,8 @@ type ContextPropsType = {
 };
 
 type FilteredContextProviderType = {
-	filteredTravels: TravelType[];
-	setFilteredTravels: React.Dispatch<React.SetStateAction<TravelType[]>>;
+	filteredTravels: TravelType[] | [];
+	setFilteredTravels: React.Dispatch<React.SetStateAction<TravelType[] | []>>;
 };
 
 const initialFilteredTravels: TravelType[] = [];

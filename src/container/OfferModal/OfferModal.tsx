@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { Dispatch, SetStateAction } from 'react';
 
 import { IoClose } from 'react-icons/io5';
@@ -39,7 +39,7 @@ function OfferModal({
 }: PropsOfferModalType) {
 	const { width } = useWindowWidth();
 
-	const [countPerson, setCountPerson] = useState(1);
+	const [countPerson, setCountPerson] = useState<number>(1);
 	const [insurancetype, setInsuranceType] = useState<
 		'Basic' | 'Silver' | 'Gold'
 	>('Basic');

@@ -14,6 +14,7 @@ function FavPanel({ infoUser }: FavPanelPropsType) {
 
 	const bestTravels = infoUser.user.bestTravels;
 	const isLoggIn = infoUser.user.isLoggIn;
+
 	useEffect(() => {
 		if (isLoggIn === false || bestTravels?.length === 0) {
 			setHasFavorites(false);
