@@ -16,8 +16,10 @@ function Registration({ addUser }: any) {
 	const [disabledBtn, setDisabledBtn] = useState<boolean>(true);
 	const [successRegistration, setSuccessRegistration] =
 		useState<boolean>(false);
+
 	const [userDataProcessingConsent, setUserDataProcessingConsent] =
-		useState(false);
+		useState<boolean>(false);
+
 	const [error, setError] = useState<ErrorsType>({
 		errorName: null,
 		errorEmail: null,
@@ -43,7 +45,7 @@ function Registration({ addUser }: any) {
 			error.errorEmail !== false ||
 			error.errorPass !== false ||
 			error.errorConfirmPass !== false ||
-			userDataProcessingConsent !== false
+			userDataProcessingConsent === false
 		) {
 			setDisabledBtn(true);
 		} else {
@@ -59,7 +61,7 @@ function Registration({ addUser }: any) {
 	};
 	useEffect(() => {
 		handleValidationConfirmPass();
-	}, [infoUser]);
+	}, [infoUser, userDataProcessingConsent]);
 
 	const handleValidationName = () => {
 		if (infoUser.name.length <= 5) {
@@ -299,6 +301,7 @@ function Registration({ addUser }: any) {
 						<input
 							type='checkbox'
 							onChange={(e) => {
+								console.log(userDataProcessingConsent);
 								setUserDataProcessingConsent(() => {
 									if (e.target.checked) {
 										return true;

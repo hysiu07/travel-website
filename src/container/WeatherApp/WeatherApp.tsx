@@ -16,6 +16,13 @@ import { TiWeatherWindy } from 'react-icons/ti';
 import { ThreeCircles } from 'react-loader-spinner';
 import Switch from '@mui/material/Switch';
 import './WeatherApp.scss';
+// type WeatherAppTypeProps = {
+// 	city: string;
+// 	cityForeCast: any;
+// 	dailyForeCast: any;
+// 	setCity: React.Dispatch<React.SetStateAction<string | undefined>>;
+// 	error: boolean;
+// };
 
 function WeatherApp(props: any) {
 	const refInput = useRef<HTMLInputElement>(null);
@@ -85,44 +92,44 @@ function WeatherApp(props: any) {
 			});
 		}
 	}, [props.cityForeCast]);
-	useEffect(() => {
-		if (props.cityForeCast) {
-			setPhoto(() => {
-				if (props.cityForeCast.id >= 200 && props.cityForeCast.id < 300) {
-					return thunder;
-				} else if (
-					props.cityForeCast.id >= 300 &&
-					props.cityForeCast.id < 400
-				) {
-					return drizzle;
-				} else if (
-					props.cityForeCast.id >= 500 &&
-					props.cityForeCast.id < 600
-				) {
-					return rain;
-				} else if (
-					props.cityForeCast.id >= 600 &&
-					props.cityForeCast.id < 700
-				) {
-					return ice;
-				} else if (
-					props.cityForeCast.id >= 700 &&
-					props.cityForeCast.id < 800
-				) {
-					return fog;
-				} else if (props.cityForeCast.id === 800) {
-					return sun;
-				} else if (
-					props.cityForeCast.id >= 800 &&
-					props.cityForeCast.id < 900
-				) {
-					return clouds;
-				} else {
-					return unknown;
-				}
-			});
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (props.cityForeCast) {
+	// 		setPhoto(() => {
+	// 			if (props.cityForeCast.id >= 200 && props.cityForeCast.id < 300) {
+	// 				return thunder;
+	// 			} else if (
+	// 				props.cityForeCast.id >= 300 &&
+	// 				props.cityForeCast.id < 400
+	// 			) {
+	// 				return drizzle;
+	// 			} else if (
+	// 				props.cityForeCast.id >= 500 &&
+	// 				props.cityForeCast.id < 600
+	// 			) {
+	// 				return rain;
+	// 			} else if (
+	// 				props.cityForeCast.id >= 600 &&
+	// 				props.cityForeCast.id < 700
+	// 			) {
+	// 				return ice;
+	// 			} else if (
+	// 				props.cityForeCast.id >= 700 &&
+	// 				props.cityForeCast.id < 800
+	// 			) {
+	// 				return fog;
+	// 			} else if (props.cityForeCast.id === 800) {
+	// 				return sun;
+	// 			} else if (
+	// 				props.cityForeCast.id >= 800 &&
+	// 				props.cityForeCast.id < 900
+	// 			) {
+	// 				return clouds;
+	// 			} else {
+	// 				return unknown;
+	// 			}
+	// 		});
+	// 	}
+	// }, []);
 
 	const handleChangeColor = () => {
 		setColor(!color);
@@ -168,7 +175,12 @@ function WeatherApp(props: any) {
 					<div className='weather-app__title-container'>
 						<h1 className='title'>Forecast</h1>
 						<form>
-							<input type='text' ref={refInput} placeholder='Enter a City' className='input-city-name'/>
+							<input
+								type='text'
+								ref={refInput}
+								placeholder='Enter a City'
+								className='input-city-name'
+							/>
 							<button
 								onClick={(e) => {
 									e.preventDefault();

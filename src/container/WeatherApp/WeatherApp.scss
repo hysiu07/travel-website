@@ -3,9 +3,12 @@
 .weather-app-component {
 	position: relative;
 	width: 100%;
-	button.btn {
+	.btn-show-weather-app {
 		display: block;
 		margin: 10px auto;
+		font-size: 1.6rem;
+		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		background-color: #ffffff;
 	}
 	.btn-weather-close {
 		position: absolute;
